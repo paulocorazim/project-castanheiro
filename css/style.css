@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cairo:700&display=swap');
 
 body {
     margin: 0;
     padding: 0;
-    font-family: Poppins, sans-serif;
+    /*font-family: 'Poppins', sans-serif;*/
+    /*font-family: 'Cairo', sans-serif;*/
 }
 
+/*TELA DE LOGIN 1.0*/
 .blocklogin {
-   
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: silver;
+    background: #3d2d1d;
 }
 .login {
     text-align: center;
@@ -20,21 +23,19 @@ body {
     box-sizing: border-box;
     padding: 60px;
     background: white;
+    border-radius: 15px;
 }
-
 .login h2 {
     margin: 0 0 30px;
     padding: 0;
     font-size: 30px;
     text-transform: uppercase;
 }
-
 .login .input-group {
     position: relative;
     width: 100%;
     margin-bottom: 25px;
 }
-
 .login .input-group input {
     height: 50px;
     width: 100%;
@@ -43,10 +44,8 @@ body {
     font-size: 18px;
     outline: none;
     border: 1px solid silver;
-
-
+    border-radius: 10px;
 }
-
 .login .input-group span {
     position: absolute;
     top: 9px;
@@ -56,8 +55,8 @@ body {
     pointer-events: none;
     background: white;
     text-transform: uppercase;
+    border-radius: 5px;
 }
-
 .login .input-group input:focus ~ span,
 .login .input-group input:valid ~ span {
     top: -15px;
@@ -68,28 +67,86 @@ body {
     background: white;
 
 }
-
 .login .input-group input[type="submit"]{
-    background:silver;
+    background:#b99c70;
+    color:;
     border: none;
     box-shadow:  none;
     text-transform: uppercase;
     cursor: pointer;
     font-weight: 600;
-    
+    transition: 0.5s;
 }
-
 .login .input-group input[type="submit"]:hover {
-    background: rgb(194, 183, 183);
+    background: #b28849;
+    transition: 0.5s;
 }
-
 .login a {
-    color: blue;
+    color: #3d2d1d;
     text-decoration: none;
     display: block;
-    text-align: left;
+    text-align: center;
 }
-
 .login a span {
     font-weight: 600;
+}
+.logoone {  
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
+hr {
+    width: 70%;
+    border: 2px solid #b28849;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/*NAVBAR*/
+.navbar {
+    font:  15px Cairo;
+    width: 100%;
+    display: flex;
+    background-color: #b99c70;
+    max-height: 60px;
+    position: fixed;
+    top: 0;
+}
+
+.content {
+    margin-top: 60px;
+}
+
+.navbar ul li {
+    list-style-type: none;
+    float: left;
+    margin-left: 50px;
+}
+
+.teste {
+    min-height: 9000px;
+}
+
+
+
+.testando {
+    height: 300px;
+    width: 300px;
+    float: left;
+    background-color: brown;
+    padding: 20px;
+    margin: 50px;
+}
+
+/*SCROLL*/
+::-webkit-scrollbar {
+    height: 60px;
+    width: 12px;}
+
+::-webkit-scrollbar-thumb {
+    height: 59px;
+    width: 15px;
+    background-color: #e67e22;
+    cursor: pointer !important;
 }
