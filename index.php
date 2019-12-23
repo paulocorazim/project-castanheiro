@@ -32,7 +32,7 @@
                 <input type="submit" value="Login" onclick="validation('');">
             </div>
         </form>
-        <a href="pages/man.php">Esqueçeu a senha? <span></span></a>
+        <a href="man/manager.php">Esqueçeu a senha? <span></span></a>
     </div>
 </div>
 

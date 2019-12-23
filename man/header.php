@@ -9,7 +9,7 @@ Class Headers {
         <img class="logo" src="../image/logo.png" alt="logo">
         <nav>
             <ul class="nav_links">
-                <li><a href="#">Produtos</a></li>
+                <li><a href="manager.usuarios.php">Usuarios</a></li>
                 <li><a href="#">Produtos</a></li>
                 <li><a href="#">Produtos</a></li>
             </ul>
