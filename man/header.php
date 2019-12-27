@@ -11,7 +11,8 @@ Class Headers {
             <ul class="nav_links">
                 <li><a href="manager.usuarios.php">Usuarios</a></li>
                 <li><a href="#">Produtos</a></li>
-                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Produtos</a
+                li>
             </ul>
         </nav>
         <a class="cta iconnavbar" href="#"><i class="fas fa-user-circle"></i></a>
