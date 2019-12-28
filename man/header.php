@@ -1,14 +1,17 @@
 <?php
 
-Class Headers {
+class Headers
+{
 
-    public function navBar(){
+    public function navBar()
+    {
 
-    $navBar = <<< EOT
+        $navBar = <<< EOT
     <header>
         <img class="logo" src="../image/logo.png" alt="logo">
         <nav>
             <ul class="nav_links">
+                <li><a href="manager.php">Dashboard</a></li>
                 <li><a href="manager.usuarios.php">Usuarios</a></li>
                 <li><a href="#">Produtos</a></li>
                 <li><a href="#">Produtos</a
@@ -20,7 +23,6 @@ Class Headers {
 
 EOT;
 
-    return $navBar;
-
+        return $navBar;
     }
 }
