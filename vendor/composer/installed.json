@@ -1,0 +1,105 @@
+[
+    {
+        "name": "fightbulc/easy_pdo",
+        "version": "0.1.8",
+        "version_normalized": "0.1.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fightbulc/easy_pdo.git",
+            "reference": "f6d3e3184ec48d6d337639d074d0d0a9f8d44410"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fightbulc/easy_pdo/zipball/f6d3e3184ec48d6d337639d074d0d0a9f8d44410",
+            "reference": "f6d3e3184ec48d6d337639d074d0d0a9f8d44410",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2013-03-04T02:30:35+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Tino Ehrich",
+                "email": "opensource@efides.com",
+                "role": "developer"
+            },
+            {
+                "name": "Rob Poyntz",
+                "email": "rob@digitalfinery.com.au"
+            }
+        ],
+        "description": "PDO MySQL Library",
+        "homepage": "https://github.com/fightbulc/easy_pdo",
+        "keywords": [
+            "db",
+            "mysql",
+            "pdo",
+            "postgres",
+            "sqlite"
+        ]
+    },
+    {
+        "name": "simplon/db",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fightbulc/simplon_db.git",
+            "reference": "13d0c2885c346a80b3c63a3392d5a3b7d681cfc2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fightbulc/simplon_db/zipball/13d0c2885c346a80b3c63a3392d5a3b7d681cfc2",
+            "reference": "13d0c2885c346a80b3c63a3392d5a3b7d681cfc2",
+            "shasum": ""
+        },
+        "require": {
+            "fightbulc/easy_pdo": "0.1.*",
+            "php": ">=5.4"
+        },
+        "suggest": {
+            "ext-phpiredis": "*"
+        },
+        "time": "2013-04-04T13:26:44+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Simplon\\Db": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Tino Ehrich",
+                "email": "opensource@efides.com",
+                "role": "developer"
+            }
+        ],
+        "description": "Simplon DB Libraries",
+        "homepage": "https://github.com/fightbulc/simplon_db",
+        "keywords": [
+            "couchbase",
+            "db",
+            "memcached",
+            "mysql",
+            "pdo",
+            "redis"
+        ]
+    }
+]

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/e6868744bc.js" crossorigin="anonymous"></script>
-    <title>Castanheiros</title>
+    <title>AppManager : Castanheiros</title>
 </head>
 <body>
 
@@ -19,20 +19,20 @@
         <img class="logoone" src="image/logo.png">
         <hr>
         <h2>Login</h2>
-        <form>
+        <form action="login.php" method="POST">
             <div class="input-group">
-                <input type="email" name="" required="required">
-                <span>E-mail</span>
+                <input type="email" name="email" id="email" required="required">
+                <span>Entre com seu e-mail ou cpf</span>
             </div>
             <div class="input-group">
-                <input type="password" name="" required="required">
-                <span>Senha</span>
+                <input type="password" name="password" id="password" required="required">
+                <span>entre com sua senha</span>
             </div>
             <div class="input-group">
-                <input type="submit" value="Login" onclick="validation('');">
+                <input type="submit" name="btnLogin" id="btnLogin" value="Login">
             </div>
         </form>
-        <a href="man/manager.php">Esqueçeu a senha? <span></span></a>
+        <a href="#">Esqueçeu a senha? <span></span></a>
     </div>
 </div>
 

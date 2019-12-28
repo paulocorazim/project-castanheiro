@@ -1,0 +1,28 @@
+{
+    "name": "fightbulc/easy_pdo",
+    "description": "PDO MySQL Library",
+    "homepage": "https://github.com/fightbulc/easy_pdo",
+    "version": "0.1.8",
+    "license": "BSD-2-Clause",
+    "keywords": ["db", "pdo", "mysql", "postgres", "sqlite"],
+    "authors": [
+        {
+            "name": "Rob Poyntz",
+            "email": "rob@digitalfinery.com.au"
+        },
+        {
+            "name": "Tino Ehrich",
+            "email": "opensource@efides.com"
+        }
+    ],
+
+    "minimum-stability": "dev",
+
+    "require": {
+        "php": ">=5.3.3"
+    },
+
+    "autoload": {
+        "classmap": ["src/"]
+    }
+}

@@ -9,9 +9,9 @@ ini_set('display_startup_erros', 1);
 
 error_reporting(E_ALL);
 
-include("../man/head.php");
-include("../man/header.php");
-include("../man/footer.php");
+include("head.php");
+include("header.php");
+include("footer.php");
 include("../class/class.telaUsuarios.php");
 
 $head = new Heads();
