@@ -12,17 +12,17 @@ error_reporting(E_ALL);
 include("head.php");
 include("header.php");
 include("footer.php");
-include("../class/class.telaUsuarios.php");
+include("../class/class.ScreenUsers.php");
 
 $head = new Heads();
 $header = new Headers();
 $footer = new Footers();
-$teleCadUsuario = new TelaUsuarios();
 $footer = new Footers();
+$screenUsers = new ScreenUsers();
 
 echo $head->head("Cadastro de Usuários");
 echo $header->navBar();
-echo $teleCadUsuario->telaCadUsuario();
+echo $screenUsers->screenFormUser();
 
 
 

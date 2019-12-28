@@ -15,19 +15,15 @@ include("../class/class.ScreenClients.php");
 include("../class/class.Functions.php");
 
 $appFunctions = new appFunctions();
-
 $appFunctions =$appFunctions->validate_session();
 
 $head   = new Heads();
 $header = new Headers();
 $footer = new Footers();
-$screnCadClient = new ScreenClients();
 $footer = new Footers();
 
-echo $head->head("Cadastro de Clientes");
+echo $head->head("AppManer Castanheiros");
 echo $header->navBar();
-echo $screnCadClient->screenCadClient();
-
 
 
 

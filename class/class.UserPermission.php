@@ -19,15 +19,15 @@ class UserPermission
         if (!$results) {
 
             echo "Usuário não cadastrado";
-            exit;
+            exit();
         } else {
 
             foreach ($results as $key) {
 
                 if ($key['status'] === '0') {
                     echo "Usuário com status desabilitado, não será possivel continuar";
-                    exit;
-                } else {
+                    exit();
+                } else {    
 
                     $appFunctions = new appFunctions();
                     $create_session = $appFunctions->create_session(
@@ -39,6 +39,10 @@ class UserPermission
                         $key['dt_update'],
                         'Conected'
                     );
+
+                    /* Redirect browser */
+                    header("Location: man/manager.php");
+                    exit();
 
                     //echo "<pre>";
                     //print_r($results);

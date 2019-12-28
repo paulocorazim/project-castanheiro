@@ -1,14 +1,13 @@
 <?php
 
-class TelaUsuarios
+class ScreenUsers
 {
 
-    public function telaCadUsuario()
+    public function screenFormUser()
     {
 
-        $telaCadUsuario = <<< EOT
-        <body>
-    <div class="cadeusersmaster">
+        $screenFormUser = <<< EOT
+        <div class="cadeusersmaster">
         <form class="cadu" method="GET">
             <span class="spantitle">Cadastro de Usuário</span>
             <br>
@@ -54,25 +53,24 @@ class TelaUsuarios
             <br>
             <button> Concluido</button>
         </form>
-    </div>
+        </div>
     
 
-        
 
 EOT;
 
-        return $telaCadUsuario;
+        return $screenFormUser;
     }
 
 
-    public function telaListUsuario()
+    public function screenListUser()
     {
 
-        $telaListUsuario = <<< EOT
+        $screenListUser = <<< EOT
         
 
 EOT;
 
-        return $telaListUsuario;
+        return $screenListUser;
     }
 }

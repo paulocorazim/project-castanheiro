@@ -8,4 +8,4 @@ error_reporting(E_ALL);
 include('class/class.UserPermission.php');
 
 $validation_user = new UserPermission();
-$validation_user->validation_user($_POST['email'], $_POST['password']);
+$validation_user->validation_user($_POST['email'], md5($_POST['password']));
