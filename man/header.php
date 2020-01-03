@@ -18,7 +18,7 @@ class Headers
                 li>
             </ul>
         </nav>
-        <a class="cta iconnavbar" href="#"><i class="fas fa-user-circle"></i></a>
+        <a class="cta iconnavbar" href="../index.php"><i class="fas fa-user-circle"></i></a>
     </header>   
 
 EOT;

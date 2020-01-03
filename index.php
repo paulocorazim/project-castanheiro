@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <script src="nunjucks.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Cairo:700&display=swap" rel="stylesheet">
     <script src="js/main.js" type="text/javascript"></script>
     <meta charset="UTF-8">
@@ -38,7 +39,7 @@
 
 <script>
     function validation(){
-        window.alert('EU NÃO TO ACREDITANDO QUE DEU CERTO');
+        window.alert('Teste Paulo');
     }
 
     
