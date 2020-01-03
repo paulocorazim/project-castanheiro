@@ -11,7 +11,7 @@ class UserPermission
         $dbInstance = $conn->connection();
 
         $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-        $sqlQuery  = (new \Simplon\Db\SqlQueryBuilder())
+        $sqlQuery   = (new \Simplon\Db\SqlQueryBuilder())
             ->setQuery('SELECT * FROM tab_users WHERE email = :email AND password = :pass')
             ->setConditions(['email' => "$email", 'pass' => "$password"]);
         $results = $sqlManager->fetchAll($sqlQuery);
@@ -27,7 +27,7 @@ class UserPermission
                 if ($key['status'] === '0') {
                     echo "Usuário com status desabilitado, não será possivel continuar";
                     exit();
-                } else {    
+                } else {
 
                     $appFunctions = new appFunctions();
                     $create_session = $appFunctions->create_session(

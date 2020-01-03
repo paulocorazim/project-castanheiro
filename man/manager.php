@@ -16,6 +16,7 @@ include("../class/class.Functions.php");
 
 $appFunctions = new appFunctions();
 $appFunctions =$appFunctions->validate_session();
+$id_user = $_SESSION['id'];
 
 $head   = new Heads();
 $header = new Headers();
@@ -23,9 +24,7 @@ $footer = new Footers();
 $footer = new Footers();
 
 echo $head->head("AppManer Castanheiros");
-echo $header->navBar();
-
-
+echo $header->navBar($id_user);
 
 
 //LOGICA
