@@ -1,0 +1,1 @@
+INSERT INTO `tab_permissions` (`id`, `id_user`, `id_module`, `type`, `dt_created`, `dt_update`) VALUES (NULL, '1', '4', 'U', '2020-01-04 12:00:00', '2020-01-04 00:00:00'), (NULL, '1', '4', 'D', '2020-01-04 00:00:00', '2020-01-04 00:00:00');

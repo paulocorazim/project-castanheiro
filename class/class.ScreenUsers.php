@@ -3,7 +3,7 @@
 class ScreenUsers
 {
 
-    public function screenFormUser()
+    public function screenFormUser($typeModules)
     {
 
         $screenFormUser = <<< EOT
@@ -46,10 +46,7 @@ class ScreenUsers
                     </div>
                     <div class="input-group">
                         <span>Módulos</span>
-                        <input type="checkbox" text="a" value="a"><span>A</span>
-                        <input type="checkbox" text="a" value="a"><span>A</span>
-                        <input type="checkbox" text="a" value="a"><span>A</span>
-                        <input type="checkbox" text="a" value="a"><span>A</span>
+                        $typeModules[1]
                     </div>
     
                     <button type="submit">Finalizar</button>

@@ -30,13 +30,14 @@ class UserPermission
                 } else {
 
                     $appFunctions = new appFunctions();
-                    $create_session = $appFunctions->create_session(
+                    $appFunctions->create_session(
                         $key['id'],
                         $key['cpf'],
                         $key['name'],
                         $key['email'],
+                        $key['type'],
                         $key['dt_creatd'],
-                        $key['dt_update'],
+                        $key['dt_update'],                        
                         'Conected'
                     );
 
