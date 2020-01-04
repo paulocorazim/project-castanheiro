@@ -280,6 +280,7 @@
       }
       catch(\Exception $e)
       {
+        echo "<pre>";
         throw new ENoDatabaseConnection();
       }
     }

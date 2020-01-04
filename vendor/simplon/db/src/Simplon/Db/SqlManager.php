@@ -33,6 +33,7 @@
 
         /**
          * @param SqlQueryBuilder $sqlQuery
+         *
          * @return \QueryResultIterator|\QueryResultIteratorClass
          */
         public function fetchCursor(SqlQueryBuilder $sqlQuery)
@@ -46,6 +47,7 @@
 
         /**
          * @param SqlQueryBuilder $sqlQuery
+         *
          * @return bool|mixed
          */
         public function fetchColumn(SqlQueryBuilder $sqlQuery)
@@ -54,7 +56,7 @@
                 ->_getSqlInstance()
                 ->FetchValue($sqlQuery->getQuery(), $sqlQuery->getConditions());
 
-            if(! is_null($result))
+            if (!is_null($result))
             {
                 return $result;
             }
@@ -66,6 +68,7 @@
 
         /**
          * @param SqlQueryBuilder $sqlQuery
+         *
          * @return bool|array
          */
         public function fetchRow(SqlQueryBuilder $sqlQuery)
@@ -74,7 +77,7 @@
                 ->_getSqlInstance()
                 ->FetchArray($sqlQuery->getQuery(), $sqlQuery->getConditions());
 
-            if($result !== FALSE)
+            if ($result !== FALSE)
             {
                 return $result;
             }
@@ -86,6 +89,7 @@
 
         /**
          * @param SqlQueryBuilder $sqlQuery
+         *
          * @return bool|array
          */
         public function fetchAll(SqlQueryBuilder $sqlQuery)
@@ -94,7 +98,7 @@
                 ->_getSqlInstance()
                 ->FetchAll($sqlQuery->getQuery(), $sqlQuery->getConditions());
 
-            if(! empty($result))
+            if (!empty($result))
             {
                 return $result;
             }
@@ -106,27 +110,53 @@
 
         /**
          * @param SqlQueryBuilder $sqlQuery
-         * @return bool|null|string
+         *
+         * @return bool|array
          */
-        public function insert(SqlQueryBuilder $sqlQuery)
+        public function fetchAllColumn(SqlQueryBuilder $sqlQuery)
+        {
+            $result = $this->fetchAll($sqlQuery);
+
+            if ($result !== FALSE)
+            {
+                $mapFunction = function ($a)
+                {
+                    return array_pop($a);
+                };
+
+                return array_map($mapFunction, $result);
+            }
+
+            return FALSE;
+        }
+
+        // ########################################
+
+        /**
+         * @param $type
+         * @param SqlQueryBuilder $sqlQuery
+         *
+         * @return bool
+         */
+        protected function _insertReplaceCommand($type, SqlQueryBuilder $sqlQuery)
         {
             $tableName = $sqlQuery->getTableName();
             $data = $sqlQuery->getData();
 
-            if($tableName && ! empty($data))
+            if ($tableName && !empty($data))
             {
                 // prepare placeholders and values
                 $_set = array();
                 $_placeholder = array();
                 $_values = array();
 
-                foreach($data as $key => $value)
+                foreach ($data as $key => $value)
                 {
                     $_set[] = $key;
                     $placeholder_key = ':' . $key;
 
                     // only ID field gets autoincrement
-                    if(is_null($value))
+                    if (is_null($value))
                     {
                         $placeholder_key = 'NULL';
                     }
@@ -138,16 +168,25 @@
                     $_placeholder[] = $placeholder_key;
                 }
 
-                $insertString = 'INSERT';
+                // ------------------------------
 
-                // insert ignore awareness for tables with unique entries
-                if($sqlQuery->getInsertIgnore() === TRUE)
+                $commandString = 'REPLACE';
+
+                if ($type === 'insert')
                 {
-                    $insertString = 'INSERT IGNORE';
+                    $commandString = 'INSERT';
+
+                    // insert ignore awareness for tables with unique entries
+                    if ($sqlQuery->getInsertIgnore() === TRUE)
+                    {
+                        $commandString = 'INSERT IGNORE';
+                    }
                 }
 
+                // ------------------------------
+
                 // sql statement
-                $sql = $insertString . ' INTO ' . $tableName . ' (' . join(',', $_set) . ') VALUES (' . join(',', $_placeholder) . ')';
+                $sql = $commandString . ' INTO ' . $tableName . ' (' . join(',', $_set) . ') VALUES (' . join(',', $_placeholder) . ')';
 
                 // insert data
                 $insertId = $this
@@ -164,6 +203,31 @@
 
         /**
          * @param SqlQueryBuilder $sqlQuery
+         *
+         * @return bool|null|string
+         */
+        public function insert(SqlQueryBuilder $sqlQuery)
+        {
+            return $this->_insertReplaceCommand('insert', $sqlQuery);
+        }
+
+        // ########################################
+
+        /**
+         * @param SqlQueryBuilder $sqlQuery
+         *
+         * @return bool|null|string
+         */
+        public function replace(SqlQueryBuilder $sqlQuery)
+        {
+            return $this->_insertReplaceCommand('replace', $sqlQuery);
+        }
+
+        // ########################################
+
+        /**
+         * @param SqlQueryBuilder $sqlQuery
+         *
          * @return bool|null|string
          */
         public function update(SqlQueryBuilder $sqlQuery)
@@ -172,13 +236,13 @@
             $newData = $sqlQuery->getData();
             $updateConditions = $sqlQuery->getConditions();
 
-            if($tableName && ! empty($newData) && ! empty($updateConditions))
+            if ($tableName && !empty($newData) && !empty($updateConditions))
             {
                 // prepare placeholders and values
                 $_set = array();
                 $_values = array();
 
-                foreach($newData as $key => $value)
+                foreach ($newData as $key => $value)
                 {
                     $placeholder_key = ':' . $key;
                     $_set[] = $key . '=' . $placeholder_key;
@@ -188,13 +252,13 @@
                 // prepare conditions
                 $_conditions = array();
 
-                foreach($updateConditions as $key => $value)
+                foreach ($updateConditions as $key => $value)
                 {
                     /**
                      * Case NULL to enable conditions such as:
                      * IN (1,2,3,4,5)
                      */
-                    if(is_null($value))
+                    if (is_null($value))
                     {
                         $_conditions[] = $key;
                     }
@@ -225,6 +289,7 @@
 
         /**
          * @param SqlQueryBuilder $sqlQuery
+         *
          * @return bool|null|string
          */
         public function remove(SqlQueryBuilder $sqlQuery)
@@ -233,19 +298,19 @@
             $deleteConditions = $sqlQuery->getConditions();
 
             // remove from sql
-            if($tableName && ! empty($deleteConditions))
+            if ($tableName && !empty($deleteConditions))
             {
                 // prepare conditions
                 $_conditions = array();
                 $_values = array();
 
-                foreach($deleteConditions as $key => $value)
+                foreach ($deleteConditions as $key => $value)
                 {
                     /**
                      * Case NULL to enable conditions such as:
                      * IN (1,2,3,4,5)
                      */
-                    if(is_null($value))
+                    if (is_null($value))
                     {
                         $_conditions[] = $key;
                     }

@@ -11,45 +11,39 @@ class ScreenUsers
         <div class="container">
             <div class="containerpadrao">
                 <h2> Cadastro de Usuário</h2>
-                <form action="#" method="#">
+                <form action="manager.users.php" method="post">
                     <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" name="user_name" id="user_name" class="form-control">
                         <label for="name">Nome</label>
                     </div>
                     <div class="input-group">
-                        <input type="email" class="form-control">
+                        <input type="email" name="user_email" id="user_email" class="form-control">
                         <label for="email">E-mail</label>
                     </div>
                     <div class="input-group">
-                        <input type="password" class="form-control">
+                        <input type="password" name="user_password" id="user_password" class="form-control">
                         <label for="password">Crie uma senha</label>
                     </div>
                     <div class="input-group">
-                        <input type="password" class="form-control">
+                        <input type="password" name="user_confirm_password" id="user_confirm_password" class="form-control">
                         <label for="confpass">Confirme a Senha</label>
                     </div>
+                    <hr>
                     <div class="input-group">
-                        <select name="office" id="office" class="form-control">
-                            <option value=""></option>
-                            <option value="#">Supervisor</option>
-                            <option value="#">Editor</option>
-                            <option value="#">Gerente</option>
-                            <option value="#">Auxiliar</option>
-                        </select>
-                        <label for="office">Cargo</label>
+                        <span>Permissões do Usuário.</span> <br><br>
+                        <input type="checkbox" text="master"  value="master"><span>Master</span>
+                        <input type="checkbox" text="Inserir" value="I"><span>Inserir</span>
+                        <input type="checkbox" text="Selecionar" value="S"><span>Selecionar</span>
+                        <input type="checkbox" text="Alterar" value="U"><span>Alterar</span>
+                        <input type="checkbox" text="Apagar" value="D"><span>Apagar</span>
                     </div>
+                    <hr>
                     <div class="input-group">
-                        <span>Permissões</span>
-                        <input type="checkbox" text="master" value="master"><span>Master</span>
-                        <input type="checkbox" text="simples" value="simples"><span>Simples</span>
-                        <input type="checkbox" text="diversos" value="diversos"><span>Diversos</span>
-                    </div>
-                    <div class="input-group">
-                        <span>Módulos</span>
+                        <span>Módulos que o usuário pode acessar.</span><br><br>
                         $typeModules[1]
                     </div>
     
-                    <button type="submit">Finalizar</button>
+                    <button type="submit">[ ATUALIZAR ]</button>
                 </form>
             </div>
         </div>
