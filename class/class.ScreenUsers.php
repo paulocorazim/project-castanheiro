@@ -31,11 +31,12 @@ class ScreenUsers
                     <hr>
                     <div class="input-group">
                         <span>Permissões do Usuário.</span> <br><br>
-                        <input type="checkbox" text="master"  value="master"><span>Master</span>
-                        <input type="checkbox" text="Inserir" value="I"><span>Inserir</span>
-                        <input type="checkbox" text="Selecionar" value="S"><span>Selecionar</span>
-                        <input type="checkbox" text="Alterar" value="U"><span>Alterar</span>
-                        <input type="checkbox" text="Apagar" value="D"><span>Apagar</span>
+                        <input type="checkbox" name="permission" id="permission" text="master"  value="master"><span>Master</span>
+                        <input type="checkbox" name="permission" id="permission" text="Inserir" value="I"><span>Inserir</span>
+                        <input type="checkbox" name="permission" id="permission" text="Selecionar" value="S"><span>Selecionar</span>
+                        <input type="checkbox" name="permission" id="permission" text="Alterar" value="U"><span>Alterar</span>
+                        <input type="checkbox" name="permission" id="permission" text="Apagar" value="D"><span>Apagar</span>
+    
                     </div>
                     <hr>
                     <div class="input-group">

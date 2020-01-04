@@ -8,7 +8,6 @@ Class Heads {
     <!DOCTYPE html>
     <html lang="UTF-8">
     <head>
-        <script src="nunjucks.js"></script>
         <script src="js/main.js" type="text/javascript"></script>
         <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Cairo:700&display=swap" rel="stylesheet">

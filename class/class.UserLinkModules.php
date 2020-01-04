@@ -40,6 +40,7 @@ class LinkModule
             }
 
             return array("$user_li", "$user_checkbox");
+            
         } else {
 
             $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
