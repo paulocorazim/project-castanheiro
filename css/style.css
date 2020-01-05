@@ -232,11 +232,12 @@ button[type=submit]{
 /* Geral */
 
 .alerta {
-    padding: 25px;
-    border: 1px solid gray;
-    border-radius: 3px;
-    margin: 10px;
-    font-size: 18px;
+    border-radius: 0px;
+    margin: auto;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    
 }
 
 .error {
@@ -246,9 +247,9 @@ button[type=submit]{
 }
 
 .sucesso {
-    border-color: #87c940;
+    border-color: #53881b;
     color: #FFF;
-    background-color: #a0d468;
+    background-color: #31520f;
 }
 
 .atencao {
