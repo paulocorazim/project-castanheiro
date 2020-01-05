@@ -3,12 +3,8 @@
 class LinkModule
 {
 
-    public function LinkModules($id_user, $user_type)
+    public function LinkModules($dbInstance, $id_user, $user_type)
     {
-        include('class.DbConnection.php');
-
-        $conn = new DBconnect();
-        $dbInstance = $conn->connection();
         $user_li = ""; //NavBar
         $user_checkbox = ""; //Módulos da tela de cadastro de usuários
 
