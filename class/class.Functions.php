@@ -27,10 +27,10 @@ Class appFunctions
         }
     }
 
-    public function alert_error()
+    public function alert_error($msg)
     {
         $alert_error = <<<EOT
-       <div class="alerta error">Oh não! Isso foi em forma de pera.</div>
+       <div class="alerta error">$msg.</div>
            
 EOT;
 
@@ -38,10 +38,10 @@ EOT;
     }
 
 
-    public function alert_sucess()
+    public function alert_sucess($msg)
     {
         $alert_sucess = <<<EOT
-       <div class="alerta sucesso">Parabéns! Você fez alguma coisa.</div>
+       <div class="alerta sucesso">$msg.</div>
     
 EOT;
 
@@ -49,10 +49,10 @@ EOT;
     }
 
 
-    public function alert_attention()
+    public function alert_attention($msg)
     {
         $alert_attention = <<<EOT
-       <div class="alerta atencao">Segurem-se, você pode querer verificar isso.</div>
+       <div class="alerta atencao">$msg.</div>
     
 EOT;
 
@@ -60,10 +60,10 @@ EOT;
     }
 
 
-    public function alert_warning()
+    public function alert_warning($msg)
     {
         $alert_warning = <<<EOT
-       <div class="alerta info">Eu tinha torradas para o café da manhã.</div> 
+       <div class="alerta info">$msg.</div> 
     
 EOT;
 

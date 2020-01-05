@@ -1,27 +1,38 @@
 <?php
 
-Class DbManagerRecords
+class DbManagerRecords
 {
-    public function insert_user($dbInstance, $cpf, $name, $email, $password, $dt_creatd, $dt_update, $type, $status)
+    public function insert_user($dbInstance, $regists)
     {
         try {
-            // query: inserts one new row
+
+            //Tratamento do cadastro de usuários
+
+            if ($regists['permission_master'] != 'master') {
+                $type = 'basic';
+            } else {
+                $type = 'master';
+            }
+
             $data = [
-                'id' => NULL,
-                'cpf' => "$cpf",
-                'name' => "$name",
-                'email' => "$email",
-                'password' => "$password",
-                'dt_creatd' => "$dt_creatd",
-                'dt_update' => "$dt_update",
+                'id' => null,
+                'cpf' => "$regists[cpf]",
+                'name' => "$regists[name]",
+                'email' => "$regists[email]",
+                'password' => "$regists[password]",
+                'dt_creatd' => "$regists[dt_creatd]",
+                'dt_update' => "$regists[dt_update]",
                 'type' => "$type",
-                'status' => "$status"
+                'status' => "1",
             ];
 
+            var_dump($data);
+            exit;
+
             $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-            $sqlQuery   = (new \Simplon\Db\SqlQueryBuilder())
-                ->setTableName('tab_users')   // define the table name
-                ->setData($data);           // set data (keys = database column name)
+            $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+                ->setTableName('tab_users') // define the table name
+                ->setData($data); // set data (keys = database column name)
             $sqlManager->insert($sqlQuery);
         } catch (Exception $e) {
             echo 'Erro ao Inserir :', $e->getMessage(), "\n";
