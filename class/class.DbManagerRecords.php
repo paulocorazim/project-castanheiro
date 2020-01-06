@@ -26,9 +26,6 @@ class DbManagerRecords
                 'status' => "1",
             ];
 
-            var_dump($data);
-            exit;
-
             $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
             $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
                 ->setTableName('tab_users') // define the table name

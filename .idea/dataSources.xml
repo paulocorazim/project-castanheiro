@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="@Castanheiro" uuid="b6d00098-7ede-4e32-bb2f-00c391de6e10">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://iuri0091.hospedagemdesites.ws:3306/shcombr_appmanager</jdbc-url>
+    </data-source>
+  </component>
+</project>

@@ -1,9 +1,8 @@
 <?php
-ini_set('memory_limit', '256M');
+/*ini_set('memory_limit', '256M');
 ini_set('display_errors', 1);
 ini_set('display_startup_erros', 1);
-
-error_reporting(E_ALL);
+error_reporting(E_ALL);*/
 
 include "head.php";
 include "header.php";
@@ -54,8 +53,8 @@ if (isset($_POST['btn_update'])) {
     ];
 
     $inserts->insert_user($dbInstance, $regists);
-    echo $appFunctions->alert_sucess("Obá! Usuário { $name } cadastrado com sucesso!");
-    echo "<meta http-equiv='refresh' content='3;url=#' />";
+    echo $appFunctions->alert_sucess("Obá! Usuário { $_POST[user_name] } cadastrado com sucesso!");
+    $appFunctions->redirec_page("3","#");
     exit();
 }
 
