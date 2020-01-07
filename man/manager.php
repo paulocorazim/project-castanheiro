@@ -28,7 +28,7 @@ $appFunctions->validate_session();
 $typeModule = new LinkModule();
 $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
 
-echo $head->head("AppManer Castanheiros");
+echo $head->head("AppManer Castanheiro");
 echo $header->navBar($typeModules);
 
 /*echo $footer->footer();*/

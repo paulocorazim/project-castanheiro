@@ -44,7 +44,7 @@ if (isset($_POST['btn_update'])) {
         'password' => md5("$_POST[user_password]"),
         'confirm_passwd' => "$_POST[user_confirm_password]",
         'dt_update' => date('Y-m-m h:m:s'),
-        'dt_creatd' => date('Y-m-d h:m:s'),
+        'dt_created' => date('Y-m-d h:m:s'),
         'permission_master' => "$_POST[permission_master]",
         'permission_I' => "$_POST[permission_I]",
         'permission_S' => "$_POST[permission_S]",
@@ -55,9 +55,9 @@ if (isset($_POST['btn_update'])) {
     $regists_module = $_POST['user_module'];
     $regists_permission =$_POST['user_permission'];
 
-    $inserts->insert_user($dbInstance, $regists_user, $regists_module, $regists_permission);
+    $inserts->insert_user($dbInstance, $regists_user, $regists_module, $regists_permission, $appFunctions);
     $appFunctions->alert_sucess("Obá! Usuário { $_POST[user_name] } cadastrado com sucesso!");
-    //$appFunctions->redirect_page("3","#");
+    $appFunctions->redirect_page("3","#");
     exit();
 }
 

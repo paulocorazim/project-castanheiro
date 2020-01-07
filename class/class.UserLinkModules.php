@@ -13,17 +13,17 @@ class LinkModule
             $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
             $sqlQuery  = (new \Simplon\Db\SqlQueryBuilder())
                 ->setQuery('SELECT DISTINCT 
-            c.name_link as name_link,
-            c.name_app as name_app,
-            c.id as id
-            from 
-            tab_permissions as a,
-            tab_users 		as b,
-            tab_modules 	as c
-            WHERE
-                a.id_user = b.id 
-            and c.id      = a.id_module
-            and a.id_user = :id_user')
+                c.name_link as name_link,
+                c.name_app as name_app,
+                c.id as id
+                from 
+                tab_permissions as a,
+                tab_users 		as b,
+                tab_modules 	as c
+                WHERE
+                    a.id_user = b.id 
+                and c.id      = a.id_module
+                and a.id_user = :id_user')
                 ->setConditions(['id_user' => "$id_user"]);
             $results = $sqlManager->fetchAll($sqlQuery);
 
@@ -41,18 +41,7 @@ class LinkModule
 
             $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
             $sqlQuery  = (new \Simplon\Db\SqlQueryBuilder())
-                ->setQuery('SELECT DISTINCT 
-            c.name_link as name_link,
-            c.name_app as name_app,
-            c.id as id
-            from 
-            tab_permissions as a,
-            tab_users 		as b,
-            tab_modules 	as c
-            WHERE
-                a.id_user = b.id 
-            and c.id      = a.id_module');
-            //    ->setConditions(['id_user' => "$id_user"]);
+                ->setQuery('SELECT * from  tab_modules as c');
             $results = $sqlManager->fetchAll($sqlQuery);
 
             foreach ($results as $key) {
