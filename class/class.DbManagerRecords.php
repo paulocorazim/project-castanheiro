@@ -63,18 +63,26 @@ class DbManagerRecords
                             }
                         }
 
-                    }catch (Exception $e) {
-                        echo 'Erro ao Inserir Módulos :', $e->getMessage(), "\n";
+                    } catch (Exception $e) {
+                        $error = $e->getMessage();
+                        $appFunctions->alert_error("Erro ao Inserir Módulos / Permissões ->" . $error);
                     }
                 }
 
-            }else{
-                $appFunctions->alert_error("Atenção! Este CPF: $user_cpf[cpf] já esta sendo usado, você deve fazer a recuperação de senha!");
+                $appFunctions->alert_sucess("Usuário cadastrado com sucesso!");
+                $appFunctions->redirect_page('4', '../man/manager.users.php');
                 exit();
+
+            } else {
+                $appFunctions->alert_error("Atenção! Este CPF: $user_cpf[cpf] já esta sendo usado, você deve fazer a recuperação de senha!");
             }
 
+            $appFunctions->alert_sucess("Usuário cadastrado com Sucessio!");
+            $appFunctions->redirect_page("4", "#");
+
         } catch (Exception $e) {
-            echo 'Erro ao Inserir :', $e->getMessage(), "\n";
+            $error = $e->getMessage();
+            $appFunctions->alert_error("Erro ao Inserir Usuário ->" . $error);
         }
     }
 }
