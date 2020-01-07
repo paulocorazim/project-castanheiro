@@ -44,7 +44,7 @@ class ScreenUsers
                     
                     <div class="input-group">                        
                         <span>Módulos que o usuário pode acessar.</span><br><br>
-                        <select name="user_module" id="user_module" multiple />
+                        <select name="user_module[]" id="user_module[]" multiple style="width:220px" />
                             $typeModules[1]
                         </select>
                     </div>

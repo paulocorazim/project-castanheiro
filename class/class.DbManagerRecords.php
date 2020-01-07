@@ -38,10 +38,13 @@ class DbManagerRecords
             $lastID = (new \Simplon\Db\SqlQueryBuilder())
             ->setQuery('SELECT LAST_INSERT_ID() as ID');
             $results = $sqlManager->fetchAll($lastID);
+
             foreach ($results as $result) {
                 try {
 
-                    echo "Olha eu aqui ->" . $result[ID];
+                    foreach ($regists_module as $id_module) {
+                        echo "ID user ->" . $result[ID] . "ID Module -> $id_module";
+                    }
 
                 }catch (Exception $e) {
                     echo 'Erro ao Inserir Módulos :', $e->getMessage(), "\n";

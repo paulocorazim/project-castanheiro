@@ -262,7 +262,6 @@ button[type=submit]{
 
 /* Alerta Erro----------------------------------------------- */
 
-
 /* Geral */
 
 .alerta {
@@ -271,7 +270,8 @@ button[type=submit]{
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    
+    position: page;
+
 }
 
 .error {

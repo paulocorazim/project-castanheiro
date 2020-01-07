@@ -31,4 +31,4 @@ $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION[
 echo $head->head("AppManer Castanheiros");
 echo $header->navBar($typeModules);
 
-echo $footer->footer();
+/*echo $footer->footer();*/

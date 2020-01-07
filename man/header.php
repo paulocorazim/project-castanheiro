@@ -17,18 +17,17 @@ class Headers
                 </li>
             </ul>
         </nav>
-        <div class="useroption">
-            <ul>
-                <li><a class="cta iconnavbar" href="#"><i class="fas fa-user-circle"></i></a>
-                    <ul class="uluseroption">
-                        <li><a>Olá, {Usuario}</a></li>
-                        <li><a href="../">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </header>
-</body>
+            <div class="useroption">
+                <ul>
+                    <li><a class="cta iconnavbar" href="#"><i class="fas fa-user-circle"></i></a>
+                        <ul class="uluseroption">
+                            <li><a>Olá X</a></li>
+                            <li><a href="#">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
 
 EOT;
 
