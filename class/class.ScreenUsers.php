@@ -35,17 +35,23 @@ class ScreenUsers
                     
                     <div class="input-group">
                         <span>Permissões do Usuário.</span> <br><br>
-                        <input type="checkbox" name="permission_master" id="permission_master" text="master" value="master"><span>Master</span>
-                        <input type="checkbox" name="permission_I" id="permission_I" text="Inserir" value="I"><span>Inserir</span>
-                        <input type="checkbox" name="permission_S" id="permission_S" text="Selecionar" value="S"><span>Selecionar</span>
-                        <input type="checkbox" name="permission_U" id="permission_U" text="Alterar" value="U"><span>Alterar</span>
-                        <input type="checkbox" name="permission_D" id="permission_D" text="Apagar" value="D"><span>Apagar</span>
-                    </div>
+                        <input type="checkbox" name="permission_master" id="permission_master" text="master" value="master"><span>Master ( Permissão ADMIN )</span>
+                    </div>                    
                     
                     <div class="input-group">                        
                         <span>Módulos que o usuário pode acessar.</span><br><br>
-                        <select name="user_module[]" id="user_module[]" multiple style="width:220px" />
+                       <select name="user_module[]" id="user_module[]" multiple style="width:220px">
                             $typeModules[1]
+                        </select>
+                    </div>
+                    
+                     <div>
+                        <span>Permissões para os módulos.</span><br><br>
+                        <select name="user_permission[]" id="user_permission[]" multiple style="width:390px">
+                            <option value="I">Inserir  -> ( Permite o usuário fazer inclusão de registros )</option>
+                            <option value="S">Seleções -> ( Permite o usuário fazer seleções de registros )</option>
+                            <option value="U">Alterar ->( Permite o usuário fazer Alterações de registros )</option>
+                            <option value="D">APAGAR -> ( Permite o usuário fazer APAGAR registros )</option>
                         </select>
                     </div>
     

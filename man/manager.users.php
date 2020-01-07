@@ -52,9 +52,10 @@ if (isset($_POST['btn_update'])) {
         'permission_D' => "$_POST[permission_D]",
     ];
 
-    $regists_module = $_POST[user_module];
+    $regists_module = $_POST['user_module'];
+    $regists_permission =$_POST['user_permission'];
 
-    $inserts->insert_user($dbInstance, $regists_user, $regists_module);
+    $inserts->insert_user($dbInstance, $regists_user, $regists_module, $regists_permission);
     $appFunctions->alert_sucess("Obá! Usuário { $_POST[user_name] } cadastrado com sucesso!");
     //$appFunctions->redirect_page("3","#");
     exit();

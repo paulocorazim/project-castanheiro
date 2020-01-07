@@ -2,7 +2,7 @@
 
 class DbManagerRecords
 {
-    public function insert_user($dbInstance, $regists_user, $regists_module)
+    public function insert_user($dbInstance, $regists_user, $regists_module, $regists_permission)
     {
         try {
             //Tratamento do cadastro de usuários
@@ -41,9 +41,15 @@ class DbManagerRecords
 
             foreach ($results as $result) {
                 try {
+                    /*"INSERT INTO shcombr_appmanager.tab_permissions (id, id_user, id_module, type, dt_created, dt_update) VALUES (1, 1, 1, 'I', '2019-12-31 00:00:00', '2019-12-31 00:00:00');
+";*/
+                    foreach ($regists_module as $id_module) { /*dados recebidos do POST para saber quais módulos tem acesso*/
 
-                    foreach ($regists_module as $id_module) {
-                        echo "ID user ->" . $result[ID] . "ID Module -> $id_module";
+                        foreach ($regists_permission as $permmission){ // dados recebidos do POST para saber as permissões do módulos
+
+                            echo "ID user ->" . $result[ID] . "<br> ID Module -> $id_module : Permission -> $permmission <br>";
+                        }
+
                     }
 
                 }catch (Exception $e) {
