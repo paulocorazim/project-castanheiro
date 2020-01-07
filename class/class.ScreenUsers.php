@@ -61,6 +61,17 @@ class ScreenUsers
             </form>
         </div>
     </div>
+    
+    <div class="grid-container">
+        <div class="item1"><span>Nome</span></div>
+        <div class="item2"><span>Cpf</span></div>
+        <div class="item3"><span>E-mail</span></div> 
+        <div class="item4"><span>Módulos</span></div>
+        <div class="item5"><span>Boletos</span></div>
+        <div class="item6"><span>Clientes</span></div>
+        <div class="item7"><span>Usuários</span></div>
+    </div>
+
 EOT;
 
         return $screenFormUser;

@@ -161,7 +161,7 @@ ul {
 .useroption ul ul {
     position: absolute;
     visibility: hidden;
-    margin-top: 12px;
+    margin-top: 6px;
     border: solid 1px black;
 }
 .useroption ul li:hover ul {
@@ -266,6 +266,27 @@ button[type=submit]{
     border-radius: 4px;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+  }
+  
+  .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Roboto';
+  }
+
+ /* .item_p_1 {
+      grid-column-start: 1;
+      grid-column-end: 4;
+  } 
+
+*/
 /* Alerta Erro----------------------------------------------- */
 
 /* Geral */
