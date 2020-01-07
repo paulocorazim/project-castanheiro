@@ -70,7 +70,7 @@ class DbManagerRecords
                 }
 
                 $appFunctions->alert_sucess("Usuário cadastrado com sucesso!");
-                $appFunctions->redirect_page('4', '../man/manager.users.php');
+                $appFunctions->redirect_page('6', '../man/manager.users.php');
                 exit();
 
             } else {
