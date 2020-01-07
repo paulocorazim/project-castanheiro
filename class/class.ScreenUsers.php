@@ -41,9 +41,12 @@ class ScreenUsers
                         <input type="checkbox" name="permission_U" id="permission_U" text="Alterar" value="U"><span>Alterar</span>
                         <input type="checkbox" name="permission_D" id="permission_D" text="Apagar" value="D"><span>Apagar</span>
                     </div>
-                    <div class="input-group">
+                    
+                    <div class="input-group">                        
                         <span>Módulos que o usuário pode acessar.</span><br><br>
-                        $typeModules[1]
+                        <select name="user_module" id="user_module" multiple />
+                            $typeModules[1]
+                        </select>
                     </div>
     
                     <button type="submit" name="btn_update" id="btn_upadte">[ ATUALIZAR ]</button>

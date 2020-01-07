@@ -29,7 +29,7 @@ Class appFunctions
 
     public function alert_error($msg)
     {
-        $alert_error = <<<EOT
+        echo $alert_error = <<<EOT
        <div class="alerta error">$msg</div>
            
 EOT;
@@ -40,7 +40,7 @@ EOT;
 
     public function alert_sucess($msg)
     {
-        $alert_sucess = <<<EOT
+        echo  $alert_sucess = <<<EOT
        <div class="alerta sucesso">$msg</div>
     
 EOT;
@@ -51,7 +51,7 @@ EOT;
 
     public function alert_attention($msg)
     {
-        $alert_attention = <<<EOT
+        echo $alert_attention = <<<EOT
        <div class="alerta atencao">$msg</div>
     
 EOT;
@@ -62,7 +62,7 @@ EOT;
 
     public function alert_warning($msg)
     {
-        $alert_warning = <<<EOT
+        echo $alert_warning = <<<EOT
        <div class="alerta info">$msg</div> 
     
 EOT;
@@ -70,14 +70,14 @@ EOT;
         return $alert_warning;
     }
 
-    public function redirec_page($time, $url)
+    public function redirect_page($time, $url)
     {
 
-        echo $redirec_page = <<<EOT
+        echo $redirect_page = <<<EOT
         <meta http-equiv='refresh' content='$time;url=$url' />
 
 EOT;
-        return $redirec_page;
+        return $redirect_page;
     }
 
 }

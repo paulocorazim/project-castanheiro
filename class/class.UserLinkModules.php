@@ -6,7 +6,7 @@ class LinkModule
     public function LinkModules($dbInstance, $id_user, $user_type)
     {
         $user_li = ""; //NavBar
-        $user_checkbox = ""; //Módulos da tela de cadastro de usuários
+        $user_select_box = ""; //Módulos da tela de cadastro de usuários
 
         if ($user_type != 'master') {
 
@@ -31,11 +31,11 @@ class LinkModule
                 $li = "<li><a href='$key[name_app]'>$key[name_link]</a></li>";
                 $user_li .= $li;
 
-                $checkbox = "<input type='checkbox' name='tab_modules_id' id='tab_modules_id' value='$key[id]'><span>$key[name_link]</span>";
-                $user_checkbox .= $checkbox;
+                $select_box = "<option value='$key[id]'>$key[name_link]</option>";
+                $user_select_box .= $select_box;
             }
 
-            return array("$user_li", "$user_checkbox");
+            return array("$user_li", "$user_select_box");
             
         } else {
 
@@ -59,11 +59,11 @@ class LinkModule
                 $li = "<li><a href='$key[name_app]'>$key[name_link]</a></li>";
                 $user_li .= $li;
 
-                $checkbox = "<input type='checkbox' name='tab_modules_id' id='tab_modules_id' value='$key[id]'><span>$key[name_link]</span>";
-                $user_checkbox .= $checkbox;
+                $select_box = "<option value='$key[id]'>$key[name_link]</option>";
+                $user_select_box .= $select_box;
             }
 
-            return array("$user_li", "$user_checkbox");
+            return array("$user_li", "$user_select_box");
         }
     }
 }

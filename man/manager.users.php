@@ -37,7 +37,7 @@ echo $screenUsers->screenFormUser($typeModules);
 //Verificar se botão foi acionado para cadastro/update do usuário
 
 if (isset($_POST['btn_update'])) {
-    $regists = [
+    $regists_user = [
         'cpf' => "$_POST[user_cpf]",
         'name' => "$_POST[user_name]",
         'email' => "$_POST[user_email]",
@@ -52,10 +52,13 @@ if (isset($_POST['btn_update'])) {
         'permission_D' => "$_POST[permission_D]",
     ];
 
-    $inserts->insert_user($dbInstance, $regists);
-    echo $appFunctions->alert_sucess("Obá! Usuário { $_POST[user_name] } cadastrado com sucesso!");
-    $appFunctions->redirec_page("3","#");
+    echo $regists_module = $_POST['tab_modules_id'];
     exit();
+
+    /*$inserts->insert_user($dbInstance, $regists_user, $regists_module);
+    $appFunctions->alert_sucess("Obá! Usuário { $_POST[user_name] } cadastrado com sucesso!");
+    $appFunctions->redirect_page("3","#");
+    exit();*/
 }
 
 echo $footer->footer();
