@@ -55,10 +55,10 @@ if (isset($_POST['btn_update'])) {
     echo $regists_module = $_POST['tab_modules_id'];
     exit();
 
-    /*$inserts->insert_user($dbInstance, $regists_user, $regists_module);
+    $inserts->insert_user($dbInstance, $regists_user, $regists_module);
     $appFunctions->alert_sucess("Obá! Usuário { $_POST[user_name] } cadastrado com sucesso!");
     $appFunctions->redirect_page("3","#");
-    exit();*/
+    exit();
 }
 
 echo $footer->footer();
