@@ -72,7 +72,7 @@ EOT;
     {
 
         $screenListUser = <<< EOT
-        <table class="table">
+        <table class="content-table">
         <thead>
           <tr>
             <th>Nome</th>

@@ -85,7 +85,7 @@ class LinkModule
 
                 foreach ($resultsModules as $registModules) {
 
-                    $name_module = "$registModules[name_link],";
+                    $name_module = "$registModules[name_link] <br>";
                     $name_modules .= $name_module;
                 }
 
@@ -97,11 +97,14 @@ class LinkModule
                     <td>$name_modules</td >
                     <td></td >
                     </tr>";
+
+                $listModulesPermission .= $tab_line;
+                $name_modules = "";
             }
-            $listModulesPermission .= $tab_line;
 
             return $listModulesPermission;
         }
+
     }
 
 
