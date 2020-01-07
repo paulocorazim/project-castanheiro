@@ -48,10 +48,10 @@ class ScreenUsers
                      <div>
                         <span>Permissões para os módulos.</span><br><br>
                         <select name="user_permission[]" id="user_permission[]" multiple style="width:390px">
-                            <option value="I">Inserir  -> ( Permite o usuário fazer inclusão de registros )</option>
-                            <option value="S">Seleções -> ( Permite o usuário fazer seleções de registros )</option>
-                            <option value="U">Alterar ->( Permite o usuário fazer Alterações de registros )</option>
-                            <option value="D">APAGAR -> ( Permite o usuário fazer APAGAR registros )</option>
+                            <option value="I">Inserir -> ( Permite o usuário fazer inclusão de registros )</option>
+                            <option value="S">Seleção -> ( Permite o usuário fazer seleções de registros )</option>
+                            <option value="U">Alterar -> ( Permite o usuário fazer Alterações de registros )</option>
+                            <option value="D">APAGAR ->  ( Permite o usuário fazer APAGAR registros )</option>
                         </select>
                     </div>
     
