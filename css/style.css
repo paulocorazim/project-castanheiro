@@ -266,39 +266,7 @@ button[type=submit]{
     border-radius: 4px;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto;
-    grid-gap: 10px;
-    padding: 10px;
-  }
-  
-  .grid-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid black;
-    text-align: center;
-    font-size: 15px;
-    font-family: 'Roboto';
-  }
 
-  .table {
-      width: 100%;
-      
-      }
-    table {
-        border: collapse;
-    }
-
-    td, th {
-        border: 1px solid;
-    }
-    
- /* .item_p_1 {
-      grid-column-start: 1;
-      grid-column-end: 4;
-  } 
-
-*/
 /* Alerta Erro----------------------------------------------- */
 
 /* Geral */
