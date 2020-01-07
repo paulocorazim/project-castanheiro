@@ -281,6 +281,18 @@ button[type=submit]{
     font-family: 'Roboto';
   }
 
+  .table {
+      width: 100%;
+      
+      }
+    table {
+        border: collapse;
+    }
+
+    td, th {
+        border: 1px solid;
+    }
+    
  /* .item_p_1 {
       grid-column-start: 1;
       grid-column-end: 4;
