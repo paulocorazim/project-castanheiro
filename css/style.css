@@ -266,39 +266,52 @@ button[type=submit]{
     border-radius: 4px;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto;
-    grid-gap: 10px;
-    padding: 10px;
+/*---------------------TABELA ----------------------------------------*/
+
+.content-table {
+    margin: 20px 60px;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: 'Roboto';
+    min-width: 500px;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   }
   
-  .grid-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid black;
-    text-align: center;
-    font-size: 15px;
-    font-family: 'Roboto';
+  .content-table thead tr {
+    background-color: #b28849;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .content-table th,
+  .content-table td {
+    padding: 12px 15px;
+  }
+  
+  .content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #b28849;
+  }
+  
+  .content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #b28849;
   }
 
-  .table {
-      width: 100%;
-      
-      }
-    table {
-        border: collapse;
-    }
+ table tr:hover{
+    background-color:silver;
+}
 
-    td, th {
-        border: 1px solid;
-    }
-    
- /* .item_p_1 {
-      grid-column-start: 1;
-      grid-column-end: 4;
-  } 
-
-*/
 /* Alerta Erro----------------------------------------------- */
 
 /* Geral */
@@ -336,3 +349,4 @@ button[type=submit]{
     color: #FFF;
     background-color: #5d9cec;
 }
+
