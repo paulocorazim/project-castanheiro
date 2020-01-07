@@ -23,7 +23,6 @@ h2  {
     align-items: center;
     height: 100vh;
     background-color: #332106;
-    // background-image: url("../image/predio.jpg") !important;
 }
 .login {
     text-align: center;
@@ -161,7 +160,7 @@ ul {
 
 .useroption ul ul {
     position: absolute;
-   // visibility: hidden;
+    visibility: hidden;
     margin-top: 12px;
     border: solid 1px black;
 }
@@ -203,13 +202,16 @@ footer {
 .container {
     max-width: 100%;
     width: 100%;
-    height: 100%;
-   
 }
-
 .containerpadrao {
-    margin: 30px;
-    background-color: white;
+    margin: 20px 60px;
+}
+.flex_main {
+    display: flex;
+    justify-content: space-around;
+}
+.flex_sub {
+    flex-direction: row;
 }
 
 form > .input-group{
@@ -242,6 +244,10 @@ form > .input-group{
 
 .form-control:focus ~ label {
     color:RED;
+    top: -12px;
+}
+
+.form-control ~ label {
     top: -10px;
 }
 
