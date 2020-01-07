@@ -33,6 +33,8 @@ echo $head->head("Cadastro de Usuários");
 echo $header->navBar($typeModules);
 
 echo $screenUsers->screenFormUser($typeModules);
+echo $screenUsers->screenListUser($typeModule->listModulesPermission($dbInstance, $_SESSION['user_type']));
+
 
 //Verificar se botão foi acionado para cadastro/update do usuário
 
@@ -42,7 +44,7 @@ if (isset($_POST['btn_update'])) {
         'name' => "$_POST[user_name]",
         'email' => "$_POST[user_email]",
         'password' => md5("$_POST[user_password]"),
-        'confirm_passwd' => "$_POST[user_confirm_password]",
+        'confirm_passwd' => md5("$_POST[user_confirm_password]"),
         'dt_update' => date('Y-m-m h:m:s'),
         'dt_created' => date('Y-m-d h:m:s'),
         'permission_master' => "$_POST[permission_master]",

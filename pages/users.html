@@ -5,12 +5,12 @@
     <script src="../js/main.js" type="text/javascript"></script>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Cairo:700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://kit.fontawesome.com/e6868744bc.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../js/jquery-1.2.6.pack.js"></script>
-    <script type="text/javascript" src="../js/jquery.maskedinput-1.1.4.pack.js"></script>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/e6868744bc.js"></script>
+    <script src="../js/jquery-1.2.6.pack.js" type="text/javascript"></script>
+    <script src="../js/jquery.maskedinput-1.1.4.pack.js" type="text/javascript"></script>
     <title>$title</title>
 </head>
 
@@ -25,48 +25,48 @@
         <div class="flex_sub">
             <form action="manager.users.php" method="post">
                 <div class="input-group">
-                    <input type="hidden" name="user_id" id="user_id">
-                    <input type="text" name="user_name" id="user_name" class="form-control">
+                    <input id="user_id" name="user_id" type="hidden">
+                    <input class="form-control" id="user_name" name="user_name" type="text">
                     <label for="name">Nome</label>
                 </div>
                 <div class="input-group">
-                    <input type="text" name="user_cpf" id="user_cpf" class="form-control" onblur="return valid()">
+                    <input class="form-control" id="user_cpf" name="user_cpf" onblur="return valid()" type="text">
                     <label for="cpf">Cpf</label>
                 </div>
                 <div class="input-group">
-                    <input type="email" name="user_email" id="user_email" class="form-control">
+                    <input class="form-control" id="user_email" name="user_email" type="email">
                     <label for="email">E-mail</label>
                 </div>
                 <div class="input-group">
-                    <input type="password" name="user_password" id="user_password" class="form-control">
+                    <input class="form-control" id="user_password" name="user_password" type="password">
                     <label for="password">Crie uma senha</label>
                 </div>
                 <div class="input-group">
-                    <input type="password" name="user_confirm_password" id="user_confirm_password" class="form-control">
+                    <input class="form-control" id="user_confirm_password" name="user_confirm_password" type="password">
                     <label for="confpass">Confirme a Senha</label>
                 </div>
         </div>
         <div class="flex_sub">     
             <span class="spaninput">Permissões do Usuário</span>      
             <div class="input-group">
-                <input type="checkbox" name="permission_master" id="permission_master" text="master" value="master"><span>Master ( Permissão ADMIN )</span>
+                <input id="permission_master" name="permission_master" text="master" type="checkbox" value="master"><span>Master ( Permissão ADMIN )</span>
             </div>  
             <span class="spaninput">Módulos que o usuário pode acessar.</span>                
             <div class="input-group">                        
-               <select name="user_module[]" id="user_module[]" multiple>
+               <select id="user_module[]" multiple name="user_module[]">
            $typeModules[1]
                 </select>
             </div>        
         </div>
         <div class="flex_sub">
                 <span class="spaninput">Permissões para os módulos.</span><br><br>
-                <select name="user_permission[]" id="user_permission[]" multiple style="width:390px">
+                <select id="user_permission[]" multiple name="user_permission[]" style="width:390px">
                     <option value="I"><span>Inserir -> ( Permite o usuário fazer inclusão de registros )</span></option>
                     <option value="S"><span>Seleção -> ( Permite o usuário fazer seleções de registros )</span></option>
                     <option value="U"><span>Alterar -> ( Permite o usuário fazer Alterações de registros )</span></option>
                     <option value="D"><span>APAGAR ->  ( Permite o usuário fazer APAGAR registros )</span></option>
                 </select><br>
-                <button type="submit" name="btn_update" id="btn_upadte">[ ATUALIZAR ]</button>
+                <button id="btn_upadte" name="btn_update" type="submit">[ ATUALIZAR ]</button>
             </form>
         </div>
     </div>
@@ -92,34 +92,6 @@
             <td> Inserir | Seleção</td>
           </tr>
           <tr class="active-row">
-            <td>André Corazim</td>
-            <td>000.000.000-07</td>
-            <td>andre@systemhope.com.br</td>
-            <td>Y</td>
-            <td>Master</td>
-          </tr>
-           <tr>
-            <td>Paulo Corazim da Silva</td>
-            <td>514.187.308-07</td>
-            <td>paulo.systemhope.com.br</td>
-            <td>X</td>
-            <td> Inserir | Seleção</td>
-          </tr>
-          <tr class="">
-            <td>André Corazim</td>
-            <td>000.000.000-07</td>
-            <td>andre@systemhope.com.br</td>
-            <td>Y</td>
-            <td>Master</td>
-          </tr>
-           <tr>
-            <td>Paulo Corazim da Silva</td>
-            <td>514.187.308-07</td>
-            <td>paulo.systemhope.com.br</td>
-            <td>X</td>
-            <td> Inserir | Seleção</td>
-          </tr>
-          <tr class="">
             <td>André Corazim</td>
             <td>000.000.000-07</td>
             <td>andre@systemhope.com.br</td>
