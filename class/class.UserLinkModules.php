@@ -59,7 +59,7 @@ class LinkModule
     {
         if ($user_type == 'master') {
 
-            $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+            $sqlManager = new \Simplon\Db\SqlManager($dbInstance); //Listando os usuários
             $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
                 ->setQuery('SELECT * FROM tab_users');
             $results = $sqlManager->fetchAll($sqlQuery);
@@ -68,10 +68,11 @@ class LinkModule
 
             foreach ($results as $key) {
 
-                $sqlModules = (new \Simplon\Db\SqlQueryBuilder())
+                $sqlModules = (new \Simplon\Db\SqlQueryBuilder()) //Listando os módulos do usuário
                     ->setQuery('SELECT
                                         DISTINCT
-                                        c.name_link as name_link
+                                        c.name_link as name_link,
+                                        a.id_module as id_module
                                     from
                                         tab_permissions as a,
                                         tab_users 		as b,
@@ -85,8 +86,36 @@ class LinkModule
 
                 foreach ($resultsModules as $registModules) {
 
-                    $name_module   = "$registModules[name_link] <br>";
+
+                    $sqlModules = (new \Simplon\Db\SqlQueryBuilder()) //Listando as permissões do users e módulos
+                        ->setQuery('SELECT * 
+                                    FROM `shcombr_appmanager`.`tab_permissions`
+                                    where   id_module = :id_module 
+                                    and     id_user = :id_user')
+                        ->setConditions(['id_module' => "$registModules[id_module]",'id_user' => "$key[id]"]);
+                    $resultsPermission = $sqlManager->fetchAll($sqlModules);
+
+                    foreach ($resultsPermission as $permission) {
+                        
+                        if($permission['type'] =='I'){
+                            $type ='Inclusão';
+                        }
+                        if($permission['type'] =='S'){
+                            $type ='Seleções';
+                        }
+                        if($permission['type'] =='U'){
+                            $type ='Alterações';
+                        }
+                        if($permission['type'] =='D'){
+                            $type ='Apagar';
+                        }
+                        $td_permision  ="(x) $type, ";
+                        $td_permisions.=$td_permision;
+                    }
+
+                    $name_module   = "<a href='#'> <font size=1 face='courier new'>$registModules[id_module] $registModules[name_link]</a>  : $td_permisions</font><br>";
                     $name_modules .= $name_module;
+                    $td_permisions="";
                 }
 
                 if($key['type'] === 'master'){
@@ -100,12 +129,13 @@ class LinkModule
                     <td>$key[name]</td >
                     <td>$key[type]</td >
                     <td>$key[email]</td >
-                    <td>$name_modules | Leitura</td >
-                    <td></td >
+                    <td>$name_modules</td >
+
                     </tr>";
 
                 $listModulesPermission .= $tab_line;
                 $name_modules = "";
+                $td_permisions ="";
             }
 
             return $listModulesPermission;

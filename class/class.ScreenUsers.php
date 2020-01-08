@@ -78,7 +78,6 @@ EOT;
             <th>Tipo</th>
             <th>E-mail</th>
             <th>Módulos</th>
-            <th>Permissões</th>
           </tr>
         </thead>
         <tbody>
