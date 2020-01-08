@@ -8,6 +8,5 @@ Class DBconnect
 		$dbInstance = \Simplon\Db\DbInstance::MySQL('iuri0091.hospedagemdesites.ws', 'shcombr_appmanager', 'shcombr_app', '}.MC3T@MBG74');
 		//$dbInstance = \Simplon\Db\DbInstance::MySQL('localhost', 'appmanager', 'root', 'sh');
 		return $dbInstance;
-
 	}
 }

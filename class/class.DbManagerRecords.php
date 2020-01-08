@@ -28,12 +28,9 @@ class DbManagerRecords
             ];
 
             //Verifica as senhas informada.
-            foreach ($data as $passwd) {
-
-                if ($passwd['password'] != $passwd['confirm_passwd']) {
-                    $appFunctions->alert_error("Atenção! -> As senhas não combinam, por favor refaça a operação!");
-                    exit();
-                }
+            if ($data['password'] != $data['confirm_passwd']) {
+                $appFunctions->alert_error("Atenção! -> As senhas não combinam, por favor refaça a operação!");
+                exit();
             }
 
             //Verificação do uso do CPF

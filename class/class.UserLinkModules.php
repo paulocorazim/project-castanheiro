@@ -98,16 +98,16 @@ class LinkModule
                     foreach ($resultsPermission as $permission) {
                         
                         if($permission['type'] =='I'){
-                            $type ='Inclusão';
+                            $type ='Incluir';
                         }
                         if($permission['type'] =='S'){
-                            $type ='Seleções';
+                            $type ='Selecionar';
                         }
                         if($permission['type'] =='U'){
-                            $type ='Alterações';
+                            $type ='Alterar';
                         }
                         if($permission['type'] =='D'){
-                            $type ='Apagar';
+                            $type ='Deletar';
                         }
                         $td_permision  ="(x) $type, ";
                         $td_permisions.=$td_permision;
