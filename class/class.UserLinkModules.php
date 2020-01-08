@@ -77,15 +77,15 @@ class LinkModule
                                         tab_users 		as b,
                                         tab_modules 	as c
                                     WHERE
-                                            a.id_user = b.id
+                                        a.id_user = b.id
                                         and c.id  = a.id_module
-                                        and b.id = :id_user')
+                                        and b.id  = :id_user')
                     ->setConditions(['id_user' => "$key[id]"]);
                 $resultsModules = $sqlManager->fetchAll($sqlModules);
 
                 foreach ($resultsModules as $registModules) {
 
-                    $name_module = "$registModules[name_link] <br>";
+                    $name_module   = "$registModules[name_link] <br>";
                     $name_modules .= $name_module;
                 }
 
@@ -100,7 +100,7 @@ class LinkModule
                     <td>$key[name]</td >
                     <td>$key[type]</td >
                     <td>$key[email]</td >
-                    <td>$name_modules</td >
+                    <td>$name_modules | Leitura</td >
                     <td></td >
                     </tr>";
 
