@@ -89,6 +89,12 @@ class LinkModule
                     $name_modules .= $name_module;
                 }
 
+                if($key['type'] === 'master'){
+                    $name_modules ="TODOS";                    
+                }else{
+                    
+                }
+                
                 $tab_line = " 
                     <tr>
                     <td>$key[name]</td >
