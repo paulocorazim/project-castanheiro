@@ -113,7 +113,7 @@ class LinkModule
                         $td_permisions.=$td_permision;
                     }
 
-                    $name_module   = "<a href='#'> <font size=1 face='courier new'>$registModules[id_module] $registModules[name_link]</a>  : $td_permisions</font><br>";
+                    $name_module   = "<span  style=\"font-size: xx-small; font-family: courier new; \"><bold>$registModules[id_module] $registModules[name_link]</bold> : $td_permisions</font><br>";
                     $name_modules .= $name_module;
                     $td_permisions="";
                 }
