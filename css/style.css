@@ -5,13 +5,15 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #f9f9f9;
     /*font-family: 'Poppins', sans-serif;*/
     /*font-family: 'Cairo', sans-serif;*/
 }
 
 h2  {
    font-family: 'Cairo';    
-   font-size: 1.5em !important; 
+   font-size: 2em !important; 
+   color: #402908;
 }
 
 /*- TELA DE LOGIN 1.0 ---------------------------------------------------------------------*/
@@ -198,13 +200,13 @@ footer {
 }
 
 /*- PAGE-USUARIO  ---------------------------------------------------------------------*/
- 
-.container {
-    max-width: 100%;
-    width: 100%;
+
+.containerprincipal {
+    max-width: 1200px;
+    margin: auto;
 }
-.containerpadrao {
-    margin: 20px 60px;
+.margin_esq_padrao {
+    margin-left: 30px;
 }
 .flex_main {
     display: flex;
@@ -212,6 +214,12 @@ footer {
 }
 .flex_sub {
     flex-direction: row;
+    border: 1px solid whitesmoke;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: white;
 }
 
 form > .input-group{
@@ -253,7 +261,7 @@ form > .input-group{
 
 .spaninput {
     font-family: 'Roboto';
-    font-size: 1em !important;
+    font-size: 1.1em !important;
 }
 
 button[type=submit]{
@@ -264,6 +272,15 @@ button[type=submit]{
     background: maroon;
     color: white;
     border-radius: 4px;
+}
+
+.flex_sub hr {
+    width: 25%;
+    border: 1px solid #402908;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    text-align: left !important;
 }
 
 /*---------------------TABELA ----------------------------------------*/
@@ -277,6 +294,7 @@ button[type=submit]{
     border-radius: 10px 10px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: white;
   }
   
   .content-table thead tr {
@@ -307,10 +325,6 @@ button[type=submit]{
     font-weight: bold;
     color: #b28849;
   }
-
- table tr:hover{
-    background-color:silver;
-}
 
 /* Alerta Erro----------------------------------------------- */
 
@@ -350,3 +364,10 @@ button[type=submit]{
     background-color: #5d9cec;
 }
 
+/* Reposivel -------*/
+
+@media screen and (max-width: 800px) {
+    .flex_main {
+        flex-wrap: wrap;
+    }
+}
