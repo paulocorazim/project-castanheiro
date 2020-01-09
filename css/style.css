@@ -103,7 +103,7 @@ h2  {
     margin-bottom: 15px;
 }
 
-hr {
+.login hr {
     width: 70%;
     border: 2px solid #b28849;
     border-radius: 5px;
@@ -275,22 +275,24 @@ button[type=submit]{
 }
 
 .flex_sub hr {
-    width: 25%;
+    width: 15%;
+    display: inline-block;
     border: 1px solid #402908;
     border-radius: 5px;
-    margin-top: 15px;
-    margin-bottom: 30px;
-    text-align: left !important;
 }
 
 /*---------------------TABELA ----------------------------------------*/
 
+.tableuser {
+    display: flex;
+    justify-content: space-around;
+    margin: 25px;
+}
 .content-table {
-    margin: 20px 60px;
+    width: 100%;
     border-collapse: collapse;
     font-size: 0.9em;
     font-family: 'Roboto';
-    min-width: 500px;
     border-radius: 10px 10px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -321,7 +323,7 @@ button[type=submit]{
     border-bottom: 2px solid #b28849;
   }
   
-  .content-table tbody tr.active-row {
+  .content-table tbody tr:hover {
     font-weight: bold;
     color: #b28849;
   }

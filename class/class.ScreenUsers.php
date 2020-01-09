@@ -6,6 +6,7 @@ class ScreenUsers
     {
         $screenFormUser = <<< EOT
         <div class="containerprincipal">
+        <div class="alerta"></div>
             <div class="margin_esq_padrao">
                 <h2> Cadastro de Usuário</h2>
             </div>
@@ -90,6 +91,7 @@ EOT;
             }
 
             $screenFormUserEdit = <<< EOT
+            
         <div class="containerprincipal">
             <div class="margin_esq_padrao">
                 <h2> Cadastro de Usuário</h2>

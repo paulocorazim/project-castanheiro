@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <div class="alerta"></div>
     <div class="containerprincipal">
         <div class="margin_esq_padrao">
             <h2> Cadastro de Usuário</h2>
@@ -49,11 +50,13 @@
             </div>
             <div class="flex_sub">
                 <h3 class="spaninput">Permissões do Usuário</h3>
+                <hr>
                 <div class="input-group">
                     <input type="checkbox" name="permission_master" id="permission_master" text="master"
                         value="master"><span>Master ( Permissão ADMIN )</span>
                 </div>
                 <h3 class="spaninput">Módulos que o usuário pode acessar:</h3>
+                <hr>
                 <div class="input-group">
                     <select id="user_module[]" multiple name="user_module[]">
                         $typeModules[1]
@@ -61,7 +64,9 @@
                 </div>
             </div>
             <div class="flex_sub">
-                <span class="spaninput">Permissões para os módulos.</span>
+                <h3 class="spaninput">Permissões para os módulos.</h3>
+                <hr>
+                <div class="input-group">
                 <select id="user_permission[]" multiple name="user_permission[]" style="width:390px">
                     <option value="I"><span>Inserir -> ( Permite o usuário fazer inclusão de registros )</span></option>
                     <option value="S"><span>Seleção -> ( Permite o usuário fazer seleções de registros )</span></option>
@@ -69,13 +74,14 @@
                     </option>
                     <option value="D"><span>APAGAR -> ( Permite o usuário fazer APAGAR registros )</span></option>
                 </select>
+            </div>
                 <button type="submit" name="btn_update" id="btn_upadte">[ ATUALIZAR ]</button>
                 </form>
             </div>
         </div>
 
 
-        <div>
+        <div class="tableuser">
             <table class="content-table">
                 <thead>
                     <tr>
