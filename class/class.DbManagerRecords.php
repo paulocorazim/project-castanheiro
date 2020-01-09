@@ -2,18 +2,19 @@
 
 class DbManagerRecords
 {
+    /*Inclusão de usuários*/
     public function insert_user($dbInstance, $regists_user, $regists_module, $regists_permission, $appFunctions)
     {
         try
         {
-            //Verifica tipo de usuário
+            /*//Verifica tipo de usuário*/
             if ($regists_user['permission_master'] != 'master') {
                 $type = 'basic';
             } else {
                 $type = 'master';
             }
 
-            //Gera Array com os dados para insert
+            /*            //Gera Array com os dados para insert*/
             $data = [
                 'id' => null,
                 'cpf' => "$regists_user[cpf]",
@@ -98,4 +99,71 @@ class DbManagerRecords
             $appFunctions->alert_error("Erro ao Inserir Usuário ->" . $error);
         }
     }
+
+    /*Lendo usuário especifico by user_id*/
+    public function edit_user($dbInstance, $user_id, $appFunctions)
+    {
+        try {
+
+            $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+            $shSelectUser = (new \Simplon\Db\SqlQueryBuilder())
+                ->setQuery('SELECT * from tab_users WHERE id = :id')
+                ->setConditions(['id' => "$user_id"]);
+            $shResultsUser = $sqlManager->fetchAll($shSelectUser);
+
+            try {
+
+                foreach ($shResultsUser as $shResultsUserId) {
+
+                    $shSelectModules = (new \Simplon\Db\SqlQueryBuilder())
+                        ->setQuery('SELECT
+                                        distinct
+                                        a.id_module,
+                                        b.name_link
+                                    from
+                                         tab_permissions  as a,
+                                         tab_modules as b
+                                    where
+                                          a.id_user = :id
+                                      and b.id = a.id_module')
+                        ->setConditions(['id' => "$shResultsUserId[id]"]);
+                    $shResultsModules = $sqlManager->fetchAll($shSelectModules);
+
+                    try {
+                        foreach ($shResultsModules as $type_permission) {
+
+                            $shSelectPermission = (new \Simplon\Db\SqlQueryBuilder())
+                                ->setQuery('SELECT
+                                                    a.type
+                                                from
+                                                    tab_permissions  as a,
+                                                    tab_modules as b
+                                                where
+                                                      a.id_user = :id
+                                                  and b.id = a.id_module
+                                                and a.id_module = :id_module')
+                                ->setConditions(['id' => "$shResultsUserId[id]", 'id_module' => "$type_permission[id_module]"]);
+                            $shResultsPerssion = $sqlManager->fetchAll($shSelectPermission);
+                        }
+
+                    } catch (Exception $e) {
+                        $error = $e->getMessage();
+                        $appFunctions->alert_error("Erro ao selecionar Permissões ->" . $error);
+                    }
+                }
+
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+                $appFunctions->alert_error("Erro ao selecionar Módulos ->" . $error);
+            }
+
+        } catch (Exception $e) {
+
+            $error = $e->getMessage();
+            $appFunctions->alert_error("Erro ao selecionar Usuário ->" . $error);
+        }
+
+        return array($shResultsUser, $shResultsModules, $shResultsPerssion);
+    }
+
 }

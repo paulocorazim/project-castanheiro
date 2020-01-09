@@ -86,7 +86,6 @@ class LinkModule
 
                 foreach ($resultsModules as $registModules) {
 
-
                     $sqlModules = (new \Simplon\Db\SqlQueryBuilder()) //Listando as permissões do users e módulos
                         ->setQuery('SELECT * 
                                     FROM `shcombr_appmanager`.`tab_permissions`
@@ -120,13 +119,11 @@ class LinkModule
 
                 if($key['type'] === 'master'){
                     $name_modules ="TODOS";                    
-                }else{
-                    
                 }
-                
+
                 $tab_line = " 
                     <tr>
-                    <td>$key[name]</td >
+                    <td><a href='?edit=$key[id]'>$key[name]</a> </td >
                     <td>$key[type]</td >
                     <td>$key[email]</td >
                     <td>$name_modules</td >
