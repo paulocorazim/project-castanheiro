@@ -338,8 +338,11 @@ button[type=submit]{
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    position: page;
+    position: absolute;
+    top: 90px;
+    width: 100%;
 
+    
 }
 
 .error {
