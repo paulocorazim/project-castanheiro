@@ -22,7 +22,7 @@ class Headers
                     <li><a class="cta iconnavbar" href="#"><i class="fas fa-user-circle"></i></a>
                         <ul class="uluseroption">
                             <li><a>Olá X</a></li>
-                            <li><a href="#">Sair</a></li>
+                            <li><a href="../index.php">Sair</a></li>
                         </ul>
                     </li>
                 </ul>
