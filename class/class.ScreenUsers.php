@@ -58,7 +58,7 @@ class ScreenUsers
                         <option value="I"><span>Inserir -> ( Permite inclusão de registros )</span></option>
                         <option value="S"><span>Seleção -> ( Permite seleções de registros )</span></option>
                         <option value="U"><span>Alterar -> ( Permite Alterações de registros )</span></option>
-                        <option value="D"><span>APAGAR ->  ( Permite APAGAR registros )</span></option>
+                        <option value="D"><span>Deletar -> ( Permite APAGAR registros )</span></option>
                     </select><br>
                     <button type="submit" name="btn_update" id="btn_upadte">[ ATUALIZAR ]</button>
                 </form>
@@ -93,7 +93,7 @@ EOT;
                     $update = "<option value = \"U\" ><span > Alterar -> (Permite alterações de registros )</span ></option >";
                 }
                 if ($type_pemission['type'] == 'D') {
-                    $delete = "<option value = \"D\" ><span > APAGAR -> (Permite Apagar registros )</span ></option >";
+                    $delete = "<option value = \"D\" ><span > Deletar -> (Permite Apagar registros )</span ></option >";
                 }
             }
 
@@ -167,7 +167,7 @@ EOT;
                         <option value="I"><span>Inserir -> ( Permite inclusões de registros )</span></option>
                         <option value="S"><span>Seleção -> ( Permite seleções de registros )</span></option>
                         <option value="U"><span>Alterar -> ( Permite alterações de registros )</span></option>
-                        <option value="D"><span>APAGAR ->  ( Permite APAGAR registros )</span></option>
+                        <option value="D"><span>Deletar -> ( Permite APAGAR registros )</span></option>
                     </select>
                     </div>
                     <button type="submit" name="btn_update" id="btn_upadte">E D I T A R </button>

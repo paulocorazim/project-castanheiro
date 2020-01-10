@@ -27,6 +27,12 @@ Class appFunctions
         }
     }
 
+    public function session_delete()
+    {
+        // Por último, destrói a sessão
+        session_destroy();
+    }
+
     public function alert_error($msg)
     {
         echo $alert_error = <<<EOT
@@ -40,7 +46,7 @@ EOT;
 
     public function alert_sucess($msg)
     {
-        echo  $alert_sucess = <<<EOT
+        echo $alert_sucess = <<<EOT
        <div class="alerta sucesso">$msg</div>
     
 EOT;
