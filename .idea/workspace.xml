@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.DbManagerRecords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/class.Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.Functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/class.ScreenUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.ScreenUsers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.UserLinkModules.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/man/manager.users.php" beforeDir="false" afterPath="$PROJECT_DIR$/man/manager.users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/man/manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/man/manager.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +78,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1W7yJNZSLPz8DN0QjAsponsntt9" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -98,25 +97,14 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.PHP" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
         <serviceView>
-          <option name="contentProportion" value="0.14760433" />
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:@Castanheiro" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:@Castanheiro" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@6476ee9d" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -138,6 +126,7 @@
       <workItem from="1578518378874" duration="692000" />
       <workItem from="1578569153488" duration="3024000" />
       <workItem from="1578572280651" duration="12486000" />
+      <workItem from="1578733130365" duration="2860000" />
     </task>
     <servers />
   </component>
@@ -153,11 +142,12 @@
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
     <state x="1366" y="34" width="649" height="734" key="#QueueTest_with_Coverage/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578517581564" />
-    <state x="278" y="59" width="800" height="672" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578572404336">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="1887" y="54" width="800" height="672" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578739854052">
+      <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state x="278" y="59" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1578572404336" />
     <state x="1644" y="61" width="800" height="672" key="#com.intellij.execution.impl.EditConfigurationsDialog/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578517179770" />
+    <state x="1887" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578739854052" />
     <state width="242" height="189" key="DatabaseViewActions_Filter" timestamp="1578572388565">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -183,11 +173,12 @@
     </state>
     <state width="207" height="439" key="HiddenNamespacesPopup/0.0.1366.738@0.0.1366.738" timestamp="1578572096684" />
     <state width="207" height="456" key="HiddenNamespacesPopup/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578517193837" />
-    <state x="186" y="23" width="1118" height="708" key="SettingsEditor" timestamp="1578585299274">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="2733" y="271" width="947" height="728" key="SettingsEditor" timestamp="1578733406827">
+      <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state x="186" y="23" width="1118" height="708" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1578585299274" />
     <state x="1560" y="34" key="SettingsEditor/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518415034" />
+    <state x="2733" y="271" width="947" height="728" key="SettingsEditor/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578733406827" />
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1578572286202">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

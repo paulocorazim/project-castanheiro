@@ -11,7 +11,7 @@ class LinkModule
         if ($user_type != 'master') {
 
             $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-            $sqlQuery  = (new \Simplon\Db\SqlQueryBuilder())
+            $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
                 ->setQuery('SELECT DISTINCT b.name,
                                                     b.email,
                                                     c.name_link as name_link,
@@ -22,7 +22,8 @@ class LinkModule
                                          tab_modules as c
                                     WHERE a.id_user = b.id
                                       and c.id = a.id_module
-                                      and a.id_user = :id_user')
+                                      and a.id_user = :id_user
+                                    order by c.name_link asc')
                 ->setConditions(['id_user' => "$id_user"]);
             $results = $sqlManager->fetchAll($sqlQuery);
 
@@ -39,8 +40,8 @@ class LinkModule
         } else {
 
             $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-            $sqlQuery  = (new \Simplon\Db\SqlQueryBuilder())
-                ->setQuery('SELECT * from  tab_modules as c');
+            $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+                ->setQuery('SELECT * from  tab_modules as c order by name_link');
             $results = $sqlManager->fetchAll($sqlQuery);
 
             foreach ($results as $key) {
@@ -65,11 +66,13 @@ class LinkModule
             $results = $sqlManager->fetchAll($sqlQuery);
 
             $listModulesPermission = "";
+            $name_modules = "";
+            $td_permisions = "";
 
             foreach ($results as $key) {
 
                 $sqlModules = (new \Simplon\Db\SqlQueryBuilder()) //Listando os módulos do usuário
-                    ->setQuery('SELECT
+                ->setQuery('SELECT
                                         DISTINCT
                                         c.name_link as name_link,
                                         a.id_module as id_module
@@ -87,38 +90,38 @@ class LinkModule
                 foreach ($resultsModules as $registModules) {
 
                     $sqlModules = (new \Simplon\Db\SqlQueryBuilder()) //Listando as permissões do users e módulos
-                        ->setQuery('SELECT * 
+                    ->setQuery('SELECT * 
                                     FROM `shcombr_appmanager`.`tab_permissions`
                                     where   id_module = :id_module 
                                     and     id_user = :id_user')
-                        ->setConditions(['id_module' => "$registModules[id_module]",'id_user' => "$key[id]"]);
+                        ->setConditions(['id_module' => "$registModules[id_module]", 'id_user' => "$key[id]"]);
                     $resultsPermission = $sqlManager->fetchAll($sqlModules);
 
                     foreach ($resultsPermission as $permission) {
-                        
-                        if($permission['type'] =='I'){
-                            $type ='Incluir';
+
+                        if ($permission['type'] == 'I') {
+                            $type = 'Incluir';
                         }
-                        if($permission['type'] =='S'){
-                            $type ='Selecionar';
+                        if ($permission['type'] == 'S') {
+                            $type = 'Selecionar';
                         }
-                        if($permission['type'] =='U'){
-                            $type ='Alterar';
+                        if ($permission['type'] == 'U') {
+                            $type = 'Alterar';
                         }
-                        if($permission['type'] =='D'){
-                            $type ='Deletar';
+                        if ($permission['type'] == 'D') {
+                            $type = 'Deletar';
                         }
-                        $td_permision  ="(x) $type, ";
-                        $td_permisions.=$td_permision;
+                        $td_permision = "(x) $type, ";
+                        $td_permisions .= $td_permision;
                     }
 
-                    $name_module   = "<span  style=\"font-size: xx-small; font-family: courier new; \"><bold>$registModules[id_module] $registModules[name_link]</bold> : $td_permisions</font><br>";
+                    $name_module = "<span  style=\"font-size: xx-small; font-family: courier new; \"><bold>$registModules[id_module] $registModules[name_link]</bold> : $td_permisions</font><br>";
                     $name_modules .= $name_module;
-                    $td_permisions="";
+                    $td_permisions = "";
                 }
 
-                if($key['type'] === 'master'){
-                    $name_modules ="TODOS";                    
+                if ($key['type'] === 'master') {
+                    $name_modules = "TODOS";
                 }
 
                 $tab_line = " 
@@ -127,12 +130,11 @@ class LinkModule
                     <td>$key[type]</td >
                     <td>$key[email]</td >
                     <td>$name_modules</td >
-
                     </tr>";
 
                 $listModulesPermission .= $tab_line;
                 $name_modules = "";
-                $td_permisions ="";
+                $td_permisions = "";
             }
 
             return $listModulesPermission;

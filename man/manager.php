@@ -5,19 +5,19 @@
 //ini_set('display_startup_erros', 1);
 //error_reporting(E_ALL);
 
-include ("head.php");
-include ("header.php");
-include ("footer.php");
-include ("../class/class.ScreenUsers.php");
-include ("../class/class.Functions.php");
-include ("../class/class.DbConnection.php");
-include ('../class/class.UserLinkModules.php');
-include ("../class/class.DbManagerRecords.php");
+include("head.php");
+include("header.php");
+include("footer.php");
+include("../class/class.ScreenUsers.php");
+include("../class/class.Functions.php");
+include("../class/class.DbConnection.php");
+include('../class/class.UserLinkModules.php');
+include("../class/class.DbManagerRecords.php");
 
 $conn = new DBconnect();
 $dbInstance = $conn->connection();
 
-$head   = new Heads();
+$head = new Heads();
 $header = new Headers();
 $footer = new Footers();
 $screenUsers = new ScreenUsers();
@@ -30,5 +30,12 @@ $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION[
 
 echo $head->head("AppManer Castanheiro");
 echo $header->navBar($typeModules);
+
+if (isset($_GET['exit'])) {
+
+    $appFunctions->session_delete();
+    $appFunctions->redirect_page('', 'index.php');
+    exit;
+}
 
 /*echo $footer->footer();*/

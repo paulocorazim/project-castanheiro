@@ -46,20 +46,22 @@ class ScreenUsers
                 <h3 class="spaninput">Módulos que o usuário pode acessar:</h3>  
                 <hr>              
                 <div class="input-group">                        
-                   <select name="user_module[]" id="user_module[]" multiple>
-               $typeModules[1]
+                   <select name="user_module[]" id="user_module[]" multiple size="10">
+                        <option value=""><span></span></option>
+                        $typeModules[1]
                     </select>
                 </div>        
             </div>
             <div class="flex_sub">
                     <h3 class="spaninput">Permissões para os módulos.</h3>
                     <hr>
-                    <select name="user_permission[]" id="user_permission[]" multiple>
+                    <select name="user_permission[]" id="user_permission[]" multiple size="6">
+                        <option value=""><span></span></option>
                         <option value="I"><span>Inserir -> ( Permite inclusão de registros )</span></option>
                         <option value="S"><span>Seleção -> ( Permite seleções de registros )</span></option>
                         <option value="U"><span>Alterar -> ( Permite Alterações de registros )</span></option>
-                        <option value="D"><span>APAGAR ->  ( Permite APAGAR registros )</span></option>
-                    </select><br>
+                        <option value="D"><span>Deletar -> ( Permite APAGAR registros )</span></option>
+                    </select><br><br>
                     <button type="submit" name="btn_update" id="btn_upadte">[ ATUALIZAR ]</button>
                 </form>
             </div>
@@ -93,7 +95,7 @@ EOT;
                     $update = "<option value = \"U\" ><span > Alterar -> (Permite alterações de registros )</span ></option >";
                 }
                 if ($type_pemission['type'] == 'D') {
-                    $delete = "<option value = \"D\" ><span > APAGAR -> (Permite Apagar registros )</span ></option >";
+                    $delete = "<option value = \"D\" ><span > Deletar -> (Permite Apagar registros )</span ></option >";
                 }
             }
 
@@ -138,13 +140,14 @@ EOT;
                 <h3 class="spaninput">Módulos atuais.</h3>      
                 <hr>          
                 <div class="input-group">                        
-                   <select name="user_module[]" id="user_module[]" multiple>
+                   <select name="user_module[]" id="user_module[]" multiple multiple size="10">
                         $selectModules
                     </select>
                 </div>
                 <h3 class="spaninput">Selecione os novos.</h3>                
                 <div class="input-group">                        
-                   <select name="user_module[]" id="user_module[]" multiple>
+                   <select name="user_module[]" id="user_module[]" multiple multiple size="10">
+                       <option value=""></option>
                         $typeModules[1]
                     </select>
                 </div>        
@@ -153,7 +156,8 @@ EOT;
                     <h3 class="spaninput">Permissões atuais.</h3>
                     <hr>
                     <div class="input-group">
-                    <select name="user_permission[]" id="user_permission[]" multiple>
+                    <select name="user_permission[]" id="user_permission[]" multiple size="6">
+                    <option value=""></option>
                         $insert
                         $select
                         $update
@@ -163,13 +167,14 @@ EOT;
                     <h3 class="spaninput">Permissões novas.</h3>
                     <hr>
                     <div class="input-group">
-                    <select name="user_permission[]" id="user_permission[]" multiple>
+                    <select name="user_permission[]" id="user_permission[]" multiple size="6">
+                        <option value=""></option>
                         <option value="I"><span>Inserir -> ( Permite inclusões de registros )</span></option>
                         <option value="S"><span>Seleção -> ( Permite seleções de registros )</span></option>
                         <option value="U"><span>Alterar -> ( Permite alterações de registros )</span></option>
-                        <option value="D"><span>APAGAR ->  ( Permite APAGAR registros )</span></option>
+                        <option value="D"><span>Deletar -> ( Permite APAGAR registros )</span></option>
                     </select>
-                    </div>
+                    </div><br><br>
                     <button type="submit" name="btn_update" id="btn_upadte">E D I T A R </button>
             </div>
         </div>
