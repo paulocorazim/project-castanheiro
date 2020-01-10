@@ -54,7 +54,7 @@ class ScreenUsers
             <div class="flex_sub">
                     <h3 class="spaninput">Permissões para os módulos.</h3>
                     <hr>
-                    <select name="user_permission[]" id="user_permission[]" multiple style="width:390px">
+                    <select name="user_permission[]" id="user_permission[]" multiple>
                         <option value="I"><span>Inserir -> ( Permite inclusão de registros )</span></option>
                         <option value="S"><span>Seleção -> ( Permite seleções de registros )</span></option>
                         <option value="U"><span>Alterar -> ( Permite Alterações de registros )</span></option>
@@ -102,7 +102,7 @@ EOT;
         <div class="containerprincipal">
             <div class="margin_esq_padrao">
                 <h2> Cadastro de Usuário</h2>
-                <h1> Editando usuário: $user_regist[name] </h1>
+                <h3 class="spaninput"> Editando usuário: $user_regist[name]</h3>
             </div>
             <div class="flex_main">
                 <div class="flex_sub">
@@ -130,11 +130,13 @@ EOT;
                         </div>
                 </div>
             <div class="flex_sub">     
-            <h3 class="spaninput">Permissões do Usuário</h3>      
+            <h3 class="spaninput">Permissões do Usuário</h3> 
+            <hr>    
                 <div class="input-group">
                     <input type="checkbox" name="permission_master" id="permission_master" text="master" value="master"><span>Master ( Permissão ADMIN )</span>
                 </div>  
-                <h3 class="spaninput">Módulos atuais.</h3>                
+                <h3 class="spaninput">Módulos atuais.</h3>      
+                <hr>          
                 <div class="input-group">                        
                    <select name="user_module[]" id="user_module[]" multiple>
                         $selectModules
@@ -148,22 +150,26 @@ EOT;
                 </div>        
             </div>
                 <div class="flex_sub">
-                    <span class="spaninput">Permissões atuais.</span>
-                    <select name="user_permission[]" id="user_permission[]" multiple style="width:390px">
+                    <h3 class="spaninput">Permissões atuais.</h3>
+                    <hr>
+                    <div class="input-group">
+                    <select name="user_permission[]" id="user_permission[]" multiple>
                         $insert
                         $select
                         $update
                         $delete
                     </select>
+                    </div>
+                    <h3 class="spaninput">Permissões novas.</h3>
                     <hr>
-                    <span class="spaninput">Permissões novas.</span>
-                    <select name="user_permission[]" id="user_permission[]" multiple style="width:390px">
+                    <div class="input-group">
+                    <select name="user_permission[]" id="user_permission[]" multiple>
                         <option value="I"><span>Inserir -> ( Permite inclusões de registros )</span></option>
                         <option value="S"><span>Seleção -> ( Permite seleções de registros )</span></option>
                         <option value="U"><span>Alterar -> ( Permite alterações de registros )</span></option>
                         <option value="D"><span>APAGAR ->  ( Permite APAGAR registros )</span></option>
                     </select>
-                    <hr>
+                    </div>
                     <button type="submit" name="btn_update" id="btn_upadte">E D I T A R </button>
             </div>
         </div>

@@ -283,6 +283,22 @@ button[type=submit]{
     margin-bottom: 10px;
 }
 
+.selectmultiple {
+    width: 70%;
+    overflow: inherit;
+    border: none;
+    -webkit-appearance: button;
+    overflow: initial;
+}
+
+.optselectmultiple {
+    color: red;
+    background-color: blue;
+    border-radius: 20px;
+    margin: 10px;
+    text-align: center;
+}
+
 /*---------------------TABELA ----------------------------------------*/
 
 .tableuser {
