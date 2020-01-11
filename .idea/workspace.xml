@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/class.Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.Functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/class.ScreenUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.ScreenUsers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.UserLinkModules.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/man/manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/man/manager.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +54,11 @@
     <select />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="André Corazim &lt;andre@systemhope.com.br&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IgnoredFileRootStore">
@@ -126,12 +128,24 @@
       <workItem from="1578518378874" duration="692000" />
       <workItem from="1578569153488" duration="3024000" />
       <workItem from="1578572280651" duration="12486000" />
-      <workItem from="1578733130365" duration="2860000" />
+      <workItem from="1578733130365" duration="3392000" />
     </task>
+    <task id="LOCAL-00001" summary="Implantação do Session Destroy">
+      <created>1578744893413</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1578744893413</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implantação do Session Destroy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implantação do Session Destroy" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1644" y="49" width="800" height="719" key="#Intentions" timestamp="1578516072468">
@@ -148,6 +162,10 @@
     <state x="278" y="59" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1578572404336" />
     <state x="1644" y="61" width="800" height="672" key="#com.intellij.execution.impl.EditConfigurationsDialog/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578517179770" />
     <state x="1887" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578739854052" />
+    <state x="1974" y="31" width="1237" height="917" key="CommitChangelistDialog2" timestamp="1578744892731">
+      <screen x="1366" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1974" y="31" width="1237" height="917" key="CommitChangelistDialog2/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578744892731" />
     <state width="242" height="189" key="DatabaseViewActions_Filter" timestamp="1578572388565">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -173,6 +191,14 @@
     </state>
     <state width="207" height="439" key="HiddenNamespacesPopup/0.0.1366.738@0.0.1366.738" timestamp="1578572096684" />
     <state width="207" height="456" key="HiddenNamespacesPopup/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578517193837" />
+    <state x="1795" y="72" width="2050" height="892" key="MergeDialog" timestamp="1578744971260">
+      <screen x="1366" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1795" y="72" width="2050" height="892" key="MergeDialog/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578744971260" />
+    <state x="2351" y="236" width="945" height="566" key="MultipleFileMergeDialog" timestamp="1578744977539">
+      <screen x="1366" y="0" width="2560" height="1080" />
+    </state>
+    <state x="2351" y="236" width="945" height="566" key="MultipleFileMergeDialog/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578744977539" />
     <state x="2733" y="271" width="947" height="728" key="SettingsEditor" timestamp="1578733406827">
       <screen x="1366" y="0" width="2560" height="1080" />
     </state>

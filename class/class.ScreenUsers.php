@@ -77,11 +77,14 @@ EOT;
 
     public function screenFormUserEdit($activeRecordsEdit, $typeModules)
     {
+        $selectModules = "";
+
         foreach ($activeRecordsEdit[0] as $user_regist) {
 
             foreach ($activeRecordsEdit[1] as $modules_regist) {
 
-                $selectModules = "<option value='$modules_regist[id]'>$modules_regist[name_link]</option>";
+                $selectModule = "<option value='$modules_regist[id]'>$modules_regist[name_link]</option>";
+                $selectModules .= $selectModule;
             }
 
             foreach ($activeRecordsEdit[2] as $type_pemission) {
