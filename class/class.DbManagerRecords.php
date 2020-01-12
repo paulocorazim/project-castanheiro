@@ -101,7 +101,7 @@ class DbManagerRecords
     }
 
     /*Lendo usuário especifico by user_id*/
-    public function edit_user($dbInstance, $user_id, $appFunctions)
+    public function select_user($dbInstance, $user_id, $appFunctions)
     {
         try {
 

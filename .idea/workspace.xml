@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/class.ScreenUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.ScreenUsers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.DbManagerRecords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.UserLinkModules.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/man/manager.users.php" beforeDir="false" afterPath="$PROJECT_DIR$/man/manager.users.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +130,7 @@
       <workItem from="1578518378874" duration="692000" />
       <workItem from="1578569153488" duration="3024000" />
       <workItem from="1578572280651" duration="12486000" />
-      <workItem from="1578733130365" duration="3392000" />
+      <workItem from="1578733130365" duration="7353000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -137,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578744893413</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Implantação do Session Destroy">
+      <created>1578745414951</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1578745414952</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,10 +171,10 @@
     <state x="278" y="59" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1578572404336" />
     <state x="1644" y="61" width="800" height="672" key="#com.intellij.execution.impl.EditConfigurationsDialog/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578517179770" />
     <state x="1887" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578739854052" />
-    <state x="1974" y="31" width="1237" height="917" key="CommitChangelistDialog2" timestamp="1578744892731">
+    <state x="1974" y="31" width="1237" height="917" key="CommitChangelistDialog2" timestamp="1578745414518">
       <screen x="1366" y="0" width="2560" height="1080" />
     </state>
-    <state x="1974" y="31" width="1237" height="917" key="CommitChangelistDialog2/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578744892731" />
+    <state x="1974" y="31" width="1237" height="917" key="CommitChangelistDialog2/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578745414518" />
     <state width="242" height="189" key="DatabaseViewActions_Filter" timestamp="1578572388565">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

@@ -126,7 +126,7 @@ class LinkModule
 
                 $tab_line = " 
                     <tr>
-                    <td><a href='?edit=$key[id]'>$key[name]</a> </td >
+                    <td><a href='?select_id=$key[id]'>$key[name]</a> </td >
                     <td>$key[type]</td >
                     <td>$key[email]</td >
                     <td>$name_modules</td >

@@ -33,9 +33,9 @@
     echo $header->navBar($typeModules);
 
     /*Editando o usuário*/
-    if (isset($_GET['edit'])) {
+    if (isset($_GET['select_id'])) {
 
-        $activeRecordsEdit = $activeRecords->edit_user($dbInstance, $_GET['edit'], $appFunctions);
+        $activeRecordsEdit = $activeRecords->select_user($dbInstance, $_GET['select_id'], $appFunctions);
 
         /*var_dump($activeRecordsEdit[0]); //Dados do usuário
         var_dump($activeRecordsEdit[1]); //Modulos do usuário
@@ -54,6 +54,7 @@
     /*Verificar se botão foi acionado para cadastro/update do usuário*/
     if (isset($_POST['btn_update'])) {
         $regists_user = [
+            'id' => "$_POST[user_id]",
             'cpf' => "$_POST[user_cpf]",
             'name' => "$_POST[user_name]",
             'email' => "$_POST[user_email]",
