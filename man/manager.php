@@ -33,8 +33,8 @@ echo $header->navBar($typeModules);
 
 if (isset($_GET['exit'])) {
 
-    $appFunctions->session_delete();
-    $appFunctions->redirect_page('', 'index.php');
+    $appFunctions->delete_session();
+    $appFunctions->redirect_page('0', '../index.php');
     exit;
 }
 

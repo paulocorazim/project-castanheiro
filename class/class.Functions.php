@@ -16,7 +16,6 @@ Class appFunctions
         $_SESSION['Connected'] = $connected;
     }
 
-
     public function validate_session()
     {
         session_start();
@@ -25,6 +24,11 @@ Class appFunctions
             header("Location: ../");
             exit();
         }
+    }
+
+    public function delete_session()
+    {
+        session_destroy();
     }
 
     public function alert_error($msg)
@@ -37,7 +41,6 @@ EOT;
         return $alert_error;
     }
 
-
     public function alert_sucess($msg)
     {
         echo  $alert_sucess = <<<EOT
@@ -48,7 +51,6 @@ EOT;
         return $alert_sucess;
     }
 
-
     public function alert_attention($msg)
     {
         echo $alert_attention = <<<EOT
@@ -58,7 +60,6 @@ EOT;
 
         return $alert_attention;
     }
-
 
     public function alert_warning($msg)
     {

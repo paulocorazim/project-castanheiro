@@ -67,12 +67,13 @@
             'permission_S' => "$_POST[permission_S]",
             'permission_U' => "$_POST[permission_U]",
             'permission_D' => "$_POST[permission_D]",
+            'status' => "$_POST[status]"
         ];
 
         $regists_module = $_POST['user_module'];
         $regists_permission = $_POST['user_permission'];
 
-        $activeRecords->insert_user($dbInstance, $regists_user, $regists_module, $regists_permission, $appFunctions);
+        $activeRecords->manager_user($dbInstance, $regists_user, $regists_module, $regists_permission, $appFunctions);
         exit();
     }
 
