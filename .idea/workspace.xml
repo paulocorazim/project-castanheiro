@@ -4,10 +4,7 @@
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.DbManagerRecords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/class.Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.Functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/class.ScreenUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.ScreenUsers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/man/manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/man/manager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/man/manager.users.php" beforeDir="false" afterPath="$PROJECT_DIR$/man/manager.users.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,24 +100,14 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.PHP" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:@Castanheiro" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:@Castanheiro" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@1cf8cb1f" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -142,7 +129,9 @@
       <workItem from="1578518378874" duration="692000" />
       <workItem from="1578569153488" duration="3024000" />
       <workItem from="1578572280651" duration="12486000" />
-      <workItem from="1578733130365" duration="15560000" />
+      <workItem from="1578733130365" duration="17188000" />
+      <workItem from="1578837582630" duration="441000" />
+      <workItem from="1578838053770" duration="2141000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -199,22 +188,26 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="242" height="189" key="DatabaseViewActions_Filter/0.0.1366.738@0.0.1366.738" timestamp="1578572388565" />
-    <state width="1102" height="182" key="GridCell.Tab.0.bottom" timestamp="1578588204747">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state width="1067" height="260" key="GridCell.Tab.0.bottom" timestamp="1578837599110">
+      <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state width="1102" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1578588204747" />
-    <state width="1102" height="182" key="GridCell.Tab.0.center" timestamp="1578588204747">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state width="1067" height="260" key="GridCell.Tab.0.bottom/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578837599110" />
+    <state width="1067" height="260" key="GridCell.Tab.0.center" timestamp="1578837599109">
+      <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state width="1102" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1578588204747" />
-    <state width="1102" height="182" key="GridCell.Tab.0.left" timestamp="1578588204747">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state width="1067" height="260" key="GridCell.Tab.0.center/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578837599109" />
+    <state width="1067" height="260" key="GridCell.Tab.0.left" timestamp="1578837599109">
+      <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state width="1102" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1578588204747" />
-    <state width="1102" height="182" key="GridCell.Tab.0.right" timestamp="1578588204747">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state width="1067" height="260" key="GridCell.Tab.0.left/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578837599109" />
+    <state width="1067" height="260" key="GridCell.Tab.0.right" timestamp="1578837599109">
+      <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state width="1102" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1578588204747" />
+    <state width="1067" height="260" key="GridCell.Tab.0.right/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578837599109" />
     <state width="207" height="439" key="HiddenNamespacesPopup" timestamp="1578572096684">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -228,18 +221,19 @@
       <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state x="2351" y="236" width="945" height="566" key="MultipleFileMergeDialog/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578744977539" />
-    <state x="2733" y="271" width="947" height="728" key="SettingsEditor" timestamp="1578827603793">
+    <state x="2302" y="148" width="1387" height="831" key="SettingsEditor" timestamp="1578840424353">
       <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state x="186" y="23" width="1118" height="708" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1578585299274" />
     <state x="1560" y="34" key="SettingsEditor/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518415034" />
     <state x="2733" y="271" width="947" height="728" key="SettingsEditor/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578733406827" />
-    <state x="2733" y="271" key="SettingsEditor/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578827603793" />
-    <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1578572286202">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="2302" y="148" width="1387" height="831" key="SettingsEditor/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578840424353" />
+    <state x="2097" y="319" key="com.intellij.ide.util.TipDialog" timestamp="1578838059092">
+      <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1578572286202" />
     <state x="1756" y="227" key="com.intellij.ide.util.TipDialog/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518391692" />
+    <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578838059092" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1578582056318">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

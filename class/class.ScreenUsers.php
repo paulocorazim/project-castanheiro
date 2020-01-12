@@ -78,13 +78,20 @@ EOT;
     {
         $selectModules = "";
 
-        foreach ($activeRecordsEdit[0] as $user_regist) {
+        foreach ($activeRecordsEdit[0] as $user_regist) { //dados do usuário
 
             if ($user_regist['status'] == 0) {
 
-                $checked = "checked";
+                $checked_status = "checked";
             } else {
-                $checked = "";
+                $checked_status = "";
+            }
+
+            if ($user_regist['type'] == 'master') {
+
+                $checked_master = "checked";
+            } else {
+                $checked_master = "";
             }
 
             foreach ($activeRecordsEdit[1] as $modules_regist) {
@@ -104,7 +111,7 @@ EOT;
                     $update = "<option value = \"U\" ><span > Alterar -> (Permite alterações de registros )</span ></option >";
                 }
                 if ($type_pemission['type'] == 'D') {
-                    $delete = "<option value = \"D\" ><span > Deletar -> (Permite Apagar registros )</span ></option >";
+                    $delete = "<option value = \"D\" ><span > Deletar -> (Permite APAGAR registros )</span ></option >";
                 }
             }
 
@@ -141,14 +148,14 @@ EOT;
                             </div>
                             <div class="input-group">
                                 <l<h3 class="spaninput">Desativar Usuário</h3>
-                                { <input type="checkbox" name="status" id="status" text="status" value="inativo" $checked ></span> }
+                                { <input type="checkbox" name="status" id="status" text="status" value="inativo" $checked_status ></span> }
                             </div>
                     </div>
                 <div class="flex_sub">     
                 <h3 class="spaninput">Permissões do Usuário</h3> 
                 <hr>    
                     <div class="input-group">
-                        <input type="checkbox" name="permission_master" id="permission_master" text="master" value="master"><span>Master ( Permissão ADMIN )</span>
+                        <input type="checkbox" name="permission_master" id="permission_master" text="master" value="master" $checked_master><span>Master ( Permissão ADMIN )</span>
                     </div>  
                     <h3 class="spaninput">Módulos atuais.</h3>      
                     <hr>          

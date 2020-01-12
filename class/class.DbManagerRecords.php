@@ -2,7 +2,7 @@
 
 class DbManagerRecords
 {
-    /*Inclusão de usuários*/
+    /*Inclusão/Alteração de usuários*/
     public function manager_user($dbInstance, $regists_user, $regists_module, $regists_permission, $appFunctions)
     {
         if ($regists_user['id'] == null) {
