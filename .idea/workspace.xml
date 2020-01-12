@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="" />
+    <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.DbManagerRecords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/class.Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.Functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.UserLinkModules.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/class.UserPermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.UserPermission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/man/manager.users.php" beforeDir="false" afterPath="$PROJECT_DIR$/man/manager.users.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,6 +135,7 @@
       <workItem from="1578733130365" duration="17188000" />
       <workItem from="1578837582630" duration="441000" />
       <workItem from="1578838053770" duration="2202000" />
+      <workItem from="1578848368092" duration="372000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -224,12 +232,12 @@
     <state x="1560" y="34" key="SettingsEditor/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518415034" />
     <state x="2733" y="271" width="947" height="728" key="SettingsEditor/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578733406827" />
     <state x="2302" y="148" width="1387" height="831" key="SettingsEditor/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578840424353" />
-    <state x="2097" y="319" key="com.intellij.ide.util.TipDialog" timestamp="1578838059092">
+    <state x="2097" y="319" key="com.intellij.ide.util.TipDialog" timestamp="1578848368598">
       <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1578572286202" />
     <state x="1756" y="227" key="com.intellij.ide.util.TipDialog/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518391692" />
-    <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578838059092" />
+    <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578848368598" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1578582056318">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

@@ -76,7 +76,3 @@
         $activeRecords->manager_user($dbInstance, $regists_user, $regists_module, $regists_permission, $appFunctions);
         exit();
     }
-
-
-
-    /*echo $footer->footer();*/

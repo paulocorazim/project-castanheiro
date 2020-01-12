@@ -5,12 +5,12 @@ class DbManagerRecords
     /*Inclusão/Alteração de usuários*/
     public function manager_user($dbInstance, $regists_user, $regists_module, $regists_permission, $appFunctions)
     {
-        if ($regists_user['id'] == null) {
+        if ($regists_user['id'] == null) { //Incluindo novo usuário
 
             try {
 
                 /*Verifica tipo de usuário */
-                if ($regists_user['permission_master'] != 'master') {
+                if ($regists_user['permission_master'] != 'master') { //verifica tipo de usuário
 
                     $type = 'basic';
                 } else {
@@ -18,7 +18,7 @@ class DbManagerRecords
                     $type = 'master';
                 }
 
-                /*            //Gera Array com os dados para insert*/
+                /*Gera Array com os dados para insert*/
                 $data = [
                     'id' => null,
                     'cpf' => "$regists_user[cpf]",
@@ -172,6 +172,7 @@ class DbManagerRecords
                     exit();
                 }
 
+                /*Update da Usuário*/
                 $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
                     ->setTableName('tab_users')    // define the table name
                     ->setConditions($conds)     // set conditions
