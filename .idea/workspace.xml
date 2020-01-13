@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/man/manager.clients.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.UserLinkModules.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.ScreenClients.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +44,13 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="shcombr_appmanager: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@Castanheiro" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="shcombr_appmanager: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="tab_clients: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -75,6 +83,7 @@
   <component name="ProjectId" id="1W7yJNZSLPz8DN0QjAsponsntt9" />
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -86,16 +95,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.PHP" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\www\htdocs\castanheiro\pages" />
       <recent name="C:\www\htdocs\castanheiro" />
       <recent name="C:\www\htdocs\castanheiro\man" />
     </key>
@@ -106,22 +117,7 @@
         <serviceView>
           <option name="contentProportion" value="0.14760433" />
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:@Castanheiro" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:@Castanheiro" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@2ad8c010" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:@Castanheiro" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@efd5484" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -147,7 +143,7 @@
       <workItem from="1578837582630" duration="441000" />
       <workItem from="1578838053770" duration="2202000" />
       <workItem from="1578848368092" duration="372000" />
-      <workItem from="1578876305796" duration="9139000" />
+      <workItem from="1578876305796" duration="11932000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -195,6 +191,10 @@
     <state x="274" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1578876054740" />
     <state x="1644" y="61" width="800" height="672" key="#com.intellij.execution.impl.EditConfigurationsDialog/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578517179770" />
     <state x="1887" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578739854052" />
+    <state x="426" y="172" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578876138146">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="426" y="172" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1578876138146" />
     <state x="1974" y="32" width="1237" height="917" key="CommitChangelistDialog2" timestamp="1578827339423">
       <screen x="1366" y="0" width="2560" height="1080" />
     </state>
@@ -204,6 +204,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="242" height="189" key="DatabaseViewActions_Filter/0.0.1366.738@0.0.1366.738" timestamp="1578572388565" />
+    <state x="463" y="111" key="FileChooserDialogImpl" timestamp="1578877417862">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="463" y="111" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1578877417862" />
     <state width="1067" height="260" key="GridCell.Tab.0.bottom" timestamp="1578837599110">
       <screen x="1366" y="0" width="2560" height="1080" />
     </state>
@@ -237,13 +241,17 @@
       <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state x="2351" y="236" width="945" height="566" key="MultipleFileMergeDialog/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578744977539" />
-    <state x="450" y="30" width="916" height="708" key="SettingsEditor" timestamp="1578876518619">
+    <state x="450" y="30" width="916" height="708" key="SettingsEditor" timestamp="1578877376547">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="450" y="30" width="916" height="708" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1578876518619" />
+    <state x="450" y="30" width="916" height="708" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1578877376547" />
     <state x="1560" y="34" key="SettingsEditor/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518415034" />
     <state x="2733" y="271" width="947" height="728" key="SettingsEditor/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578733406827" />
     <state x="2302" y="148" width="1387" height="831" key="SettingsEditor/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578840424353" />
+    <state x="271" y="11" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1578877258884">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="271" y="11" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1366.738@0.0.1366.738" timestamp="1578877258884" />
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1578876306220">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
