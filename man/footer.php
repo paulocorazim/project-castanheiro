@@ -4,20 +4,15 @@ Class Footers {
 
     public function footer(){
 
-    $footer = <<< EOT
+        return <<< EOT
     
     <footer>
-    
     <p>Footer Tester</p>
-    
     </footer>
-    
     </body>
     </html>   
 
 EOT;
-
-    return $footer;
 
     }
 }

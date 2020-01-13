@@ -46,7 +46,6 @@ class ScreenUsers
                 <hr>              
                 <div class="input-group">                        
                    <select name="user_module[]" id="user_module[]" multiple size="10">
-                        <option value=""><span></span></option>
                         $typeModules[1]
                     </select>
                 </div>        
@@ -55,7 +54,6 @@ class ScreenUsers
                     <h3 class="spaninput">Permissões para os módulos.</h3>
                     <hr>
                     <select name="user_permission[]" id="user_permission[]" multiple size="6">
-                        <option value=""><span></span></option>
                         <option value="I"><span>Inserir -> ( Permite inclusão de registros )</span></option>
                         <option value="S"><span>Seleção -> ( Permite seleções de registros )</span></option>
                         <option value="U"><span>Alterar -> ( Permite Alterações de registros )</span></option>
@@ -160,14 +158,13 @@ EOT;
                     <h3 class="spaninput">Módulos atuais.</h3>      
                     <hr>          
                     <div class="input-group">                        
-                       <select name="user_module_curret[]" id="user_module_curret[]" multiple multiple size="10">
+                       <select name="user_module_curret[]" id="user_module_curret[]" multiple multiple size="9">
                             $selectModules
                         </select>
                     </div>
                     <h3 class="spaninput">Selecione os novos.</h3>                
                     <div class="input-group">                        
-                       <select name="user_module[]" id="user_module[]" multiple multiple size="10">
-                           <option value=""></option>
+                       <select name="user_module[]" id="user_module[]" multiple multiple size="9">
                             $typeModules[1]
                         </select>
                     </div>        
@@ -176,8 +173,7 @@ EOT;
                         <h3 class="spaninput">Permissões atuais.</h3>
                         <hr>
                         <div class="input-group">
-                        <select name="user_permission_current[]" id="user_permission_current[]" multiple size="6">
-                        <option value=""></option>
+                        <select name="user_permission_current[]" id="user_permission_current[]" multiple size="5">
                             $insert
                             $select
                             $update
@@ -187,8 +183,7 @@ EOT;
                         <h3 class="spaninput">Permissões novas.</h3>
                         <hr>
                         <div class="input-group">
-                        <select name="user_permission[]" id="user_permission[]" multiple size="6">
-                            <option value=""></option>
+                        <select name="user_permission[]" id="user_permission[]" multiple size="5">
                             <option value="I"><span>Inserir -> ( Permite inclusões de registros )</span></option>
                             <option value="S"><span>Selecionar -> ( Permite seleções de registros )</span></option>
                             <option value="U"><span>Alterar -> ( Permite alterações de registros )</span></option>

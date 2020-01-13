@@ -109,8 +109,8 @@ class DbManagerRecords
 
         } else { //Edição do usuário
 
-            /*var_dump($regists_user);
-            exit();*/
+            //id do usuário
+            $conds = ['id' => "$regists_user[id]"];
 
             $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
 
@@ -162,10 +162,6 @@ class DbManagerRecords
                     ];
                 }
 
-                //id do usuário
-                $conds = ['id' => "$regists_user[id]"];
-
-
                 //Verifica as senhas informada.
                 if ($data['password'] != $data['confirm_passwd']) {
                     $appFunctions->alert_error("Atenção! -> As senhas não combinam, por favor refaça a operação!");
@@ -179,14 +175,58 @@ class DbManagerRecords
                     ->setData($data);           // set data (keys = database column name)
                 $sqlManager->update($sqlQuery);
 
-                $appFunctions->alert_warning(";) USUÁRIO ALTERADO COM SUCESSO!");
-                $appFunctions->redirect_page('4', '../man/manager.users.php');
-                exit();
-
             } catch (Exception $e) {
                 $error = $e->getMessage();
                 $appFunctions->alert_error("Erro ao alterar Usuário ->" . $error);
             }
+
+            if ($regists_module != null) {
+
+                try {
+
+                    $conds_modules = ['id_user' => "$regists_user[id]"];
+                    $sqlDelete = (new \Simplon\Db\SqlQueryBuilder())
+                        ->setTableName('tab_permissions')
+                        ->setConditions($conds_modules);
+                    $sqlManager->remove($sqlDelete);
+
+                } catch (Exception $e) {
+                    $error = $e->getMessage();
+                    $appFunctions->alert_error("Erro ao alterar módulos ->" . $error);
+                }
+
+                try {
+
+                    foreach ($regists_module as $id_module) { /*dados recebidos do POST para saber quais módulos tem acesso*/
+
+                        foreach ($regists_permission as $permmission) { // dados recebidos do POST para saber as permissões do módulos
+
+                            //Monta os dados de módulos e permissões
+                            $data_modules_permission = [
+                                'id_user' => "$regists_user[id]",
+                                'id_module' => "$id_module",
+                                'type' => "$permmission",
+                                'dt_update' => date('Y-m-d h:m:s'),
+                            ];
+
+                            //Insere as permissões
+                            $sqlInsert = (new \Simplon\Db\SqlQueryBuilder())
+                                ->setTableName('tab_permissions') // define the table name
+                                ->setData($data_modules_permission); // set data (keys = database column name)
+                            $sqlManager->insert($sqlInsert);
+                        }
+                    }
+
+                } catch (Exception $e) {
+                    $error = $e->getMessage();
+                    $appFunctions->alert_error("Erro ao alterar permissões ->" . $error);
+                }
+
+            }
+
+            $appFunctions->alert_warning("<hr> USUÁRIO ALTERADO COM SUCESSO !  Aguarde ... <hr>");
+            $appFunctions->redirect_page('3', '../man/manager.users.php');
+            exit();
         }
     }
 

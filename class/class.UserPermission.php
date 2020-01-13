@@ -10,26 +10,30 @@ class UserPermission
         $conn = new DBconnect();
         $dbInstance = $conn->connection();
 
+        $appFunctions = new appFunctions();
+
         $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-        $sqlQuery   = (new \Simplon\Db\SqlQueryBuilder())
+        $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
             ->setQuery('SELECT * FROM tab_users WHERE email = :email AND password = :pass')
             ->setConditions(['email' => "$email", 'pass' => "$password"]);
         $results = $sqlManager->fetchAll($sqlQuery);
 
         if (!$results) {
 
-            echo "Usuário não cadastrado";
+            $appFunctions->alert_error(" <hr>|  --- Ops! Usuário não cadastrado!!  ---  |<hr>");
             exit();
+
         } else {
 
             foreach ($results as $key) {
 
                 if ($key['status'] === '0') {
-                    echo "Usuário com status desabilitado, não será possivel continuar";
+
+                    $appFunctions->alert_attention("Usuário com status desabilitado, não será possivel continuar");
                     exit();
+
                 } else {
 
-                    $appFunctions = new appFunctions();
                     $appFunctions->create_session(
                         $key['id'],
                         $key['cpf'],
@@ -52,5 +56,4 @@ class UserPermission
             }
         }
     }
-
 }

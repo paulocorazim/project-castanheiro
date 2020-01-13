@@ -1,14 +1,14 @@
-<?php
+<?php /** @noinspection DuplicatedCode */
 
 //ini_set('memory_limit', '256M');
 //ini_set('display_errors', 1);
 //ini_set('display_startup_erros', 1);
 //error_reporting(E_ALL);
 
-include("head.php");
-include("header.php");
-include("footer.php");
-include("../class/class.ScreenUsers.php");
+    include("head.php");
+    include("header.php");
+    include("footer.php");
+    include("../class/class.ScreenUsers.php");
 include("../class/class.Functions.php");
 include("../class/class.DbConnection.php");
 include('../class/class.UserLinkModules.php');

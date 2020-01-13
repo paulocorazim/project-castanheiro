@@ -7,7 +7,7 @@ class Headers
     {
 
         //<li> dinamica com os módulos do usuário.
-        $navBar = <<< EOT
+        return <<< EOT
         <header>
         <img class="logo" src="../image/logo.png" alt="logo">
         <nav>
@@ -30,7 +30,5 @@ class Headers
         </header>
 
 EOT;
-
-        return $navBar;
     }
 }
