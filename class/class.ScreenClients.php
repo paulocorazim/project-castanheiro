@@ -40,7 +40,7 @@ public function screenFormClient()
                         </div>
                         
                         <div class="input-group">
-                            <input type="radio" name="client_state_registration_free" id="client_state_registration_free" value="co">    
+                            <input type="radio" name="client_state_registration_free" id="client_state_registration_free" value="fr">    
                             <label for="name">Isento</label>
                         </div>    
                             
@@ -131,7 +131,7 @@ public function screenFormClient()
                             
                             <div class="input-group">
                                Bairro
-                               <input type="text" name="client_neighborhood" id="client_neighborhood" class="form-control">                  
+                               <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control">                  
                             </div> 
                                                        
                     </div>
@@ -140,7 +140,7 @@ public function screenFormClient()
                     
                             <h3 class="spaninput">Dados Adicionais 2</h3>
                             <hr>
-                            <div class="form-control"> 
+                            <div class="form-control">  
                             <input type="radio" name="client_type" id="client_type" value="cl">
                                 <label for="name"> Cliente</label>
                                 
@@ -152,12 +152,19 @@ public function screenFormClient()
                                 
                                 <input type="radio" name="client_type" id="client_type" value="tr">                            
                                 <label for="name"> Transportadora</label>
-                                
+                             <h3 class="spaninput">Documentação</h3>
+                             --
+                             --
+                             <h3 class="spaninput">Contratos</h3>
+                             --
+                             --
+                             <h3 class="spaninput">Observações</h3>
+                             <textarea name="client_obs" id="client_obs" cols="30" rows="10"></textarea>   
                                 
                              </div>   
                              <br><br>
                              
-                            <button type="submit" name="btn_update" id="btn_upadte">C A D A S T R A R</button>
+                            <button type="submit" name="btn_update_client" id="btn_update_client">C A D A S T R A R</button>
                         </form>
                     </div>
             </div>

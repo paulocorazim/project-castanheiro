@@ -291,4 +291,9 @@ class DbManagerRecords
         return array($shResultsUser, $shResultsModules, $shResultsPerssion);
     }
 
+    /*Inclusão/Alteração de Clientes*/
+    public function manager_client($regists_client)
+    {
+        var_dump($regists_client);
+    }
 }

@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.DbManagerRecords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/class.Query.ZipCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.Query.ZipCode.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.ScreenClients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/cep.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/cep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/man/manager.clients.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +105,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -151,7 +155,7 @@
       <workItem from="1579200844959" duration="17000" />
       <workItem from="1579200878910" duration="1247000" />
       <workItem from="1579212934242" duration="6883000" />
-      <workItem from="1579221991736" duration="10006000" />
+      <workItem from="1579221991736" duration="14148000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -261,12 +265,12 @@
       <screen x="0" y="36" width="1366" height="732" />
     </state>
     <state x="522" y="298" width="314" height="144" key="NewPhpFileDialog/0.36.1366.732@0.36.1366.732" timestamp="1579227457239" />
-    <state x="404" y="38" width="902" height="727" key="SettingsEditor" timestamp="1579217682610">
+    <state x="404" y="38" width="902" height="727" key="SettingsEditor" timestamp="1579233223397">
       <screen x="0" y="36" width="1366" height="732" />
     </state>
     <state x="450" y="30" width="916" height="708" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1578877376547" />
     <state x="-66" y="41" width="902" height="727" key="SettingsEditor/0.30.1366.738@0.30.1366.738" timestamp="1579120863785" />
-    <state x="404" y="38" key="SettingsEditor/0.36.1366.732@0.36.1366.732" timestamp="1579217682610" />
+    <state x="404" y="38" key="SettingsEditor/0.36.1366.732@0.36.1366.732" timestamp="1579233223397" />
     <state x="1560" y="34" key="SettingsEditor/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518415034" />
     <state x="2733" y="271" width="947" height="728" key="SettingsEditor/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578733406827" />
     <state x="2302" y="148" width="1387" height="831" key="SettingsEditor/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578840424353" />

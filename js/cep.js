@@ -10,7 +10,7 @@ $(document).ready( function() {
                 success: function(data){
                     if(data.sucesso == 1){
                         $('#client_address').val(data.client_address);
-                        $('#client_neighborhood').val(data.client_neighborhood);
+                        $('#client_neighbordhood').val(data.client_neighbordhood);
                         $('#client_city').val(data.client_city);
                         $('#client_state').val(data.client_state);
  
