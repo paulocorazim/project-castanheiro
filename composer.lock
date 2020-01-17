@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b0ae0276d675c72d05466dd8ffb294a",
+    "content-hash": "875bdb712c426b62ef27fe2313f0e665",
     "packages": [
         {
             "name": "fightbulc/easy_pdo",
@@ -112,6 +112,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-json": "*",
+        "ext-simplexml": "*"
+    },
     "platform-dev": []
 }

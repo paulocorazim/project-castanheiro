@@ -17,8 +17,7 @@ Class Heads
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <script type="text/javascript" src="../js/jquery-1.2.6.pack.js"></script>
             <script type="text/javascript" src="../js/jquery.maskedinput-1.1.4.pack.js"/></script>
-            <script src="https://kit.fontawesome.com/e6868744bc.js" crossorigin="anonymous"></script>
-            <script src="../js/main.js" type="text/javascript"></script>
+            <script type="text/javascript" src="https://kit.fontawesome.com/e6868744bc.js" crossorigin="anonymous"/></script>
             <title>$title</title>
         </head>
         <body>

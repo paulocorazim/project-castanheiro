@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/man/manager.clients.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/class/class.Query.ZipCode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/main_clients.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.DbManagerRecords.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.ScreenClients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/class.ScreenUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/class.ScreenUsers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/man/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/man/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +23,7 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
-      <executable />
+      <executable path="composer" />
     </execution>
   </component>
   <component name="DatabaseView">
@@ -102,7 +111,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -115,9 +124,13 @@
     <option name="viewStates">
       <list>
         <serviceView>
-          <option name="contentProportion" value="0.14760433" />
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@Castanheiro" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -144,6 +157,11 @@
       <workItem from="1578838053770" duration="2202000" />
       <workItem from="1578848368092" duration="372000" />
       <workItem from="1578876305796" duration="11932000" />
+      <workItem from="1579120125616" duration="762000" />
+      <workItem from="1579200844959" duration="17000" />
+      <workItem from="1579200878910" duration="1247000" />
+      <workItem from="1579212934242" duration="6883000" />
+      <workItem from="1579221991736" duration="7496000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -195,11 +213,19 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="426" y="172" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1578876138146" />
+    <state x="1952" y="308" width="626" height="529" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579200857019">
+      <screen x="1366" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1952" y="308" width="626" height="529" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579200857019" />
     <state x="1974" y="32" width="1237" height="917" key="CommitChangelistDialog2" timestamp="1578827339423">
       <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state x="1974" y="31" width="1237" height="917" key="CommitChangelistDialog2/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578745414518" />
     <state x="1974" y="32" key="CommitChangelistDialog2/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578827339423" />
+    <state x="473" y="287" width="411" height="165" key="ComposerInitDialogKey" timestamp="1579227601487">
+      <screen x="0" y="36" width="1366" height="732" />
+    </state>
+    <state x="473" y="287" width="411" height="165" key="ComposerInitDialogKey/0.36.1366.732@0.36.1366.732" timestamp="1579227601487" />
     <state width="242" height="189" key="DatabaseViewActions_Filter" timestamp="1578572388565">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -241,23 +267,38 @@
       <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state x="2351" y="236" width="945" height="566" key="MultipleFileMergeDialog/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578744977539" />
-    <state x="450" y="30" width="916" height="708" key="SettingsEditor" timestamp="1578877376547">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="522" y="298" width="314" height="144" key="NewPhpFileDialog" timestamp="1579227457239">
+      <screen x="0" y="36" width="1366" height="732" />
+    </state>
+    <state x="522" y="298" width="314" height="144" key="NewPhpFileDialog/0.36.1366.732@0.36.1366.732" timestamp="1579227457239" />
+    <state x="404" y="38" width="902" height="727" key="SettingsEditor" timestamp="1579217682610">
+      <screen x="0" y="36" width="1366" height="732" />
     </state>
     <state x="450" y="30" width="916" height="708" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1578877376547" />
+    <state x="-66" y="41" width="902" height="727" key="SettingsEditor/0.30.1366.738@0.30.1366.738" timestamp="1579120863785" />
+    <state x="404" y="38" key="SettingsEditor/0.36.1366.732@0.36.1366.732" timestamp="1579217682610" />
     <state x="1560" y="34" key="SettingsEditor/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518415034" />
     <state x="2733" y="271" width="947" height="728" key="SettingsEditor/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578733406827" />
     <state x="2302" y="148" width="1387" height="831" key="SettingsEditor/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578840424353" />
-    <state x="271" y="11" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1578877258884">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="0" y="41" width="902" height="727" key="SettingsEditor/1366.0.2560.1080/0.36.1366.732@0.36.1366.732" timestamp="1579211762849" />
+    <state x="271" y="47" width="568" height="705" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1579228594195">
+      <screen x="0" y="36" width="1366" height="732" />
     </state>
     <state x="271" y="11" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1366.738@0.0.1366.738" timestamp="1578877258884" />
-    <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1578876306220">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="271" y="47" width="568" height="705" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.36.1366.732@0.36.1366.732" timestamp="1579228594195" />
+    <state x="390" y="252" key="com.intellij.ide.util.TipDialog" timestamp="1579222001350">
+      <screen x="0" y="36" width="1366" height="732" />
     </state>
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1578876306220" />
+    <state x="390" y="248" key="com.intellij.ide.util.TipDialog/0.30.1366.738@0.30.1366.738" timestamp="1579120126252" />
+    <state x="390" y="252" key="com.intellij.ide.util.TipDialog/0.36.1366.732@0.36.1366.732" timestamp="1579222001350" />
     <state x="1756" y="227" key="com.intellij.ide.util.TipDialog/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518391692" />
     <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578848368598" />
+    <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579200886317" />
+    <state x="392" y="115" width="708" height="570" key="find.popup" timestamp="1579216735012">
+      <screen x="0" y="36" width="1366" height="732" />
+    </state>
+    <state x="392" y="115" width="708" height="570" key="find.popup/0.36.1366.732@0.36.1366.732" timestamp="1579216735012" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1578582056318">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

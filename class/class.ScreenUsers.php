@@ -5,6 +5,7 @@ class ScreenUsers
     public function screenFormUser($typeModules)
     {
         $screenFormUser = <<< EOT
+        <script src="../js/main.js" type="text/javascript" type="text/javascript"></script>
         <div class="containerprincipal">
             <div class="margin_esq_padrao">
                 <h2>Cadastro de Usuário</h2>

@@ -1,5 +1,7 @@
 {
   "require": {
-    "simplon/db": "^1.2"
-	}
+    "simplon/db": "^1.2",
+    "ext-json": "*",
+    "ext-simplexml": "*"
+  }
 }
