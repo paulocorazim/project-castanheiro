@@ -17,7 +17,12 @@ public function screenFormClient()
                 <div class="flex_sub">
                     <form action="" method="post">
                     <h3 class="spaninput">Dados Gerais do Cliente.</h3>
-                                                                                         
+                               
+                        <select name="client_active" id="client_active">
+                         <option value="1">Ativo</option>
+                         <option value="0">Bloqueado</option>
+                        </select>                                                                 
+                        
                         <hr>                                                        
                         
                         <div class="input-group">
@@ -28,27 +33,72 @@ public function screenFormClient()
                             <input type="text" name="client_corporate_name" id="client_corporate_name" class="form-control">
                             <label for="name"> Razão Social</label>
                         </div>
+                        
                         <div class="input-group">
                             <input type="text" name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control">
                             <label for="cpf">CPF / CNPJ</label>
                         </div>
+                        
                         <div class="input-group">
-                            <input type="text" name="rg" id="rg" class="form-control">
-                            <label for="cpf">RG</label>
+                            <input type="radio" name="client_state_registration_free" id="client_state_registration_free" value="co">    
+                            <label for="name">Isento</label>
+                        </div>    
+                            
+                        <div class="input-group">
+                            <input type="text" name="client_state_registration" id="client_state_registration"  class="form-control">
+                            <label for="cpf">Inscrição Estadual</label>
                         </div>
+                        
                         <div class="input-group">
-                            <input type="email" name="client_email1" id="client_email1" class="form-control">
-                            <label for="email">E-mail 1</label>
+                            <input type="text" name="client_municipal_registration" id="client_municipal_registration"  class="form-control">
+                            <label for="cpf">Inscrição Municipal</label>
                         </div>
+                        
                         <div class="input-group">
-                            <input type="email" name="client_email2" id="client_email2" class="form-control">
-                            <label for="email">E-mail 2</label>
-                        </div>                   
+                            <input type="text" name="client_rg" id="client_rg" class="form-control">
+                            <label for="client_rg">RG</label>
+                        </div>
+                        
+                        <div class="input-group">
+                            <input type="text" name="client_responsible" id="client_responsible" class="form-control">
+                            <label for="rg">Responsavel</label>
+                        </div>
+                          
                 </div>
                 
                     <div class="flex_sub">     
-                        <h3 class="spaninput">Endereços</h3>  
-                        <hr>    
+                        <h3 class="spaninput">Dados Adicionais 1</h3>  
+                        <hr>                               
+                         
+                         <div class="input-group">
+                             E-mail 1 <input type="email" name="client_email1" id="client_email1" class="form-control">
+                           
+                        </div>
+                        
+                        <div class="input-group">
+                            E-mail 2 <input type="email" name="client_email2" id="client_email2" class="form-control">
+                            
+                        </div> 
+
+                        <div class="input-group">
+                             site (www) <input type="text" name="client_site" id="client_site" class="form-control">                            
+                        </div> 
+
+                        
+                        <div class="input-group">
+                          Telefones
+                            <div class="input-group">
+                               Tel1<input type="text" name="client_phone1" id="client_phone1" class="form-control">
+                            </div>
+                            <div class="input-group">
+                               Tel2<input type="text" name="client_phone2" id="client_phone2" class="form-control">
+                            </div>   
+                            <div class="input-group">   
+                               Tel3<input type="text" name="client_phone3" id="client_phone3" class="form-control">
+                            </div> 
+                        </div>                 
+                            
+                            
                             <div class="input-group">
                                Cep (usar somente números)
                                <input type="text" name="cep" id="cep" class="form-control">
@@ -88,7 +138,7 @@ public function screenFormClient()
             
                     <div class="flex_sub">
                     
-                            <h3 class="spaninput">Dados Adicionais</h3>
+                            <h3 class="spaninput">Dados Adicionais 2</h3>
                             <hr>
                             <div class="form-control"> 
                             <input type="radio" name="client_type" id="client_type" value="cl">
@@ -102,6 +152,8 @@ public function screenFormClient()
                                 
                                 <input type="radio" name="client_type" id="client_type" value="tr">                            
                                 <label for="name"> Transportadora</label>
+                                
+                                
                              </div>   
                              <br><br>
                              
