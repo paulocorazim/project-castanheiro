@@ -6,53 +6,53 @@ class ScreenUsers
     {
         $screenFormUser = <<< EOT
         <script src="../js/main.js" type="text/javascript" type="text/javascript"></script>
-        <div class="containerprincipal">
-            <div class="margin_esq_padrao">
+        <div class="sys_containerprincipal">
+            <div class="sys_margin_esq_padrao">
                 <h2>Cadastro de Usuário</h2>
             </div>
-            <div class="flex_main">
-                <div class="flex_sub">
+            <div class="sys_flex_main">
+                <div class="sys_flex_sub">
                     <form action="manager.users.php" method="post">
-                    <h3 class="spaninput">Informações:</h3>
+                    <h3 class="sys_spaninput">Informações:</h3>
                     <hr>
-                        <div class="input-group">
-                            <input type="text" name="user_name" id="user_name" class="form-control">
+                        <div class="sys_input-group">
+                            <input type="text" name="user_name" id="user_name" class="sys_form-control">
                             <label for="name">Nome</label>
                         </div>
-                        <div class="input-group">
-                            <input type="text" name="user_cpf" id="user_cpf" class="form-control" onblur="return valid()">
+                        <div class="sys_input-group">
+                            <input type="text" name="user_cpf" id="user_cpf" class="sys_form-control" onblur="return valid()">
                             <label for="cpf">Cpf</label>
                         </div>
-                        <div class="input-group">
-                            <input type="email" name="user_email" id="user_email" class="form-control">
+                        <div class="sys_input-group">
+                            <input type="email" name="user_email" id="user_email" class="sys_form-control">
                             <label for="email">E-mail</label>
                         </div>
-                        <div class="input-group">
-                            <input type="password" name="user_password" id="user_password" class="form-control">
+                        <div class="sys_input-group">
+                            <input type="password" name="user_password" id="user_password" class="sys_form-control">
                             <label for="password">Crie uma senha</label>
                         </div>
-                        <div class="input-group">
+                        <div class="sys_input-group">
                             <input type="password" name="user_confirm_password" id="user_confirm_password"
-                                class="form-control">
+                                class="sys_form-control">
                             <label for="confpass">Confirme a Senha</label>
                         </div>
                 </div>
-            <div class="flex_sub">     
-            <h3 class="spaninput">Permissões do Usuário</h3>  
+            <div class="sys_flex_sub">     
+            <h3 class="sys_spaninput">Permissões do Usuário</h3>  
             <hr>    
-                <div class="input-group">
+                <div class="sys_input-group">
                     <input type="checkbox" name="permission_master" id="permission_master" text="master" value="master"><span>Master ( Permissão ADMIN )</span>
                 </div>  
-                <h3 class="spaninput">Módulos que o usuário pode acessar:</h3>  
+                <h3 class="sys_spaninput">Módulos que o usuário pode acessar:</h3>  
                 <hr>              
-                <div class="input-group">                        
+                <div class="sys_input-group">                        
                    <select name="user_module[]" id="user_module[]" multiple size="10">
                         $typeModules[1]
                     </select>
                 </div>        
             </div>
-            <div class="flex_sub">
-                    <h3 class="spaninput">Permissões para os módulos.</h3>
+            <div class="sys_flex_sub">
+                    <h3 class="sys_spaninput">Permissões para os módulos.</h3>
                     <hr>
                     <select name="user_permission[]" id="user_permission[]" multiple size="6">
                         <option value="I"><span>Inserir -> ( Permite inclusão de registros )</span></option>
@@ -64,7 +64,7 @@ class ScreenUsers
                 </form>
             </div>
         </div>
-        <div class="margin_esq_padrao">
+        <div class="sys_margin_esq_padrao">
             <h2> Usuários já Cadastrados</h2>
         </div>
 
@@ -116,64 +116,64 @@ EOT;
 
             $screenFormUserEdit = <<< EOT
             
-            <div class="containerprincipal">
-                <div class="margin_esq_padrao">
+            <div class="sys_containerprincipal">
+                <div class="sys_margin_esq_padrao">
                     <h2> Cadastro de Usuário</h2>
-                    <h3 class="spaninput"> Editando usuário: $user_regist[name]</h3>
+                    <h3 class="sys_spaninput"> Editando usuário: $user_regist[name]</h3>
                 </div>
-                <div class="flex_main">
-                    <div class="flex_sub">
+                <div class="sys_flex_main">
+                    <div class="sys_flex_sub">
                         <form action="manager.users.php" method="post">
-                            <div class="input-group">
+                            <div class="sys_input-group">
                                 <input type="hidden" name="user_id" id="user_id" value="$user_regist[id]" >
-                                <input type="text" name="user_name" id="user_name" class="form-control" value="$user_regist[name]">
+                                <input type="text" name="user_name" id="user_name" class="sys_form-control" value="$user_regist[name]">
                                 <label for="name">Nome</label>
                             </div>
-                            <div class="input-group">
-                                <input type="text" name="user_cpf" id="user_cpf" class="form-control" onblur="return valid()" value="$user_regist[cpf]">
+                            <div class="sys_input-group">
+                                <input type="text" name="user_cpf" id="user_cpf" class="sys_form-control" onblur="return valid()" value="$user_regist[cpf]">
                                 <label for="cpf">Cpf</label>
                             </div>
-                            <div class="input-group">
-                                <input type="email" name="user_email" id="user_email" class="form-control" value="$user_regist[email]">
+                            <div class="sys_input-group">
+                                <input type="email" name="user_email" id="user_email" class="sys_form-control" value="$user_regist[email]">
                                 <label for="email">E-mail</label>
                             </div>
-                            <div class="input-group">
-                                <input type="password" name="user_password" id="user_password" class="form-control" value="" title=";) Deixe em branco para não mudar!" >
+                            <div class="sys_input-group">
+                                <input type="password" name="user_password" id="user_password" class="sys_form-control" value="" title=";) Deixe em branco para não mudar!" >
                                 <label for="password">Crie uma senha</label>
                             </div>
-                            <div class="input-group">
-                                <input type="password" name="user_confirm_password" id="user_confirm_password" class="form-control" value="">
+                            <div class="sys_input-group">
+                                <input type="password" name="user_confirm_password" id="user_confirm_password" class="sys_form-control" value="">
                                 <label for="confpass">Confirme a Senha</label>
                             </div>
-                            <div class="input-group">
-                                <l<h3 class="spaninput">Desativar Usuário</h3>
+                            <div class="sys_input-group">
+                                <l<h3 class="sys_spaninput">Desativar Usuário</h3>
                                 { <input type="checkbox" name="status" id="status" text="status" value="inativo" $checked_status ></span> }
                             </div>
                     </div>
-                <div class="flex_sub">     
-                <h3 class="spaninput">Permissões do Usuário</h3> 
+                <div class="sys_flex_sub">     
+                <h3 class="sys_spaninput">Permissões do Usuário</h3> 
                 <hr>    
-                    <div class="input-group">
+                    <div class="sys_input-group">
                         <input type="checkbox" name="permission_master" id="permission_master" text="master" value="master" $checked_master><span>Master ( Permissão ADMIN )</span>
                     </div>  
-                    <h3 class="spaninput">Módulos atuais.</h3>      
+                    <h3 class="sys_spaninput">Módulos atuais.</h3>      
                     <hr>          
-                    <div class="input-group">                        
+                    <div class="sys_input-group">                        
                        <select name="user_module_curret[]" id="user_module_curret[]" multiple multiple size="9">
                             $selectModules
                         </select>
                     </div>
-                    <h3 class="spaninput">Selecione os novos.</h3>                
-                    <div class="input-group">                        
+                    <h3 class="sys_spaninput">Selecione os novos.</h3>                
+                    <div class="sys_input-group">                        
                        <select name="user_module[]" id="user_module[]" multiple multiple size="9">
                             $typeModules[1]
                         </select>
                     </div>        
                 </div>
-                    <div class="flex_sub">
-                        <h3 class="spaninput">Permissões atuais.</h3>
+                    <div class="sys_flex_sub">
+                        <h3 class="sys_spaninput">Permissões atuais.</h3>
                         <hr>
-                        <div class="input-group">
+                        <div class="sys_input-group">
                         <select name="user_permission_current[]" id="user_permission_current[]" multiple size="5">
                             $insert
                             $select
@@ -181,9 +181,9 @@ EOT;
                             $delete
                         </select>
                         </div>
-                        <h3 class="spaninput">Permissões novas.</h3>
+                        <h3 class="sys_spaninput">Permissões novas.</h3>
                         <hr>
-                        <div class="input-group">
+                        <div class="sys_input-group">
                         <select name="user_permission[]" id="user_permission[]" multiple size="5">
                             <option value="I"><span>Inserir -> ( Permite inclusões de registros )</span></option>
                             <option value="S"><span>Selecionar -> ( Permite seleções de registros )</span></option>
@@ -207,7 +207,8 @@ EOT;
     {
 
         $screenListUser = <<< EOT
-        <table class="content-table">
+        <div class="sys_tableuser">
+        <table class="sys_content-table">
         <thead>
           <tr>
             <th>Nome</th>

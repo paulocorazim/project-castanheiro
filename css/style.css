@@ -18,7 +18,7 @@ h2  {
 
 /*- TELA DE LOGIN 1.0 ---------------------------------------------------------------------*/
 
-.blocklogin {
+.sys_blocklogin {
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
@@ -26,7 +26,7 @@ h2  {
     height: 100vh;
     background-color: #332106;
 }
-.login {
+.sys_login {
     text-align: center;
     width: 400px;
     box-sizing: border-box;
@@ -34,18 +34,18 @@ h2  {
     background: white;
     border-radius: 15px;
 }
-.login h2 {
+.sys_login h2 {
     margin: 0 0 30px;
     padding: 0;
     font-size: 30px;
     text-transform: uppercase;
 }
-.login .input-group {
+.sys_login .sys_input-group {
     position: relative;
     width: 100%;
     margin-bottom: 25px;
 }
-.login .input-group input {
+.sys_login .sys_input-group input {
     height: 50px;
     width: 100%;
     padding: 0 20px;
@@ -55,7 +55,7 @@ h2  {
     border: 1px solid silver;
     border-radius: 10px;
 }
-.login .input-group span {
+.sys_login .sys_input-group span {
     position: absolute;
     top: 9px;
     left: 20px;
@@ -66,8 +66,8 @@ h2  {
     text-transform: uppercase;
     border-radius: 5px;
 }
-.login .input-group input:focus ~ span,
-.login .input-group input:valid ~ span {
+.sys_login .sys_input-group input:focus ~ span,
+.sys_login .sys_input-group input:valid ~ span {
     top: -15px;
     left: 15px;
     font-size: 10px;
@@ -76,7 +76,7 @@ h2  {
     background: white;
 
 }
-.login .input-group input[type="submit"]{
+.sys_login .sys_input-group input[type="submit"]{
     background:#80530F;
     border: none;
     box-shadow:  none;
@@ -85,17 +85,17 @@ h2  {
     font-weight: 600;
     transition: 0.5s;
 }
-.login .input-group input[type="submit"]:hover {
+.sys_login .sys_input-group input[type="submit"]:hover {
     background: #b28849;
     transition: 0.5s;
 }
-.login a {
+.sys_login a {
     color: #3d2d1d;
     text-decoration: none;
     display: block;
     text-align: center;
 }
-.login a span {
+.sys_login a span {
     font-weight: 600;
 }
 .logoone {  
@@ -103,7 +103,7 @@ h2  {
     margin-bottom: 15px;
 }
 
-.login hr {
+.sys_login hr {
     width: 70%;
     border: 2px solid #b28849;
     border-radius: 5px;
@@ -125,32 +125,32 @@ header {
     text-transform: uppercase;
 }
 
-.logo {
+.sys_logo {
     cursor: pointer;
     margin-right: auto;
     width: 50px;
 }
 
-.nav_links {
+.sys_nav_links {
     list-style: none;
 }
 
-.nav_links li {
+.sys_nav_links li {
     display: inline-block;
     padding: 8px 20px;
 }
 
-.nav_links li a {
+.sys_nav_links li a {
     text-decoration: none;
     transition: all 0.3s ease 0s;
     color:#ffffff;
 }
 
-.nav_links li a:hover {
+.sys_nav_links li a:hover {
     color: #b28849;
 }
 
-.iconnavbar {
+.sys_iconnavbar {
 margin-left: 50px;
 font-size: 30px;
 color:#ffffff;
@@ -160,32 +160,28 @@ ul {
     list-style: none;
 }
 
-.useroption ul ul {
+.sys_useroption ul ul {
     position: absolute;
     visibility: hidden;
     margin-top: 0px;
     border: solid 1px black;
 }
-.useroption ul li:hover ul {
+.sys_useroption ul li:hover ul {
     visibility: visible; 
 }
-.uluseroption, .useroption ul ul a {
+.sys_uluseroption, .sys_useroption ul ul a {
     color: white;
     background-color: #b28849;
     text-transform: capitalize !important;
 }
-.useroption ul ul li a {
+.sys_useroption ul ul li a {
     text-align: center;
     align-items: center;
 }
 /*- FOOTER  ---------------------------------------------------------------------*/
-footer {
-    position: absolute;
-    bottom: 0;
-    background-color: #402908;
-    height: 30px;
-    width: 100%;
-}
+
+
+
 /*- SCROLL  ---------------------------------------------------------------------*/
 
 ::-webkit-scrollbar {
@@ -201,18 +197,18 @@ footer {
 
 /*- PAGE-USUARIO  ---------------------------------------------------------------------*/
 
-.containerprincipal {
+.sys_containerprincipal {
     max-width: 1200px;
     margin: auto;
 }
-.margin_esq_padrao {
+.sys_margin_esq_padrao {
     margin-left: 30px;
 }
-.flex_main {
+.sys_flex_main {
     display: flex;
     justify-content: space-around;
 }
-.flex_sub {
+.sys_flex_sub {
     flex-direction: row;
     border: 1px solid whitesmoke;
     padding: 20px;
@@ -222,12 +218,13 @@ footer {
     background-color: white;
 }
 
-form > .input-group{
+form   > .sys_input-group{
     margin: 20px 0;
     position: relative;
+
 }
 
-.input-group > .form-control {
+.sys_input-group > .sys_form-control {
     padding: 10px 0;
     width: 250px;
     border: none;
@@ -236,7 +233,7 @@ form > .input-group{
     transition: .2s;
 }
 
-.input-group > label {
+.sys_input-group > label {
     font-family: Arial, Helvetica, sans-serif;
     position: absolute;
     top: 10px;
@@ -246,20 +243,20 @@ form > .input-group{
     transition: .2s;
 }
 
-.form-control:focus {
+.sys_form-control:focus {
     border-color: maroon;
 }
 
-.form-control:focus ~ label {
+.sys_form-control:focus ~ label {
     color:RED;
     top: -12px;
 }
 
-.form-control ~ label {
+.sys_form-control ~ label {
     top: -10px;
 }
 
-.spaninput {
+.sys_spaninput {
     font-family: 'Roboto';
     font-size: 1.1em !important;
 }
@@ -274,7 +271,7 @@ button[type=submit]{
     border-radius: 4px;
 }
 
-.flex_sub hr {
+.sys_flex_sub hr {
     width: 15%;
     display: inline-block;
     border: 1px solid #402908;
@@ -283,30 +280,14 @@ button[type=submit]{
     margin-bottom: 10px;
 }
 
-.selectmultiple {
-    width: 70%;
-    overflow: inherit;
-    border: none;
-    -webkit-appearance: button;
-    overflow: initial;
-}
-
-.optselectmultiple {
-    color: red;
-    background-color: blue;
-    border-radius: 20px;
-    margin: 10px;
-    text-align: center;
-}
-
 /*---------------------TABELA ----------------------------------------*/
 
-.tableuser {
+.sys_tableuser {
     display: flex;
     justify-content: space-around;
     margin: 25px;
 }
-.content-table {
+.sys_content-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.9em;
@@ -317,31 +298,31 @@ button[type=submit]{
     background-color: white;
   }
   
-  .content-table thead tr {
+  .sys_content-table thead tr {
     background-color: #b28849;
     color: #ffffff;
     text-align: left;
     font-weight: bold;
   }
   
-  .content-table th,
-  .content-table td {
+  .sys_content-table th,
+  .sys_content-table td {
     padding: 12px 15px;
   }
   
-  .content-table tbody tr {
+  .sys_content-table tbody tr {
     border-bottom: 1px solid #dddddd;
   }
   
-  .content-table tbody tr:nth-of-type(even) {
+  .sys_content-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
   }
   
-  .content-table tbody tr:last-of-type {
+  .sys_content-table tbody tr:last-of-type {
     border-bottom: 2px solid #b28849;
   }
   
-  .content-table tbody tr:hover {
+  .sys_content-table tbody tr:hover {
     font-weight: bold;
     color: #b28849;
   }
@@ -388,7 +369,7 @@ button[type=submit]{
 /* Reposivel -------*/
 
 @media screen and (max-width: 800px) {
-    .flex_main {
+    .sys_flex_main {
         flex-wrap: wrap;
     }
 }

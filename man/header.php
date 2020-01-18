@@ -9,18 +9,18 @@ class Headers
         //<li> dinamica com os módulos do usuário.
         return <<< EOT
         <header>
-        <img class="logo" src="../image/logo.png" alt="logo">
+        <img class="sys_logo" src="../image/logo.png" alt="logo">
         <nav>
-            <ul class="nav_links">
+            <ul class="sys_nav_links">
                 <li>
                     $typeModules[0]
                 </li>
             </ul>
         </nav>
-            <div class="useroption">
+            <div class="sys_useroption">
                 <ul>
-                    <li><a class="cta iconnavbar" href="#"><i class="fas fa-user-circle"></i></a>
-                        <ul class="uluseroption">
+                    <li><a class="cta sys_iconnavbar" href="#"><i class="fas fa-user-circle"></i></a>
+                        <ul class="sys_uluseroption">
                             <li><a>Olá X</a></li>
                             <li><a href="manager.php?exit=&%$%91">Sair</a></li>
                         </ul>

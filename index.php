@@ -14,22 +14,22 @@
 
 <body>
 
-<div class="blocklogin">
+<div class="sys_blocklogin">
 
-    <div class="login">
+    <div class="sys_login">
         <img class="logoone" src="image/logo.png">
         <hr>
         <h2>Login</h2>
         <form action="login.php" method="POST">
-            <div class="input-group">
+            <div class="sys_input-group">
                 <input type="email" name="email" id="email" required="required">
                 <span>Entre com seu e-mail ou cpf</span>
             </div>
-            <div class="input-group">
+            <div class="sys_input-group">
                 <input type="password" name="password" id="password" required="required">
                 <span>entre com sua senha</span>
             </div>
-            <div class="input-group">
+            <div class="sys_input-group">
                 <input type="submit" name="btnLogin" id="btnLogin" value="Login">
             </div>
         </form>
