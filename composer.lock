@@ -1,11 +1,59 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "875bdb712c426b62ef27fe2313f0e665",
+    "content-hash": "cbbf19dd6d4fd05847ccd34acb69a4a1",
     "packages": [
+        {
+            "name": "bissolli/validador-cpf-cnpj",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bissolli/validador-cpf-cnpj.git",
+                "reference": "9ae383648473ea8b7040d766ced8aeb1a1cf3fc8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bissolli/validador-cpf-cnpj/zipball/9ae383648473ea8b7040d766ced8aeb1a1cf3fc8",
+                "reference": "9ae383648473ea8b7040d766ced8aeb1a1cf3fc8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bissolli\\ValidadorCpfCnpj\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gustavo Bissolli",
+                    "email": "gustavo.bissolli@gmail.com"
+                }
+            ],
+            "description": "Classe em PHP para validação de CPF e CNPJ.",
+            "homepage": "https://github.com/bissolli/validador-cpf-cnpj",
+            "keywords": [
+                "brasil",
+                "cnpj",
+                "cpf",
+                "documento",
+                "laravel",
+                "validador"
+            ],
+            "time": "2018-08-14T09:13:34+00:00"
+        },
         {
             "name": "fightbulc/easy_pdo",
             "version": "0.1.8",

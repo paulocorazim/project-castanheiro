@@ -60,7 +60,7 @@
             'email' => "$_POST[user_email]",
             'password' => md5("$_POST[user_password]"),
             'confirm_passwd' => md5("$_POST[user_confirm_password]"),
-            'dt_update' => date('Y-m-m h:m:s'),
+            'dt_update' => date('Y-m-d h:m:s'),
             'dt_created' => date('Y-m-d h:m:s'),
             'permission_master' => "$_POST[permission_master]",
             'permission_I' => "$_POST[permission_I]",
@@ -76,3 +76,5 @@
         $activeRecords->manager_user($dbInstance, $regists_user, $regists_module, $regists_permission, $appFunctions);
         exit();
     }
+
+    echo $footer->footer();

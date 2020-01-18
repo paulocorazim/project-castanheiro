@@ -5,6 +5,7 @@
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/fightbulc/easy_pdo" />
       <path value="$PROJECT_DIR$/vendor/simplon/db" />
+      <path value="$PROJECT_DIR$/vendor/bissolli/validador-cpf-cnpj" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

@@ -2,6 +2,7 @@
   "require": {
     "simplon/db": "^1.2",
     "ext-json": "*",
-    "ext-simplexml": "*"
+    "ext-simplexml": "*",
+    "bissolli/validador-cpf-cnpj": "^1.2"
   }
 }

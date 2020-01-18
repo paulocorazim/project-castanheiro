@@ -44,3 +44,19 @@ function cpfCnpj(v) {
     return v
 
 }
+
+jQuery(function ($) {
+    $("#client_phone1").mask("(99) 99999-9999");
+    $("#client_phone2").mask("(99) 99999-9999");
+    $("#client_phone3").mask("(99) 99999-9999");
+    $('#client_rg').mask('99.999.999-9');
+});
+
+function disable_client_state_registration_free() {
+    if (document.getElementById('client_state_registration_free').checked) {
+        document.getElementById('client_state_registration').disabled = true;
+    }
+    if (document.getElementById('client_state_registration_free').checked === false) {
+        document.getElementById('client_state_registration').disabled = false;
+    }
+}

@@ -9,33 +9,36 @@
     include("header.php");
     include("footer.php");
     include("../class/class.ScreenUsers.php");
-include("../class/class.Functions.php");
-include("../class/class.DbConnection.php");
-include('../class/class.UserLinkModules.php');
-include("../class/class.DbManagerRecords.php");
+    include("../class/class.Functions.php");
+    include("../class/class.DbConnection.php");
+    include('../class/class.UserLinkModules.php');
+    include("../class/class.DbManagerRecords.php");
 
-$conn = new DBconnect();
-$dbInstance = $conn->connection();
+    $conn = new DBconnect();
+    $dbInstance = $conn->connection();
 
-$head = new Heads();
-$header = new Headers();
-$footer = new Footers();
-$screenUsers = new ScreenUsers();
+    $head = new Heads();
+    $header = new Headers();
+    $footer = new Footers();
+    $screenUsers = new ScreenUsers();
 
-$appFunctions = new appFunctions();
-$appFunctions->validate_session();
+    $appFunctions = new appFunctions();
+    $appFunctions->validate_session();
 
-$typeModule = new LinkModule();
-$typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
+    $typeModule = new LinkModule();
+    $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
 
-echo $head->head("AppManer Castanheiro");
-echo $header->navBar($typeModules);
+    echo $head->head("AppManer Castanheiro");
+    echo $header->navBar($typeModules);
 
-if (isset($_GET['exit'])) {
+    if (isset($_GET['exit'])) {
 
-    $appFunctions->delete_session();
-    $appFunctions->redirect_page('0', '../index.php');
-    exit;
-}
+        $appFunctions->delete_session();
+        $appFunctions->redirect_page('0', '../index.php');
+        exit;
+    }
 
-/*echo $footer->footer();*/
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $local = date('d-M-Y');
+
+    echo $footer->footer();

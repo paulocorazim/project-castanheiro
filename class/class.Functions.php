@@ -31,44 +31,50 @@ Class appFunctions
         session_destroy();
     }
 
-    public function alert_error($msg)
+    public function alert_system($type, $msg)
     {
-        echo $alert_error = <<<EOT
-       <div class="alerta error">$msg</div>
-           
+
+        if ($type == 0) {
+
+            $alert = 'alert-danger';
+        }
+        if ($type == 1) {
+
+            $alert = 'alert-success';
+        }
+        if ($type == 2) {
+
+            $alert = 'alert-primary';
+        }
+        if ($type == 3) {
+
+            $alert = 'alert-secondary';
+        }
+        if ($type == 4) {
+
+            $alert = 'alert-warning';
+        }
+        if ($type == 5) {
+
+            $alert = 'alert-info';
+        }
+        if ($type == 6) {
+
+            $alert = 'alert-light';
+        }
+        if ($type == 7) {
+
+            $alert = 'alert-dark';
+        }
+
+        $alert_type = <<<EOT
+        <div class="alert $alert" role="alert">
+          $msg
+        </div>
+
 EOT;
 
-        return $alert_error;
-    }
-
-    public function alert_sucess($msg)
-    {
-        echo  $alert_sucess = <<<EOT
-       <div class="alerta sucesso">$msg</div>
-    
-EOT;
-
-        return $alert_sucess;
-    }
-
-    public function alert_attention($msg)
-    {
-        echo $alert_attention = <<<EOT
-       <div class="alerta atencao">$msg</div>
-    
-EOT;
-
-        return $alert_attention;
-    }
-
-    public function alert_warning($msg)
-    {
-        echo $alert_warning = <<<EOT
-       <div class="alerta info">$msg</div> 
-    
-EOT;
-
-        return $alert_warning;
+        return $alert_type;
     }
 
     public function redirect_page($time, $url)

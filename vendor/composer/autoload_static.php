@@ -6,6 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInita71afefb42b6db19a05d31f34dc9d1e7
 {
+    public static $prefixLengthsPsr4 = array (
+        'B' => 
+        array (
+            'Bissolli\\ValidadorCpfCnpj\\' => 26,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Bissolli\\ValidadorCpfCnpj\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bissolli/validador-cpf-cnpj/src',
+        ),
+    );
+
     public static $prefixesPsr0 = array (
         'S' => 
         array (
@@ -33,6 +47,8 @@ class ComposerStaticInita71afefb42b6db19a05d31f34dc9d1e7
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInita71afefb42b6db19a05d31f34dc9d1e7::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita71afefb42b6db19a05d31f34dc9d1e7::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInita71afefb42b6db19a05d31f34dc9d1e7::$prefixesPsr0;
             $loader->classMap = ComposerStaticInita71afefb42b6db19a05d31f34dc9d1e7::$classMap;
 

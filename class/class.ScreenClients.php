@@ -40,7 +40,7 @@ public function screenFormClient()
                         </div>
                         
                         <div class="sys_input-group">
-                            <input type="radio" name="client_state_registration_free" id="client_state_registration_free" value="fr">    
+                            <input type="checkbox" name="client_state_registration_free" id="client_state_registration_free" value="fr" OnClick="disable_client_state_registration_free()">    
                             <label for="name">Isento</label>
                         </div>    
                             
@@ -61,7 +61,7 @@ public function screenFormClient()
                         
                         <div class="sys_input-group">
                             <input type="text" name="client_responsible" id="client_responsible" class="sys_form-control">
-                            <label for="rg">Responsavel</label>
+                            <label for="client_responsible">Responsavel</label>
                         </div>
                           
                 </div>
@@ -71,13 +71,11 @@ public function screenFormClient()
                         <hr>                               
                          
                          <div class="sys_input-group">
-                             E-mail 1 <input type="email" name="client_email1" id="client_email1" class="sys_form-control">
-                           
+                             E-mail 1 <input type="email" name="client_email1" id="client_email1" class="sys_form-control">                           
                         </div>
                         
                         <div class="sys_input-group">
-                            E-mail 2 <input type="email" name="client_email2" id="client_email2" class="sys_form-control">
-                            
+                            E-mail 2 <input type="email" name="client_email2" id="client_email2" class="sys_form-control">                            
                         </div> 
 
                         <div class="sys_input-group">

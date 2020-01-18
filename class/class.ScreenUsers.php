@@ -41,7 +41,7 @@ class ScreenUsers
             <h3 class="sys_spaninput">Permissões do Usuário</h3>  
             <hr>    
                 <div class="sys_input-group">
-                    <input type="checkbox" name="permission_master" id="permission_master" text="master" value="master"><span>Master ( Permissão ADMIN )</span>
+                    <input type="checkbox" name="permission_master" id="permission_master" text="master" value="master" onclick="disable_modules_permissions()" ><span>Master ( Permissão ADMIN )</span>
                 </div>  
                 <h3 class="sys_spaninput">Módulos que o usuário pode acessar:</h3>  
                 <hr>              

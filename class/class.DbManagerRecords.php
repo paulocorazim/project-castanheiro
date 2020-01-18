@@ -32,7 +32,7 @@ class DbManagerRecords
 
             //Verifica as senhas informada.
             if ($data['password'] != $data['confirm_passwd']) {
-                $appFunctions->alert_error("Atenção! -> As senhas não combinam, por favor refaça a operação!");
+                echo $appFunctions->alert_system(4, "Atenção! -> As senhas não combinam, por favor refaça a operação!");
                 exit();
             }
 
@@ -81,27 +81,27 @@ class DbManagerRecords
 
                     } catch (Exception $e) {
                         $error = $e->getMessage();
-                        $appFunctions->alert_error("Erro ao Inserir Módulos / Permissões ->" . $error);
+                        echo $appFunctions->alert_system(0, "Erro ao Inserir Módulos / Permissões ->" . $error);
                     }
                 }
 
                 //Aviso do sucesso e redireciona a pagina
-                $appFunctions->alert_sucess("Usuário cadastrado com sucesso!");
-                $appFunctions->redirect_page('4', '../man/manager.users.php');
+                echo $appFunctions->alert_system(1, "Usuário cadastrado com sucesso!");
+                $appFunctions->redirect_page('3', '../man/manager.users.php');
                 exit();
 
 
             } else {
 
                 // Se o CPF já foi usado, nega operação
-                $appFunctions->alert_error("Atenção! Este CPF: $user_cpf[cpf] já esta sendo usado, você deve fazer a recuperação de senha!");
+                echo $appFunctions->alert_system(4, "Atenção! Este CPF: $user_cpf[cpf] já esta sendo usado, você deve fazer a recuperação de senha!");
                 exit();
             }
 
         } catch
         (Exception $e) {
             $error = $e->getMessage();
-            $appFunctions->alert_error("Erro ao Inserir Usuário ->" . $error);
+            echo $appFunctions->alert_system(0, "Erro ao Inserir Usuário ->" . $error, 0);
         } else { //Edição do usuário
 
             //id do usuário
@@ -159,7 +159,7 @@ class DbManagerRecords
 
                 //Verifica as senhas informada.
                 if ($data['password'] != $data['confirm_passwd']) {
-                    $appFunctions->alert_error("Atenção! -> As senhas não combinam, por favor refaça a operação!");
+                    echo $appFunctions->alert_system(4, "Atenção! -> As senhas não combinam, por favor refaça a operação!");
                     exit();
                 }
 
@@ -172,7 +172,7 @@ class DbManagerRecords
 
             } catch (Exception $e) {
                 $error = $e->getMessage();
-                $appFunctions->alert_error("Erro ao alterar Usuário ->" . $error);
+                echo $appFunctions->alert_system(0, "Erro ao alterar Usuário ->" . $error);
             }
 
             if ($regists_module != null) {
@@ -187,7 +187,7 @@ class DbManagerRecords
 
                 } catch (Exception $e) {
                     $error = $e->getMessage();
-                    $appFunctions->alert_error("Erro ao alterar módulos ->" . $error);
+                    echo $appFunctions->alert_system(0, "Erro ao alterar módulos ->" . $error);
                 }
 
                 try {
@@ -214,12 +214,12 @@ class DbManagerRecords
 
                 } catch (Exception $e) {
                     $error = $e->getMessage();
-                    $appFunctions->alert_error("Erro ao alterar permissões ->" . $error);
+                    echo $appFunctions->alert_system(0, "Erro ao alterar permissões ->" . $error);
                 }
 
             }
 
-            $appFunctions->alert_warning("<hr> USUÁRIO ALTERADO COM SUCESSO !  Aguarde ... <hr>");
+            echo $appFunctions->alert_system(5, "Usuário alterado com sucesso !  Aguarde ...");
             $appFunctions->redirect_page('3', '../man/manager.users.php');
             exit();
         }
@@ -273,27 +273,78 @@ class DbManagerRecords
 
                     } catch (Exception $e) {
                         $error = $e->getMessage();
-                        $appFunctions->alert_error("Erro ao selecionar Permissões ->" . $error);
+                        $appFunctions->alert_system(0, "Erro ao selecionar Permissões ->" . $error);
                     }
                 }
 
             } catch (Exception $e) {
                 $error = $e->getMessage();
-                $appFunctions->alert_error("Erro ao selecionar Módulos ->" . $error);
+                $appFunctions->alert_system(0, "Erro ao selecionar Módulos ->" . $error);
             }
 
         } catch (Exception $e) {
 
             $error = $e->getMessage();
-            $appFunctions->alert_error("Erro ao selecionar Usuário ->" . $error);
+            $appFunctions->alert_system(0, "Erro ao selecionar Usuário ->" . $error);
         }
 
         return array($shResultsUser, $shResultsModules, $shResultsPerssion);
     }
 
     /*Inclusão/Alteração de Clientes*/
-    public function manager_client($regists_client)
+    public function manager_client($dbInstance, $appFunctions, $regists_client)
     {
-        var_dump($regists_client);
+        if ($regists_client['id'] == null) { //inclusão ou alteração
+
+            try {
+
+                $data = [
+                    'name' => "$regists_client[name]",
+                    'corporate_name' => "$regists_client[corporate_name]",
+                    'dt_created' => "$regists_client[dt_created]",
+                    'dt_update' => "$regists_client[dt_update]",
+                    'zip_code' => "$regists_client[zip_code]",
+                    'address' => "$regists_client[address]",
+                    'number' => "$regists_client[number]",
+                    'county' => "$regists_client[county]",
+                    'city' => $regists_client[city],
+                    'neighbordhood' => "$regists_client[neighbordhood]",
+                    'state' => "$regists_client[state]",
+                    'phone1' => "$regists_client[phone1]",
+                    'phone2' => "$regists_client[phone2]",
+                    'phone3' => "$regists_client[phone3]",
+                    'cpf' => "$regists_client[cpf]",
+                    'cnpj' => "$regists_client[cnpj]",
+                    'rg' => "$regists_client[rg]",
+                    'type' => "$regists_client[type]",
+                    'state_registration' => "$regists_client[state_registration]",
+                    'municipal_registration' => "$regists_client[municipal_registration]",
+                    'email1' => "$regists_client[email1]",
+                    'email2' => "$regists_client[email2]",
+                    'site' => "$regists_client[site]",
+                    'obs' => "$regists_client[obs]",
+                    'active' => 1,
+                    'responsible' => "$regists_client[responsible]"
+                ];
+
+                $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+                $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+                    ->setTableName('tab_clients') // define the table name
+                    ->setData($data); // set data (keys = database column name)
+                $sqlManager->insert($sqlQuery);
+
+                echo $appFunctions->alert_system(1, "Inclusão do Cliente : $regists_client[name] concluida com sucesso!");
+
+
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+                echo $appFunctions->alert_system(0, "Erro ao alterar permissões ->" . $error);
+            }
+
+
+        } else {
+            $appFunctions->alert_system(5, "Alteração do Cliente concluida com sucesso!");
+        }
+
     }
 }
