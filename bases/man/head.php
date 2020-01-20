@@ -16,7 +16,7 @@ Class shHead
           <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
           <meta content="" name="description">
           <meta content="" name="author">
-        
+
           <title>$tile</title>
         
           <!-- Custom fonts for this template-->
