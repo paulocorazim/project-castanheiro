@@ -16,25 +16,25 @@ class ScreenUsers
                <form class="user">
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                      <input class="form-control form-control-user" id="exampleFirstName" placeholder="First Name"
+                      <input class="form-control form-control-user" id="user_name" name="user_name" placeholder="Nome"
                              type="text">
                     </div>
                     <div class="col-sm-6">
-                      <input class="form-control form-control-user" id="exampleLastName" placeholder="Last Name"
+                      <input class="form-control form-control-user" id="user_cpf" name="user_cpf" placeholder="CPF"
                              type="text">
                     </div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address"
+                    <input class="form-control form-control-user" id="user_email" name="user_email" placeholder="E-mail"
                            type="email">
                   </div>
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                      <input class="form-control form-control-user" id="exampleInputPassword" placeholder="Password"
+                      <input class="form-control form-control-user" id="password" name="password" placeholder="Senha"
                              type="password">
                     </div>
                     <div class="col-sm-6">
-                      <input class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password"
+                      <input class="form-control form-control-user" id="user_confirm_password" name="user_confirm_password"  placeholder="Repita a Senha"
                              type="password">
                     </div>
                   </div>
