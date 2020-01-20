@@ -21,9 +21,7 @@ Class appFunctions
         session_start();
         if (!isset($_SESSION['Connected'])) {
             echo "<b>Usuário não esta logado!</b>";
-            echo $redirect_page = <<<EOT
-            <meta http-equiv='refresh' content='1;url=../' />
-EOT;
+            header("Location: ../");
             exit();
         }
     }

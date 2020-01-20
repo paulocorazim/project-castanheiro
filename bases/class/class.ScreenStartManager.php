@@ -7,6 +7,8 @@
 
             $ip = $_SERVER['REMOTE_ADDR'];
             $user = $_SESSION['name'];
+            $type = $_SESSION['user_type'];
+            $update = $_SESSION['dt_update'];
             $date = date('d-M-Y');
 
             return <<< EOT
@@ -314,7 +316,7 @@
                         <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
                            href="#"
                            id="userDropdown" role="button">
-                          <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                          <span class="mr-2 d-none d-lg-inline text-gray-600 small">$user</span>
                           <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                         </a>
                         <!-- Dropdown - User Information -->
@@ -334,7 +336,7 @@
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" data-target="#logoutModal" data-toggle="modal" href="#">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
+                            Sair
                           </a>
                         </div>
                       </li>
@@ -466,7 +468,7 @@
                 <footer class="sticky-footer bg-white">
                   <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                      <span>Copyright &copy; Castanheiro | appManager v1 |  User: $ip | $user | $date </span>
+                      <span>Copyright &copy; Castanheiro | appManager v1 |  IP: $ip | $type | $date | $update</span>
                     </div>
                   </div>
                 </footer>
@@ -489,15 +491,15 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Deseja sair da Plataforma?</h5>
                     <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                       <span aria-hidden="true">×</span>
                     </button>
                   </div>
-                  <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                  <div class="modal-body">Clique em sair para deixar o sistema de forma correta!.</div>
                   <div class="modal-footer">
-                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
-                    <a class="btn btn-primary" href="index.php">Logout</a>
+                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Sair</button>
+                    <a class="btn btn-primary" href="manager.php?exit=#$@#$">Sair</a>
                   </div>
                 </div>
               </div>
