@@ -6,67 +6,55 @@ class ScreenUsers
     {
         $screenFormUser = <<< EOT
         <script src="../js/main.js" type="text/javascript" type="text/javascript"></script>
-        <div class="sys_containerprincipal">
-            <div class="sys_margin_esq_padrao">
-                <h2>Cadastro de Usuário</h2>
+
+        <div class="container">        
+           <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="p-5">
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Novo Usuário</h1>
             </div>
-            <div class="sys_flex_main">
-                <div class="sys_flex_sub">
-                    <form action="manager.users.php" method="post">
-                    <h3 class="sys_spaninput">Informações:</h3>
-                    <hr>
-                        <div class="sys_input-group">
-                            <input type="text" name="user_name" id="user_name" class="sys_form-control">
-                            <label for="name">Nome</label>
-                        </div>
-                        <div class="sys_input-group">
-                            <input type="text" name="user_cpf" id="user_cpf" class="sys_form-control" onblur="return valid()">
-                            <label for="cpf">Cpf</label>
-                        </div>
-                        <div class="sys_input-group">
-                            <input type="email" name="user_email" id="user_email" class="sys_form-control">
-                            <label for="email">E-mail</label>
-                        </div>
-                        <div class="sys_input-group">
-                            <input type="password" name="user_password" id="user_password" class="sys_form-control">
-                            <label for="password">Crie uma senha</label>
-                        </div>
-                        <div class="sys_input-group">
-                            <input type="password" name="user_confirm_password" id="user_confirm_password"
-                                class="sys_form-control">
-                            <label for="confpass">Confirme a Senha</label>
-                        </div>
-                </div>
-            <div class="sys_flex_sub">     
-            <h3 class="sys_spaninput">Permissões do Usuário</h3>  
-            <hr>    
-                <div class="sys_input-group">
-                    <input type="checkbox" name="permission_master" id="permission_master" text="master" value="master" onclick="disable_modules_permissions()" ><span>Master ( Permissão ADMIN )</span>
-                </div>  
-                <h3 class="sys_spaninput">Módulos que o usuário pode acessar:</h3>  
-                <hr>              
-                <div class="sys_input-group">                        
-                   <select name="user_module[]" id="user_module[]" multiple size="10">
-                        $typeModules[1]
-                    </select>
-                </div>        
-            </div>
-            <div class="sys_flex_sub">
-                    <h3 class="sys_spaninput">Permissões para os módulos.</h3>
-                    <hr>
-                    <select name="user_permission[]" id="user_permission[]" multiple size="6">
-                        <option value="I"><span>Inserir -> ( Permite inclusão de registros )</span></option>
-                        <option value="S"><span>Seleção -> ( Permite seleções de registros )</span></option>
-                        <option value="U"><span>Alterar -> ( Permite Alterações de registros )</span></option>
-                        <option value="D"><span>Deletar -> ( Permite APAGAR registros )</span></option>
-                    </select><br><br>
-                    <button type="submit" name="btn_update" id="btn_upadte">C A D A S T R A R</button>
+               <form class="user">
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <input class="form-control form-control-user" id="exampleFirstName" placeholder="First Name"
+                             type="text">
+                    </div>
+                    <div class="col-sm-6">
+                      <input class="form-control form-control-user" id="exampleLastName" placeholder="Last Name"
+                             type="text">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address"
+                           type="email">
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <input class="form-control form-control-user" id="exampleInputPassword" placeholder="Password"
+                             type="password">
+                    </div>
+                    <div class="col-sm-6">
+                      <input class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password"
+                             type="password">
+                    </div>
+                  </div>
+                  <a class="btn btn-primary btn-user btn-block" href="index.php">
+                    Register Account
+                  </a>
+                  <hr>
+                  <a class="btn btn-google btn-user btn-block" href="index_.html">
+                    <i class="fab fa-google fa-fw"></i> Register with Google
+                  </a>
+                  <a class="btn btn-facebook btn-user btn-block" href="index_.html">
+                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                  </a>
                 </form>
-            </div>
+                             
         </div>
-        <div class="sys_margin_esq_padrao">
-            <h2> Usuários já Cadastrados</h2>
-        </div>
+        
+        
+                
+
 
 EOT;
 
@@ -124,28 +112,28 @@ EOT;
                 <div class="sys_flex_main">
                     <div class="sys_flex_sub">
                         <form action="manager.users.php" method="post">
-                            <div class="sys_input-group">
+                            <div class="form-control form-control-user>
                                 <input type="hidden" name="user_id" id="user_id" value="$user_regist[id]" >
                                 <input type="text" name="user_name" id="user_name" class="sys_form-control" value="$user_regist[name]">
                                 <label for="name">Nome</label>
                             </div>
-                            <div class="sys_input-group">
+                            <div class="form-control form-control-user>
                                 <input type="text" name="user_cpf" id="user_cpf" class="sys_form-control" onblur="return valid()" value="$user_regist[cpf]">
                                 <label for="cpf">Cpf</label>
                             </div>
-                            <div class="sys_input-group">
+                            <div class="form-control form-control-user>
                                 <input type="email" name="user_email" id="user_email" class="sys_form-control" value="$user_regist[email]">
                                 <label for="email">E-mail</label>
                             </div>
-                            <div class="sys_input-group">
+                            <div class="form-control form-control-user>
                                 <input type="password" name="user_password" id="user_password" class="sys_form-control" value="" title=";) Deixe em branco para não mudar!" >
                                 <label for="password">Crie uma senha</label>
                             </div>
-                            <div class="sys_input-group">
+                            <div class="form-control form-control-user>
                                 <input type="password" name="user_confirm_password" id="user_confirm_password" class="sys_form-control" value="">
                                 <label for="confpass">Confirme a Senha</label>
                             </div>
-                            <div class="sys_input-group">
+                            <div class="form-control form-control-user>
                                 <l<h3 class="sys_spaninput">Desativar Usuário</h3>
                                 { <input type="checkbox" name="status" id="status" text="status" value="inativo" $checked_status ></span> }
                             </div>
@@ -153,18 +141,18 @@ EOT;
                 <div class="sys_flex_sub">     
                 <h3 class="sys_spaninput">Permissões do Usuário</h3> 
                 <hr>    
-                    <div class="sys_input-group">
+                    <div class="form-control form-control-user>
                         <input type="checkbox" name="permission_master" id="permission_master" text="master" value="master" $checked_master><span>Master ( Permissão ADMIN )</span>
                     </div>  
                     <h3 class="sys_spaninput">Módulos atuais.</h3>      
                     <hr>          
-                    <div class="sys_input-group">                        
+                    <div class="form-control form-control-user>                        
                        <select name="user_module_curret[]" id="user_module_curret[]" multiple multiple size="9">
                             $selectModules
                         </select>
                     </div>
                     <h3 class="sys_spaninput">Selecione os novos.</h3>                
-                    <div class="sys_input-group">                        
+                    <div class="form-control form-control-user>                        
                        <select name="user_module[]" id="user_module[]" multiple multiple size="9">
                             $typeModules[1]
                         </select>
@@ -173,7 +161,7 @@ EOT;
                     <div class="sys_flex_sub">
                         <h3 class="sys_spaninput">Permissões atuais.</h3>
                         <hr>
-                        <div class="sys_input-group">
+                        <div class="form-control form-control-user>
                         <select name="user_permission_current[]" id="user_permission_current[]" multiple size="5">
                             $insert
                             $select
@@ -183,7 +171,7 @@ EOT;
                         </div>
                         <h3 class="sys_spaninput">Permissões novas.</h3>
                         <hr>
-                        <div class="sys_input-group">
+                        <div class="form-control form-control-user>
                         <select name="user_permission[]" id="user_permission[]" multiple size="5">
                             <option value="I"><span>Inserir -> ( Permite inclusões de registros )</span></option>
                             <option value="S"><span>Selecionar -> ( Permite seleções de registros )</span></option>

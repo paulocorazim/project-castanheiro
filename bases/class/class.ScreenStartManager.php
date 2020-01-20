@@ -2,7 +2,7 @@
 
     class ScreenManager
     {
-        public function pageWrapper()
+        public function pageWrapper($typeModules, $selected_module, $contentNow)
         {
 
             $ip = $_SERVER['REMOTE_ADDR'];
@@ -23,7 +23,7 @@
                   <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                   </div>
-                  <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                  <div class="sidebar-brand-text mx-3">appManager <sup>v1</sup></div>
                 </a>
             
                 <!-- Divider -->
@@ -31,7 +31,7 @@
             
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
-                  <a class="nav-link" href="index_.html">
+                  <a class="nav-link" href="manager.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
                 </li>
@@ -50,14 +50,13 @@
                      data-toggle="collapse"
                      href="#">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <span>Cadastraos</span>
                   </a>
                   <div aria-labelledby="headingTwo" class="collapse" data-parent="#accordionSidebar" id="collapseTwo">
                     <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Custom Components:</h6>
-                      <a class="collapse-item" href="buttons.html">Buttons</a>
-                      <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
+                      <h6 class="collapse-header">Cadastros Gerais:</h6>
+                      $typeModules[0]
+                      </div>
                   </div>
                 </li>
             
@@ -153,7 +152,7 @@
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                       <div class="input-group">
                         <input aria-describedby="basic-addon2" aria-label="Search" class="form-control bg-light border-0 small"
-                               placeholder="Search for..." type="text">
+                               placeholder="Localize aqui ..." type="text">
                         <div class="input-group-append">
                           <button class="btn btn-primary" type="button">
                             <i class="fas fa-search fa-sm"></i>
@@ -351,112 +350,14 @@
             
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                      <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                      <h1 class="h3 mb-0 text-gray-800">$selected_module</h1>
                       <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="#"><i
                               class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
             
-                    <!-- Content Row -->
-                    <div class="row">
             
-                      <!-- Earnings (Monthly) Card Example -->
-                      <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                          <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                              <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                              </div>
-                              <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-            
-                      <!-- Earnings (Monthly) Card Example -->
-                      <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                          <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                              <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                              </div>
-                              <div class="col-auto">
-                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-            
-                      <!-- Earnings (Monthly) Card Example -->
-                      <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                          <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                              <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-                                <div class="row no-gutters align-items-center">
-                                  <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                  </div>
-                                  <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                      <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar bg-info"
-                                           role="progressbar" style="width: 50%"></div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-            
-                      <!-- Pending Requests Card Example -->
-                      <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-warning shadow h-100 py-2">
-                          <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                              <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                              </div>
-                              <div class="col-auto">
-                                <i class="fas fa-comments fa-2x text-gray-300"></i>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-            
-                    <!-- Content Row -->
-            
-                    
-            
-                    <!-- Content Row -->
-                    <div class="row">
-            
-                      <!-- Content Column -->
-                      <div class="col-lg-6 mb-4">
-                      </div>
-            
-                      <div class="col-lg-6 mb-4">
-            
-                        <!-- Illustrations -->
-            
-                        <!-- Approach -->
-            
-                      </div>
-                    </div>
+                    <!-- Content Now -->
+                    $contentNow
             
                   </div>
                   <!-- /.container-fluid -->
@@ -498,8 +399,8 @@
                   </div>
                   <div class="modal-body">Clique em sair para deixar o sistema de forma correta!.</div>
                   <div class="modal-footer">
-                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Sair</button>
-                    <a class="btn btn-primary" href="manager.php?exit=#$@#$">Sair</a>
+                    <button class="btn btn-secondary" data-dismiss="modal" type="button">CANCELA</button>
+                    <a class="btn btn-primary" href="manager.php?exit=#$@#$">SAIR</a>
                   </div>
                 </div>
               </div>

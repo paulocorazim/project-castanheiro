@@ -5,14 +5,14 @@
 
         public function LinkModules($dbInstance, $id_user, $user_type)
         {
-            $user_li = ""; //NavBar
+            $user_href = ""; //NavBar
             $user_select_box = ""; //Módulos da tela de cadastro de usuários
 
             if ($user_type != 'master') {
 
                 $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-            $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
-                ->setQuery('SELECT DISTINCT b.name,
+                $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+                    ->setQuery('SELECT DISTINCT b.name,
                                                     b.email,
                                                     c.name_link as name_link,
                                                     c.name_app  as name_app,
@@ -28,14 +28,16 @@
             $results = $sqlManager->fetchAll($sqlQuery);
 
             foreach ($results as $key) {
-                $li = "<li><a href='$key[name_app]'>$key[name_link]</a></li>";
-                $user_li .= $li;
+
+
+                $href = "<a class='collapse-item' href='$key[name_app]'>$key[name_link]</a>";
+                $user_href .= $href;
 
                 $select_box = "<option value='$key[id]'>$key[name_link]</option>";
                 $user_select_box .= $select_box;
             }
 
-            return array("$user_li", "$user_select_box");
+                return array("$user_href", "$user_select_box");
 
         } else {
 
@@ -45,14 +47,14 @@
             $results = $sqlManager->fetchAll($sqlQuery);
 
             foreach ($results as $key) {
-                $li = "<li><a href='$key[name_app]'>$key[name_link]</a></li>";
-                $user_li .= $li;
+                $href = "<a class='collapse-item' href='$key[name_app]'>$key[name_link]</a>";
+                $user_href .= $href;
 
                 $select_box = "<option value='$key[id]'>$key[name_link]</option>";
                 $user_select_box .= $select_box;
             }
 
-            return array("$user_li", "$user_select_box");
+                return array("$user_href", "$user_select_box");
         }
     }
 

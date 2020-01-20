@@ -3,16 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.DbConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbConnection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.Functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.UserPermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.UserPermission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bases/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenUsers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/man/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/head.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/man/manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/vendor/composer/ClassLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/bases/vendor/composer/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.users.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.users.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +53,7 @@
         <item name="@Castanheiro" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="shcombr_appmanager: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="tab_clients: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="tab_modules: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -324,15 +320,17 @@
     <state x="1756" y="227" key="com.intellij.ide.util.TipDialog/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518391692" />
     <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578848368598" />
     <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579200886317" />
-    <state x="735" y="113" width="1327" height="818" key="find.popup" timestamp="1579372941686">
-      <screen x="0" y="0" width="2560" height="1050" />
+    <state x="2101" y="116" width="1327" height="842" key="find.popup" timestamp="1579516581412">
+      <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state x="735" y="113" width="1327" height="818" key="find.popup/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579372941686" />
     <state x="392" y="115" width="708" height="570" key="find.popup/0.36.1366.732@0.36.1366.732" timestamp="1579216735012" />
-    <state x="962" y="100" key="refactoring.ChangeSignatureDialog" timestamp="1579366457617">
-      <screen x="0" y="0" width="2560" height="1050" />
+    <state x="2101" y="116" width="1327" height="842" key="find.popup/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579516581412" />
+    <state x="2328" y="103" width="552" height="706" key="refactoring.ChangeSignatureDialog" timestamp="1579485712859">
+      <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state x="962" y="100" key="refactoring.ChangeSignatureDialog/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579366457617" />
+    <state x="2328" y="103" width="552" height="706" key="refactoring.ChangeSignatureDialog/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579485712859" />
     <state x="852" y="239" key="run.anything.popup" timestamp="1579479291825">
       <screen x="0" y="0" width="2560" height="1050" />
     </state>

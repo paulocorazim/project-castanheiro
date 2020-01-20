@@ -8,7 +8,6 @@ error_reporting(E_ALL);
 include("head.php");
 include("../class/class.ScreenStartManager.php");
 include("../class/class.ScreenEndManager.php");
-
 include("../class/class.Functions.php");
 include("../class/class.DbConnection.php");
 include('../class/class.UserLinkModules.php');
@@ -17,20 +16,18 @@ include("../class/class.DbManagerRecords.php");
 $appFunctions = new appFunctions();
 $appFunctions->validate_session();
 
-
-$head = new shHead();
-echo $head->sh_head("AppManer Castanheiro");
-
-$screenManager = new ScreenManager();
-echo $screenManager->pageWrapper();
-
 $conn = new DBconnect();
 $dbInstance = $conn->connection();
 
 $typeModule = new LinkModule();
 $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
 
-//echo $header->navBar($typeModules);
+$head = new shHead();
+echo $head->sh_head("AppManer Castanheiro");
+
+$screenManager = new ScreenManager();
+echo $screenManager->pageWrapper($typeModules, "DashBoard", null);
+
 
 if (isset($_GET['exit'])) {
 

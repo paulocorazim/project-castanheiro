@@ -29,7 +29,7 @@ Class shHead
         
         </head>
         
-        <body id="page-top">
+        
 EOT;
 
     }
