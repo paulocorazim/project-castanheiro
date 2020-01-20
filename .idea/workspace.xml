@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenUsers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/js/cep.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/cep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/js/main_clients.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/main_clients.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.users.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.users.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +166,7 @@
       <workItem from="1579356852467" duration="25409000" />
       <workItem from="1579454967247" duration="6767000" />
       <workItem from="1579471782468" duration="5989000" />
-      <workItem from="1579535630052" duration="1650000" />
+      <workItem from="1579535630052" duration="8000000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -337,5 +343,17 @@
     </state>
     <state x="648" y="84" width="1260" height="965" key="search.everywhere.popup/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579364981050" />
     <state x="346" y="59" width="840" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1579381933207" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/bases/js/main_clients.js</url>
+          <line>10</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

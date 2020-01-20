@@ -26,6 +26,9 @@ Class shHead
         
           <!-- Custom styles for this template-->
           <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+          <script src="../js/main_clients.js" type="text/javascript" type="text/javascript"></script>
+          <script src="../js/cep.js" type="text/javascript" type="text/javascript"></script>
+
         
         </head>
         

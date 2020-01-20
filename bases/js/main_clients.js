@@ -46,11 +46,20 @@ function cpfCnpj(v) {
 }
 
 jQuery(function ($) {
+    7
     $("#client_phone1").mask("(99) 99999-9999");
     $("#client_phone2").mask("(99) 99999-9999");
     $("#client_phone3").mask("(99) 99999-9999");
     $('#client_rg').mask('99.999.999-9');
 });
+
+function format_phones() {
+    document.getElementById("client_phone1").mask("(99) 99999-9999");
+    document.getElementById("client_phone2").mask("(99) 99999-9999");
+    document.getElementById("client_phone3").mask("(99) 99999-9999");
+    document.getElementById("rg").mask('99.999.999-9');
+
+}
 
 function disable_client_state_registration_free() {
     if (document.getElementById('client_state_registration_free').checked) {

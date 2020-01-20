@@ -13,7 +13,6 @@ $(document).ready( function() {
                         $('#client_neighbordhood').val(data.client_neighbordhood);
                         $('#client_city').val(data.client_city);
                         $('#client_state').val(data.client_state);
- 
                         $('#client_number').focus();
                     }else{
                         alert("Cep não encontrado!")

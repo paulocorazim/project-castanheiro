@@ -1,35 +1,40 @@
 <?php /** @noinspection DuplicatedCode */
 
+    ini_set('memory_limit', '256M');
+    ini_set('display_errors', 1);
+    ini_set('display_startup_erros', 1);
+    error_reporting(E_ALL);
 
     include("head.php");
-    include("header.php");
-    include("footer.php");
+    include("../class/class.ScreenStartManager.php");
+    include("../class/class.ScreenEndManager.php");
     include("../class/class.ScreenClients.php");
     include("../class/class.Functions.php");
     include("../class/class.DbConnection.php");
     include('../class/class.UserLinkModules.php');
     include("../class/class.DbManagerRecords.php");
 
+    $appFunctions = new appFunctions();
+    $appFunctions->validate_session();
+
     $conn = new DBconnect();
     $dbInstance = $conn->connection();
 
-    $head = new Heads();
-    $header = new Headers();
-    $footer = new Footers();
-    $screnScreenClient = new ScreenClients();
-
-    $appFunctions = new appFunctions();
-    $appFunctions->validate_session();
+    $activeRecords = new DbManagerRecords();
 
     $typeModule = new LinkModule();
     $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
 
-    $activeRecords = new DbManagerRecords();
+    $head = new shHead();
+    echo $head->sh_head("AppManer >> Clientes");
 
-    echo $head->head("AppManager >> Cadastros de Clientes");
-    echo $header->navBar($typeModules);
+    $screenManager = new ScreenManager();
+    $screenClient = new ScreenClients();
+    $contentNow = $screenClient->screenFormClient();;
 
-    echo $screnScreenClient->screenFormClient();
+    echo $screenManager->pageWrapper($typeModules, "Cadastro de Clientes", $contentNow);
+
+    echo $head->sh_head("AppManager >> Cadastros de Clientes");
 
 
     /*Recebendo dados para inclusão do cliente*/
@@ -121,4 +126,6 @@
 
     }
 
-    echo $footer->footer();
+
+    $footer = new shFooter();
+    echo $footer->sh_footer();
