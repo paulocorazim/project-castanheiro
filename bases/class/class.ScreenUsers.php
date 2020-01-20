@@ -38,18 +38,45 @@ class ScreenUsers
                              type="password">
                     </div>
                   </div>
+                  <hr>
+                    
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                  <h6 class="m-0 font-weight-bold text-primary">Permissões</h6>
+                                </div>
+                                <div class="card-body">
+                                    <select multiple>
+                                        <option>x</option>
+                                        <option>y</option>
+                                        <option>z</option>
+                                      <select> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                  <h6 class="m-0 font-weight-bold text-primary">Permissões 2</h6>
+                                </div>
+                                <div class="card-body">
+                                    <select multiple>
+                                        <option>X</option>
+                                        <option>y</option>
+                                        <option>z</option>
+                                      <select> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                    
+                  <hr>
                   <a class="btn btn-primary btn-user btn-block" href="index.php">
                     Register Account
                   </a>
-                  <hr>
-                  <a class="btn btn-google btn-user btn-block" href="index_.html">
-                    <i class="fab fa-google fa-fw"></i> Register with Google
-                  </a>
-                  <a class="btn btn-facebook btn-user btn-block" href="index_.html">
-                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                  </a>
                 </form>
-                             
+                  
         </div>
         
         
