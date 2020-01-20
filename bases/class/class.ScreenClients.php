@@ -1,11 +1,11 @@
 <?php
 
-Class ScreenClients{
+    Class ScreenClients{
 
-public function screenFormClient()
-{
+        public function screenFormClient()
+        {
 
-    $screenFormClient = <<< EOT
+            $screenFormClient = <<< EOT
 
     <div class="container">
             
@@ -160,15 +160,15 @@ public function screenFormClient()
        
 
 EOT;
-    return $screenFormClient;
+            return $screenFormClient;
 
-}
+        }
 
 
-    public function screenListClient()
-    {
+        public function screenListClient()
+        {
+
+        }
+
 
     }
-
-
-}
