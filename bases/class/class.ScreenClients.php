@@ -10,66 +10,90 @@
             <link rel="stylesheet" href="https://bossanova.uk/jsuites/v2/jsuites.css" type="text/css" />
             <script src="../js/main.js" type="text/javascript" type="text/javascript"></script>
             <script src="../js/cep.js" type="text/javascript" type="text/javascript"></script>
-     
-            <div class="container">
             
+            
+    <div class="container"> 
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="p-5">
-            <div class="text-left">
-                <h1 class="h4 text-gray-900 mb-4">Novo Cliente</h1>
-            </div>                
-                     <form action="../man/manager.clients.php" class="user" method="post" >
-                     
-                      <div class="form-group">
-                        <select class="custom-select col-sm-2"  name="client_active" id="client_active">
-                            <option value="1">Ativo</option>
-                            <option value="0">Bloqueado</option>
-                        </select>  
-                      </div>                                                               
-                        <hr>   
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#novocliente" role="tab" aria-controls="home" aria-selected="true">Novo Cliente</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#dadosadicionais1" role="tab" aria-controls="profile" aria-selected="false">Dados Adicionais 1</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#dadosadicionais2" role="tab" aria-controls="contact" aria-selected="false">Dados Adicionais 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#documentacao" role="tab" aria-controls="contact" aria-selected="false">Documentação</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contratos" role="tab" aria-controls="contact" aria-selected="false">Contratos</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#observacoes" role="tab" aria-controls="contact" aria-selected="false">Observações</a>
+                      </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="novocliente" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="text-left">
+                            <h3 class="mt-3 mb-3">Novo Cliente</h3>
+                        </div>                
+                                 <form action="../man/manager.clients.php" class="user" method="post" >
+                                 
+                                  <div class="form-group">
+                                    <select class="custom-select col-sm-2"  name="client_active" id="client_active">
+                                        <option value="1">Ativo</option>
+                                        <option value="0">Bloqueado</option>
+                                    </select>  
+                                  </div>                                                               
+                                    <hr>   
+                                
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" name="client_name" id="client_name" class="form-control form-control-user" placeholder="Nome">
+                                    </div>
+                                </div>
+            
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" name="client_corporate_name" id="client_corporate_name" class="form-control form-control-user" placeholder="Razão Social">
+                                    </div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control form-control-user" placeholder="CPF / CNPJ">
+                                    </div>
+                                </div>
+                                    
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">   
+                                        <input type="text" name="client_state_registration" id="client_state_registration"  class="form-control form-control-user" placeholder="Inscrição Estadual"  >
+                                    </div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <span>Isento:</span>
+                                        <input class="custom-checkbox" type="checkbox" name="client_state_registration_free" id="client_state_registration_free" value="fr" OnClick="disable_client_state_registration_free()">
+                                    </div>
+                                </div>
+                            
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" name="client_municipal_registration" id="client_municipal_registration"  class="form-control form-control-user" placeholder="Inscrição Municipal">
+                                    </div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" name="client_rg" id="client_rg" class="form-control form-control-user"  placeholder="RG">
+                                    </div>
+            
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" name="client_responsible" id="client_responsible" class="form-control form-control-user" placeholder="Responsável">
+                                    </div>
+                                </div>
+                    </div>
                     
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" name="client_name" id="client_name" class="form-control form-control-user" placeholder="Nome">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" name="client_corporate_name" id="client_corporate_name" class="form-control form-control-user" placeholder="Razão Social">
-                        </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control form-control-user" placeholder="CPF / CNPJ">
-                        </div>
-                    </div>
-                        
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">   
-                            <input type="text" name="client_state_registration" id="client_state_registration"  class="form-control form-control-user" placeholder="Inscrição Estadual"  >
-                        </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <span>Isento:</span>
-                            <input class="custom-checkbox" type="checkbox" name="client_state_registration_free" id="client_state_registration_free" value="fr" OnClick="disable_client_state_registration_free()">
-                        </div>
-                    </div>
-                
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" name="client_municipal_registration" id="client_municipal_registration"  class="form-control form-control-user" placeholder="Inscrição Municipal">
-                        </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" name="client_rg" id="client_rg" class="form-control form-control-user"  placeholder="RG">
-                        </div>
-
-                    </div>
-                    
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" name="client_responsible" id="client_responsible" class="form-control form-control-user" placeholder="Responsável">
-                        </div>
-                    </div>
-                          
-                        <h1 class="h4 text-gray-900 mb-4">Dados Adicionais 1</h1>
+                    <div class="tab-pane fade" id="dadosadicionais1" role="tabpanel" aria-labelledby="profile-tab">
+                        <h3 class="mt-3 mb-3">Dados Adicionais 1</h3>
                         <hr>
                         <!-- <h3 class="h-auto">Dados Adicionais 1</h3> -->  
                                                        
@@ -147,43 +171,55 @@
                                     <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control form-control-user">                  
                                 </div> 
                             </div>
+
+                    </div>
+                    
+                    <div class="tab-pane fade" id="dadosadicionais2" role="tabpanel" aria-labelledby="contact-tab">
+                        
+                        <h3 class="mt-3 mb-3">Dados Adicionais 2</h3>
+                        <hr>
+                        <!-- <h3 class="h-auto">Dados Adicionais 1</h3> -->
+                        
+                          
+                        <input type="radio" name="client_type" id="client_type" value="cl">
+                            <label for="name">Clientes</label>
                             
-                            
-                            <h1 class="h4 text-gray-900 mb-4">Dados Adicionais 2</h1>
-                            <hr>
-                            <!-- <h3 class="h-auto">Dados Adicionais 1</h3> -->
-                            
-                              
-                            <input type="radio" name="client_type" id="client_type" value="cl">
-                                <label for="name">Clientes</label>
+                            <input type="radio" name="client_type" id="client_type" value="fo">
+                            <label for="name"> Fornecedor</label>    
                                 
-                                <input type="radio" name="client_type" id="client_type" value="fo">
-                                <label for="name"> Fornecedor</label>    
-                                    
-                                <input type="radio" name="client_type" id="client_type" value="co">    
-                                <label for="name"> Colaborador</label>    
-                                
-                                <input type="radio" name="client_type" id="client_type" value="tr">                            
-                                <label for="name"> Transportadora</label>
-                             <h3 class=""><b>Documentação</b></h3>
-                             <h1 class="h4 text-gray-900 mb-4">Documentação</h1>
-                             <hr>
-                             --
-                             --
-                             <h3 class=""><b>Contratos</b></h3>
-                             <h1 class="h4 text-gray-900 mb-4">Contratos</h1>
-                             <hr>
-                             --
-                             --
-                             <h3 class=""><b>Observações</b></h3>
-                             <h3 class="">Observações</h3>
-                             <h1 class="h4 text-gray-900 mb-4">Observações</h1>
-                             <hr>
-                             <textarea name="client_obs" id="client_obs" cols="30" rows="10"></textarea>   
-                             <br>
-                             <br>
-                             <button class=""  type="submit" name="btn_update_client" id="btn_update_client">C A D A S T R A R</button>
-                            </form>
+                            <input type="radio" name="client_type" id="client_type" value="co">    
+                            <label for="name"> Colaborador</label>    
+                            
+                            <input type="radio" name="client_type" id="client_type" value="tr">                            
+                            <label for="name"> Transportadora</label>
+                         
+                         
+                        
+
+                    </div>
+                    <div class="tab-pane fade" id="documentacao" role="tabpanel" aria-labelledby="contact-tab">
+                        <h3 class="mt-3 mb-3">Documentação</h3>
+                         <hr>
+                         --
+                         --
+                    </div>
+                    <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
+                        <h3 class="mt-3 mb-3">Contratos</h3>
+                         <hr>
+                         --
+                         --
+                    </div>
+                    <div class="tab-pane fade" id="observacoes" role="tabpanel" aria-labelledby="contact-tab">
+                        <h3 class="mt-3 mb-3">Observações</h3>
+                        <hr>
+                        <textarea name="client_obs" id="client_obs" cols="30" rows="10"></textarea>   
+                        <br>
+                        <br>
+                        <button class=""  type="submit" name="btn_update_client" id="btn_update_client">C A D A S T R A R</button>
+                       </form>
+                    </div>
+                  </div>
+                                      
                         </div>                           
                 </div>
             </div>
