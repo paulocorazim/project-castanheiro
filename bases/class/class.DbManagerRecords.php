@@ -32,7 +32,7 @@ class DbManagerRecords
 
             //Verifica as senhas informada.
             if ($data['password'] != $data['confirm_passwd']) {
-                echo $appFunctions->alert_system(4, "Atenção! -> As senhas não combinam, por favor refaça a operação!");
+                echo $appFunctions->alert_system(4, "Atenção! -> As senhas não combinam, Pass: $data[password] : $data[confirm_passwd] por favor refaça a operação!");
                 exit();
             }
 

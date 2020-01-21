@@ -4,15 +4,16 @@ class UserPermission
 {
     public function validation_user($email, $password)
     {
+
+        include('class.DbConnection.php');
+        include('class.Functions.php');
+
+        $conn = new DBconnect();
+        $dbInstance = $conn->connection();
+
+        $appFunctions = new appFunctions();
+
         try {
-
-            include('class.DbConnection.php');
-            include('class.Functions.php');
-
-            $conn = new DBconnect();
-            $dbInstance = $conn->connection();
-
-            $appFunctions = new appFunctions();
 
             $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
             $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
