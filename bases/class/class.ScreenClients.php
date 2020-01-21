@@ -165,7 +165,7 @@
                             
                               
                             <input type="radio" name="client_type" id="client_type" value="cl">
-                                <label for="name">Cliente</label>
+                                <label for="name">Clientes</label>
                                 
                                 <input type="radio" name="client_type" id="client_type" value="fo">
                                 <label for="name"> Fornecedor</label>    
