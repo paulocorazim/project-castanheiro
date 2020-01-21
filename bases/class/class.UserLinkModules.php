@@ -1,18 +1,17 @@
 <?php /** @noinspection DuplicatedCode */
 
-    class LinkModule
+class LinkModule
+{
+    public function LinkModules($dbInstance, $id_user, $user_type)
     {
+        $user_href = ""; //NavBar
+        $user_select_box = ""; //Módulos da tela de cadastro de usuários
 
-        public function LinkModules($dbInstance, $id_user, $user_type)
-        {
-            $user_href = ""; //NavBar
-            $user_select_box = ""; //Módulos da tela de cadastro de usuários
+        if ($user_type != 'master') {
 
-            if ($user_type != 'master') {
-
-                $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-                $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
-                    ->setQuery('SELECT DISTINCT b.name,
+            $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+            $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+                ->setQuery('SELECT DISTINCT b.name,
                                                     b.email,
                                                     c.name_link as name_link,
                                                     c.name_app  as name_app,
@@ -54,7 +53,7 @@
                 $user_select_box .= $select_box;
             }
 
-                return array("$user_href", "$user_select_box");
+            return array("$user_href", "$user_select_box");
         }
     }
 
@@ -93,7 +92,7 @@
 
                     $sqlModules = (new \Simplon\Db\SqlQueryBuilder()) //Listando as permissões do users e módulos
                     ->setQuery('SELECT * 
-                                    FROM `shcombr_appmanager`.`tab_permissions`
+                                    FROM    tab_permissions
                                     where   id_module = :id_module 
                                     and     id_user = :id_user')
                         ->setConditions(['id_module' => "$registModules[id_module]", 'id_user' => "$key[id]"]);
@@ -129,8 +128,10 @@
                 $tab_line = " 
                     <tr>
                     <td><a href='?select_id=$key[id]'>$key[name]</a> </td >
+                    <td>$key[email]</td >                    
+                    <td>$key[dt_created]</td >
+                    <td>$key[dt_update]</td >
                     <td>$key[type]</td >
-                    <td>$key[email]</td >
                     <td>$name_modules</td >
                     </tr>";
 

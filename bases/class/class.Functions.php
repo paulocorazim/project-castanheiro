@@ -33,48 +33,37 @@ Class appFunctions
 
     public function alert_system($type, $msg)
     {
+        $btn_type = null;
+        $i = null;
 
-        if ($type == 0) {
-
-            $alert = 'alert-danger';
+        if ($type === '0') {
+            $btn_type = "btn btn-danger btn-icon-split";
+            $i = "fas fa-trash";
         }
-        if ($type == 1) {
-
-            $alert = 'alert-success';
+        if ($type === '1') {
+            $btn_type = "btn btn-success btn-icon-split";
+            $i = "fas fa-check";
         }
-        if ($type == 2) {
-
-            $alert = 'alert-primary';
+        if ($type === '2') {
+            $btn_type = "btn btn-info btn-icon-split";
+            $i = "fas fa-info-circle";
         }
-        if ($type == 3) {
-
-            $alert = 'alert-secondary';
-        }
-        if ($type == 4) {
-
-            $alert = 'alert-warning';
-        }
-        if ($type == 5) {
-
-            $alert = 'alert-info';
-        }
-        if ($type == 6) {
-
-            $alert = 'alert-light';
-        }
-        if ($type == 7) {
-
-            $alert = 'alert-dark';
+        if ($type === '3') {
+            $btn_type = "btn btn-warning btn-icon-split";
+            $i = "fas fa-exclamation-triangle";
         }
 
-        $alert_type = <<<EOT
-        <div class="alert $alert" role="alert">
-          $msg
-        </div>
-
+        $div_type = <<<EOT
+        <div class="my - 2"></div>
+        <a class="$btn_type" href="#">
+            <span class="icon text-white-50">
+              <i class="$i" ></i >
+            </span >
+          <span class="text"> $msg</span>
+        </a >
 EOT;
 
-        return $alert_type;
+        return $div_type;
     }
 
     public function redirect_page($time, $url)

@@ -2,7 +2,7 @@
 
     class ScreenManager
     {
-        public function pageWrapper($typeModules, $selected_module, $contentNow)
+        public function pageWrapper($typeModules, $selected_module, $contentNow, $alert_type)
         {
 
             $ip = $_SERVER['REMOTE_ADDR'];
@@ -351,14 +351,14 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                       <h1 class="h3 mb-0 text-gray-800">$selected_module</h1>
-                      <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="#"><i
-                              class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                      <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="?user_report=23!#%LS"><i
+                              class="fas fa-download fa-sm text-white-50"></i> Report $selected_module</a>
                     </div>
             
             
                     <!-- Content Now -->
-                    $contentNow
-            
+                    $alert_type
+                    $contentNow                              
                   </div>
                   <!-- /.container-fluid -->
             

@@ -86,8 +86,9 @@ class DbManagerRecords
                 }
 
                 //Aviso do sucesso e redireciona a pagina
-                echo $appFunctions->alert_system(1, "Usuário cadastrado com sucesso!");
-                $appFunctions->redirect_page('3', '../man/manager.users.php');
+                $n_alert = base64_encode(1); //sucess
+                $n_msg = base64_encode("Obá! Usuário Cadastrado com sucesso!");
+                $appFunctions->redirect_page('1', "../man/manager.users.php?n_alert=$n_alert&n_msg=$n_msg");
                 exit();
 
 

@@ -26,7 +26,7 @@ $head = new shHead();
 echo $head->sh_head("AppManer Castanheiro");
 
 $screenManager = new ScreenManager();
-echo $screenManager->pageWrapper($typeModules, "DashBoard", null);
+echo $screenManager->pageWrapper($typeModules, "DashBoard", null, null);
 
 
 if (isset($_GET['exit'])) {

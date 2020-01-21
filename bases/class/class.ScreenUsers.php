@@ -220,21 +220,40 @@ EOT;
     {
 
         $screenListUser = <<< EOT
-        <div class="sys_tableuser">
-        <table class="sys_content-table">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Tipo</th>
-            <th>E-mail</th>
-            <th>Módulos</th>
-          </tr>
-        </thead>
-        <tbody>
-          $listModulesPermission
-        </tbody>
-      </table>
-      </div>
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">[ Somente usuário master tem acesso a esse relatório ]</h6>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table cellspacing="0" class="table table-bordered" id="dataTable" width="100%">
+                <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>Criado</th>
+                  <th>Ultima Alteração</th>
+                  <th>Tipo User</th>
+                  <th>Módulos</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>Criado</th>
+                  <th>Ultima Alteração</th>
+                  <th>Tipo User</th>
+                  <th>Módulos</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                  $listModulesPermission
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
 EOT;
 

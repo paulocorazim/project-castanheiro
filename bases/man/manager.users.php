@@ -32,8 +32,15 @@
     $screenUsers = new ScreenUsers();
     $contentNow = $screenUsers->screenFormUser($typeModules);
 
-    echo $screenManager->pageWrapper($typeModules, "Cadastro de Usuários", $contentNow);
-
+    if ($_GET['n_alert'] != null) {
+        $n_alert = base64_decode($_GET['n_alert']);
+        $n_msg = base64_decode($_GET['n_msg']);
+        $alert_type = $appFunctions->alert_system($n_alert, "$n_msg");
+        echo $screenManager->pageWrapper($typeModules, "Cadastro de Usuários", $contentNow, $alert_type);
+        $footer = new shFooter();
+        echo $footer->sh_footer();
+        exit();
+    }
 
     /*Verificar se botão foi acionado para cadastro/update do usuário*/
     if (isset($_POST['btn_update'])) {
@@ -54,7 +61,6 @@
             'status' => "$_POST[status]"
         ];
 
-
         $regists_module = $_POST['user_module'];
         $regists_permission = $_POST['user_permission'];
 
@@ -62,5 +68,16 @@
         exit();
     }
 
+    /*Lista de Usuários*/
+    if ($_GET['user_report'] != null) {
+        $contentNow = $screenUsers->screenListUser($typeModule->listModulesPermission($dbInstance, $_SESSION['user_type']));
+        echo $screenManager->pageWrapper($typeModules, "Report de Usuários", $contentNow, null);
+        $footer = new shFooter();
+        echo $footer->sh_footer();
+        exit();
+    }
+
+    echo $screenManager->pageWrapper($typeModules, "Cadastro de Usuários", $contentNow, null);
     $footer = new shFooter();
     echo $footer->sh_footer();
+    exit();
