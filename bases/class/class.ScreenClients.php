@@ -6,8 +6,12 @@
         {
 
             $screenFormClient = <<< EOT
-
-    <div class="container">
+            <script src="https://bossanova.uk/jsuites/v2/jsuites.js"></script>
+            <link rel="stylesheet" href="https://bossanova.uk/jsuites/v2/jsuites.css" type="text/css" />
+            <script src="../js/main.js" type="text/javascript" type="text/javascript"></script>
+            <script src="../js/cep.js" type="text/javascript" type="text/javascript"></script>
+     
+            <div class="container">
             
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="p-5">
@@ -83,6 +87,7 @@
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
+<<<<<<< HEAD
                                 <span>Site (www)</span> 
                                 <input type="text" name="client_site" id="client_site" class="form-control form-control-user">                            
                              </div> 
@@ -101,6 +106,15 @@
                             <div class="col-sm-4 mb-2 mb-sm-0">   
                                 <span>Tel3</span>
                                 <input type="text" name="client_phone3" id="client_phone3" class="form-control form-control-user" onclick="format_phones()">
+=======
+                               Tel1<input data-mask='+55 (00) 00000-0000' type="text" name="client_phone1" id="client_phone1" class="form-control form-control-user">
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                               Tel2<input type="text" name="client_phone2" id="client_phone2" class="form-control form-control-user">
+                            </div>   
+                            <div class="col-sm-6 mb-3 mb-sm-0">   
+                               Tel3<input type="text" name="client_phone3" id="client_phone3" class="form-control form-control-user">
+>>>>>>> 0329eecbc6b44d3ddc1b89edc6b7d43e30330ffa
                             </div> 
                             </div>                 
                         
