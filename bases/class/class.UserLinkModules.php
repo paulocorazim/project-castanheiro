@@ -112,7 +112,7 @@ class LinkModule
                         if ($permission['type'] == 'D') {
                             $type = 'Deletar';
                         }
-                        $td_permision = "(x) $type, ";
+                        $td_permision = "$permission[type], ";
                         $td_permisions .= $td_permision;
                     }
 

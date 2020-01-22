@@ -226,14 +226,14 @@ EOT;
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table cellspacing="0" class="table table-bordered" id="dataTable" width="100%">
+              <table cellspacing="1" class="table table-bordered" id="dataTable" width="100%">
                 <thead>
                 <tr>
                   <th>Nome</th>
                   <th>E-mail</th>
                   <th>Criado</th>
                   <th>Ultima Alteração</th>
-                  <th>Tipo User</th>
+                  <th>T.User</th>
                   <th>Módulos</th>
                 </tr>
                 </thead>
