@@ -24,32 +24,49 @@ class LinkModule
                                       and a.id_user = :id_user
                                     order by c.name_link asc')
                 ->setConditions(['id_user' => "$id_user"]);
+
             $results = $sqlManager->fetchAll($sqlQuery);
 
             foreach ($results as $key) {
 
-
                 $href = "<a class='collapse-item' href='$key[name_app]'>$key[name_link]</a>";
                 $user_href .= $href;
 
-                $select_box = "<option value='$key[id]'>$key[name_link]</option>";
+                $select_box = "<option class='custom-checkbox' value='$key[id]'>$key[name_link]</option>";
                 $user_select_box .= $select_box;
+
             }
 
-                return array("$user_href", "$user_select_box");
+            return array("$user_href", "$user_select_box");
 
         } else {
 
             $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
             $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
-                ->setQuery('SELECT * from  tab_modules as c order by name_link');
+                ->setQuery('SELECT m.id, m.name_link, m.name_app,
+                                    (SELECT DISTINCT c.id
+                                    from 
+                                        tab_permissions as a,
+                                        tab_users as b,
+                                        tab_modules as c
+                                    WHERE 
+                                        a.id_user = b.id
+                                    and c.id = a.id_module
+                                    and a.id_user = "$id_user"
+                                    and c.id  = m.id ) as active	
+                                FROM tab_modules as m');
             $results = $sqlManager->fetchAll($sqlQuery);
 
             foreach ($results as $key) {
                 $href = "<a class='collapse-item' href='$key[name_app]'>$key[name_link]</a>";
                 $user_href .= $href;
 
-                $select_box = "<option value='$key[id]'>$key[name_link]</option>";
+                if ($key['active'] != null) {
+                    $selected = "selected";
+                } else {
+                    $selected = null;
+                }
+                $select_box = "<option value='$key[id]' $selected>$key[name_link]</option>";
                 $user_select_box .= $select_box;
             }
 
