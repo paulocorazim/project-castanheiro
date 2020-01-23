@@ -20,8 +20,8 @@
             
                 <!-- Sidebar - Brand -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index_.html">
-                  <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                  <div class="sidebar-brand-icon">
+                  <img src="../image/logo.png" style="width: 40px">
                   </div>
                   <div class="sidebar-brand-text mx-3">appManager <sup>v1</sup></div>
                 </a>
@@ -60,7 +60,7 @@
                   </div>
                 </li>
             
-                <!-- Nav Item - Utilities Collapse Menu -->
+                <!-- Nav Item - Utilities Collapse Menu 
                 <li class="nav-item">
                   <a aria-controls="collapseUtilities" aria-expanded="true" class="nav-link collapsed"
                      data-target="#collapseUtilities"
@@ -77,17 +77,18 @@
                       <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                   </div>
-                </li>
+                </li>-->
             
                 <!-- Divider -->
-                <hr class="sidebar-divider">
+               
+               <!--  <hr class="sidebar-divider"> -->
             
-                <!-- Heading -->
+                <!-- Heading 
                 <div class="sidebar-heading">
                   Addons
-                </div>
+                </div> -->
             
-                <!-- Nav Item - Pages Collapse Menu -->
+                <!-- Nav Item - Pages Collapse Menu 
                 <li class="nav-item">
                   <a aria-controls="collapsePages" aria-expanded="true" class="nav-link collapsed" data-target="#collapsePages"
                      data-toggle="collapse"
@@ -107,21 +108,21 @@
                       <a class="collapse-item" href="blank.html">Blank Page</a>
                     </div>
                   </div>
-                </li>
+                </li>-->
             
-                <!-- Nav Item - Charts -->
+                <!-- Nav Item - Charts
                 <li class="nav-item">
                   <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
-                </li>
+                </li> -->
             
-                <!-- Nav Item - Tables -->
+                <!-- Nav Item - Tables 
                 <li class="nav-item">
                   <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
-                </li>
+                </li>-->
             
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
@@ -315,18 +316,19 @@
                         <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
                            href="#"
                            id="userDropdown" role="button">
-                          <span class="mr-2 d-none d-lg-inline text-gray-600 small">$user</span>
-                          <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                          <span class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, $user</span>
+                          <i class="fas fa-sort-down"></i>
+                          <!--<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">-->
                         </a>
                         <!-- Dropdown - User Information -->
                         <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
                           <a class="dropdown-item" href="#">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Profile
+                            Perfil
                           </a>
                           <a class="dropdown-item" href="#">
                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Settings
+                            Configurações
                           </a>
                           <a class="dropdown-item" href="#">
                             <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
