@@ -53,7 +53,6 @@
 
 			if ($falsetrue == 1) {
 				$typeCPF = $checkCPFCNPJ->format();
-
 			}
 		}
 
