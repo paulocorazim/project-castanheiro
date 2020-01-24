@@ -33,8 +33,10 @@
 
 					//Verifica as senhas informada.
 					if ($data['password'] != $data['confirm_passwd']) {
-						echo $appFunctions->alert_system(4,
-							"Atenção! -> As senhas não combinam, Pass: $data[password] : $data[confirm_passwd] por favor refaça a operação!");
+						//Aviso do sucesso e redireciona a pagina
+						$n_alert = base64_encode(0); //sucess
+						$n_msg = base64_encode("Ops! A senhas não combinam, refaça a operação por favor!");
+						$appFunctions->redirect_page('0', "../man/manager.users.php?n_alert=$n_alert&n_msg=$n_msg");
 						exit();
 					}
 
@@ -83,22 +85,27 @@
 
 							} catch (Exception $e) {
 								$error = $e->getMessage();
-								echo $appFunctions->alert_system(0, "Erro ao Inserir Módulos / Permissões ->" . $error);
+								//Aviso do sucesso e redireciona a pagina
+								$n_alert = base64_encode(0); //sucess
+								$n_msg = base64_encode("Ops! Erro ao inserir Módulos / Permissões ->" . $error);
+								$appFunctions->redirect_page(0,
+									"../man/manager.users.php?n_alert=$n_alert&n_msg=$n_msg");
+								exit();
 							}
 						}
 
 						//Aviso do sucesso e redireciona a pagina
 						$n_alert = base64_encode(1); //sucess
-						$n_msg = base64_encode("Obá! Usuário Cadastrado com sucesso!");
-						$appFunctions->redirect_page('1', "../man/manager.users.php?n_alert=$n_alert&n_msg=$n_msg");
+						$n_msg = base64_encode("Obá! Usuário Cadastrado com sucesso! Aguarde ...");
+						$appFunctions->redirect_page(3, "../man/manager.users.php?n_alert=$n_alert&n_msg=$n_msg");
 						exit();
-
 
 					} else {
 
 						// Se o CPF já foi usado, nega operação
-						echo $appFunctions->alert_system(4,
-							"Atenção! Este CPF: $user_cpf[cpf] já esta sendo usado, você deve fazer a recuperação de senha!");
+						$n_alert = base64_encode(3); //sucess
+						$n_msg = base64_encode("Ops! Atenção! Este CPF: $user_cpf[cpf] já esta sendo usado, você deve fazer a recuperação de senha!");
+						$appFunctions->redirect_page(0, "../man/manager.users.php?n_alert=$n_alert& n_msg=$n_msg");
 						exit();
 					}
 
@@ -225,7 +232,7 @@
 
 				}
 
-				echo $appFunctions->alert_system(5, "Usuário alterado com sucesso !  Aguarde ...");
+				echo $appFunctions->alert_system(5, "Usuário alterado com sucesso !Aguarde ...");
 				$appFunctions->redirect_page('3', '../man/manager.users.php');
 				exit();
 			}

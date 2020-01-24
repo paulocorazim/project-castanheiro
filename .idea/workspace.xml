@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.DbConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbConnection.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenUsers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.users.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +108,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -125,6 +121,11 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\www\htdocs\castanheiro\bases" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="terminal" />
+    </option>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -193,7 +194,7 @@
       <workItem from="1579626519978" duration="11903000" />
       <workItem from="1579711485667" duration="5376000" />
       <workItem from="1579771226937" duration="4360000" />
-      <workItem from="1579783949499" duration="9613000" />
+      <workItem from="1579783949499" duration="14015000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -335,14 +336,14 @@
       <screen x="0" y="36" width="1366" height="732" />
     </state>
     <state x="522" y="298" width="314" height="144" key="NewPhpFileDialog/0.36.1366.732@0.36.1366.732" timestamp="1579227457239" />
-    <state x="68" y="41" width="1214" height="727" key="SettingsEditor" timestamp="1579773606738">
+    <state x="68" y="41" width="1214" height="727" key="SettingsEditor" timestamp="1579895116732">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="660" y="202" key="SettingsEditor/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579634166737" />
     <state x="158" y="28" width="916" height="708" key="SettingsEditor/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1579616107530" />
     <state x="248" y="30" width="916" height="708" key="SettingsEditor/0.0.1366.738/1366.0.2560.1050@0.0.1366.738" timestamp="1579729801300" />
     <state x="225" y="0" width="1141" height="738" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1579771406396" />
-    <state x="68" y="41" width="1214" height="727" key="SettingsEditor/0.30.1366.738@0.30.1366.738" timestamp="1579773606738" />
+    <state x="68" y="41" width="1214" height="727" key="SettingsEditor/0.30.1366.738@0.30.1366.738" timestamp="1579895116732" />
     <state x="404" y="38" key="SettingsEditor/0.36.1366.732@0.36.1366.732" timestamp="1579233223397" />
     <state x="1560" y="34" key="SettingsEditor/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518415034" />
     <state x="2733" y="271" width="947" height="728" key="SettingsEditor/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578733406827" />
@@ -382,10 +383,11 @@
     </state>
     <state x="962" y="100" key="refactoring.ChangeSignatureDialog/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579366457617" />
     <state x="2328" y="103" width="552" height="706" key="refactoring.ChangeSignatureDialog/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579485712859" />
-    <state x="852" y="239" key="run.anything.popup" timestamp="1579479291825">
-      <screen x="0" y="0" width="2560" height="1050" />
+    <state x="455" y="198" width="672" height="677" key="run.anything.popup" timestamp="1579895057310">
+      <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="852" y="239" key="run.anything.popup/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579479291825" />
+    <state x="455" y="198" width="672" height="677" key="run.anything.popup/0.30.1366.738@0.30.1366.738" timestamp="1579895057310" />
     <state x="346" y="59" width="840" height="678" key="search.everywhere.popup" timestamp="1579381933207">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
