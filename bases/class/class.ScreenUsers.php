@@ -1,11 +1,11 @@
 <?php
 
-class ScreenUsers
-{
-    public function screenFormUser($typeModules)
-    {
+	class ScreenUsers
+	{
+		public function screenFormUser ($typeModules)
+		{
 
-        $screenFormUser = <<< EOT
+			$screenFormUser = <<< EOT
         <div class="container">        
            <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="p-5">
@@ -83,53 +83,66 @@ class ScreenUsers
 
 EOT;
 
-        return $screenFormUser;
-    }
+			return $screenFormUser;
+		}
 
-    public function screenFormUserEdit($activeRecordsEdit, $typeModules)
-    {
-        $selectModules = "";
+		public function screenFormUserEdit ($activeRecordsEdit, $typeModules)
+		{
+			/**
+			 * var_dump($activeRecordsEdit[0]); //Dados do usuário
+			 * var_dump($activeRecordsEdit[1]); //Modulos do usuário
+			 * var_dump($activeRecordsEdit[2]); //Permissões  no módulo
+			 * var_dump($activeRecordsEdit[3]); //Todos Modulos
+			 **/
 
-        foreach ($activeRecordsEdit[0] as $user_regist) { //dados do usuário
+			$selectModules = "";
 
-            if ($user_regist['status'] == 1) {
+			foreach ($activeRecordsEdit[0] as $user_regist) { //dados do usuário
 
-                $checked_status_active = "selected";
-                $border = "border-bottom-success";
-            } else {
-                $checked_status_bloq = "selected";
-                $border = "border-bottom-danger";
-            }
+				if ($user_regist['status'] == 1) {
+					$checked_status_active = "selected";
+					$border = "border-bottom-success";
+				} else {
+					$checked_status_bloq = "selected";
+					$border = "border-bottom-danger";
+				}
 
-            if ($user_regist['type'] == 'master') {
+				if ($user_regist['type'] == 'master') {
+					$checked_master = "checked";
+				} else {
+					$checked_master = "";
+				}
 
-                $checked_master = "checked";
-            } else {
-                $checked_master = "";
-            }
+				foreach ($activeRecordsEdit[3] as $moduleAll) {
 
-            foreach ($activeRecordsEdit[1] as $modules_regist) {
+					foreach ($activeRecordsEdit[1] as $moduleForUser) {
 
-                $selectModule = "<option value='$modules_regist[id]'>$modules_regist[name_link]</option>";
-                $selectModules .= $selectModule;
-            }
+						if ($moduleForUser['id_module'] === $moduleAll['id']) {
+							$module_selected = "selected";
+						}
+					}
 
-            foreach ($activeRecordsEdit[2] as $type_pemission) {
-                if ($type_pemission['type'] == 'I') {
-                    $insert = "<option value = \"I\" ><span > Inserir -> (Permite inclusões de registros )</span ></option >";
-                }
-                if ($type_pemission['type'] == 'S') {
-                    $select = "<option value = \"S\" ><span > Selecionar -> (Permite seleções de registros )</span ></option >";
-                }
-                if ($type_pemission['type'] == 'U') {
-                    $update = "<option value = \"U\" ><span > Alterar -> (Permite alterações de registros )</span ></option >";
-                }
-                if ($type_pemission['type'] == 'D') {
-                    $delete = "<option value = \"D\" ><span > Deletar -> (Permite APAGAR registros )</span ></option >";
-                }
-            }
+					$selectModule = "<option value='$moduleAll[id]' $module_selected>$moduleAll[name_link]</option>";
+					$selectModules .= $selectModule;
+					$module_selected = null;
+				}
 
-            $screenFormUserEdit = <<< EOT
+				foreach ($activeRecordsEdit[2] as $type_pemission) {
+					if ($type_pemission['type'] == 'I') {
+						$insert = "<option value = \"I\" ><span > Inserir -> (Permite inclusões de registros )</span ></option >";
+					}
+					if ($type_pemission['type'] == 'S') {
+						$select = "<option value = \"S\" ><span > Selecionar -> (Permite seleções de registros )</span ></option >";
+					}
+					if ($type_pemission['type'] == 'U') {
+						$update = "<option value = \"U\" ><span > Alterar -> (Permite alterações de registros )</span ></option >";
+					}
+					if ($type_pemission['type'] == 'D') {
+						$delete = "<option value = \"D\" ><span > Deletar -> (Permite APAGAR registros )</span ></option >";
+					}
+				}
+
+				$screenFormUserEdit = <<< EOT
             
             <div class="container">        
            <div class="card o-hidden border-0 shadow-lg my-5">
@@ -185,7 +198,7 @@ EOT;
 
                                 <div class="card-body">
                                     <select id="user_module[]" name="user_module[]" multiple size="8"  style="max-width:100%;">
-                                        $typeModules[1]
+                                        $selectModules
                                       <select> 
                                 </div>
                             </div>
@@ -209,22 +222,22 @@ EOT;
                     </div>                
                     
                   <hr>
-                  <button type="submit" id="btn_update" name="btn_update" class="btn btn-primary btn-user btn-block">Editar</button>
+                  <button type="submit" id="btn_update" name="btn_update" class="btn btn-primary btn-user btn-block">A L T E R A R</button>
                   
                 </form>
                   
         </div>
 EOT;
 
-        }
+			}
 
-        return $screenFormUserEdit;
-    }
+			return $screenFormUserEdit;
+		}
 
-    public function screenListUser($listModulesPermission)
-    {
+		public function screenListUser ($listModulesPermission)
+		{
 
-        $screenListUser = <<< EOT
+			$screenListUser = <<< EOT
         <div class="card shadow mb-4">
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">[ Somente usuário master tem acesso a esse relatório ]</h6>
@@ -262,6 +275,6 @@ EOT;
 
 EOT;
 
-        return $screenListUser;
-    }
-}
+			return $screenListUser;
+		}
+	}

@@ -1,17 +1,17 @@
 <?php /** @noinspection DuplicatedCode */
 
-class LinkModule
-{
-    public function LinkModules($dbInstance, $id_user, $user_type)
-    {
-        $user_href = ""; //NavBar
-        $user_select_box = ""; //Módulos da tela de cadastro de usuários
+	class LinkModule
+	{
+		public function LinkModules ($dbInstance, $id_user, $user_type)
+		{
+			$user_href = ""; //NavBar
+			$user_select_box = ""; //Módulos da tela de cadastro de usuários
 
-        if ($user_type != 'master') {
+			if ($user_type != 'master') {
 
-            $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-            $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
-                ->setQuery('SELECT DISTINCT b.name,
+				$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+				$sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+					->setQuery('SELECT DISTINCT b.name,
                                                     b.email,
                                                     c.name_link as name_link,
                                                     c.name_app  as name_app,
@@ -23,27 +23,27 @@ class LinkModule
                                       and c.id = a.id_module
                                       and a.id_user = :id_user
                                     order by c.name_link asc')
-                ->setConditions(['id_user' => "$id_user"]);
+					->setConditions(['id_user' => "$id_user"]);
 
-            $results = $sqlManager->fetchAll($sqlQuery);
+				$results = $sqlManager->fetchAll($sqlQuery);
 
-            foreach ($results as $key) {
+				foreach ($results as $key) {
 
-                $href = "<a class='collapse-item' href='$key[name_app]'>$key[name_link]</a>";
-                $user_href .= $href;
+					$href = "<a class='collapse-item' href='$key[name_app]'>$key[name_link]</a>";
+					$user_href .= $href;
 
-                $select_box = "<option class='custom-checkbox' value='$key[id]'>$key[name_link]</option>";
-                $user_select_box .= $select_box;
+					$select_box = "<option class='custom-checkbox' value='$key[id]'>$key[name_link]</option>";
+					$user_select_box .= $select_box;
 
-            }
+				}
 
-            return array("$user_href", "$user_select_box");
+				return array("$user_href", "$user_select_box");
 
-        } else {
+			} else {
 
-            $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-            $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
-                ->setQuery('SELECT m.id, m.name_link, m.name_app,
+				$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+				$sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+					->setQuery('SELECT m.id, m.name_link, m.name_app,
                                     (SELECT DISTINCT c.id
                                     from 
                                         tab_permissions as a,
@@ -55,42 +55,44 @@ class LinkModule
                                     and a.id_user = "$id_user"
                                     and c.id  = m.id ) as active	
                                 FROM tab_modules as m');
-            $results = $sqlManager->fetchAll($sqlQuery);
+				$results = $sqlManager->fetchAll($sqlQuery);
 
-            foreach ($results as $key) {
-                $href = "<a class='collapse-item' href='$key[name_app]'>$key[name_link]</a>";
-                $user_href .= $href;
+				//var_dump($results);
 
-                if ($key['active'] != null) {
-                    $selected = "selected";
-                } else {
-                    $selected = null;
-                }
-                $select_box = "<option value='$key[id]' $selected>$key[name_link]</option>";
-                $user_select_box .= $select_box;
-            }
+				foreach ($results as $key) {
+					$href = "<a class='collapse-item' href='$key[name_app]'>$key[name_link]</a>";
+					$user_href .= $href;
 
-            return array("$user_href", "$user_select_box");
-        }
-    }
+					if ($key['active'] != null) {
+						$selected = "selected";
+					} else {
+						$selected = null;
+					}
+					$select_box = "<option value='$key[id]' $selected>$key[name_link]</option>";
+					$user_select_box .= $select_box;
+				}
 
-    public function listModulesPermission($dbInstance, $user_type)
-    {
-        if ($user_type == 'master') {
+				return array("$user_href", "$user_select_box");
+			}
+		}
 
-            $sqlManager = new \Simplon\Db\SqlManager($dbInstance); //Listando os usuários
-            $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
-                ->setQuery('SELECT * FROM tab_users');
-            $results = $sqlManager->fetchAll($sqlQuery);
+		public function listModulesPermission ($dbInstance, $user_type)
+		{
+			if ($user_type == 'master') {
 
-            $listModulesPermission = "";
-            $name_modules = "";
-            $td_permisions = "";
+				$sqlManager = new \Simplon\Db\SqlManager($dbInstance); //Listando os usuários
+				$sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+					->setQuery('SELECT * FROM tab_users');
+				$results = $sqlManager->fetchAll($sqlQuery);
 
-            foreach ($results as $key) {
+				$listModulesPermission = "";
+				$name_modules = "";
+				$td_permisions = "";
 
-                $sqlModules = (new \Simplon\Db\SqlQueryBuilder()) //Listando os módulos do usuário
-                ->setQuery('SELECT
+				foreach ($results as $key) {
+
+					$sqlModules = (new \Simplon\Db\SqlQueryBuilder()) //Listando os módulos do usuário
+					->setQuery('SELECT
                                         DISTINCT
                                         c.name_link as name_link,
                                         a.id_module as id_module
@@ -102,47 +104,47 @@ class LinkModule
                                         a.id_user = b.id
                                         and c.id  = a.id_module
                                         and b.id  = :id_user')
-                    ->setConditions(['id_user' => "$key[id]"]);
-                $resultsModules = $sqlManager->fetchAll($sqlModules);
+						->setConditions(['id_user' => "$key[id]"]);
+					$resultsModules = $sqlManager->fetchAll($sqlModules);
 
-                foreach ($resultsModules as $registModules) {
+					foreach ($resultsModules as $registModules) {
 
-                    $sqlModules = (new \Simplon\Db\SqlQueryBuilder()) //Listando as permissões do users e módulos
-                    ->setQuery('SELECT * 
+						$sqlModules = (new \Simplon\Db\SqlQueryBuilder()) //Listando as permissões do users e módulos
+						->setQuery('SELECT * 
                                     FROM    tab_permissions
                                     where   id_module = :id_module 
                                     and     id_user = :id_user')
-                        ->setConditions(['id_module' => "$registModules[id_module]", 'id_user' => "$key[id]"]);
-                    $resultsPermission = $sqlManager->fetchAll($sqlModules);
+							->setConditions(['id_module' => "$registModules[id_module]", 'id_user' => "$key[id]"]);
+						$resultsPermission = $sqlManager->fetchAll($sqlModules);
 
-                    foreach ($resultsPermission as $permission) {
+						foreach ($resultsPermission as $permission) {
 
-                        if ($permission['type'] == 'I') {
-                            $type = 'Incluir';
-                        }
-                        if ($permission['type'] == 'S') {
-                            $type = 'Selecionar';
-                        }
-                        if ($permission['type'] == 'U') {
-                            $type = 'Alterar';
-                        }
-                        if ($permission['type'] == 'D') {
-                            $type = 'Deletar';
-                        }
-                        $td_permision = "$permission[type], ";
-                        $td_permisions .= $td_permision;
-                    }
+							if ($permission['type'] == 'I') {
+								$type = 'Incluir';
+							}
+							if ($permission['type'] == 'S') {
+								$type = 'Selecionar';
+							}
+							if ($permission['type'] == 'U') {
+								$type = 'Alterar';
+							}
+							if ($permission['type'] == 'D') {
+								$type = 'Deletar';
+							}
+							$td_permision = "$permission[type], ";
+							$td_permisions .= $td_permision;
+						}
 
-                    $name_module = "<span  style=\"font-size: small; font-family: courier new, cursive; \">$registModules[name_link] .: $td_permisions</font><br>";
-                    $name_modules .= $name_module;
-                    $td_permisions = "";
-                }
+						$name_module = "<span  style=\"font-size: small; font-family: courier new, cursive; \">$registModules[name_link] .: $td_permisions</font><br>";
+						$name_modules .= $name_module;
+						$td_permisions = "";
+					}
 
-                if ($key['type'] === 'master') {
-                    $name_modules = "TODOS";
-                }
+					if ($key['type'] === 'master') {
+						$name_modules = "TODOS";
+					}
 
-                $tab_line = " 
+					$tab_line = " 
                     <tr>
                     <td><a href='?select_id=$key[id]'>$key[name]</a> </td >
                     <td>$key[email]</td >                    
@@ -152,13 +154,12 @@ class LinkModule
                     <td>$name_modules</td >
                     </tr>";
 
-                $listModulesPermission .= $tab_line;
-                $name_modules = "";
-                $td_permisions = "";
-            }
+					$listModulesPermission .= $tab_line;
+					$name_modules = "";
+					$td_permisions = "";
+				}
 
-            return $listModulesPermission;
-        }
-
-    }
-}
+				return $listModulesPermission;
+			}
+		}
+	}
