@@ -32,19 +32,15 @@
 	$screenUsers = new ScreenUsers();
 	$contentNow = $screenUsers->screenFormUser($typeModules);
 
-	/* Alertas e redenrização da pagina*/
 	if ($_GET['n_alert'] != null) {
 		$n_alert = base64_decode($_GET['n_alert']);
 		$n_msg = base64_decode($_GET['n_msg']);
 		$alert_type = $appFunctions->alert_system($n_alert, "$n_msg");
-		echo $screenManager->pageWrapper($typeModules, "Cadastro de Usuários", $contentNow, $alert_type);
-		$footer = new shFooter();
-		echo $footer->sh_footer();
-		exit();
 	}
 
 	/*Verificar se botão foi acionado para cadastro/update do usuário*/
 	if (isset($_POST['btn_update'])) {
+
 		$regists_user = [
 			'id' => "$_POST[user_id]",
 			'cpf' => "$_POST[cpfcnpj]",
@@ -59,7 +55,7 @@
 			'permission_S' => "$_POST[permission_S]",
 			'permission_U' => "$_POST[permission_U]",
 			'permission_D' => "$_POST[permission_D]",
-			'status' => "$_POST[status]"
+			'active' => "$_POST[user_active]"
 		];
 
 		$regists_module = $_POST['user_module'];
@@ -73,7 +69,7 @@
 	if ($_GET['user_report'] != null) {
 		$contentNow = $screenUsers->screenListUser($typeModule->listModulesPermission($dbInstance,
 			$_SESSION['user_type']));
-		echo $screenManager->pageWrapper($typeModules, "Report de Usuários", $contentNow, null);
+		echo $screenManager->pageWrapper($typeModules, "Report de Usuários", $contentNow, $alert_type);
 		$footer = new shFooter();
 		echo $footer->sh_footer();
 		exit();
@@ -84,23 +80,16 @@
 
 		$activeRecordsEdit = $activeRecords->select_user($dbInstance, $_GET['select_id'], $appFunctions);
 
-		/**
-		 * var_dump($activeRecordsEdit[0]); //Dados do usuário
-		 * var_dump($activeRecordsEdit[1]); //Modulos do usuário
-		 * var_dump($activeRecordsEdit[2]); //Permissões  no módulo
-		 * var_dump($activeRecordsEdit[3]); //Todos Modulos
-		 **/
-
 		$contentNow = null;
 		$contentNow = $screenUsers->screenFormUserEdit($activeRecordsEdit, $typeModules);
-		echo $screenManager->pageWrapper($typeModules, "Cadastro de Usuários - Editar", $contentNow, null);
+		echo $screenManager->pageWrapper($typeModules, "Cadastro de Usuários - Editar", $contentNow, $alert_type);
 		$footer = new shFooter();
 		echo $footer->sh_footer();
 		exit();
 	}
 
 	/*Redenrização da pagina*/
-	echo $screenManager->pageWrapper($typeModules, "Cadastro de Usuários", $contentNow, null);
+	echo $screenManager->pageWrapper($typeModules, "Cadastro de Usuários", $contentNow, $alert_type);
 	$footer = new shFooter();
 	echo $footer->sh_footer();
 	exit();

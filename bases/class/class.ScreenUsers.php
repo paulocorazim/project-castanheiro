@@ -99,7 +99,7 @@ EOT;
 
 			foreach ($activeRecordsEdit[0] as $user_regist) { //dados do usuário
 
-				if ($user_regist['status'] == 1) {
+				if ($user_regist['active'] == 1) {
 					$checked_status_active = "selected";
 					$border = "border-bottom-success";
 				} else {
@@ -147,13 +147,11 @@ EOT;
             <div class="container">        
            <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="p-5">
-            <div class="text-center">
-              <h1 class="h4 text-gray-900 mb-4">Editando usuário</h1>
-            </div>
+
                <form class="user" action="../man/manager.users.php" method="post">
                <div class="form-group row">
                <div class="col-sm-6 mb-3 mb-sm-0">
-                <select class="custom-select col-sm-4 $border"  name="client_active" id="client_active">
+                <select class="custom-select col-sm-4 $border"  name="user_active" id="user_active">
                     <option value="1" $checked_status_active>Ativo</option>
                     <option value="0" $checked_status_bloq>Bloqueado</option>
                 </select> 
@@ -161,7 +159,7 @@ EOT;
                </div>
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input id="user_id" type="hidden" name="user_name" value="$user_regist[id]">
+                    <input id="user_id" type="hidden" name="user_id" value="$user_regist[id]">
                       <input class="form-control form-control-user" id="user_name" name="user_name" placeholder="Nome"
                              type="text" value="$user_regist[name]">
                     </div>
