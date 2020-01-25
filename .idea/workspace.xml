@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.DbConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbConnection.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +183,7 @@
       <workItem from="1579626519978" duration="11903000" />
       <workItem from="1579711485667" duration="5376000" />
       <workItem from="1579771226937" duration="4360000" />
-      <workItem from="1579783949499" duration="24671000" />
+      <workItem from="1579783949499" duration="24805000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -272,10 +272,10 @@
       <screen x="0" y="0" width="2560" height="1050" />
     </state>
     <state x="947" y="213" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579478106746" />
-    <state x="324" y="52" width="911" height="627" key="CommitChangelistDialog2" timestamp="1579925102450">
+    <state x="324" y="52" width="911" height="627" key="CommitChangelistDialog2" timestamp="1579925342162">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
-    <state x="324" y="52" width="911" height="627" key="CommitChangelistDialog2/0.30.1366.738@0.30.1366.738" timestamp="1579925102450" />
+    <state x="324" y="52" width="911" height="627" key="CommitChangelistDialog2/0.30.1366.738@0.30.1366.738" timestamp="1579925342162" />
     <state x="1974" y="31" width="1237" height="917" key="CommitChangelistDialog2/1366.0.2560.1080/0.0.1366.768@1366.0.2560.1080" timestamp="1578745414518" />
     <state x="1974" y="32" key="CommitChangelistDialog2/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578827339423" />
     <state x="473" y="287" width="411" height="165" key="ComposerInitDialogKey" timestamp="1579227601487">
