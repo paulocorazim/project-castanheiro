@@ -28,7 +28,7 @@
 						'dt_created' => "$regists_user[dt_created]",
 						'dt_update' => "$regists_user[dt_update]",
 						'type' => "$type",
-						'status' => "1",
+						'active' => "1",
 					];
 
 					//Verifica as senhas informada.
@@ -96,8 +96,8 @@
 
 						//Aviso do sucesso e redireciona a pagina
 						$n_alert = base64_encode(1); //sucess
-						$n_msg = base64_encode("Obá! Usuário Cadastrado com sucesso! Aguarde ...");
-						$appFunctions->redirect_page(3, "../man/manager.users.php?n_alert=$n_alert&n_msg=$n_msg");
+						$n_msg = base64_encode("Obá! Usuário $data[name] cadastrado com sucesso!");
+						$appFunctions->redirect_page(0, "../man/manager.users.php?n_alert=$n_alert&n_msg=$n_msg");
 						exit();
 
 					} else {
@@ -116,6 +116,9 @@
 				}
 			} else { //Edição do usuário
 
+				/*var_dump($regists_user);
+				exit();*/
+
 				//id do usuário
 				$conds = ['id' => "$regists_user[id]"];
 
@@ -125,19 +128,15 @@
 
 					/*Verifica tipo de usuário */
 					if ($regists_user['permission_master'] != 'master') {
-
 						$type = 'basic';
 					} else {
-
 						$type = 'master';
 					}
 
 					/*Verifica status de usuário */
-					if ($regists_user['status'] != 'inativo') {
-
+					if ($regists_user['active'] != 0) {
 						$status = 1;
 					} else {
-
 						$status = 0;
 					}
 
@@ -153,7 +152,7 @@
 							'confirm_passwd' => "$regists_user[confirm_passwd]",
 							'dt_update' => "$regists_user[dt_update]",
 							'type' => "$type",
-							'status' => "$status"
+							'active' => "$status"
 						];
 
 					} else {
@@ -165,7 +164,7 @@
 							'email' => "$regists_user[email]",
 							'dt_update' => "$regists_user[dt_update]",
 							'type' => "$type",
-							'status' => "$status"
+							'active' => "$status"
 						];
 					}
 
@@ -185,7 +184,10 @@
 
 				} catch (Exception $e) {
 					$error = $e->getMessage();
-					echo $appFunctions->alert_system(0, "Erro ao alterar Usuário ->" . $error);
+					$n_alert = base64_encode(0); //sucess
+					$n_msg = base64_encode("Erro ao alterar Usuário! ->" . $error);
+					$appFunctions->redirect_page(0, "../man/manager.users.php?n_alert=$n_alert& n_msg=$n_msg");
+					exit();
 				}
 
 				if ($regists_module != null) {
@@ -200,7 +202,10 @@
 
 					} catch (Exception $e) {
 						$error = $e->getMessage();
-						echo $appFunctions->alert_system(0, "Erro ao alterar módulos ->" . $error);
+						$n_alert = base64_encode(0); //sucess
+						$n_msg = base64_encode("Erro ao alterar Módulos! ->" . $error);
+						$appFunctions->redirect_page(0, "../man/manager.users.php?n_alert=$n_alert& n_msg=$n_msg");
+						exit();
 					}
 
 					try {
@@ -227,13 +232,17 @@
 
 					} catch (Exception $e) {
 						$error = $e->getMessage();
-						echo $appFunctions->alert_system(0, "Erro ao alterar permissões ->" . $error);
+						$n_alert = base64_encode(0); //sucess
+						$n_msg = base64_encode("Erro ao alterar permissões! ->" . $error);
+						$appFunctions->redirect_page(0, "../man/manager.users.php?n_alert=$n_alert& n_msg=$n_msg");
+						exit();
 					}
-
 				}
 
-				echo $appFunctions->alert_system(5, "Usuário alterado com sucesso !Aguarde ...");
-				$appFunctions->redirect_page('3', '../man/manager.users.php');
+				$n_alert = base64_encode(1); //sucess
+				$n_msg = base64_encode("Usuário Alterado com sucesso!");
+				$appFunctions->redirect_page(0,
+					"../man/manager.users.php?select_id=$regists_user[id]&n_alert=$n_alert& n_msg=$n_msg");
 				exit();
 			}
 		}
