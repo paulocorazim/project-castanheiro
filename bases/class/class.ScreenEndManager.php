@@ -1,12 +1,15 @@
 <?php
 
-    Class shFooter
+Class shFooter
+{
+
+    public function sh_footer()
     {
 
-        public function sh_footer()
-        {
-
-            $footer = <<< EOT
+        $footer = <<< EOT
+            <script src="https://bossanova.uk/jsuites/v2/jsuites.js"></script>            
+            <script src="../js/main.js" type="text/javascript" type="text/javascript"></script>
+            <script src="../js/cep.js" type="text/javascript" type="text/javascript"></script>
     
             <!-- Bootstrap core JavaScript-->
             <script src="../vendor/jquery/jquery.min.js"></script>
@@ -31,14 +34,14 @@
             
             <!-- Page level custom scripts -->
             <script src="../js/demo/datatables-demo.js"></script>
-            
+                        
             </body>
             
             </html>
 
 EOT;
 
-            return $footer;
+        return $footer;
 
-        }
     }
+}

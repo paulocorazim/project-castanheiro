@@ -1,17 +1,14 @@
 <?php
 
-    Class ScreenClients{
+Class ScreenClients
+{
 
-        public function screenFormClient()
-        {
+    public function screenFormClient()
+    {
 
-            $screenFormClient = <<< EOT
-            <script src="https://bossanova.uk/jsuites/v2/jsuites.js"></script>
-            <link rel="stylesheet" href="https://bossanova.uk/jsuites/v2/jsuites.css" type="text/css" />
-            <script src="../js/main.js" type="text/javascript" type="text/javascript"></script>
-            <script src="../js/cep.js" type="text/javascript" type="text/javascript"></script>
-            
-            
+        $screenFormClient = <<< EOT
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     <div class="container"> 
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="p-5">
@@ -227,15 +224,15 @@
        
 
 EOT;
-            return $screenFormClient;
-
-        }
-
-
-        public function screenListClient()
-        {
-
-        }
-
+        return $screenFormClient;
 
     }
+
+
+    public function screenListClient()
+    {
+
+    }
+
+
+}
