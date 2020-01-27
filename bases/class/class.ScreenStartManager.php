@@ -19,7 +19,7 @@
               <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index_.html">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="manager.php">
                   <div class="sidebar-brand-icon">
                   <img src="../image/logo.png" style="width: 40px">
                   </div>
@@ -41,24 +41,148 @@
             
                 <!-- Heading -->
                 <div class="sidebar-heading">
-                  Interface
+                  <span>Interface</span>
                 </div>
             
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                  <a aria-controls="collapseTwo" aria-expanded="true" class="nav-link collapsed" data-target="#collapseTwo"
+                  <a aria-controls="collapsecadastros" aria-expanded="true" class="nav-link collapsed" data-target="#collapsecadastros"
                      data-toggle="collapse"
                      href="#">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Cadastraos</span>
+                    <span>Cadastros</span>
                   </a>
-                  <div aria-labelledby="headingTwo" class="collapse" data-parent="#accordionSidebar" id="collapseTwo">
+                  <div aria-labelledby="collapsecadastros" class="collapse" data-parent="#accordionSidebar" id="collapsecadastros">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                      <h6 class="collapse-header">Cadastros Gerais:</h6>
+                      $typeModules[0]
+                      </div>
+                  </div>
+                </li> 
+
+                <li class="nav-item">
+                  <a aria-controls="collapseboletos" aria-expanded="true" class="nav-link collapsed" data-target="#collapseboletos"
+                     data-toggle="collapse"
+                     href="#">
+                     <i class="fas fa-barcode"></i>
+                    <span>Boletos</span>
+                  </a>
+                  <div aria-labelledby="collapseboletos" class="collapse" data-parent="#accordionSidebar" id="collapseboletos">
                     <div class="bg-white py-2 collapse-inner rounded">
                       <h6 class="collapse-header">Cadastros Gerais:</h6>
                       $typeModules[0]
                       </div>
                   </div>
                 </li>
+
+                <li class="nav-item">
+                  <a aria-controls="collapseclientes" aria-expanded="true" class="nav-link collapsed" data-target="#collapseclientes"
+                     data-toggle="collapse"
+                     href="#">
+                     <i class="fas fa-users"></i>
+                    <span>Clientes</span>
+                  </a>
+                  <div aria-labelledby="collapseclientes" class="collapse" data-parent="#accordionSidebar" id="collapseclientes">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                      <h6 class="collapse-header">Cadastros Gerais:</h6>
+                      $typeModules[0]
+                      </div>
+                  </div>
+                </li>
+                
+                <li class="nav-item">
+                  <a aria-controls="collapseusuarios" aria-expanded="true" class="nav-link collapsed" data-target="#collapseusuarios"
+                     data-toggle="collapse"
+                     href="#">
+                     <i class="fas fa-user-friends"></i>
+                    <span>Usuários</span>
+                  </a>
+                  <div aria-labelledby="collapseusuarios" class="collapse" data-parent="#accordionSidebar" id="collapseusuarios">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                      <h6 class="collapse-header">Cadastros Gerais:</h6>
+                      $typeModules[0]
+                      </div>
+                  </div>
+                </li>
+
+                <li class="nav-item">
+                  <a aria-controls="collapsevencimentos" aria-expanded="true" class="nav-link collapsed" data-target="#collapsevencimentos"
+                     data-toggle="collapse"
+                     href="#">
+                     <i class="far fa-calendar"></i>
+                    <span>Vencimentos</span>
+                  </a>
+                  <div aria-labelledby="collapsevencimentos" class="collapse" data-parent="#accordionSidebar" id="collapsevencimentos">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                      <h6 class="collapse-header">Cadastros Gerais:</h6>
+                      $typeModules[0]
+                      </div>
+                  </div>
+                </li>
+
+                <li class="nav-item">
+                  <a aria-controls="collapseboderos" aria-expanded="true" class="nav-link collapsed" data-target="#collapseboderos"
+                     data-toggle="collapse"
+                     href="#">
+                     <i class="fas fa-file-invoice"></i>
+                    <span>Borderô</span>
+                  </a>
+                  <div aria-labelledby="collapseboderos" class="collapse" data-parent="#accordionSidebar" id="collapseboderos">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                      <h6 class="collapse-header">Cadastros Gerais:</h6>
+                      $typeModules[0]
+                      </div>
+                  </div>
+                </li>
+
+                <li class="nav-item">
+                  <a aria-controls="collapsevistorias" aria-expanded="true" class="nav-link collapsed" data-target="#collapsevistorias"
+                     data-toggle="collapse"
+                     href="#">
+                     <i class="far fa-paper-plane"></i>
+                    <span>Vistorias</span>
+                  </a>
+                  <div aria-labelledby="collapsevistorias" class="collapse" data-parent="#accordionSidebar" id="collapsevistorias">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                      <h6 class="collapse-header">Cadastros Gerais:</h6>
+                      $typeModules[0]
+                      </div>
+                  </div>
+                </li>
+
+                <hr class="sidebar-divider d-none d-md-block">
+
+
+                <li class="nav-item">
+                  <a aria-controls="collapsecadastro" aria-expanded="true" class="nav-link collapsed" data-target="#collapsecadastro"
+                     data-toggle="collapse"
+                     href="#">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Cadastros</span>
+                  </a>
+                  <div aria-labelledby="collapsecadastro" class="collapse" data-parent="#accordionSidebar" id="collapsecadastro">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                      <h6 class="collapse-header">Cadastros Gerais:</h6>
+                     
+                     
+                      <a aria-controls="paulo" aria-expanded="true" class="nav-link  collapse-item collapsed" data-target="#paulo" data-toggle="collapse" href="#">Colors</a>
+                      <div aria-labelledby="paulo" class="colapse" data-parent="#paulo" id="paulo">
+                        <a class="collapse-item" href="utilities-color.html">A</a>
+                        <a class="collapse-item" href="utilities-color.html">B</a>
+                        <a class="collapse-item" href="utilities-color.html">C</a>
+                        <a class="collapse-item" href="utilities-color.html">D</a>
+                        <a class="collapse-item" href="utilities-color.html">E</a>
+                      </div>
+
+                      <a class="collapse-item" href="utilities-border.html">Borders</a>
+                      <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                      </div>
+                  </div>
+                </li>
+
+               
+
+               
             
                 <!-- Nav Item - Utilities Collapse Menu 
                 <li class="nav-item">

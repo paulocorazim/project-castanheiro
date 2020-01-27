@@ -9,7 +9,7 @@ Class ScreenClients
         $screenFormClient = <<< EOT
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-    <div class="container"> 
+    <div class="container-fluid"> 
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="p-5">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -49,42 +49,49 @@ Class ScreenClients
                                 
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" name="client_name" id="client_name" class="form-control form-control-user" placeholder="Nome">
+                                        <span>Nome</span>
+                                        <input type="text" name="client_name" id="client_name" class="form-control">
                                     </div>
                                 </div>
             
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" name="client_corporate_name" id="client_corporate_name" class="form-control form-control-user" placeholder="Razão Social">
+                                        <span>Razão Social</span>
+                                        <input type="text" name="client_corporate_name" id="client_corporate_name" class="form-control">
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control form-control-user" placeholder="CPF / CNPJ">
+                                        <span>CPF</span>
+                                        <input type="text" name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control" placeholder="CPF / CNPJ">
                                     </div>
                                 </div>
                                     
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">   
-                                        <input type="text" name="client_state_registration" id="client_state_registration"  class="form-control form-control-user" placeholder="Inscrição Estadual"  >
+                                        <span>Inscrição Estadual</span>
+                                        <input type="text" name="client_state_registration" id="client_state_registration"  class="form-control">
                                     </div>
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <span>Isento:</span>
+                                    <div class="col-sm-6 mb-3 mb-sm-0 py-4">
+                                        <span class="py-5">Isento:</span>
                                         <input class="custom-checkbox" type="checkbox" name="client_state_registration_free" id="client_state_registration_free" value="fr" OnClick="disable_client_state_registration_free()">
                                     </div>
                                 </div>
                             
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" name="client_municipal_registration" id="client_municipal_registration"  class="form-control form-control-user" placeholder="Inscrição Municipal">
+                                        <span>Inscrição Municipal</span>
+                                        <input type="text" name="client_municipal_registration" id="client_municipal_registration"  class="form-control">
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" name="client_rg" id="client_rg" class="form-control form-control-user"  placeholder="RG">
+                                        <span>RG</span>
+                                        <input type="text" name="client_rg" id="client_rg" class="form-control">
                                     </div>
             
                                 </div>
                                 
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" name="client_responsible" id="client_responsible" class="form-control form-control-user" placeholder="Responsável">
+                                        <span>Responsável</span>
+                                        <input type="text" name="client_responsible" id="client_responsible" class="form-control">
                                     </div>
                                 </div>
                     </div>
@@ -96,76 +103,80 @@ Class ScreenClients
                                                        
                         <div class="form-group row">
                          <div class="col-sm-6 mb-3 mb-sm-0">
-                            <sapn>E-mail 1</sapn>
-                            <input type="email" name="client_email1" id="client_email1" class="form-control form-control-user">                           
+                            <span>E-mail 1</span>
+                            <input type="email" name="client_email1" id="client_email1" class="form-control">                           
                         </div>
                         
                         <div class="col-sm-6 mb-3 mb-sm-0">
-                           <sapn>E-mail 2</sapn>
-                           <input type="email" name="client_email2" id="client_email2" class="form-control form-control-user">                            
+                           <span>E-mail 2</span>
+                           <input type="email" name="client_email2" id="client_email2" class="form-control">                            
                         </div> 
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <span>Site (www)</span> 
-                                <input type="text" name="client_site" id="client_site" class="form-control form-control-user">                            
+                                <input type="text" name="client_site" id="client_site" class="form-control">                            
                              </div> 
                         </div>
                         
                         <div class="form-group row">
                             
                             <div class="col-sm-4 mb-2 mb-sm-0">
-                               <sapn>Tel1</sapn>
-                               <input data-mask='+55 (00) 00000-0000' type="text" name="client_phone1" id="client_phone1" class="form-control form-control-user" onclick="format_phones()">
+                               <span>Tel1</span>
+                               <input data-mask='+55 (00) 00000-0000' type="text" name="client_phone1" id="client_phone1" class="form-control" onclick="format_phones()">
                             </div>
                             <div class="col-sm-4 mb-2 mb-sm-0">
-                               <sapn>Tel2</sapn>
-                               <input data-mask='+55 (00) 00000-0000'type="text" name="client_phone2" id="client_phone2" class="form-control form-control-user" onclick="format_phones()">
+                               <span>Tel2</span>
+                               <input data-mask='+55 (00) 00000-0000'type="text" name="client_phone2" id="client_phone2" class="form-control" onclick="format_phones()">
                             </div>   
                             <div class="col-sm-4 mb-2 mb-sm-0">   
                                 <span>Tel3</span>
-                                <input data-mask='+55 (00) 00000-0000' type="text" name="client_phone3" id="client_phone3" class="form-control form-control-user" onclick="format_phones()">
+                                <input data-mask='+55 (00) 00000-0000' type="text" name="client_phone3" id="client_phone3" class="form-control" onclick="format_phones()">
                             </div> 
                             </div>                 
                         
                             <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                <span>Cep (usar somente números)</span>
-                               <input type="text" name="cep" id="cep" class="form-control form-control-user">
+                               <input type="text" name="cep" id="cep" class="form-control">
                             </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-sm-8 mb-4 mb-sm-0">
                                 <span>Endereço</span>
-                                <input type="text" name="client_address" id="client_address" class="form-control form-control-user">
+                                <input type="text" name="client_address" id="client_address" class="form-control">
                              </div>
                              <div class="col-sm-4 mb-2 mb-sm-0">
                                 <span>Número</span>
-                                <input type="text" name="client_number" id="client_number" class="form-control form-control-user">                  
+                                <input type="text" name="client_number" id="client_number" class="form-control">                  
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <span>Município</span>
-                                    <input type="text"   name="client_county" id="client_county" class="form-control form-control-user">                  
+                                    <input type="text"   name="client_county" id="client_county" class="form-control">                  
                                 </div>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <sapn>Cidade</sapn>
-                                    <input type="text" name="client_city" id="client_city" class="form-control form-control-user">                  
+                                    <span>Cidade</span>
+                                    <input type="text" name="client_city" id="client_city" class="form-control">                  
                                 </div> 
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <sapn>Estado</sapn>
-                                    <input type="text" name="client_state" id="client_state" class="form-control form-control-user">                  
+                                <div class="col-sm-4 mb-2 mb-sm-0">
+                                    <span>Estado</span>
+                                    <input type="text" name="client_state" id="client_state" class="form-control">                  
                                 </div>
-                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                <div class="col-sm-4 mb-2 mb-sm-0">
                                     <span>Bairro</span>
-                                    <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control form-control-user">                  
+                                    <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control">                  
+                                </div> 
+                                <div class="col-sm-4 mb-2 mb-sm-0">
+                                    <span>Compplemento</span>
+                                    <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control">                  
                                 </div> 
                             </div>
 

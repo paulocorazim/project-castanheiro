@@ -6,7 +6,7 @@ class ScreenUsers
     {
 
         $screenFormUser = <<< EOT
-        <div class="container">        
+        <div class="container-fluid">        
            <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="p-5">
             <div class="text-center">
