@@ -60,8 +60,8 @@ Class ScreenClients
                                         <input type="text" name="client_corporate_name" id="client_corporate_name" class="form-control">
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <span>CPF</span>
-                                        <input type="text" name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control" placeholder="CPF / CNPJ">
+                                        <span>CPF / CNPJ</span>
+                                        <input type="text" name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control">
                                     </div>
                                 </div>
                                     
@@ -233,7 +233,21 @@ Class ScreenClients
             </div>
         
        
-
+            <script src="../vendor/jquery/jquery.min.js"></script>
+            <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            
+            <!-- Core plugin JavaScript-->
+            <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+            
+            <!-- Custom scripts for all pages-->
+            <script src="../js/sb-admin-2.min.js"></script>
+            
+            <!-- Page level plugins -->
+            <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+            <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+            
+            <!-- Page level custom scripts -->
+            <script src="../js/demo/datatables-demo.js"></script>
 EOT;
         return $screenFormClient;
 

@@ -150,40 +150,7 @@
                   </div>
                 </li>
 
-                <hr class="sidebar-divider d-none d-md-block">
-
-
-                <li class="nav-item">
-                  <a aria-controls="collapsecadastro" aria-expanded="true" class="nav-link collapsed" data-target="#collapsecadastro"
-                     data-toggle="collapse"
-                     href="#">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Cadastros</span>
-                  </a>
-                  <div aria-labelledby="collapsecadastro" class="collapse" data-parent="#accordionSidebar" id="collapsecadastro">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Cadastros Gerais:</h6>
-                     
-                     
-                      <a aria-controls="paulo" aria-expanded="true" class="nav-link  collapse-item collapsed" data-target="#paulo" data-toggle="collapse" href="#">Colors</a>
-                      <div aria-labelledby="paulo" class="colapse" data-parent="#paulo" id="paulo">
-                        <a class="collapse-item" href="utilities-color.html">A</a>
-                        <a class="collapse-item" href="utilities-color.html">B</a>
-                        <a class="collapse-item" href="utilities-color.html">C</a>
-                        <a class="collapse-item" href="utilities-color.html">D</a>
-                        <a class="collapse-item" href="utilities-color.html">E</a>
-                      </div>
-
-                      <a class="collapse-item" href="utilities-border.html">Borders</a>
-                      <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                      </div>
-                  </div>
-                </li>
-
-               
-
-               
-            
+ 
                 <!-- Nav Item - Utilities Collapse Menu 
                 <li class="nav-item">
                   <a aria-controls="collapseUtilities" aria-expanded="true" class="nav-link collapsed"

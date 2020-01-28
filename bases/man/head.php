@@ -25,6 +25,8 @@ Class shHead
           <!-- Custom styles for this template-->
           <link rel="stylesheet" href="https://bossanova.uk/jsuites/v2/jsuites.css" type="text/css" />
           <link href="../css/sb-admin-2.css" rel="stylesheet">
+          <link href="../datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+          <link href="../datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
         </head>
         
         
