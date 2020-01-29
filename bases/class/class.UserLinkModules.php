@@ -60,6 +60,7 @@
 
                     $href = "<a class='collapse-item' href='$key[name_app]'>$key[name_link]</a>";
                     $user_href .= $nav_bar_li;
+                    $user_href_sub_module = null;
 
                     $select_box = "<option class='custom-checkbox' value='$key[id]'>$key[name_link]</option>";
                     $user_select_box .= $select_box;
