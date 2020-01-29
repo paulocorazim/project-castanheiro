@@ -49,10 +49,16 @@
 	                    </div>
 	                     
 	                     <hr>
+	                     
 	                        <!-- DataTales Example -->
                             <div class="card shadow mb-4">
                               <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Boletos Gerados </h6>
+                                <h6 class="m-0 font-weight-bold text-primary">
+                                   Boletos Gerados |  <i class="fas fa-search fa-sm"></i> 
+                                     ( <input type="checkbox" name="billet_vencidos" id="billet_vencidos" class="btn-info"> vencidos ) 
+                                     ( <input type="checkbox" name="billet_a_vencer" id="billet_a_vencer" class="btn-info"> a vencer )
+                                     ( <input type="checkbox" name="billet_all" id="billet_all" class="btn-info" OnClick="disable_billet_dues()"> todos )
+                                   </h6>
                               </div>
                               <div class="card-body">
                                 <div class="table-responsive">

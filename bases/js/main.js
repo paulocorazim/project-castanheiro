@@ -65,3 +65,16 @@ function disable_user_modules_permissions() {
         document.getElementById('user_permission[]').disabled = false;
     }
 }
+
+function disable_billet_dues() {
+    if (document.getElementById('billet_all').checked) {
+        document.getElementById('billet_vencidos').disabled = true;
+        document.getElementById('billet_vencidos').checked = false;
+        document.getElementById('billet_a_vencer').disabled = true;
+        document.getElementById('billet_a_vencer').checked = false;
+    }
+    if (document.getElementById('billet_all').checked === false) {
+        document.getElementById('billet_vencidos').disabled = false;
+        document.getElementById('billet_a_vencer').disabled = false;
+    }
+}
