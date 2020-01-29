@@ -10,7 +10,7 @@ Class ScreenClients
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <div class="container-fluid"> 
-        <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card o-hidden border-0 shadow-lg my-4">
             <div class="p-4">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
@@ -208,10 +208,10 @@ Class ScreenClients
                         <textarea name="client_obs" id="client_obs" cols="30" rows="10"></textarea>   
                         <br>
                         <br>
-                        <button class="btn btn-success"  type="submit" name="btn_update_client" id="btn_update_client">CADASTRAR</button>
-                       </form>
                     </div>
                   </div>
+                  <button class="btn btn-success"  type="submit" name="btn_update_client" id="btn_update_client">CADASTRAR</button>
+                </form>
                                       
                         </div>                           
                 </div>
