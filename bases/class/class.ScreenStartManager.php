@@ -1,17 +1,17 @@
 <?php
 
-	class ScreenManager
-	{
-		public function pageWrapper ($typeModules, $selected_module, $contentNow, $alert_type)
-		{
+    class ScreenManager
+    {
+        public function pageWrapper($typeModules, $selected_module, $contentNow, $alert_type)
+        {
 
-			$ip = $_SERVER['REMOTE_ADDR'];
-			$user = $_SESSION['name'];
-			$type = $_SESSION['user_type'];
-			$update = $_SESSION['dt_update'];
-			$date = date('d-M-Y');
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $user = $_SESSION['name'];
+            $type = $_SESSION['user_type'];
+            $update = $_SESSION['dt_update'];
+            $date = date('d-M-Y');
 
-			return <<< EOT
+            return <<< EOT
             <!-- Page Wrapper -->
             <div id="wrapper">
             
@@ -45,111 +45,99 @@
                 </div>
             
                 <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                  <a aria-controls="collapsecadastros" aria-expanded="true" class="nav-link collapsed" data-target="#collapsecadastros"
-                     data-toggle="collapse"
-                     href="#">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Cadastros</span>
-                  </a>
-                  <div aria-labelledby="collapsecadastros" class="collapse" data-parent="#accordionSidebar" id="collapsecadastros">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Cadastros Gerais:</h6>
-                      $typeModules[0]
+                $typeModules[0]
+                 
+                <!--
+                    <li class="nav-item">
+                      <a aria-controls="collapseboletos" aria-expanded="true" class="nav-link collapsed" data-target="#collapseboletos"
+                         data-toggle="collapse"
+                         href="#">
+                         <i class="fas fa-barcode"></i>
+                        <span>Boletos</span>
+                      </a>
+                      <div aria-labelledby="collapseboletos" class="collapse" data-parent="#accordionSidebar" id="collapseboletos">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                          <h6 class="collapse-header">Cadastros Gerais:</h6>
+                          $typeModules[0]
+                          </div>
                       </div>
-                  </div>
-                </li> 
-
-                <li class="nav-item">
-                  <a aria-controls="collapseboletos" aria-expanded="true" class="nav-link collapsed" data-target="#collapseboletos"
-                     data-toggle="collapse"
-                     href="#">
-                     <i class="fas fa-barcode"></i>
-                    <span>Boletos</span>
-                  </a>
-                  <div aria-labelledby="collapseboletos" class="collapse" data-parent="#accordionSidebar" id="collapseboletos">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Cadastros Gerais:</h6>
-                      $typeModules[0]
+                    </li>
+    
+                    <li class="nav-item">
+                      <a aria-controls="collapseclientes" aria-expanded="true" class="nav-link collapsed" data-target="#collapseclientes"
+                         data-toggle="collapse"
+                         href="#">
+                         <i class="fas fa-users"></i>
+                        <span>Clientes</span>
+                      </a>
+                      <div aria-labelledby="collapseclientes" class="collapse" data-parent="#accordionSidebar" id="collapseclientes">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                          <h6 class="collapse-header">Cadastros Gerais:</h6>
+                          $typeModules[0]
+                          </div>
                       </div>
-                  </div>
-                </li>
-
-                <li class="nav-item">
-                  <a aria-controls="collapseclientes" aria-expanded="true" class="nav-link collapsed" data-target="#collapseclientes"
-                     data-toggle="collapse"
-                     href="#">
-                     <i class="fas fa-users"></i>
-                    <span>Clientes</span>
-                  </a>
-                  <div aria-labelledby="collapseclientes" class="collapse" data-parent="#accordionSidebar" id="collapseclientes">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Cadastros Gerais:</h6>
-                      $typeModules[0]
+                    </li>
+                    
+                    <li class="nav-item">
+                      <a aria-controls="collapseusuarios" aria-expanded="true" class="nav-link collapsed" data-target="#collapseusuarios"
+                         data-toggle="collapse"
+                         href="#">
+                         <i class="fas fa-user-friends"></i>
+                        <span>Usuários</span>
+                      </a>
+                      <div aria-labelledby="collapseusuarios" class="collapse" data-parent="#accordionSidebar" id="collapseusuarios">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                          <h6 class="collapse-header">Cadastros Gerais:</h6>
+                          $typeModules[0]
+                          </div>
                       </div>
-                  </div>
-                </li>
-                
-                <li class="nav-item">
-                  <a aria-controls="collapseusuarios" aria-expanded="true" class="nav-link collapsed" data-target="#collapseusuarios"
-                     data-toggle="collapse"
-                     href="#">
-                     <i class="fas fa-user-friends"></i>
-                    <span>Usuários</span>
-                  </a>
-                  <div aria-labelledby="collapseusuarios" class="collapse" data-parent="#accordionSidebar" id="collapseusuarios">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Cadastros Gerais:</h6>
-                      $typeModules[0]
+                    </li>
+    
+                    <li class="nav-item">
+                      <a aria-controls="collapsevencimentos" aria-expanded="true" class="nav-link collapsed" data-target="#collapsevencimentos"
+                         data-toggle="collapse"
+                         href="#">
+                         <i class="far fa-calendar"></i>
+                        <span>Vencimentos</span>
+                      </a>
+                      <div aria-labelledby="collapsevencimentos" class="collapse" data-parent="#accordionSidebar" id="collapsevencimentos">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                          <h6 class="collapse-header">Cadastros Gerais:</h6>
+                          $typeModules[0]
+                          </div>
                       </div>
-                  </div>
-                </li>
-
-                <li class="nav-item">
-                  <a aria-controls="collapsevencimentos" aria-expanded="true" class="nav-link collapsed" data-target="#collapsevencimentos"
-                     data-toggle="collapse"
-                     href="#">
-                     <i class="far fa-calendar"></i>
-                    <span>Vencimentos</span>
-                  </a>
-                  <div aria-labelledby="collapsevencimentos" class="collapse" data-parent="#accordionSidebar" id="collapsevencimentos">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Cadastros Gerais:</h6>
-                      $typeModules[0]
+                    </li>
+    
+                    <li class="nav-item">
+                      <a aria-controls="collapseboderos" aria-expanded="true" class="nav-link collapsed" data-target="#collapseboderos"
+                         data-toggle="collapse"
+                         href="#">
+                         <i class="fas fa-file-invoice"></i>
+                        <span>Borderô</span>
+                      </a>
+                      <div aria-labelledby="collapseboderos" class="collapse" data-parent="#accordionSidebar" id="collapseboderos">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                          <h6 class="collapse-header">Cadastros Gerais:</h6>
+                          $typeModules[0]
+                          </div>
                       </div>
-                  </div>
-                </li>
-
-                <li class="nav-item">
-                  <a aria-controls="collapseboderos" aria-expanded="true" class="nav-link collapsed" data-target="#collapseboderos"
-                     data-toggle="collapse"
-                     href="#">
-                     <i class="fas fa-file-invoice"></i>
-                    <span>Borderô</span>
-                  </a>
-                  <div aria-labelledby="collapseboderos" class="collapse" data-parent="#accordionSidebar" id="collapseboderos">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Cadastros Gerais:</h6>
-                      $typeModules[0]
+                    </li>
+    
+                    <li class="nav-item">
+                      <a aria-controls="collapsevistorias" aria-expanded="true" class="nav-link collapsed" data-target="#collapsevistorias"
+                         data-toggle="collapse"
+                         href="#">
+                         <i class="far fa-paper-plane"></i>
+                        <span>Vistorias</span>
+                      </a>
+                      <div aria-labelledby="collapsevistorias" class="collapse" data-parent="#accordionSidebar" id="collapsevistorias">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                          <h6 class="collapse-header">Cadastros Gerais:</h6>
+                          $typeModules[0]
+                          </div>
                       </div>
-                  </div>
-                </li>
-
-                <li class="nav-item">
-                  <a aria-controls="collapsevistorias" aria-expanded="true" class="nav-link collapsed" data-target="#collapsevistorias"
-                     data-toggle="collapse"
-                     href="#">
-                     <i class="far fa-paper-plane"></i>
-                    <span>Vistorias</span>
-                  </a>
-                  <div aria-labelledby="collapsevistorias" class="collapse" data-parent="#accordionSidebar" id="collapsevistorias">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Cadastros Gerais:</h6>
-                      $typeModules[0]
-                      </div>
-                  </div>
-                </li>
-
+                    </li>
+                <--!
  
                 <!-- Nav Item - Utilities Collapse Menu 
                 <li class="nav-item">
@@ -503,5 +491,5 @@
                 
 
 EOT;
-		}
-	}
+        }
+    }

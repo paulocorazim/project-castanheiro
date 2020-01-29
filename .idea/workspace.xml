@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,22 +133,7 @@
         <serviceView>
           <option name="contentProportion" value="0.12660772" />
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@7ea966f2" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@574e6225" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -195,6 +181,7 @@
       <workItem from="1580132811107" duration="672000" />
       <workItem from="1580154591936" duration="2225000" />
       <workItem from="1580259122729" duration="4161000" />
+      <workItem from="1580301372011" duration="3305000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -395,8 +382,8 @@
     <state x="726" y="23" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1366.738@0.0.1366.738" timestamp="1580272448468" />
     <state x="271" y="47" width="568" height="705" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.36.1366.732@0.36.1366.732" timestamp="1579232039323" />
     <state x="271" y="36" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1366.0.2560.1080/0.36.1366.732@0.36.1366.732" timestamp="1579717679804" />
-    <state x="731" y="348" key="com.intellij.ide.util.TipDialog" timestamp="1580259124824">
-      <screen x="0" y="41" width="2560" height="1039" />
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1580301380585">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="731" y="310" key="com.intellij.ide.util.TipDialog/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579626531425" />
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.0.1152.834@0.0.1366.738" timestamp="1580132816940" />
@@ -407,6 +394,7 @@
     <state x="731" y="342" key="com.intellij.ide.util.TipDialog/0.32.2560.1048@0.32.2560.1048" timestamp="1580045617428" />
     <state x="390" y="252" key="com.intellij.ide.util.TipDialog/0.36.1366.732@0.36.1366.732" timestamp="1579222001350" />
     <state x="731" y="348" key="com.intellij.ide.util.TipDialog/0.41.2560.1039@0.41.2560.1039" timestamp="1580259124824" />
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/1366.0.1152.834/0.0.1366.738@0.0.1366.738" timestamp="1580301380585" />
     <state x="1756" y="227" key="com.intellij.ide.util.TipDialog/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518391692" />
     <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578848368598" />
     <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579711507039" />
