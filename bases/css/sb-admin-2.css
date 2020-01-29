@@ -10996,3 +10996,13 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+/** CLASSES SYSTEMHOPE **/
+
+.tab-content > .active {
+  display: block;
+  border: 1px solid;
+  padding: 20px;
+  border-top: none;
+  border-color: #dddfeb #dddfeb;
+  border-radius: 0 0 0.35rem 0.35rem;}

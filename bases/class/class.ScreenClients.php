@@ -11,7 +11,7 @@ Class ScreenClients
 
     <div class="container-fluid"> 
         <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="p-5">
+            <div class="p-4">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#novocliente" role="tab" aria-controls="home" aria-selected="true">Novo Cliente</a>
@@ -34,9 +34,7 @@ Class ScreenClients
                   </ul>
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="novocliente" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="text-left">
-                            <h3 class="mt-3 mb-3">Novo Cliente</h3>
-                        </div>                
+                            
                                  <form action="../man/manager.clients.php" class="user" method="post" >
                                  
                                   <div class="form-group">
@@ -97,8 +95,7 @@ Class ScreenClients
                     </div>
                     
                     <div class="tab-pane fade" id="dadosadicionais1" role="tabpanel" aria-labelledby="profile-tab">
-                        <h3 class="mt-3 mb-3">Dados Adicionais 1</h3>
-                        <hr>
+                      
                         <!-- <h3 class="h-auto">Dados Adicionais 1</h3> -->  
                                                        
                         <div class="form-group row">
@@ -183,11 +180,6 @@ Class ScreenClients
                     </div>
                     
                     <div class="tab-pane fade" id="dadosadicionais2" role="tabpanel" aria-labelledby="contact-tab">
-                        
-                        <h3 class="mt-3 mb-3">Dados Adicionais 2</h3>
-                        <hr>
-                        <!-- <h3 class="h-auto">Dados Adicionais 1</h3> -->
-                        
                           
                         <input type="radio" name="client_type" id="client_type" value="cl">
                             <label for="name">Clientes</label>
@@ -200,30 +192,23 @@ Class ScreenClients
                             
                             <input type="radio" name="client_type" id="client_type" value="tr">                            
                             <label for="name"> Transportadora</label>
-                         
-                         
-                        
 
                     </div>
                     <div class="tab-pane fade" id="documentacao" role="tabpanel" aria-labelledby="contact-tab">
-                        <h3 class="mt-3 mb-3">Documentação</h3>
-                         <hr>
+         
                          --
                          --
                     </div>
                     <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
-                        <h3 class="mt-3 mb-3">Contratos</h3>
-                         <hr>
+               
                          --
                          --
                     </div>
                     <div class="tab-pane fade" id="observacoes" role="tabpanel" aria-labelledby="contact-tab">
-                        <h3 class="mt-3 mb-3">Observações</h3>
-                        <hr>
                         <textarea name="client_obs" id="client_obs" cols="30" rows="10"></textarea>   
                         <br>
                         <br>
-                        <button class=""  type="submit" name="btn_update_client" id="btn_update_client">C A D A S T R A R</button>
+                        <button class="btn btn-success"  type="submit" name="btn_update_client" id="btn_update_client">CADASTRAR</button>
                        </form>
                     </div>
                   </div>
