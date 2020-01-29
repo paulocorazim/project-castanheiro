@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +31,24 @@
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="appmanager: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="appmanager: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="tab_modules_sub: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -115,7 +132,22 @@
         <serviceView>
           <option name="contentProportion" value="0.12660772" />
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@7ea966f2" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@574e6225" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -283,40 +315,40 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="111" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1578877417862" />
-    <state width="1128" height="280" key="GridCell.Tab.0.bottom" timestamp="1579771416161">
+    <state width="1128" height="280" key="GridCell.Tab.0.bottom" timestamp="1580274291397">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="2172" height="281" key="GridCell.Tab.0.bottom/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579635868349" />
     <state width="1102" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1579616119318" />
     <state width="1129" height="280" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.0.2560.1050@0.0.1366.738" timestamp="1579729040956" />
-    <state width="1128" height="280" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1579771416161" />
+    <state width="1128" height="280" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1580274291397" />
     <state width="1067" height="260" key="GridCell.Tab.0.bottom/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578837599110" />
     <state width="2516" height="277" key="GridCell.Tab.0.bottom/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579690748201" />
-    <state width="1128" height="280" key="GridCell.Tab.0.center" timestamp="1579771416161">
+    <state width="1128" height="280" key="GridCell.Tab.0.center" timestamp="1580274291397">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="2172" height="281" key="GridCell.Tab.0.center/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579635868349" />
     <state width="1102" height="182" key="GridCell.Tab.0.center/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1579616119318" />
     <state width="1129" height="280" key="GridCell.Tab.0.center/0.0.1366.738/1366.0.2560.1050@0.0.1366.738" timestamp="1579729040956" />
-    <state width="1128" height="280" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1579771416161" />
+    <state width="1128" height="280" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1580274291397" />
     <state width="1067" height="260" key="GridCell.Tab.0.center/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578837599109" />
     <state width="2516" height="277" key="GridCell.Tab.0.center/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579690748201" />
-    <state width="1128" height="280" key="GridCell.Tab.0.left" timestamp="1579771416160">
+    <state width="1128" height="280" key="GridCell.Tab.0.left" timestamp="1580274291396">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="2172" height="281" key="GridCell.Tab.0.left/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579635868349" />
     <state width="1102" height="182" key="GridCell.Tab.0.left/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1579616119318" />
     <state width="1129" height="280" key="GridCell.Tab.0.left/0.0.1366.738/1366.0.2560.1050@0.0.1366.738" timestamp="1579729040956" />
-    <state width="1128" height="280" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1579771416160" />
+    <state width="1128" height="280" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1580274291396" />
     <state width="1067" height="260" key="GridCell.Tab.0.left/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578837599109" />
     <state width="2516" height="277" key="GridCell.Tab.0.left/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579690748201" />
-    <state width="1128" height="280" key="GridCell.Tab.0.right" timestamp="1579771416161">
+    <state width="1128" height="280" key="GridCell.Tab.0.right" timestamp="1580274291397">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="2172" height="281" key="GridCell.Tab.0.right/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579635868349" />
     <state width="1102" height="182" key="GridCell.Tab.0.right/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1579616119318" />
     <state width="1129" height="280" key="GridCell.Tab.0.right/0.0.1366.738/1366.0.2560.1050@0.0.1366.738" timestamp="1579729040956" />
-    <state width="1128" height="280" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1579771416161" />
+    <state width="1128" height="280" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1580274291397" />
     <state width="1067" height="260" key="GridCell.Tab.0.right/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578837599109" />
     <state width="2516" height="277" key="GridCell.Tab.0.right/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579690748201" />
     <state width="207" height="439" key="HiddenNamespacesPopup" timestamp="1578572096684">
@@ -357,10 +389,10 @@
     </state>
     <state x="448" y="183" width="470" height="428" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1366.738@0.0.1366.738" timestamp="1579380157099" />
     <state x="448" y="213" width="470" height="424" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.30.1366.738@0.30.1366.738" timestamp="1579905098308" />
-    <state x="271" y="36" width="568" height="705" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1579717679804">
-      <screen x="0" y="36" width="1366" height="732" />
+    <state x="726" y="23" width="568" height="705" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1580272448468">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="271" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1366.738@0.0.1366.738" timestamp="1579383691571" />
+    <state x="726" y="23" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1366.738@0.0.1366.738" timestamp="1580272448468" />
     <state x="271" y="47" width="568" height="705" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.36.1366.732@0.36.1366.732" timestamp="1579232039323" />
     <state x="271" y="36" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1366.0.2560.1080/0.36.1366.732@0.36.1366.732" timestamp="1579717679804" />
     <state x="731" y="348" key="com.intellij.ide.util.TipDialog" timestamp="1580259124824">
