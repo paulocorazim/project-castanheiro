@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.DbConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbConnection.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.billets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.billets.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,18 +92,18 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\www\htdocs\castanheiro\bases" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\www\htdocs\castanheiro\bases" />
       <recent name="C:\www\htdocs\castanheiro\bases\js" />
       <recent name="C:\www\htdocs\castanheiro\pages" />
       <recent name="C:\www\htdocs\castanheiro" />
       <recent name="C:\www\htdocs\castanheiro\man" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\www\htdocs\castanheiro\bases" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -335,13 +338,13 @@
       <screen x="0" y="36" width="1366" height="732" />
     </state>
     <state x="522" y="298" width="314" height="144" key="NewPhpFileDialog/0.36.1366.732@0.36.1366.732" timestamp="1579227457239" />
-    <state x="1473" y="7" width="916" height="708" key="SettingsEditor" timestamp="1580053160395">
-      <screen x="1366" y="0" width="1024" height="738" />
+    <state x="53" y="0" width="916" height="708" key="SettingsEditor" timestamp="1580265275734">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="660" y="202" key="SettingsEditor/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579634166737" />
     <state x="158" y="28" width="916" height="708" key="SettingsEditor/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1579616107530" />
     <state x="248" y="30" width="916" height="708" key="SettingsEditor/0.0.1366.738/1366.0.2560.1050@0.0.1366.738" timestamp="1579729801300" />
-    <state x="225" y="0" width="1141" height="738" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1579771406396" />
+    <state x="53" y="0" width="1141" height="738" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1580265275734" />
     <state x="1473" y="7" width="916" height="708" key="SettingsEditor/0.30.1366.738/1366.0.1024.738@0.30.1366.738" timestamp="1580053160395" />
     <state x="68" y="41" width="1214" height="727" key="SettingsEditor/0.30.1366.738@0.30.1366.738" timestamp="1579895116732" />
     <state x="1163" y="188" key="SettingsEditor/0.32.2560.1048@0.32.2560.1048" timestamp="1580045879461" />

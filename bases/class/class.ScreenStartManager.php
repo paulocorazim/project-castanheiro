@@ -1,17 +1,17 @@
 <?php
 
-    class ScreenManager
-    {
-        public function pageWrapper($typeModules, $selected_module, $contentNow, $alert_type)
-        {
+	class ScreenManager
+	{
+		public function pageWrapper ($typeModules, $selected_module, $contentNow, $alert_type)
+		{
 
-            $ip = $_SERVER['REMOTE_ADDR'];
-            $user = $_SESSION['name'];
-            $type = $_SESSION['user_type'];
-            $update = $_SESSION['dt_update'];
-            $date = date('d-M-Y');
+			$ip = $_SERVER['REMOTE_ADDR'];
+			$user = $_SESSION['name'];
+			$type = $_SESSION['user_type'];
+			$update = $_SESSION['dt_update'];
+			$date = date('d-M-Y');
 
-            return <<< EOT
+			return <<< EOT
             <!-- Page Wrapper -->
             <div id="wrapper">
             
@@ -442,10 +442,8 @@
                   <div class="container-fluid">
             
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                      <h1 class="h3 mb-0 text-gray-800">$selected_module</h1>
-                      <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="?user_report=23!#%LS"><i
-                              class="fas fa-download fa-sm text-white-50"></i> Report $selected_module</a>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+                      <h1 class="h6 mb-0"> :: $selected_module</h1>                      
                     </div>
             
             
@@ -505,5 +503,5 @@
                 
 
 EOT;
-        }
-    }
+		}
+	}
