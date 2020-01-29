@@ -107,50 +107,50 @@ EOT;
         public function screenReportBillet()
         {
             $screenReportBillet = <<< EOT
-7 DataTales Example -->
-                            <div class="card shadow mb-4">
-                              <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">
-                                   Boletos Gerados |  <i class="fas fa-search fa-sm"></i> 
-                                     ( <input type="checkbox" name="billet_vencidos" id="billet_vencidos" class="btn-info"> vencidos ) 
-                                     ( <input type="checkbox" name="billet_a_vencer" id="billet_a_vencer" class="btn-info"> a vencer )
-                                     ( <input type="checkbox" name="billet_all" id="billet_all" class="btn-info" OnClick="disable_billet_dues()"> todos )
-                                   </h6>
-                              </div>
-                              <div class="card-body">
-                                <div class="table-responsive">
-                                  <table cellspacing="0" class="table table-hover table-bordered" id="">
-                                    <thead>
-                                    <tr>
-                                      <th>Cód : Cliente</th>
-                                      <th>Vencimento Original</th>
-                                      <th>Vencimento Prorrogado</th>
-                                      <th>R$</th>
-                                      <th>Ações</th>
-                                    </tr>
-                                    </thead>
-                                    <tfoot>
-                                      <tr>
-                                      <th>Cód : Cliente</th>
-                                      <th>Vencimento Original</th>
-                                      <th>Vencimento Prorrogado</th>
-                                      <th>R$</th>
-                                      <th>Ações</th>
-                                      </tr>
-                                    </tfoot>
-                                    <tbody>                 
-                                    <tr>
-                                      <td>1010: SystemHope</td>
-                                      <td>11/11/1111</td>
-                                      <td>11/11/1111</td>
-                                      <td>R$ 2.900,00</td>
-                                      <td><button class="btn-sm btn-info btn-user btn-block">Editar</button></td>
-                                    </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </div>
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                   Boletos Gerados |  <i class="fas fa-search fa-sm"></i> 
+                     ( <input type="checkbox" name="billet_vencidos" id="billet_vencidos" class="btn-info"> vencidos ) 
+                     ( <input type="checkbox" name="billet_a_vencer" id="billet_a_vencer" class="btn-info"> a vencer )
+                     ( <input type="checkbox" name="billet_all" id="billet_all" class="btn-info" OnClick="disable_billet_dues()"> todos )
+                   </h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table cellspacing="0" class="table table-hover table-bordered" id="">
+                    <thead>
+                    <tr>
+                      <th>Cód : Cliente</th>
+                      <th>Vencimento Original</th>
+                      <th>Vencimento Prorrogado</th>
+                      <th>R$</th>
+                      <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                      <th>Cód : Cliente</th>
+                      <th>Vencimento Original</th>
+                      <th>Vencimento Prorrogado</th>
+                      <th>R$</th>
+                      <th>Ações</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>                 
+                    <tr>
+                      <td>1010: SystemHope</td>
+                      <td>11/11/1111</td>
+                      <td>11/11/1111</td>
+                      <td>R$ 2.900,00</td>
+                      <td><button class="btn-sm btn-info btn-user btn-block">Editar</button></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
 EOT;
             return $screenReportBillet;
         }

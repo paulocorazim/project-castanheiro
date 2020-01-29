@@ -28,12 +28,25 @@
     echo $head->sh_head("AppManer Castanheiro");
 
     //Conteudo
-    $screenBillets = new ScreenBillets(); // aqui stanciamos a tela
-    $contentNow = $screenBillets->screenFormBillet(); // aqui atribuimos o contenNow com o form desejado
+    $screenBillets = new ScreenBillets(); // aqui estanciamos a tela
 
-    $screenManager = new ScreenManager();
-    echo $screenManager->pageWrapper($typeModules, "Boleto Avulsos", $contentNow, null);
+    if ($_GET['report'] === 'true') {
 
+        if ($_GET['type'] === 'bc') {
+            $type_rport = "Clientes x Boletos";
+        }
+
+        if ($_GET['type'] === 'bv') {
+            $type_rport = "Boletos x Vencimentos";
+        }
+
+        $contentNow = $screenBillets->screenReportBillet(); // aqui atribuimos o contenNow com o form desejado
+        $screenManager = new ScreenManager();
+        echo $screenManager->pageWrapper($typeModules, "Relatório de Boletos", $contentNow, null);
+        $footer = new shFooter();
+        echo $footer->sh_footer();
+        exit();
+    }
 
     //Fecha Sessão
     if (isset($_GET['exit'])) {
@@ -41,6 +54,10 @@
         $appFunctions->redirect_page('0', '../index.php');
         exit;
     }
+
+    $contentNow = $screenBillets->screenFormBillet(); // aqui atribuimos o contenNow com o form desejado
+    $screenManager = new ScreenManager();
+    echo $screenManager->pageWrapper($typeModules, "Boleto Avulsos", $contentNow, null);
 
     //Fim
     $footer = new shFooter();
