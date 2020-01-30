@@ -2,7 +2,7 @@
 
     class ScreenBillets
     {
-        public function screenFormBillet()
+        public function screenFormBillet($findClients)
         {
             $screenFormBillet = <<< EOT
 	        <div class="container-fluid">         
@@ -13,11 +13,10 @@
                           <div class="bd-highlight">
                       <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                           <div class="input-group mb-3">
-                              <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small" name="find_client" id="find_client" onchange="find_clitn()">	                         
-                                  <option value="01">Localizar Cliente ... </option>
-                                  <option value="02">... </option>
-                                  <option value="03">SystemHope</option>
-                                  <option value="04">Sepher</option>
+                              <select type="text" name="find_client" id="find_client" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small"  onchange="find_clitn()">	                         
+                                  <option value="">Localizar Cliente ... </option>
+                                  <option value="">... </option>
+                                   $findClients
                                   </select>
                             <div class="input-group-append">
                               <button class="btn btn-sm btn-primary" type="button">
@@ -31,7 +30,7 @@
 	                    <div class="form-group row">
 	                        <div class="col-sm-5 mb-10 mb-sm-0">
 	                            <span>Cód: Cliente</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="" disabled>
+	                            <input type="text" name="client_name" id="client_name" class="form-control-sm form-control" value="" disabled>
 	                        </div>
 	                        <div class="col-sm-3 mb-3 mb-sm-0">
 	                          <span>Data Vencimento</span>

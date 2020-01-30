@@ -1,9 +1,9 @@
 <?php /** @noinspection DuplicatedCode */
 
-    ini_set('memory_limit', '256M');
+    /*ini_set('memory_limit', '256M');
     ini_set('display_errors', 1);
     ini_set('display_startup_erros', 1);
-    error_reporting(E_ALL);
+    error_reporting(E_ALL);*/
 
     include("head.php");
     include("../class/class.ScreenStartManager.php");
@@ -20,8 +20,12 @@
     $conn = new DBconnect();
     $dbInstance = $conn->connection();
 
+    $activeRecords = new DbManagerRecords();
+    $findClients = $activeRecords->find_clients($dbInstance);
+
     $typeModule = new LinkModule();
     $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
+
 
     //Inicio
     $head = new shHead();
@@ -55,7 +59,7 @@
         exit;
     }
 
-    $contentNow = $screenBillets->screenFormBillet(); // aqui atribuimos o contenNow com o form desejado
+    $contentNow = $screenBillets->screenFormBillet($findClients); // aqui atribuimos o contenNow com o form desejado
     $screenManager = new ScreenManager();
     echo $screenManager->pageWrapper($typeModules, "Boleto Avulsos", $contentNow, null);
 

@@ -3,9 +3,11 @@ function mascaraMutuario(o, f) {
     v_fun = f;
     setTimeout('execmascara()', 1)
 }
+
 function execmascara() {
     v_obj.value = v_fun(v_obj.value)
 }
+
 function cpfCnpj(v) {
     //Remove tudo o que não é dígito
     v = v.replace(/\D/g, "")
@@ -29,6 +31,7 @@ function cpfCnpj(v) {
     }
     return v
 }
+
 function disable_client_state_registration_free() {
     if (document.getElementById('client_state_registration_free').checked) {
         document.getElementById('client_state_registration').disabled = true;
@@ -37,6 +40,7 @@ function disable_client_state_registration_free() {
         document.getElementById('client_state_registration').disabled = false;
     }
 }
+
 function disable_user_modules_permissions() {
     if (document.getElementById('permission_master').checked) {
         document.getElementById('user_module[]').disabled = true;
@@ -47,6 +51,7 @@ function disable_user_modules_permissions() {
         document.getElementById('user_permission[]').disabled = false;
     }
 }
+
 function disable_billet_dues() {
     if (document.getElementById('billet_all').checked) {
         document.getElementById('billet_vencidos').disabled = true;
@@ -59,6 +64,7 @@ function disable_billet_dues() {
         document.getElementById('billet_a_vencer').disabled = false;
     }
 }
+
 function find_clitn() {
     const find_client_name = document.getElementById('find_client');
     document.getElementById('client_name').value = find_client_name.options[find_client_name.selectedIndex].text;

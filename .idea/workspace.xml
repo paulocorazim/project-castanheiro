@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.DbConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbConnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/man/manager.billets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.billets.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,15 +108,15 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\www\htdocs\castanheiro\bases" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\www\htdocs\castanheiro\bases" />
       <recent name="C:\www\htdocs\castanheiro\bases\js" />
       <recent name="C:\www\htdocs\castanheiro\pages" />
       <recent name="C:\www\htdocs\castanheiro" />
       <recent name="C:\www\htdocs\castanheiro\man" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\www\htdocs\castanheiro\bases" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -413,5 +416,20 @@
     </state>
     <state x="648" y="84" width="1260" height="965" key="search.everywhere.popup/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579364981050" />
     <state x="346" y="59" width="840" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1579381933207" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/bases/class/class.DbManagerRecords.php</url>
+          <line>5</line>
+          <properties>
+            <option name="className" value="\DbManagerRecords" />
+            <option name="methodName" value="manager_user" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
