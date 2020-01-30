@@ -13,11 +13,11 @@
                           <div class="bd-highlight">
                       <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                           <div class="input-group mb-3">
-                              <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small" name="find_client" id="find_client">	                         
-                                  <option value="--">Localizar Cliente ... </option>
-                                  <option value="--">... </option>
-                                  <option value="--">SystemHope</option>
-                                  <option value="--">Sepher</option>
+                              <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small" name="find_client" id="find_client" onchange="find_clitn()">	                         
+                                  <option value="01">Localizar Cliente ... </option>
+                                  <option value="02">... </option>
+                                  <option value="03">SystemHope</option>
+                                  <option value="04">Sepher</option>
                                   </select>
                             <div class="input-group-append">
                               <button class="btn btn-sm btn-primary" type="button">
@@ -31,7 +31,7 @@
 	                    <div class="form-group row">
 	                        <div class="col-sm-5 mb-10 mb-sm-0">
 	                            <span>Cód: Cliente</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="1010 : SystemHope Softwares" disabled>
+	                            <input type="text" name="" id="" class="form-control-sm form-control" value="" disabled>
 	                        </div>
 	                        <div class="col-sm-3 mb-3 mb-sm-0">
 	                          <span>Data Vencimento</span>
@@ -43,7 +43,7 @@
 	                      </div>
                         <div class="col-sm-2 mb-3 mb-sm-0">
                           <br>
-                          <button class="btn-sm btn-success"><span  style="font-size: larger; font-family: courier new, cursive; ">+</span></button>
+                          <button class="btn btn-sm btn-success"><i class="fas fa-plus"></i></button>
                         </div>
 	                                           
 	                    </div>
