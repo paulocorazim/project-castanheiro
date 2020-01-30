@@ -67,18 +67,18 @@ Class ScreenClients
                                     </div> 
                                     <div class="col-sm-5 mb-3 mb-sm-0">
                                         <span>Nome</span>
-                                        <input type="text" name="client_name" id="client_name" class="form-control">
+                                        <input type="text" required name="client_name" id="client_name" class="form-control">
                                     </div>
                                 </div>
             
                                 <div class="form-group row">
                                     <div class="col-sm-4 mb-3 mb-sm-0">
                                         <span>Razão Social</span>
-                                        <input type="text" name="client_corporate_name" id="client_corporate_name" class="form-control">
+                                        <input type="text" required name="client_corporate_name" id="client_corporate_name" class="form-control">
                                     </div>
                                     <div class="col-sm-3 mb-3 mb-sm-0">
                                         <span>CPF / CNPJ</span>
-                                        <input type="text" name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control">
+                                        <input type="text" required name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control">
                                     </div>
                                     <div class="col-sm-3 mb-3 mb-sm-0">   
                                         <span>Inscrição Estadual</span>
@@ -93,7 +93,7 @@ Class ScreenClients
                                 <div class="form-group row">
                                     <div class="col-sm-4 mb-3 mb-sm-0">
                                         <span>Inscrição Municipal</span>
-                                        <input type="text" name="client_municipal_registration" id="client_municipal_registration"  class="form-control">
+                                        <input type="text" required name="client_municipal_registration" id="client_municipal_registration"  class="form-control">
                                     </div>
                                     <div class="col-sm-4 mb-3 mb-sm-0">
                                         <span>RG</span>
@@ -101,7 +101,7 @@ Class ScreenClients
                                     </div>
                                     <div class="col-sm-4 mb-3 mb-sm-0">
                                         <span>Responsável</span>
-                                        <input type="text" name="client_responsible" id="client_responsible" class="form-control">
+                                        <input type="text" required name="client_responsible" id="client_responsible" class="form-control">
                                     </div>
                                 </div>
                     </div>
@@ -113,7 +113,7 @@ Class ScreenClients
                         <div class="form-group row">
                             <div class="col-sm-4 mb-3 mb-sm-0">
                                 <span>E-mail 1</span>
-                                <input type="email" name="client_email1" id="client_email1" class="form-control">                           
+                                <input type="email" required name="client_email1" id="client_email1" class="form-control">                           
                             </div>
                             <div class="col-sm-4 mb-3 mb-sm-0">
                             <span>E-mail 2</span>
@@ -129,7 +129,7 @@ Class ScreenClients
                             
                             <div class="col-sm-4 mb-2 mb-sm-0">
                                <span>Tel1</span>
-                               <input data-mask='+55 (00) 00000-0000' type="text" name="client_phone1" id="client_phone1" class="form-control" onclick="format_phones()">
+                               <input data-mask='+55 (00) 00000-0000' required type="text" name="client_phone1" id="client_phone1" class="form-control" onclick="format_phones()">
                             </div>
                             <div class="col-sm-4 mb-2 mb-sm-0">
                                <span>Tel2</span>
@@ -144,15 +144,15 @@ Class ScreenClients
                             <div class="form-group row">
                                 <div class="col-sm-2 mb-3 mb-sm-0">
                                     <span>Cep</span>
-                                    <input type="text" name="cep" id="cep" class="form-control">
+                                    <input type="text" required name="cep" id="cep" class="form-control">
                                 </div>
                                 <div class="col-sm-8 mb-4 mb-sm-0">
                                     <span>Endereço</span>
-                                    <input type="text" name="client_address" id="client_address" class="form-control">
+                                    <input type="text" required name="client_address" id="client_address" class="form-control">
                                 </div>
                                  <div class="col-sm-2 mb-2 mb-sm-0">
                                     <span>Número</span>
-                                    <input type="text" name="client_number" id="client_number" class="form-control">                  
+                                    <input type="text" required name="client_number" id="client_number" class="form-control">                  
                                 </div>
                             </div>
 
@@ -170,7 +170,7 @@ Class ScreenClients
                             <div class="form-group row">
                                 <div class="col-sm-4 mb-2 mb-sm-0">
                                     <span>Estado</span>
-                                    <input type="text" name="client_state" id="client_state" class="form-control">                  
+                                    <input type="text" required name="client_state" id="client_state" class="form-control">                  
                                 </div>
                                 <div class="col-sm-4 mb-2 mb-sm-0">
                                     <span>Bairro</span>
