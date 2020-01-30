@@ -10,24 +10,27 @@ Class ScreenClients
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <div class="container-fluid"> 
-        <div class="card o-hidden border-0 shadow-lg my-4">
+        <div class="card o-hidden border-0 shadow-lg">
             <div class="p-4">
-
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group mb-5">
-                        <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control bg-light border-0 small" name="" id="">	                         
+                <div class="d-flex align-items-end flex-column bd-highlight">
+                    <div class="bd-highlight">
+                <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group mb-3">
+                        <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small" name="" id="">	                         
                             <option value="--">Localizar Cliente ... </option>
                             <option value="--">... </option>
                             <option value="--">SystemHope</option>
                             <option value="--">Sepher</option>
                             </select>
                       <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
+                        <button class="btn btn-sm btn-primary" type="button">
                           <i class="fas fa-search fa-sm"></i>
                         </button>
                       </div>
                     </div>
                   </form>
+                  </div>
+                </div>
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
@@ -54,57 +57,49 @@ Class ScreenClients
                             
                                  <form action="../man/manager.clients.php" class="user" method="post" >
                                  
-                                  <div class="form-group">
-                                    <select class="custom-select col-sm-2"  name="client_active" id="client_active">
-                                        <option value="1">Ativo</option>
-                                        <option value="0">Bloqueado</option>
-                                    </select>  
-                                  </div>                                                               
-                                    <hr>   
-                                
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                  <div class="form-group row">
+                                    <div class="col-sm-2 mb-sm-0">
+                                        <br>
+                                        <select class="custom-select"  name="client_active" id="client_active">
+                                            <option value="1">Ativo</option>
+                                            <option value="0">Bloqueado</option>
+                                        </select>  
+                                    </div> 
+                                    <div class="col-sm-5 mb-3 mb-sm-0">
                                         <span>Nome</span>
                                         <input type="text" name="client_name" id="client_name" class="form-control">
                                     </div>
                                 </div>
             
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <div class="col-sm-4 mb-3 mb-sm-0">
                                         <span>Razão Social</span>
                                         <input type="text" name="client_corporate_name" id="client_corporate_name" class="form-control">
                                     </div>
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <div class="col-sm-3 mb-3 mb-sm-0">
                                         <span>CPF / CNPJ</span>
                                         <input type="text" name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control">
                                     </div>
-                                </div>
-                                    
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">   
+                                    <div class="col-sm-3 mb-3 mb-sm-0">   
                                         <span>Inscrição Estadual</span>
                                         <input type="text" name="client_state_registration" id="client_state_registration"  class="form-control">
                                     </div>
-                                    <div class="col-sm-6 mb-3 mb-sm-0 py-4">
+                                    <div class="col-sm-2 mb-3 mb-sm-0 py-4">
                                         <span class="py-5">Isento:</span>
                                         <input class="custom-checkbox" type="checkbox" name="client_state_registration_free" id="client_state_registration_free" value="fr" OnClick="disable_client_state_registration_free()">
                                     </div>
                                 </div>
-                            
+                                
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <div class="col-sm-4 mb-3 mb-sm-0">
                                         <span>Inscrição Municipal</span>
                                         <input type="text" name="client_municipal_registration" id="client_municipal_registration"  class="form-control">
                                     </div>
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <div class="col-sm-4 mb-3 mb-sm-0">
                                         <span>RG</span>
                                         <input type="text" name="client_rg" id="client_rg" class="form-control">
                                     </div>
-            
-                                </div>
-                                
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <div class="col-sm-4 mb-3 mb-sm-0">
                                         <span>Responsável</span>
                                         <input type="text" name="client_responsible" id="client_responsible" class="form-control">
                                     </div>
@@ -116,22 +111,18 @@ Class ScreenClients
                         <!-- <h3 class="h-auto">Dados Adicionais 1</h3> -->  
                                                        
                         <div class="form-group row">
-                         <div class="col-sm-6 mb-3 mb-sm-0">
-                            <span>E-mail 1</span>
-                            <input type="email" name="client_email1" id="client_email1" class="form-control">                           
-                        </div>
-                        
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                           <span>E-mail 2</span>
-                           <input type="email" name="client_email2" id="client_email2" class="form-control">                            
-                        </div> 
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                                <span>E-mail 1</span>
+                                <input type="email" name="client_email1" id="client_email1" class="form-control">                           
+                            </div>
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                            <span>E-mail 2</span>
+                            <input type="email" name="client_email2" id="client_email2" class="form-control">                            
+                            </div> 
+                            <div class="col-sm-4 mb-3 mb-sm-0">
                                 <span>Site (www)</span> 
                                 <input type="text" name="client_site" id="client_site" class="form-control">                            
-                             </div> 
+                            </div> 
                         </div>
                         
                         <div class="form-group row">
@@ -151,20 +142,17 @@ Class ScreenClients
                             </div>                 
                         
                             <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                               <span>Cep (usar somente números)</span>
-                               <input type="text" name="cep" id="cep" class="form-control">
-                            </div>
-                            </div>
-
-                            <div class="form-group row">
+                                <div class="col-sm-2 mb-3 mb-sm-0">
+                                    <span>Cep</span>
+                                    <input type="text" name="cep" id="cep" class="form-control">
+                                </div>
                                 <div class="col-sm-8 mb-4 mb-sm-0">
-                                <span>Endereço</span>
-                                <input type="text" name="client_address" id="client_address" class="form-control">
-                             </div>
-                             <div class="col-sm-4 mb-2 mb-sm-0">
-                                <span>Número</span>
-                                <input type="text" name="client_number" id="client_number" class="form-control">                  
+                                    <span>Endereço</span>
+                                    <input type="text" name="client_address" id="client_address" class="form-control">
+                                </div>
+                                 <div class="col-sm-2 mb-2 mb-sm-0">
+                                    <span>Número</span>
+                                    <input type="text" name="client_number" id="client_number" class="form-control">                  
                                 </div>
                             </div>
 
@@ -189,7 +177,7 @@ Class ScreenClients
                                     <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control">                  
                                 </div> 
                                 <div class="col-sm-4 mb-2 mb-sm-0">
-                                    <span>Compplemento</span>
+                                    <span>Complemento</span>
                                     <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control">                  
                                 </div> 
                             </div>
@@ -235,23 +223,8 @@ Class ScreenClients
                         </div>                           
                 </div>
             </div>
+            
         
-       
-            <script src="../vendor/jquery/jquery.min.js"></script>
-            <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-            
-            <!-- Core plugin JavaScript-->
-            <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-            
-            <!-- Custom scripts for all pages-->
-            <script src="../js/sb-admin-2.min.js"></script>
-            
-            <!-- Page level plugins -->
-            <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
-            <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
-            
-            <!-- Page level custom scripts -->
-            <script src="../js/demo/datatables-demo.js"></script>
 EOT;
         return $screenFormClient;
 
