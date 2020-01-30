@@ -110,7 +110,7 @@ EOT;
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">
-                   Boletos Gerados |  <i class="fas fa-search fa-sm"></i> 
+                   <i class="fas fa-search fa-sm"></i> 
                      ( <input type="checkbox" name="billet_vencidos" id="billet_vencidos" class="btn-info"> vencidos ) 
                      ( <input type="checkbox" name="billet_a_vencer" id="billet_a_vencer" class="btn-info"> a vencer )
                      ( <input type="checkbox" name="billet_all" id="billet_all" class="btn-info" OnClick="disable_billet_dues()"> todos )
@@ -122,27 +122,36 @@ EOT;
                     <thead>
                     <tr>
                       <th>Cód : Cliente</th>
+                      <th>Boleto</th>
                       <th>Vencimento Original</th>
                       <th>Vencimento Prorrogado</th>
-                      <th>R$</th>
+                      <th>R$ Orginial</th>
+                      <th>% Juros</th>
+                      <th>R$ Prorrogado</th>
                       <th>Ações</th>
                     </tr>
                     </thead>
                     <tfoot>
                       <tr>
                       <th>Cód : Cliente</th>
+                      <th>Boleto</th>
                       <th>Vencimento Original</th>
                       <th>Vencimento Prorrogado</th>
-                      <th>R$</th>
+                      <th>R$ Orginial</th>
+                      <th>% Juros</th>
+                      <th>R$ Prorrogado</th>
                       <th>Ações</th>
                       </tr>
                     </tfoot>
                     <tbody>                 
                     <tr>
                       <td>1010: SystemHope</td>
-                      <td>11/11/1111</td>
-                      <td>11/11/1111</td>
-                      <td>R$ 2.900,00</td>
+                      <td>n.12134 <br> n.12135</td>
+                      <td>11/11/1111 <br> 12/12/1111</td>
+                      <td>11/11/1111 <br> 12/12/1111</td>
+                      <td>R$ 2.900,00 <br> R$ 2.900,00</td>
+                      <td>2.5% <br> 0%</td>
+                      <td>R$ 3.100,00 <br> R$ 0,00</td>
                       <td><button class="btn-sm btn-info btn-user btn-block">Editar</button></td>
                     </tr>
                     </tbody>

@@ -89,8 +89,41 @@
                 //var_dump($results);
 
                 foreach ($results as $key) {
+                    $sqlQuerySubModule = (new \Simplon\Db\SqlQueryBuilder())
+                        ->setQuery('SELECT name_sub_app, name_sub_link from tab_modules_sub where id_module = :id_module')
+                        ->setConditions(['id_module' => "$key[id]"]);
+                    $resultsSubModule = $sqlManager->fetchAll($sqlQuerySubModule);
+
+                    $user_href_sub_module = null;
+
+                    if (!$resultsSubModule) {
+                        $user_href_sub_module = null;
+                    } else {
+                        foreach ($resultsSubModule as $subModule) {
+                            $href_sub_module = "<a class='collapse-item' href='$subModule[name_sub_app]'>$subModule[name_sub_link]</a>";
+                            $user_href_sub_module .= $href_sub_module;
+                        }
+                    }
+
+                    $nav_bar_li = "<li class=\"nav-item\">
+                      <a aria-controls=\"$key[name_link]\" aria-expanded=\"true\" class=\"nav-link collapsed\" data-target=\"#$key[name_link]\"
+                         data-toggle=\"collapse\"
+                         href=\"#\">
+                         <i class=\"far fa-paper-plane\"></i>
+                        <span>$key[name_link]</span>
+                      </a>
+                      <div aria-labelledby=\"$key[name_link]\" class=\"collapse\" data-parent=\"#accordionSidebar\" id=\"$key[name_link]\">
+                        <div class=\"bg-white py-2 collapse-inner rounded\">
+                          <h6 class=\"collapse-header\"></h6>
+                            $user_href_sub_module
+                          </div>
+                      </div>
+                    </li>";
+
                     $href = "<a class='collapse-item' href='$key[name_app]'>$key[name_link]</a>";
-                    $user_href .= $href;
+                    $user_href .= $nav_bar_li;
+                    $user_href_sub_module = null;
+
 
                     if ($key['active'] != null) {
                         $selected = "selected";

@@ -42,7 +42,7 @@
 
         $contentNow = $screenBillets->screenReportBillet(); // aqui atribuimos o contenNow com o form desejado
         $screenManager = new ScreenManager();
-        echo $screenManager->pageWrapper($typeModules, "Relatório de Boletos", $contentNow, null);
+        echo $screenManager->pageWrapper($typeModules, "Relatório >> $type_rport", $contentNow, null);
         $footer = new shFooter();
         echo $footer->sh_footer();
         exit();
