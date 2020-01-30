@@ -12,6 +12,23 @@ Class ScreenClients
     <div class="container-fluid"> 
         <div class="card o-hidden border-0 shadow-lg my-4">
             <div class="p-4">
+
+                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group mb-5">
+                        <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control bg-light border-0 small" name="" id="">	                         
+                            <option value="--">Localizar Cliente ... </option>
+                            <option value="--">... </option>
+                            <option value="--">SystemHope</option>
+                            <option value="--">Sepher</option>
+                            </select>
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                          <i class="fas fa-search fa-sm"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#novocliente" role="tab" aria-controls="home" aria-selected="true">Novo Cliente</a>
@@ -210,7 +227,9 @@ Class ScreenClients
                         <br>
                     </div>
                   </div>
-                  <button class="btn btn-success"  type="submit" name="btn_update_client" id="btn_update_client">CADASTRAR</button>
+                  <div class="d-flex align-items-end flex-column bd-highlight mt-3">
+                    <div class="p-2 bd-highlight"><button class="btn btn-success"  type="submit" name="btn_update_client" id="btn_update_client">CADASTRAR</button></div>
+                  </div>
                 </form>
                                       
                         </div>                           
