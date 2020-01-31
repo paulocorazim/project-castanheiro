@@ -46,50 +46,7 @@
             
                 <!-- Nav Item - Pages Collapse Menu -->
                 $typeModules[0]
-                                          
-               <!--  <hr class="sidebar-divider"> -->
-            
-                <!-- Heading 
-                <div class="sidebar-heading">
-                  Addons
-                </div> -->
-            
-                <!-- Nav Item - Pages Collapse Menu 
-                <li class="nav-item">
-                  <a aria-controls="collapsePages" aria-expanded="true" class="nav-link collapsed" data-target="#collapsePages"
-                     data-toggle="collapse"
-                     href="#">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                  </a>
-                  <div aria-labelledby="headingPages" class="collapse" data-parent="#accordionSidebar" id="collapsePages">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Login Screens:</h6>
-                      <a class="collapse-item" href="index.php">Login</a>
-                      <a class="collapse-item" href="register.html">Register</a>
-                      <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                      <div class="collapse-divider"></div>
-                      <h6 class="collapse-header">Other Pages:</h6>
-                      <a class="collapse-item" href="404.html">404 Page</a>
-                      <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                  </div>
-                </li>-->
-            
-                <!-- Nav Item - Charts
-                <li class="nav-item">
-                  <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-                </li> -->
-            
-                <!-- Nav Item - Tables 
-                <li class="nav-item">
-                  <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-                </li>-->
-            
+                                                      
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
             
@@ -119,7 +76,7 @@
                       <!-- Page Heading -->
                       <div class="d-sm-flex align-items-center justify-content-between mb-2">
                         
-                        <h1 class="h6 mb-0">$selected_module</h1>                      
+                        <h5 class="mb-0 mt-2">$selected_module</h5>                      
                       </div>
               
             
@@ -158,48 +115,11 @@
                            id="alertsDropdown" role="button">
                           <i class="fas fa-bell fa-fw"></i>
                           <!-- Counter - Alerts -->
-                          <span class="badge badge-danger badge-counter">3+</span>
+                          <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Alerts -->
                         <div aria-labelledby="alertsDropdown"
                              class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in">
-                          <h6 class="dropdown-header">
-                            Alerts Center
-                          </h6>
-                          <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="mr-3">
-                              <div class="icon-circle bg-primary">
-                                <i class="fas fa-file-alt text-white"></i>
-                              </div>
-                            </div>
-                            <div>
-                              <div class="small text-gray-500">December 12, 2019</div>
-                              <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                            </div>
-                          </a>
-                          <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="mr-3">
-                              <div class="icon-circle bg-success">
-                                <i class="fas fa-donate text-white"></i>
-                              </div>
-                            </div>
-                            <div>
-                              <div class="small text-gray-500">December 7, 2019</div>
-                              $290.29 has been deposited into your account!
-                            </div>
-                          </a>
-                          <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="mr-3">
-                              <div class="icon-circle bg-warning">
-                                <i class="fas fa-exclamation-triangle text-white"></i>
-                              </div>
-                            </div>
-                            <div>
-                              <div class="small text-gray-500">December 2, 2019</div>
-                              Spending Alert: We've noticed unusually high spending for your account.
-                            </div>
-                          </a>
-                          <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                         </div>
                       </li>
             
@@ -210,63 +130,11 @@
                            id="messagesDropdown" role="button">
                           <i class="fas fa-envelope fa-fw"></i>
                           <!-- Counter - Messages -->
-                          <span class="badge badge-danger badge-counter">7</span>
+                          <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Messages -->
                         <div aria-labelledby="messagesDropdown"
                              class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in">
-                          <h6 class="dropdown-header">
-                            Message Center
-                          </h6>
-                          <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                              <img alt="" class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60">
-                              <div class="status-indicator bg-success"></div>
-                            </div>
-                            <div class="font-weight-bold">
-                              <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been
-                                having.
-                              </div>
-                              <div class="small text-gray-500">Emily Fowler · 58m</div>
-                            </div>
-                          </a>
-                          <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                              <img alt="" class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60">
-                              <div class="status-indicator"></div>
-                            </div>
-                            <div>
-                              <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent
-                                to you?
-                              </div>
-                              <div class="small text-gray-500">Jae Chun · 1d</div>
-                            </div>
-                          </a>
-                          <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                              <img alt="" class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60">
-                              <div class="status-indicator bg-warning"></div>
-                            </div>
-                            <div>
-                              <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far,
-                                keep up the good work!
-                              </div>
-                              <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                            </div>
-                          </a>
-                          <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                              <img alt="" class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60">
-                              <div class="status-indicator bg-success"></div>
-                            </div>
-                            <div>
-                              <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people
-                                say this to all dogs, even if they aren't good...
-                              </div>
-                              <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                            </div>
-                          </a>
-                          <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                         </div>
                       </li>
             
@@ -286,14 +154,6 @@
                           <a class="dropdown-item" href="#">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Perfil
-                          </a>
-                          <a class="dropdown-item" href="#">
-                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Configurações
-                          </a>
-                          <a class="dropdown-item" href="#">
-                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Activity Log
                           </a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" data-target="#logoutModal" data-toggle="modal" href="#">
@@ -353,10 +213,10 @@
                       <span aria-hidden="true">×</span>
                     </button>
                   </div>
-                  <div class="modal-body">Clique em sair para deixar o sistema de forma correta!.</div>
+                  <div class="modal-body">Clique em sair para deixar o sistema de forma correta!</div>
                   <div class="modal-footer">
-                    <button class="btn btn-secondary" data-dismiss="modal" type="button">CANCELA</button>
-                    <a class="btn btn-primary" href="manager.php?exit=#$@#$">SAIR</a>
+                    <button class="btn btn-danger" data-dismiss="modal" type="button">CANCELAR</button>
+                    <a class="btn btn-success" href="manager.php?exit=#$@#$">SAIR</a>
                   </div>
                 </div>
               </div>
