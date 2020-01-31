@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.DbConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbConnection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.billets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.billets.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +177,7 @@
       <workItem from="1580301372011" duration="3305000" />
       <workItem from="1580391841354" duration="2527000" />
       <workItem from="1580430757476" duration="58000" />
-      <workItem from="1580430944094" duration="406000" />
+      <workItem from="1580430944094" duration="1068000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -251,9 +251,10 @@
       <screen x="0" y="0" width="2560" height="1050" />
     </state>
     <state x="828" y="188" key="#Plugins/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579362660378" />
-    <state x="1366" y="34" width="649" height="734" key="#QueueTest_with_Coverage" timestamp="1578517581564">
-      <screen x="1366" y="0" width="1366" height="768" />
+    <state x="0" y="32" width="649" height="734" key="#QueueTest_with_Coverage" timestamp="1580431504369">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state x="0" y="32" key="#QueueTest_with_Coverage/0.0.1366.738@0.0.1366.738" timestamp="1580431504369" />
     <state x="1366" y="34" width="649" height="734" key="#QueueTest_with_Coverage/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578517581564" />
     <state x="513" y="78" width="1160" height="681" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579551082560">
       <screen x="0" y="0" width="2560" height="1050" />

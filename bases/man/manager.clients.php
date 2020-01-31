@@ -39,7 +39,7 @@
     }
 
     echo $screenManager->pageWrapper($typeModules, "Cadastro de Clientes", $contentNow, $alert_type);
-    echo $head->sh_head("AppManager >> Cadastros de Clientes");
+    echo $head->sh_head("Castanheiro App v1 >> Cadastro de Clientes");
 
 
     /*Recebendo dados para inclusão do cliente*/

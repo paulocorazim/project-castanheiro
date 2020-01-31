@@ -29,7 +29,7 @@
 
     //Inicio
     $head = new shHead();
-    echo $head->sh_head("AppManer Castanheiro");
+    echo $head->sh_head("Castanheiro App v1");
 
     //Conteudo
     $screenBillets = new ScreenBillets(); // aqui estanciamos a tela
@@ -61,7 +61,7 @@
 
     $contentNow = $screenBillets->screenFormBillet($findClients); // aqui atribuimos o contenNow com o form desejado
     $screenManager = new ScreenManager();
-    echo $screenManager->pageWrapper($typeModules, "Boleto Avulsos", $contentNow, null);
+    echo $screenManager->pageWrapper($typeModules, "Boleto Avulso", $contentNow, null);
 
     //Fim
     $footer = new shFooter();
