@@ -23,7 +23,7 @@
                   <div class="sidebar-brand-icon">
                   <img src="../image/logo.png" style="width: 40px">
                   </div>
-                  <div class="sidebar-brand-text mx-3">appManager <sup>v1</sup></div>
+                  <div class="sidebar-brand-text mx-3">App <sup>v1</sup></div>
                 </a>
             
                 <!-- Divider -->
@@ -335,7 +335,7 @@
                 <footer class="sticky-footer bg-white">
                   <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                      <span>Copyright &copy; Castanheiro | appManager v1 |  IP: $ip | $type | $date | $update</span>
+                      <span>Copyright &copy; Castanheiro | App v1 |  IP: $ip | $type | $date | $update</span>
                     </div>
                   </div>
                 </footer>

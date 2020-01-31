@@ -4,11 +4,7 @@
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.DbConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbConnection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.billets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.billets.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,6 +175,9 @@
       <workItem from="1580154591936" duration="2225000" />
       <workItem from="1580259122729" duration="4161000" />
       <workItem from="1580301372011" duration="3305000" />
+      <workItem from="1580391841354" duration="2527000" />
+      <workItem from="1580430757476" duration="58000" />
+      <workItem from="1580430944094" duration="406000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -267,9 +266,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="426" y="172" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1578876138146" />
-    <state x="586" y="331" width="626" height="524" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579953425942">
-      <screen x="0" y="32" width="2560" height="1048" />
+    <state x="313" y="211" width="640" height="524" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1580430773481">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state x="313" y="211" width="640" height="524" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.738@0.0.1366.738" timestamp="1580430773481" />
     <state x="586" y="299" width="640" height="542" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1050@0.0.2560.1050" timestamp="1579353927165" />
     <state x="586" y="331" width="626" height="524" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.32.2560.1048@0.32.2560.1048" timestamp="1579953425942" />
     <state x="1952" y="308" width="626" height="535" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579690727100" />
@@ -379,19 +379,19 @@
     <state x="726" y="23" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1366.738@0.0.1366.738" timestamp="1580272448468" />
     <state x="271" y="47" width="568" height="705" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.36.1366.732@0.36.1366.732" timestamp="1579232039323" />
     <state x="271" y="36" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1366.0.2560.1080/0.36.1366.732@0.36.1366.732" timestamp="1579717679804" />
-    <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1580301380585">
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1580430951347">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="731" y="310" key="com.intellij.ide.util.TipDialog/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579626531425" />
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.0.1152.834@0.0.1366.738" timestamp="1580132816940" />
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1579615407193" />
-    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1579771272083" />
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1580430951347" />
     <state x="731" y="310" key="com.intellij.ide.util.TipDialog/0.0.2560.1050@0.0.2560.1050" timestamp="1579360102897" />
     <state x="390" y="248" key="com.intellij.ide.util.TipDialog/0.30.1366.738@0.30.1366.738" timestamp="1579785051147" />
     <state x="731" y="342" key="com.intellij.ide.util.TipDialog/0.32.2560.1048@0.32.2560.1048" timestamp="1580045617428" />
     <state x="390" y="252" key="com.intellij.ide.util.TipDialog/0.36.1366.732@0.36.1366.732" timestamp="1579222001350" />
     <state x="731" y="348" key="com.intellij.ide.util.TipDialog/0.41.2560.1039@0.41.2560.1039" timestamp="1580259124824" />
-    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/1366.0.1152.834/0.0.1366.738@0.0.1366.738" timestamp="1580301380585" />
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/1366.0.1152.834/0.0.1366.738@0.0.1366.738" timestamp="1580391877297" />
     <state x="1756" y="227" key="com.intellij.ide.util.TipDialog/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518391692" />
     <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578848368598" />
     <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579711507039" />
