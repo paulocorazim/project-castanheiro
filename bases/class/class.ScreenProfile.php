@@ -61,7 +61,7 @@
                                                 <div class="col-sm-3">
                                                     <br>
                                                     <button name="submit" type="submit"type="button" class="btn btn-sm btn-success">Atualizar</button>
-                                                    <button type="button" class="btn btn-sm btn-danger">Cancelar</button>
+                                                    <button type="button" class="btn btn-sm btn-danger"><a href="../man/manager.php">Cancelar</a></button>
                                                 </div>
                                                
                                             </div>
