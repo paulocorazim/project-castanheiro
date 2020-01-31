@@ -26,7 +26,7 @@
     $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
 
     $head = new shHead();
-    echo $head->sh_head("AppManer >> Clientes");
+    echo $head->sh_head("Castanheiro App v1 >> Clientes");
 
     $screenManager = new ScreenManager();
     $screenClient = new ScreenClients();

@@ -25,7 +25,7 @@
 
     //Inicio
     $head = new shHead();
-    echo $head->sh_head("AppManer Castanheiro");
+    echo $head->sh_head("Castanheiro App v1");
 
     //Conteudo
     $screenBillets = new ScreenExpirations(); // aqui estanciamos a tela

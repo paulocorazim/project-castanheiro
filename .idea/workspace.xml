@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.billets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.billets.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.expirations.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.expirations.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.properties.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.properties.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.users.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.users.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +180,7 @@
       <workItem from="1580301372011" duration="3305000" />
       <workItem from="1580391841354" duration="2527000" />
       <workItem from="1580430757476" duration="58000" />
-      <workItem from="1580430944094" duration="1068000" />
+      <workItem from="1580430944094" duration="1574000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
