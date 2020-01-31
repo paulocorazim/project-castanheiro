@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
+      <change afterPath="$PROJECT_DIR$/bases/docs/clients/19/CONTRATO_COMERCIAL_PADRAO_REVISADO.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bases/docs/clients/19/FICHA_CADASTRAL_PARA_LOCATARIOS.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.DbConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbConnection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.Functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.billets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.billets.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,13 +45,6 @@
         <item name="@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="appmanager: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="appmanager: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="tab_modules: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -189,7 +179,7 @@
       <workItem from="1580301372011" duration="3305000" />
       <workItem from="1580391841354" duration="2527000" />
       <workItem from="1580430757476" duration="58000" />
-      <workItem from="1580430944094" duration="4700000" />
+      <workItem from="1580430944094" duration="11198000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -381,6 +371,10 @@
     <state x="2302" y="148" width="1387" height="831" key="SettingsEditor/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578840424353" />
     <state x="0" y="41" width="902" height="727" key="SettingsEditor/1366.0.2560.1080/0.36.1366.732@0.36.1366.732" timestamp="1579211762849" />
     <state x="1830" y="83" width="1435" height="730" key="SettingsEditor/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579692301093" />
+    <state x="413" y="190" key="com.intellij.database.dbimport.ImportUtil.MyDialog" timestamp="1580440191960">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="413" y="190" key="com.intellij.database.dbimport.ImportUtil.MyDialog/0.0.1366.738@0.0.1366.738" timestamp="1580440191960" />
     <state x="448" y="213" width="470" height="424" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1579905098308">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
@@ -441,15 +435,6 @@
             <option name="methodName" value="manager_user" />
           </properties>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/bases/class/class.DbManagerRecords.php</url>
-          <line>327</line>
-          <properties>
-            <option name="className" value="\DbManagerRecords" />
-            <option name="methodName" value="manager_client" />
-          </properties>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/bases/class/class.Functions.php</url>

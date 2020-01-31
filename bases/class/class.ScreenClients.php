@@ -1,12 +1,12 @@
 <?php
 
-Class ScreenClients
-{
-
-    public function screenFormClient()
+    Class ScreenClients
     {
 
-        $screenFormClient = <<< EOT
+        public function screenFormClient()
+        {
+
+            $screenFormClient = <<< EOT
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <div class="container-fluid"> 
@@ -34,23 +34,29 @@ Class ScreenClients
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#novocliente" role="tab" aria-controls="home" aria-selected="true">Novo Cliente</a>
+                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#novocliente" role="tab" aria-controls="home" aria-selected="true">Cliente</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#dadosadicionais1" role="tab" aria-controls="profile" aria-selected="false">Dados Adicionais 1</a>
+                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#dadosadicionais1" role="tab" aria-controls="profile" aria-selected="false">Endereço</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#dadosadicionais2" role="tab" aria-controls="contact" aria-selected="false">Dados Adicionais 2</a>
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#dadosadicionais2" role="tab" aria-controls="contact" aria-selected="false">Tipo Cliente</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#documentacao" role="tab" aria-controls="contact" aria-selected="false">Documentação</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contratos" role="tab" aria-controls="contact" aria-selected="false">Contratos</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#observacoes" role="tab" aria-controls="contact" aria-selected="false">Observações</a>
-                      </li>
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="contact" aria-selected="false">Documentos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#fichas" role="tab" aria-controls="contact" aria-selected="false">Fichas</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contratos" role="tab" aria-controls="contact" aria-selected="false">Contratos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#imoveis" role="tab" aria-controls="contact" aria-selected="false">Imóveis</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#observacoes" role="tab" aria-controls="contact" aria-selected="false">Observações</a>
+                    </li>
                   </ul>
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="novocliente" role="tabpanel" aria-labelledby="home-tab">
@@ -199,15 +205,49 @@ Class ScreenClients
                             <label for="name"> Transportadora</label>
 
                     </div>
-                    <div class="tab-pane fade" id="documentacao" role="tabpanel" aria-labelledby="contact-tab">
-         
-                         --
-                         --
+                    <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                            <label class="custom-file-label" for="validatedCustomFile">Escolher arquivo...</label>
+                            <hr>
+                            <div class="btn-warning btn-sm">Cliente ainda não possui documentos relacionados!</div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="fichas" role="tabpanel" aria-labelledby="contact-tab">         
+                         <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                            <label class="custom-file-label" for="validatedCustomFile">Escolher arquivo...</label>
+                            <hr>                            
+                            <div class="btn-success btn-sm">
+                             <a href="../docs/clients/19/FICHA_CADASTRAL_PARA_LOCATARIOS.pdf" target="_blank">FICHA CADASTRAL</a>
+                            </div><br>
+                            <div class="btn-danger btn-sm">
+                             <a href="../docs/clients/19/FICHA_CADASTRAL_PARA_LOCATARIOS.pdf" target="_blank">FICHA CADASTRAL</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
-               
-                         --
-                         --
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                            <label class="custom-file-label" for="validatedCustomFile">Escolher arquivo...</label>
+                            <hr>                            
+                            <div class="btn-success btn-sm">
+                             <a href="../docs/clients/19/CONTRATO_COMERCIAL_PADRAO_REVISADO.pdf" target="_blank">CONTRATO COMERCIAL PADRAO</a>
+                            </div><br>                            
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="imoveis" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="custom-file">                            
+                            <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small" name="" id="">	                         
+                                <option value="--">Adicionar Imóveis ... </option>
+                                <option value="--">CASA</option>
+                                <option value="--">GALPÃO</option>
+                            </select>                              
+                            <hr>                            
+                            <div class="btn-info btn-sm">
+                             GALPÃO AVINADA POA <hr> Inicio da Locação em : 22/11/2018 <br> Término Locação em : 22/11/2022 <br> Valor: R$ 15.000,00
+                            </div><br>                            
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="observacoes" role="tabpanel" aria-labelledby="contact-tab">
                         <textarea name="client_obs" id="client_obs" cols="30" rows="10"></textarea>   
@@ -226,15 +266,15 @@ Class ScreenClients
             
         
 EOT;
-        return $screenFormClient;
+            return $screenFormClient;
+
+        }
+
+
+        public function screenListClient()
+        {
+
+        }
+
 
     }
-
-
-    public function screenListClient()
-    {
-
-    }
-
-
-}

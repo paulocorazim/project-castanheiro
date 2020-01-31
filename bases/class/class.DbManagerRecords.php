@@ -366,10 +366,20 @@
                         ->setData($data); // set data (keys = database column name)
                     $sqlManager->insert($sqlQuery);
 
+                    //Verifica ultimo ID cadastrado
+                    $lastID = (new \Simplon\Db\SqlQueryBuilder())
+                        ->setQuery('SELECT LAST_INSERT_ID() as ID');
+                    $resultslastID = $sqlManager->fetchAll($lastID);
+
+                    foreach ($resultslastID as $docID) {
+                        $client_dir_create = $docID[ID];
+                    }
+
                     //Aviso do sucesso e redireciona a pagina
                     $n_alert = base64_encode(1); //sucess
                     $n_msg = base64_encode("Inclusão do Cliente : $regists_client[name] concluida com sucesso!<br><br>");
                     $appFunctions->redirect_page(0, "../man/manager.clients.php?n_alert=$n_alert&n_msg=$n_msg");
+                    mkdir("../docs/clients/$client_dir_create/", 0777, true);
                     exit();
 
                 } catch (Exception $e) {
