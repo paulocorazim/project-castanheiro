@@ -116,17 +116,12 @@
                     </button>
             
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                      <div class="input-group">
-                        <input aria-describedby="basic-addon2" aria-label="Search" class="form-control bg-light border-0 small"
-                               placeholder="Localize aqui ..." type="text">
-                        <div class="input-group-append">
-                          <button class="btn btn-primary" type="button">
-                            <i class="fas fa-search fa-sm"></i>
-                          </button>
-                        </div>
+                      <!-- Page Heading -->
+                      <div class="d-sm-flex align-items-center justify-content-between mb-2">
+                        <i class="fas fa-users"></i> 
+                        <h1 class="h6 mb-0">$selected_module</h1>                      
                       </div>
-                    </form>
+              
             
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -283,8 +278,8 @@
                            href="#"
                            id="userDropdown" role="button">
                           <span class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, $user</span>
-                          <i class="fas fa-sort-down"></i>
-                          <!--<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">-->
+                          <!-- <i class="fas fa-sort-down"></i> -->
+                          <img class="img-profile rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTWgUT_90oe5ck7cOgfuzAsQhnIfXL_dlgj8Yzc4uaHA3ugtrEn">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
@@ -315,13 +310,8 @@
             
                   <!-- Begin Page Content -->
                   <div class="container-fluid">
-            
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-2">
-                      <h1 class="h6 mb-0"> :: $selected_module</h1>                      
-                    </div>
-            
-            
+          
+    
                     <!-- Content Now -->
                     $alert_type
                     $contentNow                              
