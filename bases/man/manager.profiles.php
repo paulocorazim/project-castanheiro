@@ -8,7 +8,7 @@
     include("head.php");
     include("../class/class.ScreenStartManager.php");
     include("../class/class.ScreenEndManager.php");
-    include("../class/class.ScreenPropertie.php"); // aqui importamos a tela
+    include("../class/class.ScreenProfile.php"); // aqui importamos a tela
     include("../class/class.Functions.php");
     include("../class/class.DbConnection.php");
     include('../class/class.UserLinkModules.php');
@@ -28,7 +28,7 @@
     echo $head->sh_head("Castanheiro App v1");
 
     //Conteudo
-    $screenBillets = new ScreenProperties(); // aqui estanciamos a tela
+    $screenProfiles = new ScreenProfiles(); // aqui estanciamos a tela
 
     if ($_GET['report'] === 'true') {
 
@@ -40,7 +40,7 @@
             $type_rport = "Boletos x Vencimentos";
         }
 
-        $contentNow = $screenProperties->screenPropertie(); // aqui atribuimos o contenNow com o form desejado
+        $contentNow = $screenProfiles->screenProfile(); // aqui atribuimos o contenNow com o form desejado
         $screenManager = new ScreenManager();
         echo $screenManager->pageWrapper($typeModules, "Relatório >> $type_rport", $contentNow, null);
         $footer = new shFooter();
@@ -55,9 +55,9 @@
         exit;
     }
 
-    $contentNow = $screenBillets->screenPropertie(); // aqui atribuimos o contenNow com o form desejado
+    $contentNow = $screenProfiles->screenProfile(); // aqui atribuimos o contenNow com o form desejado
     $screenManager = new ScreenManager();
-    echo $screenManager->pageWrapper($typeModules, "Imóveis", $contentNow, null);
+    echo $screenManager->pageWrapper($typeModules, "Perfil", $contentNow, null);
 
     //Fim
     $footer = new shFooter();
