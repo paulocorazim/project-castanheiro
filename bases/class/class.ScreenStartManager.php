@@ -151,7 +151,7 @@
                         </a>
                         <!-- Dropdown - User Information -->
                         <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
-                          <a class="dropdown-item" href="#">
+                          <a class="dropdown-item" href="../man/manager.profiles.php">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Perfil
                           </a>
