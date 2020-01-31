@@ -15,7 +15,8 @@
                                                     b.email,
                                                     c.name_link as name_link,
                                                     c.name_app  as name_app,
-                                                    c.id        as id
+                                                    c.id        as id,
+                                                    c.icone_fas_fa as fas_fa
                                     from tab_permissions as a,
                                          tab_users as b,
                                          tab_modules as c
@@ -47,7 +48,7 @@
                       <a aria-controls=\"$key[name_link]\" aria-expanded=\"true\" class=\"nav-link collapsed\" data-target=\"#$key[name_link]\"
                          data-toggle=\"collapse\"
                          href=\"#\">
-                         <i class=\"far fa-paper-plane\"></i>
+                         <i class=\"$key[fas_fa]\"></i>
                         <span>$key[name_link]</span>
                       </a>
                       <div aria-labelledby=\"$key[name_link]\" class=\"collapse\" data-parent=\"#accordionSidebar\" id=\"$key[name_link]\">

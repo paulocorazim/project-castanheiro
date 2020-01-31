@@ -118,7 +118,7 @@
                     <!-- Topbar Search -->
                       <!-- Page Heading -->
                       <div class="d-sm-flex align-items-center justify-content-between mb-2">
-                        <i class="fas fa-users"></i> 
+                        
                         <h1 class="h6 mb-0">$selected_module</h1>                      
                       </div>
               

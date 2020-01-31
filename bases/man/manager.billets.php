@@ -16,6 +16,8 @@
 
     $appFunctions = new appFunctions();
     $appFunctions->validate_session();
+    $icone_fas_fa = $appFunctions->icone_fas_fan(1);
+
 
     $conn = new DBconnect();
     $dbInstance = $conn->connection();
@@ -61,7 +63,7 @@
 
     $contentNow = $screenBillets->screenFormBillet($findClients); // aqui atribuimos o contenNow com o form desejado
     $screenManager = new ScreenManager();
-    echo $screenManager->pageWrapper($typeModules, "Boleto Avulso", $contentNow, null);
+    echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Boleto Avulso", $contentNow, null);
 
     //Fim
     $footer = new shFooter();

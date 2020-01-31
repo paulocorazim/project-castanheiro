@@ -15,9 +15,11 @@
 
     $appFunctions = new appFunctions();
     $appFunctions->validate_session();
+    $icone_fas_fa = $appFunctions->icone_fas_fan(0);
 
     $conn = new DBconnect();
     $dbInstance = $conn->connection();
+
 
     $typeModule = new LinkModule();
     $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
@@ -26,7 +28,7 @@
     echo $head->sh_head("Castanheiro App v1");
 
     $screenManager = new ScreenManager();
-    echo $screenManager->pageWrapper($typeModules, "DashBoard", null, null);
+    echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa DashBoard", null, null);
 
 
     if (isset($_GET['exit'])) {

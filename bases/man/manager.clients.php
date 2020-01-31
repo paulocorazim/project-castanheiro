@@ -19,6 +19,8 @@
 
     $conn = new DBconnect();
     $dbInstance = $conn->connection();
+    $icone_fas_fa = $appFunctions->icone_fas_fan(2);
+
 
     $activeRecords = new DbManagerRecords();
 
@@ -38,9 +40,7 @@
         $alert_type = $appFunctions->alert_system($n_alert, "$n_msg");
     }
 
-    echo $screenManager->pageWrapper($typeModules, "Cadastro de Clientes", $contentNow, $alert_type);
-    echo $head->sh_head("Castanheiro App v1 >> Cadastro de Clientes");
-
+    echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow, $alert_type);
 
     /*Recebendo dados para inclusão do cliente*/
     if (isset($_POST['btn_update_client'])) {
