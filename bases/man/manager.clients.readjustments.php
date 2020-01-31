@@ -8,7 +8,7 @@
     include("head.php");
     include("../class/class.ScreenStartManager.php");
     include("../class/class.ScreenEndManager.php");
-    include("../class/class.ScreenInspection.php");
+    include("../class/class.ScreenReadjustment.php");
     include("../class/class.Functions.php");
     include("../class/class.DbConnection.php");
     include('../class/class.UserLinkModules.php');
@@ -28,11 +28,11 @@
     $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
 
     $head = new shHead();
-    echo $head->sh_head("Castanheiro App v1 >> Vistorias");
+    echo $head->sh_head("Castanheiro App v1 >> Reajustes");
 
     $screenManager = new ScreenManager();
-    $screenFormInspections = new ScreenFormInspections();
-    $contentNow = $screenFormInspections->screenFormInspection($findClients);
+    $screenFormReadjustments = new ScreenFormReadjustments();
+    $contentNow = $screenFormReadjustments->screenFormReadjustment($findClients);
 
     if ($_GET['n_alert'] != null) {
         $n_alert = base64_decode($_GET['n_alert']);
@@ -40,7 +40,7 @@
         $alert_type = $appFunctions->alert_system($n_alert, "$n_msg");
     }
 
-    echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Vistorias de Imóveis : Clientes", $contentNow,
+    echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Reajustes de Imóveis : Clientes", $contentNow,
         $alert_type);
 
 
