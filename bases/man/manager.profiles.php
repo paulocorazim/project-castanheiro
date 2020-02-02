@@ -14,48 +14,47 @@
     include('../class/class.UserLinkModules.php');
     include("../class/class.DbManagerRecords.php");
 
-    $appFunctions = new appFunctions();
-    $appFunctions->validate_session();
-
-    $conn = new DBconnect();
-    $dbInstance = $conn->connection();
-
-    $typeModule = new LinkModule();
-    $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
-
-    //Inicio
-    $head = new shHead();
-    echo $head->sh_head("Castanheiro App v1");
-
-    //Conteudo
-    $screenProfiles = new ScreenProfiles(); // aqui estanciamos a tela
-
-    if ($_GET['report'] === 'true') {
-
-        if ($_GET['type'] === 'bc') {
-            $type_rport = "Clientes x Boletos";
-        }
-
-        if ($_GET['type'] === 'bv') {
-            $type_rport = "Boletos x Vencimentos";
-        }
-
-        $contentNow = $screenProfiles->screenProfile(); // aqui atribuimos o contenNow com o form desejado
-        $screenManager = new ScreenManager();
-        echo $screenManager->pageWrapper($typeModules, "Relatório >> $type_rport", $contentNow, null);
-        $footer = new shFooter();
-        echo $footer->sh_footer();
-        exit();
+    //Testando Ajax com PHP
+    if (isset($_POST['btn_alter_user'])) {
+        echo "Perfil Alterado com sucesso";
+        exit;
     }
 
-    //Fecha Sessão
+    //Fecha Sessão = botão sair
     if (isset($_GET['exit'])) {
         $appFunctions->delete_session();
         $appFunctions->redirect_page('0', '../index.php');
         exit;
     }
 
-    $contentNow = $screenProfiles->screenProfile(); // aqui atribuimos o contenNow com o form desejado
+    //Funções
+    $appFunctions = new appFunctions();
+    $appFunctions->validate_session();
+
+    //Conexão com banco
+    $conn = new DBconnect();
+    $dbInstance = $conn->connection();
+
+    //Gerenciamento de dados
+    $activeRecords = new DbManagerRecords();
+
+    //Carregando dados do usuário logado.
+    $perfilUser = $activeRecords->select_user_perfil($dbInstance, $_SESSION['id']);
+
+    //Definie o navbar com os modulos de acesso do usuário logado
+    $typeModule = new LinkModule();
+    $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
+
+    //Inicio da pagina com os css e javascripts
+    $head = new shHead();
+    echo $head->sh_head("Castanheiro App v1");
+
+    //Conteudo do centro da pagina
+    $screenFormProfiles = new ScreenProfiles(); // aqui estanciamos a tela
+
+    //Aqui atribuimos o contenNow com o form desejado
+    $contentNow = $screenFormProfiles->screenFormProfile($perfilUser);
+
     $screenManager = new ScreenManager();
     echo $screenManager->pageWrapper($typeModules, "Perfil", $contentNow, null);
 

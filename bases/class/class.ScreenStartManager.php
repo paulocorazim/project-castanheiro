@@ -74,15 +74,14 @@
             
                     <!-- Topbar Search -->
                       <!-- Page Heading -->
-                      <div class="d-sm-flex align-items-center justify-content-between mb-2">
-                        
+                      <div class="d-sm-flex align-items-center justify-content-between mb-2">                        
                         <h5 class="mb-0 mt-2">$selected_module</h5>                      
                       </div>
-              
+                                  
             
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-            
+                    
                       <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                       <li class="nav-item dropdown no-arrow d-sm-none">
                         <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -173,7 +172,7 @@
           
     
                     <!-- Content Now -->
-                    $alert_type
+                    <div id="alert_msg">$alert_type</div>                    
                     $contentNow                              
                   </div>
                   <!-- /.container-fluid -->

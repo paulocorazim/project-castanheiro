@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
-      <change afterPath="$PROJECT_DIR$/bases/class/class.ScreenPlanM2.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bases/class/class.ScreenSalaries.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bases/man/manager.clients.planm2.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bases/man/manager.salaries.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bases/js/alter_user_perfil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/castanheiro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/castanheiro.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.DbConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbConnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenProfile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenUsers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.profiles.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.profiles.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +52,22 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="appmanager: schema" type="ebfa3cd1:MariaImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="appmanager: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="tab_users: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
     </expand>
     <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -180,7 +199,11 @@
       <workItem from="1580301372011" duration="3305000" />
       <workItem from="1580391841354" duration="2527000" />
       <workItem from="1580430757476" duration="58000" />
-      <workItem from="1580430944094" duration="18991000" />
+      <workItem from="1580430944094" duration="19025000" />
+      <workItem from="1580497900432" duration="207000" />
+      <workItem from="1580498938296" duration="602000" />
+      <workItem from="1580589039268" duration="85000" />
+      <workItem from="1580589141689" duration="13790000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -270,10 +293,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="426" y="172" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1578876138146" />
-    <state x="313" y="211" width="640" height="524" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1580430773481">
+    <state x="313" y="199" width="640" height="539" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1580589071703">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="313" y="211" width="640" height="524" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.738@0.0.1366.738" timestamp="1580430773481" />
+    <state x="313" y="199" width="640" height="539" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.738@0.0.1366.738" timestamp="1580589071703" />
     <state x="586" y="299" width="640" height="542" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1050@0.0.2560.1050" timestamp="1579353927165" />
     <state x="586" y="331" width="626" height="524" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.32.2560.1048@0.32.2560.1048" timestamp="1579953425942" />
     <state x="1952" y="308" width="626" height="535" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579690727100" />
@@ -387,13 +410,13 @@
     <state x="726" y="23" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1366.738@0.0.1366.738" timestamp="1580432847035" />
     <state x="271" y="47" width="568" height="705" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.36.1366.732@0.36.1366.732" timestamp="1579232039323" />
     <state x="271" y="36" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1366.0.2560.1080/0.36.1366.732@0.36.1366.732" timestamp="1579717679804" />
-    <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1580430951347">
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1580589149595">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="731" y="310" key="com.intellij.ide.util.TipDialog/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579626531425" />
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.0.1152.834@0.0.1366.738" timestamp="1580132816940" />
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1579615407193" />
-    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1580430951347" />
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1580589149595" />
     <state x="731" y="310" key="com.intellij.ide.util.TipDialog/0.0.2560.1050@0.0.2560.1050" timestamp="1579360102897" />
     <state x="390" y="248" key="com.intellij.ide.util.TipDialog/0.30.1366.738@0.30.1366.738" timestamp="1579785051147" />
     <state x="731" y="342" key="com.intellij.ide.util.TipDialog/0.32.2560.1048@0.32.2560.1048" timestamp="1580045617428" />
@@ -403,21 +426,23 @@
     <state x="1756" y="227" key="com.intellij.ide.util.TipDialog/1366.0.1366.768/0.34.1366.734@1366.0.1366.768" timestamp="1578518391692" />
     <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.32.1366.736@1366.0.2560.1080" timestamp="1578848368598" />
     <state x="2097" y="319" key="com.intellij.ide.util.TipDialog/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579711507039" />
-    <state x="2101" y="116" width="1327" height="842" key="find.popup" timestamp="1579516581412">
-      <screen x="1366" y="0" width="2560" height="1080" />
+    <state x="1697" y="90" width="710" height="651" key="find.popup" timestamp="1580653806006">
+      <screen x="1366" y="0" width="1152" height="834" />
     </state>
     <state x="735" y="113" width="1327" height="818" key="find.popup/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579372941686" />
     <state x="392" y="115" width="708" height="570" key="find.popup/0.36.1366.732@0.36.1366.732" timestamp="1579216735012" />
+    <state x="1697" y="90" width="710" height="651" key="find.popup/1366.0.1152.834/0.0.1366.738@1366.0.1152.834" timestamp="1580653806006" />
     <state x="2101" y="116" width="1327" height="842" key="find.popup/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579516581412" />
     <state x="2328" y="103" width="552" height="706" key="refactoring.ChangeSignatureDialog" timestamp="1579485712859">
       <screen x="1366" y="0" width="2560" height="1080" />
     </state>
     <state x="962" y="100" key="refactoring.ChangeSignatureDialog/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579366457617" />
     <state x="2328" y="103" width="552" height="706" key="refactoring.ChangeSignatureDialog/1366.0.2560.1080/0.36.1366.732@1366.0.2560.1080" timestamp="1579485712859" />
-    <state x="455" y="198" width="672" height="677" key="run.anything.popup" timestamp="1579895057310">
-      <screen x="0" y="30" width="1366" height="738" />
+    <state x="455" y="168" width="672" height="677" key="run.anything.popup" timestamp="1580589698517">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="852" y="239" key="run.anything.popup/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579479291825" />
+    <state x="455" y="168" width="672" height="677" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1580589698517" />
     <state x="455" y="198" width="672" height="677" key="run.anything.popup/0.30.1366.738@0.30.1366.738" timestamp="1579895057310" />
     <state x="346" y="59" width="840" height="678" key="search.everywhere.popup" timestamp="1579381933207">
       <screen x="0" y="0" width="1366" height="738" />

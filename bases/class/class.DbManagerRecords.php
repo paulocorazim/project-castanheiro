@@ -247,7 +247,7 @@
             }
         }
 
-        /*Lendo usuário especifico by user_id*/
+        /*Lendo usuário especifico by user_id para pegar os modulos e permissoes*/
         public function select_user($dbInstance, $user_id, $appFunctions)
         {
             try {
@@ -322,6 +322,29 @@
 
 
             return array($shResultsUser, $shResultsModulesUser, $shResultsPermission, $shResultsModulesAll);
+        }
+
+        /*Lendo usuário especifico para pegar dados de perfil*/
+        public function select_user_perfil($dbInstance, $user_id)
+        {
+            $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+            $shSelectUser = (new \Simplon\Db\SqlQueryBuilder())
+                ->setQuery('SELECT * from tab_users WHERE id = :id')
+                ->setConditions(['id' => "$user_id"]);
+            $shResultsPerfilUser = $sqlManager->fetchAll($shSelectUser);
+
+
+            foreach ($shResultsPerfilUser as $perfilUser) {
+
+                $pUser = [
+                    'user_name' => $perfilUser['name'],
+                    'user_cpf' => $perfilUser['cpf'],
+                    'user_email' => $perfilUser['email'],
+                    'user_id' => $perfilUser['id']
+                ];
+            }
+
+            return $pUser;
         }
 
         /*Inclusão/Alteração de Clientes*/

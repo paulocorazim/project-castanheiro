@@ -2,11 +2,11 @@
 
     class ScreenProfiles
     {
-        public function ScreenProfile()
+        public function screenFormProfile($perfilUser)
         {
-            $screenFormProfile = <<< EOT
 
-
+            return <<< EOT
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <div class="container-fluid">
                 <div class="card o-hidden border-0 shadow-lg my-4">
                   <div class="p-4">
@@ -30,28 +30,29 @@
                                               </div>
                                         </div> 
                                         <div class="col-sm-9">
-                                            <form>
-                                            <h4>Paulo Corazim da Silva</h4>
+                                            
+                                            <h4>$perfilUser[user_name]</h4>
                                             <hr>
 
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <span>Nome</span>
-                                                    <input type="text" required="" name="client_name" id="client_name" class="form-control">
+                                                    <input type="hidden" name="user_id"  id="user_id" value="$perfilUser[user_id]">
+                                                    <input type="text" required="" name="user_name" id="user_name"  value="$perfilUser[user_name]" class="form-control">
                                                 </div>
                                                 <div  class="col-sm-6">
                                                     <span>CPF</span>
-                                                    <input type="text" required="" name="client_name" id="client_name" class="form-control">
+                                                    <input name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' type="text" value="$perfilUser[user_cpf]" class="form-control">
                                                 </div>
-                                            </div>
+                                            </div><hr>
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <span>E-mail</span>
-                                                    <input type="text" required="" name="client_name" id="client_name" class="form-control">
+                                                    <input type="text" required="" name="user_email" id="user_email" value="$perfilUser[user_email]" class="form-control">
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <span>Nova Senha</span>
-                                                    <input type="text" required="" name="client_name" id="client_name" class="form-control">
+                                                    <input type="password" required="" name="user_newpasswd" id="user_newpasswd" class="form-control" placeholder="******">
                                                 </div>
                                                
                                             </div>
@@ -60,27 +61,20 @@
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <br>
-                                                    <button name="submit" type="submit"type="button" class="btn btn-sm btn-success">Atualizar</button>
-                                                    <button type="button" class="btn btn-sm btn-danger"><a href="../man/manager.php">Cancelar</a></button>
-                                                </div>
-                                               
-                                            </div>
-                                            
-                                            </form>
+                                                    <button id="btn_alter_user" type="button" class="btn btn-sm btn-success" value="%t4383" >Atualizar</button>
+                                                    <button type="button" class="btn btn-sm btn-danger">Cancelar</a></button>
+                                                </div>                                               
+                                            </div>                                                                                        
                                         </div>  
-                                    </div>                                    
-
-                   
+                                    </div>                                                       
                                 </div>
                             </div>
-                            </div>
-                            
+                            </div>                            
                         </div>
                     </div>
                 </div>
                 </div>
 
 EOT;
-            return $screenFormProfile;
         }
     }

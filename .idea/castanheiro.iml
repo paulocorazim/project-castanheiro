@@ -16,5 +16,6 @@
     <orderEntry type="library" name="jquery-3.4.1.slim" level="application" />
     <orderEntry type="library" name="locastyle" level="application" />
     <orderEntry type="library" name="e6868744bc" level="application" />
+    <orderEntry type="library" name="jsuites" level="application" />
   </component>
 </module>
