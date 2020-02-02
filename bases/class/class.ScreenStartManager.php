@@ -146,7 +146,7 @@
                            id="userDropdown" role="button">
                           <span class="mr-2 d-none d-lg-inline text-gray-600 small">Olá, $user</span>
                           <!-- <i class="fas fa-sort-down"></i> -->
-                          <img class="img-profile rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTWgUT_90oe5ck7cOgfuzAsQhnIfXL_dlgj8Yzc4uaHA3ugtrEn">
+                          <img class="img-profile rounded-circle" src="https://image.flaticon.com/icons/png/512/17/17004.png">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
