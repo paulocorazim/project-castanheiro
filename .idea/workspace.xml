@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
-      <change afterPath="$PROJECT_DIR$/bases/js/alter_user_perfil.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/castanheiro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/castanheiro.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenProfile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenUsers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/man/manager.profiles.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.profiles.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -203,7 +194,7 @@
       <workItem from="1580497900432" duration="207000" />
       <workItem from="1580498938296" duration="602000" />
       <workItem from="1580589039268" duration="85000" />
-      <workItem from="1580589141689" duration="13790000" />
+      <workItem from="1580589141689" duration="14173000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>

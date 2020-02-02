@@ -16,7 +16,13 @@
 
     //Testando Ajax com PHP
     if (isset($_POST['btn_alter_user'])) {
-        echo "Perfil Alterado com sucesso";
+        echo "<div class=\"my - 2\"></div>
+        <a class=\"btn btn-success btn-icon-split\" href=\"#\">
+            <span class=\"icon text-white-50\">
+              <i class=\"fas fa-check\" ></i >
+            </span >
+          <span class=\"text\">Perfil Alterado com sucesso!</span>
+        </a >";
         exit;
     }
 
