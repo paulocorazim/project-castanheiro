@@ -53,17 +53,15 @@
                 $i = "fas fa-exclamation-triangle";
             }
 
-            $div_type = <<<EOT
-        <div class="my - 2"></div>
-        <a class="$btn_type" href="#">
-            <span class="icon text-white-50">
-              <i class="$i" ></i >
-            </span >
-          <span class="text"> $msg</span>
-        </a >
+            return <<<EOT
+            <div class="my - 2"></div>
+            <a class="$btn_type" href="#">
+                <span class="icon text-white-50">
+                  <i class="$i" ></i >
+                </span >
+              <span class="text"> $msg</span>
+            </a >
 EOT;
-
-            return $div_type;
         }
 
         public function redirect_page($time, $url)

@@ -14,17 +14,10 @@
     include('../class/class.UserLinkModules.php');
     include("../class/class.DbManagerRecords.php");
 
-    //Testando Ajax com PHP
-    if (isset($_POST['btn_alter_user'])) {
-        echo "<div class=\"my - 2\"></div>
-        <a class=\"btn btn-success btn-icon-split\" href=\"#\">
-            <span class=\"icon text-white-50\">
-              <i class=\"fas fa-check\" ></i >
-            </span >
-          <span class=\"text\">Perfil Alterado com sucesso!</span>
-        </a >";
-        exit;
-    }
+    /*use UxWeb\SweetAlert\SweetAlert;
+
+    $uxAlert = new SweetAlert;
+    SweetAlert::message('Robots are working!');*/
 
     //Fecha Sessão = botão sair
     if (isset($_GET['exit'])) {
@@ -43,6 +36,21 @@
 
     //Gerenciamento de dados
     $activeRecords = new DbManagerRecords();
+
+    //Testando Ajax com PHP
+    if (isset($_POST['btn_alter_user'])) {
+
+        $regists_user = $_POST;
+        $resp = $activeRecords->manager_perfil($dbInstance, $regists_user);
+        if ($resp == 1) {
+            echo $appFunctions->alert_system('1', "Obá! Perfil Alterado com sucesso!");
+            exit();
+        } else {
+            echo $appFunctions->alert_system('0', "Ops! Erro ao alterar Perfil!");
+            exit();
+        }
+
+    }
 
     //Carregando dados do usuário logado.
     $perfilUser = $activeRecords->select_user_perfil($dbInstance, $_SESSION['id']);

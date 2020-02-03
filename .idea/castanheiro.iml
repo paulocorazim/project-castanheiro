@@ -17,5 +17,6 @@
     <orderEntry type="library" name="locastyle" level="application" />
     <orderEntry type="library" name="e6868744bc" level="application" />
     <orderEntry type="library" name="jsuites" level="application" />
+    <orderEntry type="library" name="sweetalert" level="application" />
   </component>
 </module>

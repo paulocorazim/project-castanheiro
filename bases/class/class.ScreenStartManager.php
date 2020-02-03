@@ -172,9 +172,10 @@
           
     
                     <!-- Content Now -->
-                    <div id="alert_msg">$alert_type</div>                    
+                    <div id="alert_msg" class="container-fluid">$alert_type</div>                    
                     $contentNow                              
                   </div>
+                  
                   <!-- /.container-fluid -->
             
                 </div>
@@ -221,10 +222,6 @@
               </div>
             </div>
               
-              
-            
-                
-                
 
 EOT;
         }

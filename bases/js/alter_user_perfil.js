@@ -6,6 +6,7 @@ $(document).ready(function () {
             type: 'POST',
             data: {
                 user_name: $('#user_name').val(),
+                cpfcnpj: $('#cpfcnpj').val(),
                 user_mail: $('#user_email').val(),
                 user_newpasswd: $('#user_newpasswd').val(),
                 user_id: $('#user_id').val(),

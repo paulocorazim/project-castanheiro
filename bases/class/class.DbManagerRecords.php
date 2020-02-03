@@ -114,6 +114,7 @@
                     $error = $e->getMessage();
                     echo $appFunctions->alert_system(0, "Erro ao Inserir Usuário ->" . $error, 0);
                 }
+
             } else { //Edição do usuário
 
                 /*var_dump($regists_user);
@@ -333,7 +334,6 @@
                 ->setConditions(['id' => "$user_id"]);
             $shResultsPerfilUser = $sqlManager->fetchAll($shSelectUser);
 
-
             foreach ($shResultsPerfilUser as $perfilUser) {
 
                 $pUser = [
@@ -345,6 +345,37 @@
             }
 
             return $pUser;
+        }
+
+        /*Aletrando dados do Perfil*/
+        public function manager_perfil($dbInstance, $regists_user)
+        {
+            try {
+
+                $conds = ['id' => "$regists_user[user_id]"];
+
+                $data = [
+                    'name' => "$regists_user[user_name]",
+                    'cpf' => "$regists_user[cpfcnpj]",
+                    'email' => "$regists_user[user_mail]",
+                    'confirm_passwd' => md5("$regists_user[user_newpasswd]"),
+                    'dt_update' => date('Y-m-d H:m:s')
+                ];
+
+                $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+                $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+                    ->setTableName('tab_users')
+                    ->setConditions($conds)
+                    ->setData($data);
+                $sqlManager->update($sqlQuery);
+                $resp = 1;
+
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+                $resp = $error;
+            }
+
+            return $resp;
         }
 
         /*Inclusão/Alteração de Clientes*/

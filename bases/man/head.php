@@ -1,11 +1,11 @@
 <?php
 
-Class shHead
-{
-    public function sh_head($tile)
+    Class shHead
     {
+        public function sh_head($tile)
+        {
 
-        return <<< EOT
+            return <<< EOT
         <!DOCTYPE html>
         <html lang="en">
         
@@ -19,7 +19,8 @@ Class shHead
 
           <title>$tile</title>
         
-          <!-- Custom fonts for this template-->        
+          <!-- Custom fonts for this template-->
+          <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>       
           <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
           <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">     
           <!-- Custom styles for this template-->
@@ -28,9 +29,11 @@ Class shHead
           <link href="../datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
           <link href="../datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
         </head>
+        <body id="page-top">
+        <!-- @include('sweet::alert') -->
         
         
 EOT;
 
+        }
     }
-}
