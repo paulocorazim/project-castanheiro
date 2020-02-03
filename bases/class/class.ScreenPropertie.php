@@ -15,7 +15,7 @@
                                 <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                                     <div class="input-group mb-3">
                                         <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small" name="find_client" id="find_client" onchange="find_clitn()">	                         
-                                            <option value="01">Localizar Cliente ... </option>
+                                            <option value="01">Localizar Imóvel</option>
                                             <option value="02">... </option>
                                             <option value="03">SystemHope</option>
                                             <option value="04">Sepher</option>
@@ -31,12 +31,12 @@
                         </div>	
                         
                         <div class="form-group row">
-	                        <div class="col-sm-4 mb-10 mb-sm-0">
-	                            <span>Código Cliente</span>
+	                        <div class="col-sm-4 mb-10">
+	                            <span class="small">Código Cliente</span>
 	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
                             </div>
-                            <div class="col-sm-4 mb-10 mb-sm-0">
-                                <span>Tipo de Imóvel</span>
+                            <div class="col-sm-4 mb-10">
+                                <span class="small">Tipo de Imóvel</span>
 	                            <select class="form-control-sm form-control">
                                     <option value=""></option>
                                     <option value="">Casa</option>
@@ -49,8 +49,8 @@
                                     <option value="">Chacara</option>
                                 </select>
                             </div>
-                            <div class="col-sm-4 mb-10 mb-sm-0">
-	                            <span>Finalidade</span>
+                            <div class="col-sm-4 mb-10">
+	                            <span class="small">Finalidade</span>
 	                            <select class="form-control-sm form-control">
                                     <option value=""></option>
                                     <option value="">Venda</option>
@@ -63,100 +63,197 @@
                                 </select>
                             </div>
                         </div>
-                        <h4>Áreas (M²)</h4>
-                        <div class="form-group row">
-	                        <div class="col-sm-4 mb-10 mb-sm-0">
-	                            <span>Útil:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                            <div class="col-sm-4 mb-10 mb-sm-0">
-	                            <span>Construida:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                            <div class="col-sm-4 mb-10 mb-sm-0">
-	                            <span>Terreno:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                        </div>
-                        <h4>Valores</h4>
-                        <div class="form-group row">
-	                        <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Valor:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                            <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Locação:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                            <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Iptu:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                            <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Condomínio:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
+                        <div class="row">
+                            <div class="card-body col-sm-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Áreas (M²)</h4>
+                                <div class="form-group row">
+                                    <div class="col-sm-4 mb-10">
+                                        <span class="small">Útil:</span>
+                                        <input type="text" name="" id="" class="form-control-sm form-control" value="">
+                                    </div>
+                                    <div class="col-sm-4 mb-10">
+                                        <span class="small">Construida:</span>
+                                        <input type="text" name="" id="" class="form-control-sm form-control" value="">
+                                    </div>
+                                    <div class="col-sm-4 mb-10">
+                                        <span class="small">Terreno:</span>
+                                        <input type="text" name="" id="" class="form-control-sm form-control" value="">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <h4>Dependencias</h4>
-                        <div class="form-group row">
-	                        <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Dormitórios:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
                             </div>
-                            <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Sendo Suites:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                            <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Salas:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                            <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Banheiro:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-	                        <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Pavimentos:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                            <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Vagas Garagem:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                            <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Vagas Visitante:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                            <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Depósito:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
+                        
+                            <div class="card-body col-sm-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Valores</h4>
+                                <div class="form-group row">
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Valor R$</span>
+                                        <input type="text" name="" id="" class="form-control-sm form-control" value="">
+                                    </div>
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Locação</span>
+                                        <input type="text" name="" id="" class="form-control-sm form-control" value="">
+                                    </div>
+                                
+                                
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Iptu</span>
+                                        <input type="text" name="" id="" class="form-control-sm form-control" value="">
+                                    </div>
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Condomínio</span>
+                                        <input type="text" name="" id="" class="form-control-sm form-control" value="">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-	                        <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Elevadores:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
-                            </div>
-                            <div class="col-sm-3 mb-10 mb-sm-0">
-	                            <span>Idade:</span>
-	                            <input type="text" name="" id="" class="form-control-sm form-control" value="">
+                    </div>
+                    </div>
+
+                        <div class="card col-sm-12">
+                            <div class="card-body">
+                                <h4>Dependencias</h4>
+                                <div class="row">
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Dormitório:</span>
+                                        <div class="form-group">
+                                            <select class="form-control form-control-sm">
+                                                <option value=""></option> 
+                                                <option value="">0</option>
+                                                <option value="">1</option>
+                                                <option value="">2</option>
+                                                <option value="">3</option>
+                                                <option value="">4</option>
+                                                <option value="">5</option>
+                                            </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Suites:</span>
+                                        <div class="form-group">
+                                            <select class="form-control form-control-sm">
+                                                <option value=""></option>
+                                                <option value="">0</option>
+                                                <option value="">1</option>
+                                                <option value="">2</option>
+                                                <option value="">3</option>
+                                                <option value="">4</option>
+                                                <option value="">5</option>
+                                            </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Sala:</span>
+                                        <div class="form-group">
+                                            <select class="form-control form-control-sm">
+                                                <option value=""></option>
+                                                <option value="">0</option>
+                                                <option value="">1</option>
+                                                <option value="">2</option>
+                                                <option value="">3</option>
+                                                <option value="">4</option>
+                                                <option value="">5</option>
+                                            </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Banheiro:</span>
+                                        <div class="form-group">
+                                            <select class="form-control form-control-sm">
+                                                <option value=""></option>
+                                                <option value="">0</option>
+                                                <option value="">1</option>
+                                                <option value="">2</option>
+                                                <option value="">3</option>
+                                                <option value="">4</option>
+                                                <option value="">5</option>
+                                            </select>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Pavimentos:</span>
+                                        <div class="form-group">
+                                            <select class="form-control form-control-sm">
+                                                <option value=""></option>
+                                                <option value="">0</option>
+                                                <option value="">1</option>
+                                                <option value="">2</option>
+                                                <option value="">3</option>
+                                                <option value="">4</option>
+                                                <option value="">5</option>
+                                                </select>
+                                            </select>
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Vagas Garagem:</span>
+                                        <select class="form-control form-control-sm">
+                                            <option value=""></option>
+                                            <option value="">0</option>
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                            <option value="">3</option>
+                                            <option value="">4</option>
+                                            <option value="">5</option>
+                                            </select>
+                                    </div>
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Vagas Visitante:</span>
+                                        <select class="form-control form-control-sm">
+                                            <option value=""></option>
+                                            <option value="">0</option>
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                            <option value="">3</option>
+                                            <option value="">4</option>
+                                            <option value="">5</option>
+                                            </select>
+                                    </div>
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Depósito:</span>
+                                        <select class="form-control form-control-sm">
+                                            <option value=""></option>
+                                            <option value="">0</option>
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                            <option value="">3</option>
+                                            <option value="">4</option>
+                                            <option value="">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Elevadores:</span>
+                                        <select class="form-control form-control-sm">
+                                            <option value=""></option>
+                                            <option value="">0</option>
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                            <option value="">3</option>
+                                            <option value="">4</option>
+                                            <option value="">5</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3 mb-10">
+                                        <span class="small">Idade:</span>
+                                        <input type="text" name="" id="" class="form-control-sm form-control" value="">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="d-flex align-items-end flex-column bd-highlight mt-3">
-                            <div class="p-2 bd-highlight">
-                                <button class="btn btn-success" type="submit" name="" id="">SALVAR</button></div>
-                          </div>
-
-
-
-
-
-
-
-
-
+                
+                    <div class="d-flex align-items-end flex-column bd-highlight mt-3">
+                        <div class="p-2 bd-highlight">
+                            <button class="btn btn-success" type="submit" name="" id="">SALVAR</button></div>
+                        </div>
 
 
 
