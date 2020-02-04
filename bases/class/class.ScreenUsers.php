@@ -44,26 +44,29 @@
           
                           <div class="row">
                               <div class="col-lg-6">
-                                  <div class="card shadow mb-4">
+                                  <div class="card shadow">
                                       <div class="card-header py-3">
                                           <h6 class="m-0 font-weight-bold text-primary">Módulos</h6>
                                       </div>
           
                                       <div class="card-body">
-                                          <select id="user_module[]" name="user_module[]" multiple size="8"
-                                              style="max-width:100%;">
+                                          <select id="user_module[]" name="user_module[]" multiple size="8" style="
+                                          min-width: 100%;
+                                      ">
                                               $typeModules[1]
                                               <select>
                                       </div>
                                   </div>
                               </div>
                               <div class="col-lg-6">
-                                  <div class="card shadow mb-4">
+                                  <div class="card shadow">
                                       <div class="card-header py-3">
                                           <h6 class="m-0 font-weight-bold text-primary">Permissões do Módulos</h6>
                                       </div>
                                       <div class="card-body">
-                                          <select id="user_permission[]" name="user_permission[]" multiple multiple size="8">
+                                          <select id="user_permission[]" name="user_permission[]" multiple multiple size="8" style="
+                                          min-width: 100%;
+                                      ">
                                               <option value="I"><span> Inserir -> (Permite inclusões de registros )</span>
                                               </option>
                                               <option value="S"><span> Selecionar -> (Permite seleções de registros )</span>
@@ -79,7 +82,7 @@
                           </div>
                           <hr>
                           <div class="text-right">
-                          <button type="submit" id="btn_update" name="btn_update" class="btn btn-primary btn-user">CADASTRAR</button>
+                          <button type="submit" id="btn_update" name="btn_update" class="btn btn-success btn-primary">CADASTRAR</button>
                         </div>  </form>
                   </div>
 EOT;
