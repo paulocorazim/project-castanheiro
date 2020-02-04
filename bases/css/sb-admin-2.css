@@ -9363,11 +9363,11 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #4e73df !important;
+  color: #4A3521 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: #224abe !important;
+  color: #614B27 !important;
 }
 
 .text-secondary {
@@ -11007,8 +11007,13 @@ body.sidebar-toggled footer.sticky-footer {
   border-color: #dddfeb #dddfeb;
   border-radius: 0 0 0.35rem 0.35rem;}
 
+  .spaceshpropertie {
+    flex: 1 1 auto;
+    padding: 0 1.25rem;
+  }
+
   ::-webkit-scrollbar {
-    height: 31px;
+    height: 10px;
     width: 10px;
   }
 
