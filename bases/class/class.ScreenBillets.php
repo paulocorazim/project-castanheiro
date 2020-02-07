@@ -4,14 +4,14 @@
     {
         public function screenFormBillet($findClients)
         {
-            $screenFormBillet = <<< EOT
+            return <<< EOT
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	        <div class="container-fluid">         
 	                <div class="card o-hidden border-0 shadow-lg my-4">
 	                    <div class="p-4">
                         
                         <div class="d-flex align-items-end flex-column bd-highlight">
                           <div class="bd-highlight">
-                              <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                                   <div class="input-group mb-3">
                                       <select type="text" name="find_client" id="find_client" aria-describedby="basic-addon2"
                                           aria-label="Search" class="form-control-sm form-control bg-light border-0 small"
@@ -26,7 +26,6 @@
                                           </button>
                                       </div>
                                   </div>
-                              </form>
                           </div>
                       </div>    
 
@@ -37,22 +36,22 @@
 	                        </div>
 	                        <div class="col-sm-3">
 	                          <span>Data Vencimento</span>
-	                          <input type="date" name="" id="" class="form-control-sm form-control ">
+	                          <input type="date" name="billet_due_date" id="billet_due_date" class="form-control-sm form-control ">
 	                      </div>
 	                      <div class="col-sm-2">
 	                        <span>Valor</span>
-	                        <input type="text" name="" id="" class="form-control-sm form-control" data-mask='[-]R$ #.##0,00' placeholder="R$ 0,00">
+	                        <input type="text" name="billet_value" id="billet_value" class="form-control-sm form-control" data-mask='#.##0,00' placeholder="R$ 0,00.00">
 	                      </div>
                         <div class="col-sm-2">
                           <br>
-                          <button class="btn btn-sm btn-success btn-block"><i class="fas fa-plus"></i></button>
+                          <button name="btn_insert_billet" id="btn_insert_billet" class="btn btn-sm btn-success btn-block" value="!0ksjn#@"  ><i class="fas fa-plus"></i></button>
                         </div>                
 	                    </div>
                       
                       <div class="col-auto">
                         <div class="custom-control custom-checkbox mr-sm-2">
                         <hr>
-                          <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                          <input  name="billet_send_mail_client" id="billet_send_mail_client"  value="1" type="checkbox" class="custom-control-input" id="customControlAutosizing">
                           <label class="custom-control-label" for="customControlAutosizing">Enviar link para o Cliente ?</label>	                            
                         <hr>	                           
                         </div>
@@ -107,13 +106,12 @@
                   </div>
                 </div>
 EOT;
-            return $screenFormBillet;
         }
 
 
         public function screenReportBillet()
         {
-            $screenReportBillet = <<< EOT
+            return <<< EOT
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">
@@ -168,6 +166,5 @@ EOT;
             </div>
 
 EOT;
-            return $screenReportBillet;
         }
     }

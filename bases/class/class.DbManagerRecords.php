@@ -466,7 +466,7 @@
                 $shResultsClientAll = $sqlManager->fetchAll($shSelectClientAll);
 
                 foreach ($shResultsClientAll as $clientsAll) {
-                    $option = "<option value=\"$clientsAll[corporate_name]\">$clientsAll[corporate_name]</option>";
+                    $option = "<option value=\"$clientsAll[id]\">Cód: $clientsAll[id] | $clientsAll[corporate_name]</option>";
                     $optionList .= $option;
                 }
 
@@ -477,4 +477,36 @@
 
             return $optionList;
         }
+
+        /*Incluido Boleto a Avulso para Cliente*/
+        public function manager_billet_detached($dbInstance, $regists_billet_client)
+        {
+            try {
+
+                /* $conds = ['id' => "$regists_billet_client[find_client]"];*/
+                $billet_value = str_replace('.', '', $regists_billet_client['billet_value']); // remove o ponto
+                $billet_value = str_replace(',', '.', $billet_value); // troca a vírgula por ponto
+
+                $data = [
+                    'id_client' => "$regists_billet_client[find_client]",
+                    'billet_value' => "$billet_value",
+                    'billet_due_date' => "$regists_billet_client[billet_due_date]",
+                    'billet_send_mail_client' => "$regists_billet_client[billet_send_mail_client]"
+                ];
+
+                $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+                $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+                    ->setTableName('tab_billet_detached')
+                    ->setData($data);
+                $sqlManager->insert($sqlQuery);
+                $resp = 1;
+
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+                $resp = $error;
+            }
+
+            return $resp;
+        }
+
     }

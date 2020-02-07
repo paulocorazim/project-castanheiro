@@ -28,6 +28,21 @@
     $typeModule = new LinkModule();
     $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
 
+    //Inserindo boletos avulsos
+    if (isset($_POST['btn_insert_billet'])) {
+
+        $regists_billet_client = $_POST;
+
+        $resp = $activeRecords->manager_billet_detached($dbInstance, $regists_billet_client);
+        if ($resp == 1) {
+            echo $appFunctions->alert_system('1', "Ok! Boleto Inserido!");
+            exit();
+        } else {
+            echo $appFunctions->alert_system('0', "Ops! Erro ao Incluir Boleto! [$resp]");
+            exit();
+        }
+
+    }
 
     //Inicio
     $head = new shHead();

@@ -41,6 +41,7 @@
     if (isset($_POST['btn_alter_user'])) {
 
         $regists_user = $_POST;
+
         $resp = $activeRecords->manager_perfil($dbInstance, $regists_user);
         if ($resp == 1) {
             echo $appFunctions->alert_system('1', "Obá! Perfil Alterado com sucesso!");

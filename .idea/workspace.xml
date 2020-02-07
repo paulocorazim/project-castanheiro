@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
+      <change afterPath="$PROJECT_DIR$/bases/js/insert_billet_detached.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/castanheiro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/castanheiro.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.DbConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbConnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.billets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.billets.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.profiles.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.profiles.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +56,7 @@
         <item name="@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="appmanager: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="tab_users: table" type="dbc44a63:MariaImplModel$Table" />
+        <item name="tab_billet_detached: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -87,6 +96,23 @@
       <path value="$PROJECT_DIR$/vendor/fightbulc/easy_pdo" />
       <path value="$PROJECT_DIR$/vendor/simplon/db" />
       <path value="$PROJECT_DIR$/vendor/bissolli/validador-cpf-cnpj" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/session" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/contracts" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/uxweb/sweet-alert" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/support" />
     </include_path>
   </component>
   <component name="ProjectId" id="1W7yJNZSLPz8DN0QjAsponsntt9" />
@@ -195,6 +221,10 @@
       <workItem from="1580589039268" duration="85000" />
       <workItem from="1580589141689" duration="15218000" />
       <workItem from="1580726420102" duration="9000000" />
+      <workItem from="1580769659049" duration="56000" />
+      <workItem from="1580841753205" duration="60000" />
+      <workItem from="1581019414758" duration="497000" />
+      <workItem from="1581092574488" duration="5695000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -391,24 +421,28 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="413" y="190" key="com.intellij.database.dbimport.ImportUtil.MyDialog/0.0.1366.738@0.0.1366.738" timestamp="1580440191960" />
-    <state x="448" y="213" width="470" height="424" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1579905098308">
-      <screen x="0" y="30" width="1366" height="738" />
-    </state>
-    <state x="448" y="183" width="470" height="428" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1366.738@0.0.1366.738" timestamp="1579380157099" />
-    <state x="448" y="213" width="470" height="424" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.30.1366.738@0.30.1366.738" timestamp="1579905098308" />
-    <state x="726" y="23" width="568" height="705" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1580432847035">
+    <state x="448" y="183" width="470" height="420" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1581096753651">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state x="448" y="183" width="470" height="420" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1366.738/1366.0.1440.870@0.0.1366.738" timestamp="1581096753651" />
+    <state x="448" y="183" width="470" height="428" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1366.738@0.0.1366.738" timestamp="1579380157099" />
+    <state x="448" y="213" width="470" height="424" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.30.1366.738@0.30.1366.738" timestamp="1579905098308" />
+    <state x="649" y="0" width="568" height="705" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1581097203851">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="649" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1366.738/1366.0.1440.870@0.0.1366.738" timestamp="1581097203851" />
     <state x="726" y="23" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1366.738@0.0.1366.738" timestamp="1580432847035" />
     <state x="271" y="47" width="568" height="705" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.36.1366.732@0.36.1366.732" timestamp="1579232039323" />
     <state x="271" y="36" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1366.0.2560.1080/0.36.1366.732@0.36.1366.732" timestamp="1579717679804" />
-    <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1580726449794">
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1581092579716">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="731" y="310" key="com.intellij.ide.util.TipDialog/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579626531425" />
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.0.1152.834@0.0.1366.738" timestamp="1580132816940" />
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.0.1440.870@0.0.1366.738" timestamp="1581092579716" />
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1579615407193" />
-    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1580726449794" />
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.0.2560.1050@0.0.1366.738" timestamp="1581019421921" />
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1580907175559" />
     <state x="731" y="310" key="com.intellij.ide.util.TipDialog/0.0.2560.1050@0.0.2560.1050" timestamp="1579360102897" />
     <state x="390" y="248" key="com.intellij.ide.util.TipDialog/0.30.1366.738@0.30.1366.738" timestamp="1579785051147" />
     <state x="731" y="342" key="com.intellij.ide.util.TipDialog/0.32.2560.1048@0.32.2560.1048" timestamp="1580045617428" />
@@ -436,10 +470,11 @@
     <state x="852" y="239" key="run.anything.popup/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579479291825" />
     <state x="455" y="168" width="672" height="677" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1580589698517" />
     <state x="455" y="198" width="672" height="677" key="run.anything.popup/0.30.1366.738@0.30.1366.738" timestamp="1579895057310" />
-    <state x="346" y="59" width="840" height="678" key="search.everywhere.popup" timestamp="1579381933207">
+    <state x="346" y="59" width="840" height="678" key="search.everywhere.popup" timestamp="1581094216047">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="648" y="84" width="1260" height="965" key="search.everywhere.popup/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579364981050" />
+    <state x="346" y="59" width="840" height="678" key="search.everywhere.popup/0.0.1366.738/1366.0.1440.870@0.0.1366.738" timestamp="1581094216047" />
     <state x="346" y="59" width="840" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1579381933207" />
   </component>
   <component name="XDebuggerManager">
