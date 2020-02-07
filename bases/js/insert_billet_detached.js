@@ -17,6 +17,10 @@ $(document).ready(function () {
             },
             success: function (data) {
                 $('#alert_msg').html(data);
+                $('#client_name').val(null);
+                $('#billet_due_date').val(null);
+                $('#find_client').val(null);
+                $('#billet_value').val(null);
             },
             error: function () {
                 $('#alert_msg').html("Algo deu errado ...");

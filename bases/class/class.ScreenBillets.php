@@ -40,7 +40,7 @@
 	                      </div>
 	                      <div class="col-sm-2">
 	                        <span>Valor</span>
-	                        <input type="text" name="billet_value" id="billet_value" class="form-control-sm form-control" data-mask='#.##0,00' placeholder="R$ 0,00.00">
+	                        <input type="text" name="billet_value" id="billet_value" class="form-control-sm form-control" data-mask='#.##0,00' placeholder="R$ 0.000,00">
 	                      </div>
                         <div class="col-sm-2">
                           <br>
