@@ -306,6 +306,107 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row card-body">
+                        <div class="card-body col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4>Estado Geral do Imovel</h4>
+                                    <ul>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="card-body col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4>Cozinha</h4>
+                                    <ul>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="card-body col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4>Área de Serviço</h4>
+                                    <ul>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="card-body col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4>Varanda</h4>
+                                    <ul>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="card-body col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4>Dormitórios</h4>
+                                    <ul>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="card-body col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4>Banheiro Social</h4>
+                                    <ul>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                        <li>p</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
         
                     <div class="d-flex align-items-end flex-column bd-highlight mt-3">
                         <div class="mx-4 bd-highlight">
