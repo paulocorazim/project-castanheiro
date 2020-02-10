@@ -169,10 +169,16 @@
             
                   <!-- Begin Page Content -->
                   <div class="container-fluid">
-          
-    
+              
                     <!-- Content Now -->
-                    <div id="alert_msg" class="container-fluid">$alert_type</div>                    
+          
+                    <div id="alert_msg" class="alert alert-dismissible fade show" role="alert">
+          
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                                        
                     $contentNow                              
                   </div>
                   

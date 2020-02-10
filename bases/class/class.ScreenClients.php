@@ -2,7 +2,7 @@
 
     Class ScreenClients
     {
-        public function screenFormClient()
+        public function screenFormClient($findClients)
         {
             return <<< EOT
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -11,13 +11,11 @@
                     <div class="p-4">
                         <div class="d-flex align-items-end flex-column bd-highlight">
                             <div class="bd-highlight">
-                        <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                             <div class="input-group mb-3">
                                 <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small" name="" id="">	                         
                                     <option value="--">Localizar Cliente ... </option>
                                     <option value="--">... </option>
-                                    <option value="--">SystemHope</option>
-                                    <option value="--">Sepher</option>
+                                    $findClients
                                     </select>
                               <div class="input-group-append">
                                 <button class="btn btn-sm btn-primary" type="button">
@@ -25,7 +23,6 @@
                                 </button>
                               </div>
                             </div>
-                          </form>
                           </div>
                         </div>
         
@@ -57,9 +54,7 @@
                           </ul>
                           <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="novocliente" role="tabpanel" aria-labelledby="home-tab">
-                                    
-                                         <form action="../man/manager.clients.php" class="user" method="post" >
-                                         
+                                                                             
                                           <div class="form-group row">
                                             <div class="col-sm-2 mb-sm-0">
                                                 <br>
@@ -205,7 +200,7 @@
                             <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                    <label class="custom-file-label" for="validatedCustomFile">Escolher arquivo...</label>
+                                    <label class="custom-file-label" for="validatedCustomFile">Anexar documentos do cliente ...</label>
                                     <hr>
                                     <div class="btn-warning btn-sm">Cliente ainda não possui documentos relacionados!</div>
                                 </div>
@@ -213,7 +208,7 @@
                             <div class="tab-pane fade" id="fichas" role="tabpanel" aria-labelledby="contact-tab">         
                                  <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                    <label class="custom-file-label" for="validatedCustomFile">Escolher arquivo...</label>
+                                    <label class="custom-file-label" for="validatedCustomFile">Anexo fichas do cliente ...</label>
                                     <hr>                            
                                     <div class="btn-success btn-sm">
                                      <a href="../docs/clients/19/FICHA_CADASTRAL_PARA_LOCATARIOS.pdf" target="_blank">FICHA CADASTRAL</a>
@@ -226,7 +221,7 @@
                             <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                    <label class="custom-file-label" for="validatedCustomFile">Escolher arquivo...</label>
+                                    <label class="custom-file-label" for="validatedCustomFile">Anexar PDF do contrato ...</label>
                                     <hr>                            
                                     <div class="btn-success btn-sm">
                                      <a href="../docs/clients/19/CONTRATO_COMERCIAL_PADRAO_REVISADO.pdf" target="_blank">CONTRATO COMERCIAL PADRAO</a>
@@ -253,11 +248,9 @@
                             </div>
                           </div>
                           <div class="d-flex align-items-end flex-column bd-highlight mt-3">
-                            <div class="p-2 bd-highlight"><button class="btn btn-success"  type="submit" name="btn_update_client" id="btn_update_client">CADASTRAR</button></div>
-                          </div>
-                        </form>
-                                              
-                                </div>                           
+                            <div class="p-2 bd-highlight"><button name="btn_update_client" id="btn_update_client" value="&@09uh"  class="btn btn-success">C A D A S T R A R</button></div>
+                          </div>                                              
+                           </div>                           
                         </div>
                     </div>
             

@@ -15,6 +15,7 @@
             <script src="../js/cep.js" type="text/javascript"></script>
             <script src="../js/alter_user_perfil.js" type="text/javascript"></script>
             <script src="../js/insert_billet_detached.js" type="text/javascript"></script>
+            <script src="../js/insert_update_client.js" type="text/javascript"></script>
 
     
             <!-- Bootstrap core JavaScript-->

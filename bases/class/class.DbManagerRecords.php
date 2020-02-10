@@ -379,7 +379,7 @@
         }
 
         /*Inclusão/Alteração de Clientes*/
-        public function manager_client($dbInstance, $appFunctions, $regists_client)
+        public function manager_client($dbInstance, $regists_client)
         {
             if ($regists_client['id'] == null) { //inclusão ou alteração
 
@@ -430,30 +430,15 @@
                     }
 
                     //Aviso do sucesso e redireciona a pagina
-                    $n_alert = base64_encode(1); //sucess
-                    $n_msg = base64_encode("Inclusão do Cliente : $regists_client[name] concluida com sucesso!<br><br>");
-                    $appFunctions->redirect_page(0, "../man/manager.clients.php?n_alert=$n_alert&n_msg=$n_msg");
-                    mkdir("../docs/clients/$client_dir_create/", 0777, true);
-                    exit();
+                    $resp = 1;
 
                 } catch (Exception $e) {
                     $error = $e->getMessage();
-                    //Aviso do sucesso e redireciona a pagina
-                    $n_alert = base64_encode(0); //sucess
-                    $n_msg = base64_encode("Error! Problemas ao cadastrar o cliente ->" . $error);
-                    $appFunctions->redirect_page(0, "../man/manager.clients.php?n_alert=$n_alert&n_msg=$n_msg");
-                    exit();
+                    $resp = $error;
                 }
-
-
-            } else {
-                //Aviso do sucesso e redireciona a pagina
-                $n_alert = base64_encode(3); //sucess
-                $n_msg = base64_encode("Alteração do Cliente : $regists_client[name] concluida com sucesso!");
-                $appFunctions->redirect_page(0, "../man/manager.clients.php?n_alert=$n_alert&n_msg=$n_msg");
-                exit();
             }
 
+            return $resp;
         }
 
         /*Listando os CLiente no Find das telas*/

@@ -51,8 +51,8 @@
                       <div class="col-auto">
                         <div class="custom-control custom-checkbox mr-sm-2">
                         <hr>
-                          <input  name="billet_send_mail_client" id="billet_send_mail_client"  value="1" type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                          <label class="custom-control-label" for="customControlAutosizing">Enviar link para o Cliente ?</label>	                            
+                          <input  name="billet_send_mail_client" id="billet_send_mail_client" type="checkbox" value="1" class="btn-info  custom-checkbox">
+                          <label>Enviar link para o Cliente ?</label>	                            
                         <hr>	                           
                         </div>
                      </div>

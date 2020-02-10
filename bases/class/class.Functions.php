@@ -37,30 +37,35 @@
             $i = null;
 
             if ($type === '0') {
-                $btn_type = "btn btn-danger btn-icon-split";
+                $btn_type = "btn btn-danger";
                 $i = "fas fa-trash";
             }
             if ($type === '1') {
-                $btn_type = "btn btn-success btn-icon-split";
+                $btn_type = "btn btn-success";
                 $i = "fas fa-check";
             }
             if ($type === '2') {
-                $btn_type = "btn btn-info btn-icon-split";
+                $btn_type = "btn btn-info";
                 $i = "fas fa-info-circle";
             }
             if ($type === '3') {
-                $btn_type = "btn btn-warning btn-icon-split";
+                $btn_type = "btn btn-warning";
                 $i = "fas fa-exclamation-triangle";
             }
 
             return <<<EOT
-            <div class="my - 2"></div>
-            <a class="$btn_type" href="#">
+            <div class="alert alert-light alert-dismissible fade show" role="alert">
+              <button class="$btn_type">
                 <span class="icon text-white-50">
                   <i class="$i" ></i >
                 </span >
               <span class="text"> $msg</span>
-            </a >
+            </button>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>            
+            
 EOT;
         }
 
