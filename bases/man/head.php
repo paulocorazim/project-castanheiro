@@ -35,6 +35,15 @@
             <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
             <meta name="theme-color" content="#5e452b">
 
+
+<!-- Theme included stylesheets -->
+<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+
+<!-- Core build with no theme, formatting, non-essential modules -->
+<link href="//cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
+
+
           <title>$tile</title>
         
           <!-- Custom fonts for this template-->

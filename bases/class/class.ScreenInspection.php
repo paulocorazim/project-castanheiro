@@ -6,9 +6,9 @@
         {
             return <<< EOT
             <div class="container-fluid">         
+                
                 <div class="card o-hidden border-0 shadow-lg my-4">
                     <div class="p-4">
-
                     <div class="text-right">
                         <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
                             <div class="input-group mb-3">                
@@ -37,59 +37,31 @@
                                 <input type="text" required name="" id="" class="form-control form-control-sm">
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="card-body col-sm-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4>Estado Geral do Imovel</h4>
-                                        <ul>
-                                            <li>p</li>
-                                            <li>p</li>
-                                            <li>p</li>
-                                            <li>p</li>
-                                            <li>p</li>
-                                            <li>p</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-            
-                            <div class="card-body col-sm-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4>Cozinha</h4>
-                                        <ul>
-                                            <li>p</li>
-                                            <li>p</li>
-                                            <li>p</li>
-                                            <li>p</li>
-                                            <li>p</li>
-                                            <li>p</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="card-body col-sm-6">
+                        <div class="row px-4 py-3">
+                            <div class="col-sm-6">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4>Área de Serviço</h4>
-                                        <ul>
-                                            <li>p</li>
-                                            <li>p</li>
-                                            <li>p</li>
-                                            <li>p</li>
-                                            <li>p</li>
-                                            <li>p</li>
-                                        </ul>
+                                        <div id="toolbar"></div>
+                                        <div id="editor"></div>
+
+                                        <script>
+                                            var toolbarOptions = [
+                                                ['bold', 'italic',  'underline', 'strike']
+                                            ];
+                                            
+                                            var quill = new Quill('#editor' , {
+                                                    modules: {
+                                                        toolbar: toolbarOptions
+                                                    },
+                                                    theme: 'snow'
+                                            });
+                                        </script>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
             
-                            <div class="card-body col-sm-6">
+                            <div class="col-sm-6">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4>Varanda</h4>
@@ -105,12 +77,12 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="card-body col-sm-6">
+    
+                        <div class="row px-4 py-3">
+                            <div class="col-sm-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4>Dormitórios</h4>
+                                        <h4>Área de Serviço</h4>
                                         <ul>
                                             <li>p</li>
                                             <li>p</li>
@@ -123,10 +95,10 @@
                                 </div>
                             </div>
             
-                            <div class="card-body col-sm-6">
+                            <div class="col-sm-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4>Banheiro Social</h4>
+                                        <h4>Varanda</h4>
                                         <ul>
                                             <li>p</li>
                                             <li>p</li>
@@ -139,6 +111,16 @@
                                 </div>
                             </div>
                         </div>
+    
+                        <div class="row px-4 py-3">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     <div class="text-right">
                       <button type="submit" id="btn_update" name="btn_update" class="btn btn-success">Salvar</button>
@@ -146,6 +128,10 @@
                 </div>
             </div>
         </div>
+
+<script src="//cdn.quilljs.com/1.3.6/quill.core.js"></script>
+<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
 	                    
 EOT;
         }
