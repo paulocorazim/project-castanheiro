@@ -1,9 +1,36 @@
 $(document).ready(function () {
-    $('#btn_update_client').on('click', function () {
+    $('#btn_insert_update_client').on('click', function () {
 
-            if ($('#client_name').val(null) || $('#cpfcnpj').val(null) || $('#client_corporate_name').val(null)) {
-                alert("Os campos | Nome, CPF ou CNPJ | Razão Social | precisa ser preenchido! Verifique ..");
+            if ($('#client_name').val() === '') {
+                alert("Por favor, o campo ( | Nome | ) precisa ser preenchido! Verifique !");
+                $('#client_name').focus();
+
+            } else if ($('#client_corporate_name').val() === '') {
+                alert("Por favor, o campo ( | Razão Social | ) precisa ser preenchido! Verifique !");
+                $('#client_corporate_name').focus();
+
+            } else if ($('#cpfcnpj').val() === '') {
+                alert("Por favor, o campo ( | CPF/CNPJ | ) precisa ser preenchido! Verifique !");
+                $('#cpfcnpj').focus();
+
+            } else if ($('#cep').val() === '') {
+                alert("Por favor, o campo ( | CEP | ) precisa ser preenchido! Verifique !");
+                $('#cep').focus();
+
+            } else if ($('#client_address').val() === '') {
+                alert("Por favor, o campo ( | Endereço | ) precisa ser preenchido! Verifique !");
+                $('#client_address').focus();
+
+            } else if ($('#client_number').val() === '') {
+                alert("Por favor, o campo ( | Número | ) precisa ser preenchido! Verifique !");
+                $('#client_number').focus();
+
+            } else if ($('#client_phone1').val() === '') {
+                alert("Por favor, o campo ( | Telefone 1 | ) precisa ser preenchido! Verifique !");
+                $('#client_phone1').focus();
+
             } else {
+
                 $.ajax({
                     url: 'manager.clients.php',
                     type: 'POST',
@@ -38,34 +65,41 @@ $(document).ready(function () {
                     },
                     success: function (data) {
                         $('#alert_msg').html(data);
-                        /*$('#client_name').val(null);
-                        $('#cpfcnpj').val(null);
-                        $('#client_corporate_name').val(null);
-                        $('#cep').val(null);
-                        $('#client_address').val(null);
-                        $('#client_number').val(null);
-                        $('#client_county').val(null);
-                        $('#client_city').val(null);
-                        $('#client_neighbordhood').val(null);
-                        $('#client_state').val(null);
-                        $('#client_phone1').val(null);
-                        $('#client_phone2').val(null);
-                        $('#client_phone3').val(null);
-                        $('#client_rg').val(null);
-                        $('#client_type').val(null);
-                        $('#client_state_registration_free').val(null);
-                        $('#client_municipal_registration').val(null);
-                        $('#client_email1').val(null);
-                        $('#client_email2').val(null);
-                        $('#client_site').val(null);
-                        $('#client_obs').val(null);
-                        $('#client_responsible').val(null);*/
+
                     },
                     error: function () {
                         $('#alert_msg').html("Algo deu errado ...");
                     }
                 });
             }
+        }
+    );
+
+    $('#j_btn_findclientID').on('click', function () {
+
+            $.ajax({
+                type: 'POST',
+                url: 'manager.clients.php',
+                dataType: 'json',
+                data: {select_find_client_id: $('#select_find_client_id').val()},
+
+                beforeSend: function () {
+                    $('#alert_msg').html("Carregando ...");
+                },
+
+                success: function (data) {
+
+                    $('#client_name').val("ANDRE");
+                    $('#client_corporate_name').val("ANDRE");
+
+                },
+
+                error: function () {
+                    alert(error);
+                    $('#alert_msg').html("Algo deu errado ...");
+                }
+
+            });
         }
     );
 });

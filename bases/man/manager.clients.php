@@ -23,7 +23,7 @@
 
 
     $activeRecords = new DbManagerRecords();
-    $findClients = $activeRecords->find_clients($dbInstance);
+    $findClients = $activeRecords->find_client_id($dbInstance);
 
     $typeModule = new LinkModule();
     $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
@@ -35,14 +35,37 @@
     $screenClient = new ScreenClients();
     $contentNow = $screenClient->screenFormClient($findClients);;
 
+
     if ($_GET['n_alert'] != null) {
         $n_alert = base64_decode($_GET['n_alert']);
         $n_msg = base64_decode($_GET['n_msg']);
         $alert_type = $appFunctions->alert_system($n_alert, "$n_msg");
     }
 
+    var_dump($_POST);
+
+
+    /*Procurando dados para carrega na tela*/
+    if ($_POST['select_find_client_id'] != null) {
+
+
+        $datas = $activeRecords->find_client_data($dbInstance, $_POST['select_find_client_id']);
+
+        foreach ($datas as $dataClient) {
+
+            $data['sucesso'] = '1';
+            $data['client_name'] = $dataClient['name'];
+            $data['client_corporate_name'] = $dataClient['corporate_name'];
+
+        }
+
+        header("Content-Type", "application/json");
+        json_encode($data);
+
+    }
+
     /*Recebendo dados para inclusão do cliente*/
-    if (isset($_POST['btn_update_client'])) {
+    if (isset($_POST['btn_insert_update_client'])) {
 
         // Não importa se é CPF ou CNPJ e se já vem formatado
         $checkCPFCNPJ = new \Bissolli\ValidadorCpfCnpj\Documento("$_POST[cpfcnpj]");
@@ -71,7 +94,7 @@
 
         if ($type_cpfcnpj == false) {
             echo $appFunctions->alert_system('0',
-                "Ops! Tipo de documento CPF ou RG é inválido, por favor verifique! -> [ $_POST[cpfcnpj] ]");
+                "Ops! Tipo de documento CPF ou CNPJ é inválido, por favor verifique! -> [ $_POST[cpfcnpj] ]");
             exit();
         }
 
@@ -125,19 +148,24 @@
         ];;
 
         $resp = $activeRecords->manager_client($dbInstance, $regists_client);
+
         if ($resp == 1) {
             echo $appFunctions->alert_system('1',
-                "Obá! Cliente $_POST[client_name] foi cadastrado com sucesso!<hr> <strong>Cadastrar novo Cliente?</strong><a href='?insert=true' class=\"alert-link\" >[SIM]</a>");
+                "Obá! Cliente $_POST[client_name] foi cadastrado com sucesso! <strong> Deseja cadastrar novo Cliente? </strong> <a href='?insert=true' class=\"alert-link\" > [SIM] </a>");
             exit();
+
+        } elseif ($resp == 2) {
+            echo $appFunctions->alert_system('2', "Cliente $_POST[client_name] Alterando com sucesso!");
+            exit();
+
         } else {
-            echo $appFunctions->alert_system('0', "Ops! Erro ao cadastrar Cliente! ->[ $resp ]");
+            echo $appFunctions->alert_system('0', "Ops! Erro ao cadastrar Cliente! -> [ $resp ]");
             exit();
         }
-
     }
 
-    echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow, $alert_type);
 
+    echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow, $alert_type);
 
     $footer = new shFooter();
     echo $footer->sh_footer();

@@ -1,6 +1,5 @@
 $(document).ready(function () {
     $('#btn_alter_user').on('click', function () {
-
         $.ajax({
             url: 'manager.profiles.php',
             type: 'POST',
@@ -21,7 +20,6 @@ $(document).ready(function () {
             error: function () {
                 $('#alert_msg').html("Algo deu errado ...");
             }
-
         });
     });
 });

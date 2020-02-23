@@ -52,15 +52,28 @@
                 $btn_type = "btn btn-warning";
                 $i = "fas fa-exclamation-triangle";
             }
-
+            if ($type === '4') {
+                $btn_type = "btn btn-primary";
+                $i = "fas fa-flag";
+            }
+            if ($type === '5') {
+                $btn_type = "btn btn-secondary";
+                $i = "fas fa-arrow-right";
+            }
+            if ($type === '5') {
+                $btn_type = "btn btn-light";
+                $i = "fas fa-arrow-right";
+            }
             return <<<EOT
             <div class="alert alert-light alert-dismissible fade show" role="alert">
-              <button class="$btn_type">
                 <span class="icon text-white-50">
-                  <i class="$i" ></i >
-                </span >
-              <span class="text"> $msg</span>
-            </button>
+                <button class="$btn_type btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="$i"></i>
+                    </span>
+                  <span class="text">$msg</span>
+                </button>                 
+
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

@@ -12,17 +12,17 @@
                         <div class="d-flex align-items-end flex-column bd-highlight">
                             <div class="bd-highlight">
                             <div class="input-group mb-3">
-                                <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small" name="" id="">	                         
+                                <select name="select_find_client_id" id="select_find_client_id" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">	                         
                                     <option value="--">Localizar Cliente ... </option>
                                     <option value="--">... </option>
                                     $findClients
-                                    </select>
-                              <div class="input-group-append">
-                                <button class="btn btn-sm btn-primary" type="button">
-                                  <i class="fas fa-search fa-sm"></i>
-                                </button>
-                              </div>
-                            </div>
+                                </select>
+                                  <div class="input-group-append">
+                                    <button id="j_btn_findclientID" name="j_btn_findclientID" class="btn btn-sm btn-primary" type="button">
+                                      <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                  </div>
+                                </div>
                           </div>
                         </div>
         
@@ -184,17 +184,15 @@
                             
                             <div class="tab-pane fade" id="dadosadicionais2" role="tabpanel" aria-labelledby="contact-tab">
                                   
-                                <input type="radio" name="client_type" id="client_type" value="cl">
-                                    <label for="name">Clientes</label>
+                                <input type="radio" name="client_type" id="client_type" checked  value="cl">
+                                    <label for="name">Cliente</label><hr>
                                     
                                     <input type="radio" name="client_type" id="client_type" value="fo">
-                                    <label for="name"> Fornecedor</label>    
+                                    <label for="name"> Fornecedor</label> <hr>   
                                         
                                     <input type="radio" name="client_type" id="client_type" value="co">    
                                     <label for="name"> Colaborador</label>    
-                                    
-                                    <input type="radio" name="client_type" id="client_type" value="tr">                            
-                                    <label for="name"> Transportadora</label>
+                                                                       
         
                             </div>
                             <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="contact-tab">
@@ -248,7 +246,7 @@
                             </div>
                           </div>
                           <div class="d-flex align-items-end flex-column bd-highlight mt-3">
-                            <div class="p-2 bd-highlight"><button name="btn_update_client" id="btn_update_client" value="&@09uh"  class="btn btn-success">C A D A S T R A R</button></div>
+                            <div class="p-2 bd-highlight"><button name="btn_insert_update_client" id="btn_insert_update_client" value="InsertUpdate"  class="btn btn-success">C A D A S T R A R</button></div>
                           </div>                                              
                            </div>                           
                         </div>

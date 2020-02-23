@@ -381,38 +381,38 @@
         /*Inclusão/Alteração de Clientes*/
         public function manager_client($dbInstance, $regists_client)
         {
-            if ($regists_client['id'] == null) { //inclusão ou alteração
+            $data = [
+                'name' => "$regists_client[name]",
+                'corporate_name' => "$regists_client[corporate_name]",
+                'dt_created' => "$regists_client[dt_created]",
+                'dt_update' => "$regists_client[dt_update]",
+                'zip_code' => "$regists_client[zip_code]",
+                'address' => "$regists_client[address]",
+                'number' => "$regists_client[number]",
+                'county' => "$regists_client[county]",
+                'city' => $regists_client[city],
+                'neighbordhood' => "$regists_client[neighbordhood]",
+                'state' => "$regists_client[state]",
+                'phone1' => "$regists_client[phone1]",
+                'phone2' => "$regists_client[phone2]",
+                'phone3' => "$regists_client[phone3]",
+                'cpf' => "$regists_client[cpf]",
+                'cnpj' => "$regists_client[cnpj]",
+                'rg' => "$regists_client[rg]",
+                'type' => "$regists_client[type]",
+                'state_registration' => "$regists_client[state_registration]",
+                'municipal_registration' => "$regists_client[municipal_registration]",
+                'email1' => "$regists_client[email1]",
+                'email2' => "$regists_client[email2]",
+                'site' => "$regists_client[site]",
+                'obs' => "$regists_client[obs]",
+                'active' => 1,
+                'responsible' => "$regists_client[responsible]"
+            ];
+
+            if ($regists_client['id'] == null) { //inclusão
 
                 try {
-
-                    $data = [
-                        'name' => "$regists_client[name]",
-                        'corporate_name' => "$regists_client[corporate_name]",
-                        'dt_created' => "$regists_client[dt_created]",
-                        'dt_update' => "$regists_client[dt_update]",
-                        'zip_code' => "$regists_client[zip_code]",
-                        'address' => "$regists_client[address]",
-                        'number' => "$regists_client[number]",
-                        'county' => "$regists_client[county]",
-                        'city' => $regists_client[city],
-                        'neighbordhood' => "$regists_client[neighbordhood]",
-                        'state' => "$regists_client[state]",
-                        'phone1' => "$regists_client[phone1]",
-                        'phone2' => "$regists_client[phone2]",
-                        'phone3' => "$regists_client[phone3]",
-                        'cpf' => "$regists_client[cpf]",
-                        'cnpj' => "$regists_client[cnpj]",
-                        'rg' => "$regists_client[rg]",
-                        'type' => "$regists_client[type]",
-                        'state_registration' => "$regists_client[state_registration]",
-                        'municipal_registration' => "$regists_client[municipal_registration]",
-                        'email1' => "$regists_client[email1]",
-                        'email2' => "$regists_client[email2]",
-                        'site' => "$regists_client[site]",
-                        'obs' => "$regists_client[obs]",
-                        'active' => 1,
-                        'responsible' => "$regists_client[responsible]"
-                    ];
 
                     $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
                     $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
@@ -436,13 +436,31 @@
                     $error = $e->getMessage();
                     $resp = $error;
                 }
-            }
 
+            } else { //realiza alteração
+
+                $conds = ['id' => "$regists_client[id]"];
+
+                try {
+
+                    $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+                    $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+                        ->setTableName('tab_clients')
+                        ->setConditions($conds)
+                        ->setData($data);
+                    $sqlManager->update($sqlQuery);
+                    $resp = 2;
+
+                } catch (Exception $e) {
+                    $error = $e->getMessage();
+                    $resp = $error;
+                }
+            }
             return $resp;
         }
 
-        /*Listando os CLiente no Find das telas*/
-        public function find_clients($dbInstance)
+        /*Listando os id do CLiente no Find das telas*/
+        public function find_client_id($dbInstance)
         {
             try {
                 $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
@@ -461,6 +479,27 @@
             }
 
             return $optionList;
+        }
+
+        /*Pegando os dados dos clientes para carregar e tela de Cliente*/
+        public function find_client_data($dbInstance, $cliendID)
+        {
+            try {
+                $conds = ['id' => "$cliendID[id]"];
+
+                $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+                $shSelectClientAll = (new \Simplon\Db\SqlQueryBuilder())
+                    ->setQuery('SELECT * from tab_clients')
+                    ->setConditions($conds);
+                $shResultsClientAll = $sqlManager->fetchAll($shSelectClientAll);
+
+
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+                echo "Erro ao receber lista de clientes" . $error;
+            }
+
+            return $shResultsClientAll;
         }
 
         /*Incluido Boleto a Avulso para Cliente*/
