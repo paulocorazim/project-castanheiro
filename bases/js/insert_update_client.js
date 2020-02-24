@@ -58,7 +58,7 @@ $(document).ready(function () {
                         client_obs: $('#client_obs').val(),
                         client_active: $('#client_active').val(),
                         client_responsible: $('#client_responsible').val(),
-                        btn_update_client: $('#btn_update_client').val()
+                        btn_insert_update_client: $('#btn_insert_update_client').val()
                     },
                     beforeSend: function () {
                         $('#alert_msg').html("Carregando ...");
@@ -72,34 +72,6 @@ $(document).ready(function () {
                     }
                 });
             }
-        }
-    );
-
-    $('#j_btn_findclientID').on('click', function () {
-
-            $.ajax({
-                type: 'POST',
-                url: 'manager.clients.php',
-                dataType: 'json',
-                data: {select_find_client_id: $('#select_find_client_id').val()},
-
-                beforeSend: function () {
-                    $('#alert_msg').html("Carregando ...");
-                },
-
-                success: function (data) {
-
-                    $('#client_name').val("ANDRE");
-                    $('#client_corporate_name').val("ANDRE");
-
-                },
-
-                error: function () {
-                    alert(error);
-                    $('#alert_msg').html("Algo deu errado ...");
-                }
-
-            });
         }
     );
 });

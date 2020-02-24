@@ -42,27 +42,6 @@
         $alert_type = $appFunctions->alert_system($n_alert, "$n_msg");
     }
 
-    var_dump($_POST);
-
-
-    /*Procurando dados para carrega na tela*/
-    if ($_POST['select_find_client_id'] != null) {
-
-
-        $datas = $activeRecords->find_client_data($dbInstance, $_POST['select_find_client_id']);
-
-        foreach ($datas as $dataClient) {
-
-            $data['sucesso'] = '1';
-            $data['client_name'] = $dataClient['name'];
-            $data['client_corporate_name'] = $dataClient['corporate_name'];
-
-        }
-
-        header("Content-Type", "application/json");
-        json_encode($data);
-
-    }
 
     /*Recebendo dados para inclusão do cliente*/
     if (isset($_POST['btn_insert_update_client'])) {
