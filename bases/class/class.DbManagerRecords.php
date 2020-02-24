@@ -382,6 +382,7 @@
         public function manager_client($dbInstance, $regists_client)
         {
             $data = [
+                'id' => "$regists_client[id]",
                 'name' => "$regists_client[name]",
                 'corporate_name' => "$regists_client[corporate_name]",
                 'dt_created' => "$regists_client[dt_created]",
@@ -407,7 +408,8 @@
                 'site' => "$regists_client[site]",
                 'obs' => "$regists_client[obs]",
                 'active' => 1,
-                'responsible' => "$regists_client[responsible]"
+                'responsible' => "$regists_client[responsible]",
+                'complement' => "$regists_client[complement]"
             ];
 
             if ($regists_client['id'] == null) { //inclusão
@@ -469,7 +471,7 @@
                 $shResultsClientAll = $sqlManager->fetchAll($shSelectClientAll);
 
                 foreach ($shResultsClientAll as $clientsAll) {
-                    $option = "<option value=\"$clientsAll[id]\">Cód: $clientsAll[id] | $clientsAll[corporate_name]</option>";
+                    $option = "<option value=\"manager.clients.php?editID=$clientsAll[id]\">Cód: $clientsAll[id] | $clientsAll[corporate_name]</option>";
                     $optionList .= $option;
                 }
 
@@ -482,7 +484,7 @@
         }
 
         /*Pegando os dados dos clientes para carregar e tela de Cliente*/
-        public function find_client_data($dbInstance, $cliendID)
+        public function find_client_data($dbInstance, $clientID)
         {
             try {
                 $conds = ['id' => "$cliendID[id]"];

@@ -35,6 +35,7 @@ $(document).ready(function () {
                     url: 'manager.clients.php',
                     type: 'POST',
                     data: {
+                        client_id: $('#client_id').val(),
                         client_name: $('#client_name').val(),
                         cpfcnpj: $('#cpfcnpj').val(),
                         client_corporate_name: $('#client_corporate_name').val(),
@@ -58,7 +59,8 @@ $(document).ready(function () {
                         client_obs: $('#client_obs').val(),
                         client_active: $('#client_active').val(),
                         client_responsible: $('#client_responsible').val(),
-                        btn_insert_update_client: $('#btn_insert_update_client').val()
+                        btn_insert_update_client: $('#btn_insert_update_client').val(),
+                        client_complement: $("#client_complement").val()
                     },
                     beforeSend: function () {
                         $('#alert_msg').html("Carregando ...");

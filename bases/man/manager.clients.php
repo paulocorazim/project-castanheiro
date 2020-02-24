@@ -33,7 +33,7 @@
 
     $screenManager = new ScreenManager();
     $screenClient = new ScreenClients();
-    $contentNow = $screenClient->screenFormClient($findClients);;
+    $contentNow = $screenClient->screenFormClient($findClients, null);;
 
 
     if ($_GET['n_alert'] != null) {
@@ -42,6 +42,15 @@
         $alert_type = $appFunctions->alert_system($n_alert, "$n_msg");
     }
 
+    if (isset($_GET['editID'])) {
+        $clientID = $_GET['editID'];
+        $clientData = $activeRecords->find_client_data($dbInstance, $clientID);
+        $contentNow = $screenClient->screenFormClient($findClients, $clientData);;
+        echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow, $alert_type);
+        $footer = new shFooter();
+        echo $footer->sh_footer();
+        exit();
+    }
 
     /*Recebendo dados para inclusão do cliente*/
     if (isset($_POST['btn_insert_update_client'])) {
@@ -96,7 +105,7 @@
         //$checkCPFCNPJ->getValue();
 
         $regists_client = [
-            'id' => null,
+            'id' => "$_POST[client_id]",
             'name' => "$_POST[client_name]",
             'corporate_name' => "$_POST[client_corporate_name]",
             'dt_update' => date('Y-m-d h:m:s'),
@@ -124,6 +133,7 @@
             'obs' => "$_POST[client_obs]",
             'active' => "$_POST[client_active]",
             'responsible' => "$_POST[client_responsible]",
+            'complement' => "$_POST[client_complement]"
         ];;
 
         $resp = $activeRecords->manager_client($dbInstance, $regists_client);

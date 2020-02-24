@@ -2,9 +2,12 @@
 
     Class ScreenClients
     {
-        public function screenFormClient($findClients)
+        public function screenFormClient($findClients, $clientData)
         {
-            return <<< EOT
+            foreach ($clientData as $clientValues) {
+
+
+                $screenFormClient = <<< EOT
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <div class="container-fluid"> 
                 <div class="card o-hidden border-0 shadow-lg">
@@ -12,7 +15,8 @@
                         <div class="d-flex align-items-end flex-column bd-highlight">
                             <div class="bd-highlight">
                             <div class="input-group mb-3">
-                                <select name="select_find_client_id" id="select_find_client_id" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">	                         
+                                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
+                                  name="select_find_client_id" id="select_find_client_id" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">	                         
                                     <option value="--">Localizar Cliente ... </option>
                                     <option value="--">... </option>
                                     $findClients
@@ -65,18 +69,19 @@
                                             </div> 
                                             <div class="col-sm-5 mb-3 mb-sm-0">
                                                 <span>Nome</span>
-                                                <input type="text" required name="client_name" id="client_name" class="form-control">
+                                                <input type="hidden" id="client_id"  name="client_id" value="$clientValues[id]">
+                                                <input type="text" required name="client_name" id="client_name" class="form-control"  value="$clientValues[name]">
                                             </div>
                                         </div>
                     
                                         <div class="form-group row">
                                             <div class="col-sm-4 mb-3 mb-sm-0">
                                                 <span>Razão Social</span>
-                                                <input type="text" required name="client_corporate_name" id="client_corporate_name" class="form-control">
+                                                <input type="text" required name="client_corporate_name" id="client_corporate_name" class="form-control" $clientValues[coporate_name]>
                                             </div>
                                             <div class="col-sm-3 mb-3 mb-sm-0">
                                                 <span>CPF / CNPJ</span>
-                                                <input type="text" required name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control">
+                                                <input type="text" required name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control" value="$clientValues[cpf] $clientValues[cnpj]">
                                             </div>
                                             <div class="col-sm-3 mb-3 mb-sm-0">   
                                                 <span>Inscrição Estadual</span>
@@ -176,7 +181,7 @@
                                         </div> 
                                         <div class="col-sm-4 mb-2 mb-sm-0">
                                             <span>Complemento</span>
-                                            <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control">                  
+                                            <input type="text" name="client_complement" id="client_complement" class="form-control">                  
                                         </div> 
                                     </div>
         
@@ -254,11 +259,14 @@
             
         
 EOT;
+            }
 
+            return $screenFormClient;
         }
 
 
-        public function screenListClient()
+        public
+        function screenListClient()
         {
 
         }
