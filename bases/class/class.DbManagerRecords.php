@@ -487,21 +487,53 @@
         public function find_client_data($dbInstance, $clientID)
         {
             try {
-                $conds = ['id' => "$cliendID[id]"];
-
                 $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
                 $shSelectClientAll = (new \Simplon\Db\SqlQueryBuilder())
-                    ->setQuery('SELECT * from tab_clients')
-                    ->setConditions($conds);
+                    ->setQuery('SELECT * from tab_clients WHERE id = :id')
+                    ->setConditions(['id' => "$clientID"]);
                 $shResultsClientAll = $sqlManager->fetchAll($shSelectClientAll);
 
+                foreach ($shResultsClientAll as $clientValue) {
+
+                    $clientData = [
+                        'id' => "$clientValue[id]",
+                        'name' => "$clientValue[name]",
+                        'corporate_name' => "$clientValue[corporate_name]",
+                        'dt_update' => "$clientValue[dt_update]",
+                        'dt_created' => "$clientValue[dt_created]",
+                        'zip_code' => "$clientValue[zip_code]",
+                        'address' => "$clientValue[address]",
+                        'number' => "$clientValue[number]",
+                        'county' => "$clientValue[county]",
+                        'city' => "$clientValue[city]",
+                        'neighbordhood' => "$clientValue[neighbordhood]",
+                        'state' => "$clientValue[state]",
+                        'phone1' => "$clientValue[phone1]",
+                        'phone2' => "$clientValue[phone2]",
+                        'phone3' => "$clientValue[phone3]",
+                        'cpf' => "$clientValue[cpf]",
+                        'cnpj' => "$clientValue[cnpj]",
+                        'rg' => "$clientValue[rg]",
+                        'type' => "$clientValue[type]",
+                        'client_state_registration_free' => "$clientValue[state_registration_free]",
+                        'state_registration' => "$clientValue[state_registration]",
+                        'municipal_registration' => "$clientValue[municipal_registration]",
+                        'email1' => "$clientValue[email1]",
+                        'email2' => "$clientValue[email2]",
+                        'site' => "$clientValue[site]",
+                        'obs' => "$clientValue[obs]",
+                        'active' => "$clientValue[active]",
+                        'responsible' => "$clientValue[responsible]",
+                        'complement' => "$clientValue[complement]"
+                    ];
+                }
 
             } catch (Exception $e) {
                 $error = $e->getMessage();
                 echo "Erro ao receber lista de clientes" . $error;
             }
 
-            return $shResultsClientAll;
+            return $clientData;
         }
 
         /*Incluido Boleto a Avulso para Cliente*/
@@ -510,8 +542,8 @@
             try {
 
                 /* $conds = ['id' => "$regists_billet_client[find_client]"];*/
-                $billet_value = str_replace('.', '', $regists_billet_client['billet_value']); // remove o ponto
-                $billet_value = str_replace(',', '.', $billet_value); // troca a vírgula por ponto
+                $billet_value = str_replace(' . ', '', $regists_billet_client['billet_value']); // remove o ponto
+                $billet_value = str_replace(',', ' . ', $billet_value); // troca a vírgula por ponto
 
                 $data = [
                     'id_client' => "$regists_billet_client[find_client]",

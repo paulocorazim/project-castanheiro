@@ -2,12 +2,15 @@
 
     Class ScreenClients
     {
-        public function screenFormClient($findClients, $clientData)
+        /**
+         * @param $findClients
+         * @param $clientValues
+         * @return string
+         */
+        public function screenFormClient($findClients, $clientValues)
         {
-            foreach ($clientData as $clientValues) {
 
-
-                $screenFormClient = <<< EOT
+            return <<< EOT
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <div class="container-fluid"> 
                 <div class="card o-hidden border-0 shadow-lg">
@@ -77,7 +80,7 @@
                                         <div class="form-group row">
                                             <div class="col-sm-4 mb-3 mb-sm-0">
                                                 <span>Razão Social</span>
-                                                <input type="text" required name="client_corporate_name" id="client_corporate_name" class="form-control" $clientValues[coporate_name]>
+                                                <input type="text" required name="client_corporate_name" id="client_corporate_name" class="form-control" value="$clientValues[corporate_name]">
                                             </div>
                                             <div class="col-sm-3 mb-3 mb-sm-0">
                                                 <span>CPF / CNPJ</span>
@@ -85,7 +88,7 @@
                                             </div>
                                             <div class="col-sm-3 mb-3 mb-sm-0">   
                                                 <span>Inscrição Estadual</span>
-                                                <input type="text" name="client_state_registration" id="client_state_registration"  class="form-control">
+                                                <input type="text" name="client_state_registration" id="client_state_registration"  class="form-control" value="$clientValues[state_registration]">
                                             </div>
                                             <div class="col-sm-2 mb-3 mb-sm-0 py-4">
                                                 <span class="py-5">Isento:</span>
@@ -96,15 +99,15 @@
                                         <div class="form-group row">
                                             <div class="col-sm-4 mb-3 mb-sm-0">
                                                 <span>Inscrição Municipal</span>
-                                                <input type="text" required name="client_municipal_registration" id="client_municipal_registration"  class="form-control">
+                                                <input type="text" required name="client_municipal_registration" id="client_municipal_registration"  class="form-control" value="$clientValues[municipal_registration]">
                                             </div>
                                             <div class="col-sm-4 mb-3 mb-sm-0">
                                                 <span>RG</span>
-                                                <input type="text" name="client_rg" id="client_rg" class="form-control">
+                                                <input type="text" name="client_rg" id="client_rg" class="form-control" value="$clientValues[rg]">
                                             </div>
                                             <div class="col-sm-4 mb-3 mb-sm-0">
                                                 <span>Responsável</span>
-                                                <input type="text" required name="client_responsible" id="client_responsible" class="form-control">
+                                                <input type="text" required name="client_responsible" id="client_responsible" class="form-control" value="$clientValues[responsible]">
                                             </div>
                                         </div>
                             </div>
@@ -116,15 +119,15 @@
                                 <div class="form-group row">
                                     <div class="col-sm-4 mb-3 mb-sm-0">
                                         <span>E-mail 1</span>
-                                        <input type="email" required name="client_email1" id="client_email1" class="form-control">                           
+                                        <input type="email" required name="client_email1" id="client_email1" class="form-control" value="$clientValues[email1]">                           
                                     </div>
                                     <div class="col-sm-4 mb-3 mb-sm-0">
                                     <span>E-mail 2</span>
-                                    <input type="email" name="client_email2" id="client_email2" class="form-control">                            
+                                    <input type="email" name="client_email2" id="client_email2" class="form-control" value="$clientValues[email2]">                            
                                     </div> 
                                     <div class="col-sm-4 mb-3 mb-sm-0">
                                         <span>Site (www)</span> 
-                                        <input type="text" name="client_site" id="client_site" class="form-control">                            
+                                        <input type="text" name="client_site" id="client_site" class="form-control" value="$clientValues[site]">                            
                                     </div> 
                                 </div>
                                 
@@ -132,56 +135,56 @@
                                     
                                     <div class="col-sm-4 mb-2 mb-sm-0">
                                        <span>Tel1</span>
-                                       <input data-mask='+55 (00) 00000-0000' required type="text" name="client_phone1" id="client_phone1" class="form-control" onclick="format_phones()">
+                                       <input data-mask='+55 (00) 00000-0000' required type="text" name="client_phone1" id="client_phone1" class="form-control" onclick="format_phones()" value="$clientValues[phone1]">
                                     </div>
                                     <div class="col-sm-4 mb-2 mb-sm-0">
                                        <span>Tel2</span>
-                                       <input data-mask='+55 (00) 00000-0000'type="text" name="client_phone2" id="client_phone2" class="form-control" onclick="format_phones()">
+                                       <input data-mask='+55 (00) 00000-0000'type="text" name="client_phone2" id="client_phone2" class="form-control" onclick="format_phones()" value="$clientValues[phone2]">
                                     </div>   
                                     <div class="col-sm-4 mb-2 mb-sm-0">   
                                         <span>Tel3</span>
-                                        <input data-mask='+55 (00) 00000-0000' type="text" name="client_phone3" id="client_phone3" class="form-control" onclick="format_phones()">
+                                        <input data-mask='+55 (00) 00000-0000' type="text" name="client_phone3" id="client_phone3" class="form-control" onclick="format_phones()" value="$clientValues[phone3]">
                                     </div> 
                                     </div>                 
                                 
                                     <div class="form-group row">
                                         <div class="col-sm-2 mb-3 mb-sm-0">
                                             <span>Cep</span>
-                                            <input type="text" required name="cep" id="cep" class="form-control">
+                                            <input type="text" required name="cep" id="cep" class="form-control" value="$clientValues[zip_code]">
                                         </div>
                                         <div class="col-sm-8 mb-4 mb-sm-0">
                                             <span>Endereço</span>
-                                            <input type="text" required name="client_address" id="client_address" class="form-control">
+                                            <input type="text" required name="client_address" id="client_address" class="form-control" value="$clientValues[address]">
                                         </div>
                                          <div class="col-sm-2 mb-2 mb-sm-0">
                                             <span>Número</span>
-                                            <input type="text" required name="client_number" id="client_number" class="form-control">                  
+                                            <input type="text" required name="client_number" id="client_number" class="form-control" value="$clientValues[number]">                  
                                         </div>
                                     </div>
         
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <span>Município</span>
-                                            <input type="text"   name="client_county" id="client_county" class="form-control">                  
+                                            <input type="text"   name="client_county" id="client_county" class="form-control" value="$clientValues[county]">                  
                                         </div>
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <span>Cidade</span>
-                                            <input type="text" name="client_city" id="client_city" class="form-control">                  
+                                            <input type="text" name="client_city" id="client_city" class="form-control" value="$clientValues[city]">                  
                                         </div> 
                                     </div>
         
                                     <div class="form-group row">
                                         <div class="col-sm-4 mb-2 mb-sm-0">
                                             <span>Estado</span>
-                                            <input type="text" required name="client_state" id="client_state" class="form-control">                  
+                                            <input type="text" required name="client_state" id="client_state" class="form-control" value="$clientValues[state]">                  
                                         </div>
                                         <div class="col-sm-4 mb-2 mb-sm-0">
                                             <span>Bairro</span>
-                                            <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control">                  
+                                            <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control" value="$clientValues[neighbordhood]">                  
                                         </div> 
                                         <div class="col-sm-4 mb-2 mb-sm-0">
                                             <span>Complemento</span>
-                                            <input type="text" name="client_complement" id="client_complement" class="form-control">                  
+                                            <input type="text" name="client_complement" id="client_complement" class="form-control" value="$clientValues[complement]">                  
                                         </div> 
                                     </div>
         
@@ -259,9 +262,6 @@
             
         
 EOT;
-            }
-
-            return $screenFormClient;
         }
 
 

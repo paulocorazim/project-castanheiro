@@ -33,7 +33,7 @@
 
     $screenManager = new ScreenManager();
     $screenClient = new ScreenClients();
-    $contentNow = $screenClient->screenFormClient($findClients, null);;
+    $contentNow = $screenClient->screenFormClient($findClients, null);
 
 
     if ($_GET['n_alert'] != null) {
@@ -45,7 +45,7 @@
     if (isset($_GET['editID'])) {
         $clientID = $_GET['editID'];
         $clientData = $activeRecords->find_client_data($dbInstance, $clientID);
-        $contentNow = $screenClient->screenFormClient($findClients, $clientData);;
+        $contentNow = $screenClient->screenFormClient($findClients, $clientData);
         echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow, $alert_type);
         $footer = new shFooter();
         echo $footer->sh_footer();
@@ -63,18 +63,14 @@
         $type_cpfcnpj = $checkCPFCNPJ->getType();
 
         if ($type_cpfcnpj == 'CPF') {
-
             $falsetrue = $checkCPFCNPJ->isValid();
-
             if ($falsetrue == 1) {
                 $typeCPF = $checkCPFCNPJ->format();
             }
         }
 
         if ($type_cpfcnpj == 'CNPJ') {
-
             $falsetrue = $checkCPFCNPJ->isValid();
-
             if ($falsetrue == 1) {
                 $typeCNPJ = $checkCPFCNPJ->format();
             }
