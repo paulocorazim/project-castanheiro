@@ -15,6 +15,16 @@
                 $btn_txt = "A L T E R A R";
             }
 
+            if ($clientValues['type_cli'] == 'cli') {
+                $type_current = "CLIENTE";
+
+            } elseif ($clientValues['type_for'] == 'for') {
+                $type_current = "FORNECEDOR";
+
+            } else {
+                $type_current = "COLABORADOR";
+            }
+
             return <<< EOT
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <div class="container-fluid"> 
@@ -195,12 +205,13 @@
         
                             </div>
                             
-                            <div class="tab-pane fade" id="dadosadicionais2" role="tabpanel" aria-labelledby="contact-tab">                                  
+                            <div class="tab-pane fade" id="dadosadicionais2" role="tabpanel" aria-labelledby="contact-tab">
+                               <div class="form-control-sm form-control bg-light border-0 small">Tipo Atual : <strong>$type_current</strong></div><hr>                                  
                                 <select name="client_type" id="client_type" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">	                         
                                     <option value="--">Selecione o Tipo de Cliente</option>
-                                    <option value="cli">Cliente</option>
-                                    <option value="for">Fornecedor</option>
-                                    <option value="col">Colaborador</option>
+                                    <option value="cli">CLIENTE</option>
+                                    <option value="for">FORNECEDOR</option>
+                                    <option value="col">COLABORADOR</option>
                                 </select>                                                                           
                             </div>
                             
