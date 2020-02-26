@@ -65,10 +65,13 @@
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#fichas" role="tab" aria-controls="contact" aria-selected="false">Fichas</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contratos" role="tab" aria-controls="contact" aria-selected="false">Contratos</a>
+                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#poupanca" role="tab" aria-controls="contact" aria-selected="false">Poupança</a>
+                              </li>
+                            <li class="nav-item">
+                              <a class="nav-link disabled" id="contact-tab" data-toggle="tab" href="#contratos" role="tab" aria-controls="contact" aria-selected="false">Contratos</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#imoveis" role="tab" aria-controls="contact" aria-selected="false">Imóveis</a>
+                              <a class="nav-link disabled" id="contact-tab" data-toggle="tab" href="#imoveis" role="tab" aria-controls="contact" aria-selected="false">Imóveis</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#observacoes" role="tab" aria-controls="contact" aria-selected="false">Observações</a>
@@ -236,6 +239,11 @@
                                      <a href="../docs/clients/19/FICHA_CADASTRAL_PARA_LOCATARIOS.pdf" target="_blank">FICHA CADASTRAL</a>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="tab-pane fade" id="poupanca" role="tabpanel" aria-labelledby="contact-tab">
+                               
+                                <br>
+                                <br>
                             </div>
                             <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="custom-file">
