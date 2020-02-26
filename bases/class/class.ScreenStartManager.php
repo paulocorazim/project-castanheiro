@@ -2,7 +2,7 @@
 
     class ScreenManager
     {
-        public function pageWrapper($typeModules, $selected_module, $contentNow, $alert_type)
+        public function pageWrapper($typeModules, $selected_module, $contentNow)
         {
 
             $ip = $_SERVER['REMOTE_ADDR'];

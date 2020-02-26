@@ -5,6 +5,7 @@
     ini_set('display_startup_erros', 1);
     error_reporting(E_ALL);*/
 
+    /* Relizando os inclues do APP*/
     include("head.php");
     include("../class/class.ScreenStartManager.php");
     include("../class/class.ScreenEndManager.php");
@@ -14,39 +15,48 @@
     include('../class/class.UserLinkModules.php');
     include("../class/class.DbManagerRecords.php");
 
+    /* Carregando a classe de funcções*/
     $appFunctions = new appFunctions();
+
+    /* Validando acesso ligado*/
     $appFunctions->validate_session();
 
+    /* Carregando a classe de banco*/
     $conn = new DBconnect();
     $dbInstance = $conn->connection();
+
+    /*Definindo o icone de tela correspondente*/
     $icone_fas_fa = $appFunctions->icone_fas_fan(2);
 
-
+    /* Carregando a classe de tela princial*/
     $activeRecords = new DbManagerRecords();
     $findClients = $activeRecords->find_client_id($dbInstance);
 
+    /* Carregando_Atruibuindo os módulos do usuátio e suas permissões*/
     $typeModule = new LinkModule();
     $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
 
+    /* Carregando a classe de tela inicial de HTML*/
     $head = new shHead();
+
+    /* Atruibuindo a classe a setando o nome do title*/
     echo $head->sh_head("Castanheiro App v1 >> Clientes");
 
+    /* Carregando a classe de tela princial*/
     $screenManager = new ScreenManager();
+
+    /* Carregando a tela de cliente*/
     $screenClient = new ScreenClients();
+
+    /* Atribuindo a content o valor da tela pra apresentar a pagina*/
     $contentNow = $screenClient->screenFormClient($findClients, null);
 
-
-    if ($_GET['n_alert'] != null) {
-        $n_alert = base64_decode($_GET['n_alert']);
-        $n_msg = base64_decode($_GET['n_msg']);
-        $alert_type = $appFunctions->alert_system($n_alert, "$n_msg");
-    }
-
+    /*Trazendo dados do cliente para edição*/
     if (isset($_GET['editID'])) {
         $clientID = $_GET['editID'];
         $clientData = $activeRecords->find_client_data($dbInstance, $clientID);
         $contentNow = $screenClient->screenFormClient($findClients, $clientData);
-        echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow, $alert_type);
+        echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow);
         $footer = new shFooter();
         echo $footer->sh_footer();
         exit();
@@ -76,18 +86,22 @@
             }
         }
 
-        if ($type_cpfcnpj == false) {
-            echo $appFunctions->alert_system('0',
-                "Ops! Tipo de documento CPF ou CNPJ é inválido, por favor verifique! -> [ $_POST[cpfcnpj] ]");
-            exit();
-        }
-
         if ($_POST['client_state_registration_free'] == 'fr') {
             $client_state_registration = "ISENTO";
         } else {
             $client_state_registration = $_POST['client_state_registration'];
         }
 
+
+        if ($_POST['client_type'] == 'cli') {
+            $client_type_cli = $_POST['client_type'];
+
+        } elseif ($_POST['client_type'] == 'for') {
+            $client_type_for = $_POST['client_type'];
+
+        } else {
+            $client_type_col = $_POST['client_type'];
+        }
 
         // Verifica se é um número válido de CNPJ ou CPF
         // Retorna true/false
@@ -110,7 +124,9 @@
             'address' => "$_POST[client_address]",
             'number' => "$_POST[client_number]",
             'county' => "$_POST[client_county]",
-            'city' => "$_POST[client_city]",
+            'type_cli' => "$client_type_cli",
+            'type_for' => "$client_type_for",
+            'type_col' => "$client_type_col",
             'neighbordhood' => "$_POST[client_neighbordhood]",
             'state' => "$_POST[client_state]",
             'phone1' => "$_POST[client_phone1]",
@@ -119,7 +135,6 @@
             'cpf' => "$typeCPF",
             'cnpj' => "$typeCNPJ",
             'rg' => "$_POST[client_rg]",
-            'type' => "$_POST[client_type]",
             'client_state_registration_free' => "$_POST[client_state_registration_free]",
             'state_registration' => "$client_state_registration",
             'municipal_registration' => "$_POST[client_municipal_registration]",
@@ -136,11 +151,12 @@
 
         if ($resp == 1) {
             echo $appFunctions->alert_system('1',
-                "Obá! Cliente $_POST[client_name] foi cadastrado com sucesso! <strong> Deseja cadastrar novo Cliente? </strong> <a href='?insert=true' class=\"alert-link\" > [SIM] </a>");
+                "Cliente $_POST[client_name] foi CADASTRADO com sucesso! <strong> Deseja cadastrar novo Cliente? </strong> <a href='?insert=true' class=\"alert-link\" > [SIM] </a>");
             exit();
 
         } elseif ($resp == 2) {
-            echo $appFunctions->alert_system('2', "Cliente $_POST[client_name] Alterando com sucesso!");
+            echo $appFunctions->alert_system('2',
+                "Cliente $_POST[client_name] foi ALTERADDO com sucesso! <strong> Deseja cadastrar novo Cliente? </strong> <a href='?insert=true' class=\"alert-link\" > [SIM] </a>");
             exit();
 
         } else {
@@ -149,8 +165,9 @@
         }
     }
 
+    /*Tela Principal*/
+    echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow);
 
-    echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow, $alert_type);
-
+    /*Fim da pagina e carregamento dos JS */
     $footer = new shFooter();
     echo $footer->sh_footer();

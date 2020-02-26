@@ -9,6 +9,11 @@
          */
         public function screenFormClient($findClients, $clientValues)
         {
+            if (empty($clientValues)) {
+                $btn_txt = "C A D A S T R A R";
+            } else {
+                $btn_txt = "A L T E R A R";
+            }
 
             return <<< EOT
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -190,19 +195,15 @@
         
                             </div>
                             
-                            <div class="tab-pane fade" id="dadosadicionais2" role="tabpanel" aria-labelledby="contact-tab">
-                                  
-                                <input type="radio" name="client_type" id="client_type" checked  value="cl">
-                                    <label for="name">Cliente</label><hr>
-                                    
-                                    <input type="radio" name="client_type" id="client_type" value="fo">
-                                    <label for="name"> Fornecedor</label> <hr>   
-                                        
-                                    <input type="radio" name="client_type" id="client_type" value="co">    
-                                    <label for="name"> Colaborador</label>    
-                                                                       
-        
+                            <div class="tab-pane fade" id="dadosadicionais2" role="tabpanel" aria-labelledby="contact-tab">                                  
+                                <select name="client_type" id="client_type" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">	                         
+                                    <option value="--">Selecione o Tipo de Cliente</option>
+                                    <option value="cli">Cliente</option>
+                                    <option value="for">Fornecedor</option>
+                                    <option value="col">Colaborador</option>
+                                </select>                                                                           
                             </div>
+                            
                             <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
@@ -211,6 +212,7 @@
                                     <div class="btn-warning btn-sm">Cliente ainda não possui documentos relacionados!</div>
                                 </div>
                             </div>
+                            
                             <div class="tab-pane fade" id="fichas" role="tabpanel" aria-labelledby="contact-tab">         
                                  <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
@@ -254,7 +256,7 @@
                             </div>
                           </div>
                           <div class="d-flex align-items-end flex-column bd-highlight mt-3">
-                            <div class="p-2 bd-highlight"><button name="btn_insert_update_client" id="btn_insert_update_client" value="InsertUpdate"  class="btn btn-success">C A D A S T R A R</button></div>
+                            <div class="p-2 bd-highlight"><button name="btn_insert_update_client" id="btn_insert_update_client" value="InsertUpdate"  class="btn btn-success">$btn_txt</button></div>
                           </div>                                              
                            </div>                           
                         </div>
