@@ -2,11 +2,7 @@
 
     Class ScreenClients
     {
-        /**
-         * @param $findClients
-         * @param $clientValues
-         * @return string
-         */
+
         public function screenFormClient($findClients, $clientValues)
         {
             if (empty($clientValues)) {
@@ -21,8 +17,11 @@
             } elseif ($clientValues['type_for'] == 'for') {
                 $type_current = "FORNECEDOR";
 
-            } else {
+            } elseif ($clientValues['type_for'] == 'col') {
                 $type_current = "COLABORADOR";
+
+            } else {
+                $type_current = "";
             }
 
             return <<< EOT
@@ -36,7 +35,6 @@
                                 <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
                                   name="select_find_client_id" id="select_find_client_id" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">	                         
                                     <option value="--">Localizar Cliente ... </option>
-                                    <option value="--">... </option>
                                     $findClients
                                 </select>
                                   <div class="input-group-append">
@@ -219,11 +217,15 @@
                             </div>
                             
                             <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="contact-tab">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                    <label class="custom-file-label" for="validatedCustomFile">Anexar documentos do cliente ...</label>
+                                <div class="custom-file">                                   
+                                    <input type="file" class="custom-file-input" name="client_doc" id="client_doc">
+                                    <label class="custom-file-label" for="validatedCustomFile">Anexar documentos do cliente ...</label><hr>
+                                    <button name="j_btn_doc" id="j_btn_doc" value="insetDoc" class="btn btn-sm btn-info"><strong>Clique aqui para anexar o documento selecionado acima!</strong></button>                             
                                     <hr>
-                                    <div class="btn-warning btn-sm">Cliente ainda não possui documentos relacionados!</div>
+                                </div>
+                                <hr>
+                                <div class="btn-warning btn-sm">
+                                    <strong>Cliente ainda não possui documentos relacionados!</strong>
                                 </div>
                             </div>
                             

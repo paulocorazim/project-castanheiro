@@ -1,4 +1,4 @@
-<?php /** @noinspection ALL */
+<?php
 
     class DbManagerRecords
     {
@@ -418,6 +418,8 @@
 
                 try {
 
+                    $client_dir_create = null;
+
                     $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
                     $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
                         ->setTableName('tab_clients') // define the table name
@@ -430,8 +432,13 @@
                     $resultslastID = $sqlManager->fetchAll($lastID);
 
                     foreach ($resultslastID as $docID) {
-                        $client_dir_create = $docID[ID];
+                        $client_dir_create = $docID['ID'];
                     }
+
+                    //Criando diretoria do usuário
+                    mkdir("..//docs/clients/$client_dir_create", 0777, true);
+                    chmod("..//docs/clients/$client_dir_create", 0777);
+
 
                     //Aviso do sucesso e redireciona a pagina
                     $resp = 1;
@@ -467,17 +474,21 @@
         public function find_client_id($dbInstance)
         {
             try {
-                $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-                $shSelectClientAll = (new \Simplon\Db\SqlQueryBuilder())
-                    ->setQuery('SELECT * from tab_clients');
-                $shResultsClientAll = $sqlManager->fetchAll($shSelectClientAll);
 
-                foreach ($shResultsClientAll as $clientsAll) {
+                $optionList = null;
+
+                $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+                $shSelectClientID = (new \Simplon\Db\SqlQueryBuilder())
+                    ->setQuery('SELECT id, corporate_name from tab_clients');
+                $shResultsClientID = $sqlManager->fetchAll($shSelectClientID);
+
+                foreach ($shResultsClientID as $clientsAll) {
                     $option = "<option value=\"manager.clients.php?editID=$clientsAll[id]\">Cód: $clientsAll[id] | $clientsAll[corporate_name]</option>";
                     $optionList .= $option;
                 }
 
-            } catch (Exception $e) {
+            } catch
+            (Exception $e) {
                 $error = $e->getMessage();
                 echo "Erro ao receber lista de clientes" . $error;
             }

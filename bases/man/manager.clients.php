@@ -32,6 +32,7 @@
     $activeRecords = new DbManagerRecords();
     $findClients = $activeRecords->find_client_id($dbInstance);
 
+
     /* Carregando_Atruibuindo os módulos do usuátio e suas permissões*/
     $typeModule = new LinkModule();
     $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
@@ -163,6 +164,22 @@
             echo $appFunctions->alert_system('0', "Ops! Erro ao cadastrar Cliente! -> [ $resp ]");
             exit();
         }
+    }
+
+    /*Inserindo Docs ao Cliente*/
+    if (isset($_POST['j_btn_doc'])) {
+
+        var_dump($_POST);
+        var_dump($_FILES);
+        exit;
+
+        /*$clientID = $_POST['client_id'];
+        $clientDOC = $_POST['client_doc'];
+
+        $resp_process = $appFunctions->upload_files($clientID, $clientDOC);
+
+        echo $resp_process;
+        exit();*/
     }
 
     /*Tela Principal*/

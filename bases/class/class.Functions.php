@@ -128,4 +128,68 @@ EOT;
             return $icone_fas_fan;
         }
 
+        public function upload_files($clientID, $clientDOC)
+        {
+            $resp = null;
+
+            var_dump($_FILES);
+
+            // Pasta onde o arquivo vai ser salvo
+            $_UP['pasta'] = "../docs/clients/$clientID/";
+
+            // Tamanho máximo do arquivo (em Bytes)
+            $_UP['tamanho'] = 1024 * 1024 * 2; // 2Mb
+
+            // Array com as extensões permitidas
+            $_UP['extensoes'] = array('jpg', 'png', 'gif', 'pdf');
+
+            // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
+            $_UP['renomeia'] = false;
+
+            // Array com os tipos de erros de upload do PHP
+            $_UP['erros'][0] = 'Não houve erro';
+            $_UP['erros'][1] = 'O arquivo no upload é maior do que o limite do PHP';
+            $_UP['erros'][2] = 'O arquivo ultrapassa o limite de tamanho especifiado no HTML';
+            $_UP['erros'][3] = 'O upload do arquivo foi feito parcialmente';
+            $_UP['erros'][4] = 'Não foi feito o upload do arquivo';
+
+            // Verifica se houve algum erro com o upload. Se sim, exibe a mensagem do erro
+            if ($_FILES["$clientDOC"]['error'] != 0) {
+                $resp = "Não foi possível fazer o upload, erro:" . $_UP['erros'][$_FILES["$clientDOC"]['error']];
+                exit(); // Para a execução do script
+            }
+
+            // Faz a verificação da extensão do arquivo
+            echo $extensao = strtolower(end(explode('.', $_FILES["$clientDOC"]['name'])));
+
+            if (array_search($extensao, $_UP['extensoes']) === false) {
+                $resp = "Por favor, envie arquivos com as seguintes extensões: jpg, png ou gif";
+
+            } else {
+
+                if ($_UP['tamanho'] < $_FILES["$clientDOC"]['size']) {
+                    $resp = "O arquivo enviado é muito grande, envie arquivos de até 2Mb.";
+
+                } else {
+
+                    if ($_UP['renomeia'] == true) {
+                        $nome_final = time() . '.jpg';
+
+                    } else {
+                        $nome_final = $_FILES["$clientDOC"]['name'];
+                    }
+
+                    if (move_uploaded_file($_FILES["$clientDOC"]['tmp_name'], $_UP['pasta'] . $nome_final)) {
+                        $resp = "Upload efetuado com sucesso!";
+
+                    } else {
+                        $resp = "Não foi possível enviar o arquivo, tente novamente";
+
+                    }
+                }
+            }
+
+            return $resp;
+        }
+
     }
