@@ -1,30 +1,35 @@
 <?php
 
-    Class ScreenClients
+Class ScreenClients
+{
+    public function screenFormClient($findClients, $clientValues, $clientDocs)
     {
+        if (empty($clientValues)) {
+            $btn_txt = "C A D A S T R A R";
+        } else {
+            $btn_txt = "A L T E R A R";
+        }
 
-        public function screenFormClient($findClients, $clientValues)
-        {
-            if (empty($clientValues)) {
-                $btn_txt = "C A D A S T R A R";
-            } else {
-                $btn_txt = "A L T E R A R";
-            }
+        if ($clientValues['type_cli'] == 'cli') {
+            $type_current = "CLIENTE";
 
-            if ($clientValues['type_cli'] == 'cli') {
-                $type_current = "CLIENTE";
+        } elseif ($clientValues['type_for'] == 'for') {
+            $type_current = "FORNECEDOR";
 
-            } elseif ($clientValues['type_for'] == 'for') {
-                $type_current = "FORNECEDOR";
+        } elseif ($clientValues['type_for'] == 'col') {
+            $type_current = "COLABORADOR";
 
-            } elseif ($clientValues['type_for'] == 'col') {
-                $type_current = "COLABORADOR";
+        } else {
+            $type_current = "";
+        }
 
-            } else {
-                $type_current = "";
-            }
+        if ($clientDocs == null) {
+            $desactive_tab_contract = 'disabled';
+        } else {
+            $desactive_tab_contract = null;
+        }
 
-            return <<< EOT
+        return <<< EOT
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <div class="container-fluid"> 
                 <div class="card o-hidden border-0 shadow-lg">
@@ -58,18 +63,15 @@
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="contact" aria-selected="false">Documentos</a>
-                            </li>
+                            </li>                           
                             <li class="nav-item">
-                              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#fichas" role="tab" aria-controls="contact" aria-selected="false">Fichas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#poupanca" role="tab" aria-controls="contact" aria-selected="false">Poupança</a>
+                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#poupanca" role="tab" aria-controls="contact" aria-selected="false">Poupança / Depósito</a>
                               </li>
                             <li class="nav-item">
-                              <a class="nav-link disabled" id="contact-tab" data-toggle="tab" href="#contratos" role="tab" aria-controls="contact" aria-selected="false">Contratos</a>
+                              <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#contratos" role="tab" aria-controls="contact" aria-selected="false">Contratos</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link disabled" id="contact-tab" data-toggle="tab" href="#imoveis" role="tab" aria-controls="contact" aria-selected="false">Imóveis</a>
+                              <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#imoveis" role="tab" aria-controls="contact" aria-selected="false">Imóveis</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#observacoes" role="tab" aria-controls="contact" aria-selected="false">Observações</a>
@@ -217,36 +219,37 @@
                             </div>
                             
                             <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="contact-tab">
-                                <div class="custom-file">                                   
-                                    <input type="file" class="custom-file-input" name="client_doc" id="client_doc">
-                                    <label class="custom-file-label" for="validatedCustomFile">Anexar documentos do cliente ...</label><hr>
-                                    <button name="j_btn_doc" id="j_btn_doc" value="insetDoc" class="btn btn-sm btn-info"><strong>Clique aqui para anexar o documento selecionado acima!</strong></button>                             
+                                <form method="post" enctype="multipart/form-data" id="fileUploadForm">
+                                    <input type="hidden" name="clientIDdoc" id="clientIDdoc" value="$clientValues[id]">
+                                    <input type="file" class="btn btn-sm btn-info" name="file" id="file">
+                                    <button name="j_btn_doc" id="j_btn_doc" value="insertDoc" class="btn btn-info"><strong>Anexar Documentos</strong></button>                             
+                                 </form>   
                                     <hr>
-                                </div>
                                 <hr>
-                                <div class="btn-warning btn-sm">
-                                    <strong>Cliente ainda não possui documentos relacionados!</strong>
+                                Arquivos atuais : <br>
+                                <div class="btn btn-sm btn-light">                                     
+                                    <strong>$clientDocs</strong>
                                 </div>
                             </div>
                             
-                            <div class="tab-pane fade" id="fichas" role="tabpanel" aria-labelledby="contact-tab">         
-                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                    <label class="custom-file-label" for="validatedCustomFile">Anexo fichas do cliente ...</label>
-                                    <hr>                            
-                                    <div class="btn-success btn-sm">
-                                     <a href="../docs/clients/19/FICHA_CADASTRAL_PARA_LOCATARIOS.pdf" target="_blank">FICHA CADASTRAL</a>
-                                    </div><br>
-                                    <div class="btn-danger btn-sm">
-                                     <a href="../docs/clients/19/FICHA_CADASTRAL_PARA_LOCATARIOS.pdf" target="_blank">FICHA CADASTRAL</a>
-                                    </div>
-                                </div>
+                            <div class="tab-pane fade" id="poupanca" role="tabpanel" aria-labelledby="contact-tab">                               
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                    <form method="post" enctype="multipart/form-data" id="fileUploadFormSaving">
+                                        <input type="hidden" name="client_savings_id" id="client_savings_id" value="$clientValues[id]">
+                                        <span>Depósitvo :</span>
+                                        <input type="text" required name="client_savings_value" id="client_savings_value" class="form-control" data-mask="#.##0,00" placeholder="R$ 0.000,00">
+                                        <span>Data do Depósitvo :</span>
+                                        <input type="date" required name="client_savings_date" id="client_savings_date" class="form-control">
+                                        <span>Banco Depósitvo :</span>
+                                        <input type="text" required name="client_savings_bank" id="client_savings_bank" class="form-control">
+                                        <span>Conta Depósitvo :</span>
+                                        <input type="text" required name="client_savings_number" id="client_savings_number" class="form-control"><br>
+                                        <input type="file" class="btn btn-sm btn-info" name="fileSavings" id="fileSavings"><hr>
+                                        <button name="j_btn_salve_savings" id="j_btn_salve_savings" value="InsertSavings" class="btn btn-sm btn-success">Salvar Depósito</button>
+                                    </form>
+                                </div>                               
                             </div>
-                            <div class="tab-pane fade" id="poupanca" role="tabpanel" aria-labelledby="contact-tab">
-                               
-                                <br>
-                                <br>
-                            </div>
+                            
                             <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
@@ -285,14 +288,47 @@
             
         
 EOT;
-        }
-
-
-        public
-        function screenListClient()
-        {
-
-        }
-
-
     }
+
+
+    public function screenListClientSavings($listClientSavingsRegists)
+    {
+        return <<< EOT
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">[ Somente usuário master tem acesso a esse relatório ]</h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table cellspacing="1" class="table table-bordered" id="dataTable" width="100%">
+                    <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>R$ Valor</th>
+                      <th>Data Depósito</th>
+                      <th>Banco</th>
+                      <th>Conta</th>
+                      <th>Comprovante</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                      <th>#</th>
+                      <th>R$ Valor</th>
+                      <th>Data Depósito</th>
+                      <th>Banco</th>
+                      <th>Conta</th>
+                      <th>Comprovante</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                      $listClientSavingsRegists
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+EOT;
+    }
+
+}

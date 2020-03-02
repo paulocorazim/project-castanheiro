@@ -1,12 +1,12 @@
 <?php
 
-    Class shFooter
+Class shFooter
+{
+
+    public function sh_footer()
     {
 
-        public function sh_footer()
-        {
-
-            $footer = <<< EOT
+        $footer = <<< EOT
             <!-- JavaScript Mascaras-->
             
             <script src="https://bossanova.uk/jsuites/v2/jsuites.js"></script>            
@@ -15,11 +15,10 @@
             <script src="../js/cep.js" type="text/javascript"></script>
             <script src="../js/alter_user_perfil.js" type="text/javascript"></script>
             <script src="../js/insert_billet_detached.js" type="text/javascript"></script>
-            <script src="../js/insert_update_client.js" type="text/javascript"></script>
+            <script src="../js/insert_update_clients.js" type="text/javascript"></script>
             <script src="../js/insert_docs_clients.js" type="text/javascript"></script>
+            <script src="../js/insert_savings_attached_clients.js" type="text/javascript"></script>
 
-
-    
             <!-- Bootstrap core JavaScript-->
             <script src="../vendor/jquery/jquery.min.js"></script>
             <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -51,7 +50,7 @@
 
 EOT;
 
-            return $footer;
+        return $footer;
 
-        }
     }
+}
