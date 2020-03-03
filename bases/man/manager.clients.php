@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_erros', 1);
 error_reporting(E_ALL);*/
 
-/* Relizando os inclues do APP*/
+/* Relizando os includes do APP*/
 include("head.php");
 include("../class/class.ScreenStartManager.php");
 include("../class/class.ScreenEndManager.php");
@@ -31,7 +31,6 @@ $icone_fas_fa = $appFunctions->icone_fas_fan(2);
 /* Carregando a classe de tela princial*/
 $activeRecords = new DbManagerRecords();
 $findClients = $activeRecords->find_client_id($dbInstance);
-
 
 /* Carregando_Atruibuindo os módulos do usuátio e suas permissões*/
 $typeModule = new LinkModule();
