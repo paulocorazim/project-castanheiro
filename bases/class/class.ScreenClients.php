@@ -233,21 +233,62 @@ Class ScreenClients
                             </div>
                             
                             <div class="tab-pane fade" id="poupanca" role="tabpanel" aria-labelledby="contact-tab">                               
+                                <div class="row">
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <form method="post" enctype="multipart/form-data" id="fileUploadFormSaving">
                                         <input type="hidden" name="client_savings_id" id="client_savings_id" value="$clientValues[id]">
-                                        <span>Depósitvo :</span>
+                                        <span>Depósito :</span>
                                         <input type="text" required name="client_savings_value" id="client_savings_value" class="form-control" data-mask="#.##0,00" placeholder="R$ 0.000,00">
-                                        <span>Data do Depósitvo :</span>
+                                        <span>Data do Depósito :</span>
                                         <input type="date" required name="client_savings_date" id="client_savings_date" class="form-control">
-                                        <span>Banco Depósitvo :</span>
+                                        <span>Banco Depósito :</span>
                                         <input type="text" required name="client_savings_bank" id="client_savings_bank" class="form-control">
-                                        <span>Conta Depósitvo :</span>
+                                        <span>Conta Depósito :</span>
                                         <input type="text" required name="client_savings_number" id="client_savings_number" class="form-control"><br>
                                         <input type="file" class="btn btn-sm btn-info" name="fileSavings" id="fileSavings"><hr>
                                         <button name="j_btn_salve_savings" id="j_btn_salve_savings" value="InsertSavings" class="btn btn-sm btn-success">Salvar Depósito</button>
                                     </form>
-                                </div>                               
+                                </div>     
+                                
+                            <div class="col-sm-9 mb-3 mb-sm-0">
+                                <div class="card-header py-3">
+                                  <h6 class="m-0 font-weight-bold text-primary"> Titulo Desejado</h6>
+                                </div>
+                                <div class="card-body">
+                                  <div class="table-responsive">
+                                    <table cellspacing="0" class="table table-hover table-bordered" id="">
+                                      <thead>
+                                      <tr>
+                                        <th>Cód : Cliente</th>
+                                        <th>Vencimento Original</th>
+                                        <th>Vencimento Prorrogado</th>
+                                        <th>R$</th>
+                                        <th>Ações</th>
+                                      </tr>
+                                      </thead>
+                                      <tfoot>
+                                        <tr>
+                                        <th>Cód : Cliente</th>
+                                        <th>Vencimento Original</th>
+                                        <th>Vencimento Prorrogado</th>
+                                        <th>R$</th>
+                                        <th>Ações</th>
+                                        </tr>
+                                      </tfoot>
+                                      <tbody>                 
+                                      <tr>
+                                        <td>1010: SystemHope</td>
+                                        <td>11/11/1111</td>
+                                        <td>11/11/1111</td>
+                                        <td>R$ 2.900,00</td>
+                                        <td><button class="btn btn-sm btn-info  btn-block">Editar</button></td>
+                                      </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>                          
+                            </div>
                             </div>
                             
                             <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
