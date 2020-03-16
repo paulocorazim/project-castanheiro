@@ -48,7 +48,7 @@ $screenProperty = new ScreenProperties(); // aqui estanciamos a tela
 $contentNow = $screenProperty->screenProperty(); // aqui atribuimos o contenNow com o form desejado
 
 if (isset($_POST['j_btn_salve_property'])) {
-
+    var_dump($_POST);
     $regist_property = $_POST;
     $resp = $activeRecords->manager_property($dbInstance, $regist_property);
     echo $appFunctions->alert_system($resp[0], $resp[1]);
