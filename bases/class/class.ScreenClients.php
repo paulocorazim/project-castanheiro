@@ -2,7 +2,7 @@
 
 Class ScreenClients
 {
-    public function screenFormClient($findClients, $clientValues, $clientDocs)
+    public function screenFormClient($findClients, $clientValues, $clientDocs, $clientTableSavings)
     {
         if (empty($clientValues)) {
             $btn_txt = "C A D A S T R A R";
@@ -183,7 +183,7 @@ Class ScreenClients
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <span>Município</span>
-                                            <input type="text"   name="client_county" id="client_county" class="form-control" value="$clientValues[county]">                  
+                                            <input type="text" name="client_county" id="client_county" class="form-control" value="$clientValues[county]">                  
                                         </div>
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <span>Cidade</span>
@@ -250,46 +250,7 @@ Class ScreenClients
                                     </form>
                                 </div>     
                                 
-                            <div class="col-sm-9 mb-3 mb-sm-0">
-                                <div class="card-header py-3">
-                                  <h6 class="m-0 font-weight-bold text-primary"> Titulo Desejado</h6>
-                                </div>
-                                <div class="card-body">
-                                  <div class="table-responsive">
-                                    <table cellspacing="0" class="table table-hover table-bordered" id="">
-                                      <thead>
-                                      <tr>
-                                        <th>Cód : Cliente</th>
-                                        <th>Vencimento Original</th>
-                                        <th>Vencimento Prorrogado</th>
-                                        <th>R$</th>
-                                        <th>Ações</th>
-                                      </tr>
-                                      </thead>
-                                      <tfoot>
-                                        <tr>
-                                        <th>Cód : Cliente</th>
-                                        <th>Vencimento Original</th>
-                                        <th>Vencimento Prorrogado</th>
-                                        <th>R$</th>
-                                        <th>Ações</th>
-                                        </tr>
-                                      </tfoot>
-                                      <tbody>                 
-                                      <tr>
-                                        <td>1010: SystemHope</td>
-                                        <td>11/11/1111</td>
-                                        <td>11/11/1111</td>
-                                        <td>R$ 2.900,00</td>
-                                        <td><button class="btn btn-sm btn-info  btn-block">Editar</button></td>
-                                      </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </div>
-                              </div>                          
-                            </div>
-                            </div>
+                            $clientTableSavings
                             
                             <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="custom-file">
@@ -335,39 +296,27 @@ EOT;
     public function screenListClientSavings($listClientSavingsRegists)
     {
         return <<< EOT
-            <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">[ Somente usuário master tem acesso a esse relatório ]</h6>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table cellspacing="1" class="table table-bordered" id="dataTable" width="100%">
-                    <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>R$ Valor</th>
-                      <th>Data Depósito</th>
-                      <th>Banco</th>
-                      <th>Conta</th>
-                      <th>Comprovante</th>
-                    </tr>
-                    </thead>
-                    <tfoot>
-                    <tr>
-                      <th>#</th>
-                      <th>R$ Valor</th>
-                      <th>Data Depósito</th>
-                      <th>Banco</th>
-                      <th>Conta</th>
-                      <th>Comprovante</th>
-                    </tr>
-                    </tfoot>
-                    <tbody>
-                      $listClientSavingsRegists
-                    </tbody>
-                  </table>
+            <div id="table_savings" class="col-sm-8 mb-auto mb-sm-1">                               
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table cellspacing="0" class="table small table-hover table-bordered">
+                      <thead>
+                      <tr>
+                        <th>R$</th>
+                        <th>Data</th>
+                        <th>Banco</th>
+                        <th>Conta</th>
+                        <th>Arquivo</th>
+                      </tr>
+                      </thead>                      
+                      <tbody>                 
+                         $listClientSavingsRegists
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-              </div>
+              </div>                          
+            </div>
             </div>
 EOT;
     }

@@ -49,15 +49,24 @@ $screenManager = new ScreenManager();
 $screenClient = new ScreenClients();
 
 /* Atribuindo a content o valor da tela pra apresentar a pagina*/
-$contentNow = $screenClient->screenFormClient($findClients, null, null);
+$contentNow = $screenClient->screenFormClient($findClients, null, null, null);
 
 /*Trazendo dados do cliente para edição*/
 if (isset($_GET['editID'])) {
+
     $clientID = $_GET['editID'];
-    /*Leando documentos anexados do cliente*/
+    /*Leando ddados do cliente*/
     $clientData = $activeRecords->find_client_data($dbInstance, $clientID);
+
+    /*Leando documentos anexados do cliente*/
     $clientDocs = $appFunctions->load_files($clientID);
-    $contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs);
+
+    /*Leando poupanças do cliente*/
+    $clientListSavings = $activeRecords->list_client_saving($dbInstance, $clientID);
+    $clientTableSavings = $screenClient->screenListClientSavings($clientListSavings);
+
+    $contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs, $clientTableSavings);
+
     echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow);
     $footer = new shFooter();
     echo $footer->sh_footer();
@@ -190,14 +199,16 @@ if (isset($_POST['j_btn_salve_savings'])) {
 
     if ($resp_process['0'] == '1') { //sucesso para salvar o arquivo
 
+        $filename = $resp_process[2];
+
         $resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
         echo $resp_process;
 
         $regists_client_savings = $_POST;
-        $resp = $activeRecords->manager_client_saving($dbInstance, $regists_client_savings);
+        $resp = $activeRecords->manager_client_saving($dbInstance, $regists_client_savings, $filename);
 
-        if ($resp == '0') {
-            echo $appFunctions->alert_system('0', "Erro ao processar depósito");
+        if ($resp != '1') {
+            echo $appFunctions->alert_system('0', "Erro ao processar depósito - $resp");
             exit();
         }
 

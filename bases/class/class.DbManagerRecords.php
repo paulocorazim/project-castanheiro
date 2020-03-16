@@ -472,20 +472,20 @@ class DbManagerRecords
     }
 
     /*Incluido Poupança/Depósito para Cliente*/
-    public function manager_client_saving($dbInstance, $regists_client_savings)
+    public function manager_client_saving($dbInstance, $regists_client_savings, $filename)
     {
         try {
-
             /* $conds = ['id' => "$regists_billet_client[find_client]"];*/
             $saving_value = str_replace('.', '', $regists_client_savings['client_savings_value']); // remove o ponto
             $saving_value = str_replace(',', '.', $saving_value); // troca a vírgula por ponto
 
             $data = [
-                'saving_id_client' => "$regists_client_savings[client_id]",
+                'saving_id_client' => "$regists_client_savings[client_savings_id]",
                 'saving_value' => "$saving_value",
                 'saving_date' => "$regists_client_savings[client_savings_date]",
                 'saving_number' => "$regists_client_savings[client_savings_number]",
-                'saving_bank' => "$regists_client_savings[client_savings_bank]"
+                'saving_bank' => "$regists_client_savings[client_savings_bank]",
+                'saving_filename' => "$filename"
             ];
 
             $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
@@ -501,6 +501,127 @@ class DbManagerRecords
         }
 
         return $resp;
+    }
+
+    /*Incluido Boleto a Avulso para Cliente*/
+    public function manager_billet_detached($dbInstance, $regists_billet_client)
+    {
+        try {
+
+            /* $conds = ['id' => "$regists_billet_client[find_client]"];*/
+            $billet_value = str_replace('.', '', $regists_billet_client['billet_value']); // remove o ponto
+            $billet_value = str_replace(',', '.', $billet_value); // troca a vírgula por ponto
+
+            $data = [
+                'id_client' => "$regists_billet_client[find_client]",
+                'billet_value' => "$billet_value",
+                'billet_due_date' => "$regists_billet_client[billet_due_date]",
+                'billet_send_mail_client' => "$regists_billet_client[billet_send_mail_client]"
+            ];
+
+            $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+            $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+                ->setTableName('tab_clients_billet_detached')
+                ->setData($data);
+            $sqlManager->insert($sqlQuery);
+            $resp = 1;
+
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            $resp = $error;
+        }
+
+        return $resp;
+    }
+
+    /*Inclusão/Alteração de Imóveis*/
+    public function manager_property($dbInstance, $regist_property)
+    {
+        $property_value = str_replace('.', '', $regist_property['property_value']); // remove o ponto
+        $property_value = str_replace(',', '.', $property_value); // troca a vírgula por ponto
+
+        $data = [
+            'property_client_id' => "$regist_property[property_client_id]",
+            'property_type' => "$regist_property[property_type]",
+            'property_destination' => "$regist_property[property_destination]",
+            'property_usefull_area' => "$regist_property[property_usefull_area]",
+            'property_usefull_built' => "$regist_property[property_usefull_built]",
+            'property_ground' => "$regist_property[property_ground]",
+            'property_value' => "$regist_property[property_value]",
+            'property_value_location' => "$regist_property[property_value_location]",
+            'property_value_iptu' => "$regist_property[property_value_iptu]",
+            'property_value_condo' => "$regist_property[property_value_condo]",
+            'property_amount_dorm' => "$regist_property[property_amount_dorm]",
+            'property_amount_suite' => "$regist_property[property_amount_suite]",
+            'property_amount_room' => "$regist_property[property_amount_room]",
+            'property_amount_bathroom' => "$regist_property[property_amount_bathroom]",
+            'property_amount_floors' => "$regist_property[property_amount_floors]",
+            'property_amount_vague_garage' => "$regist_property[property_amount_vague_garage]",
+            'property_amount_deposit' => "$regist_property[property_amount_deposit]",
+            'property_amount_elevators' => "$regist_property[property_amount_elevators]",
+            'property_age' => "$regist_property[property_age]",
+            'property_cep' => "$regist_property[cep]",
+            'property_address' => "$regist_property[client_address]",
+            'property_number' => "$regist_property[client_number]",
+            'property_county' => "$regist_property[client_county]",
+            'property_city' => "$regist_property[client_city]",
+            'property_state' => "$regist_property[client_state]",
+            'property_neighbordhood' => "$regist_property[client_neighbordhood]",
+            'property_complement' => "$regist_property[property_complement]",
+        ];
+
+        try {
+
+            $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+            $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+                ->setTableName('table_properties')
+                ->setData($data);
+            $sqlManager->insert($sqlQuery);
+            $resp = '1';
+            $msg = "Imóvel Incluído com sucesso!";
+
+        } catch (Exception $e) {
+
+            $error = $e->getMessage();
+            $resp = '0';
+            $msg = "Erro ao incluir Imóvel -> $error";
+        }
+
+        return array($resp, $msg);
+    }
+
+    /*Listando os registros de depósito poupanças*/
+    public function list_client_saving($dbInstance, $idClient)
+    {
+        try {
+
+            $tr = null;
+            $listClientSavingsRegists = null;
+
+            $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+            $shSelectClientSavings = (new \Simplon\Db\SqlQueryBuilder())
+                ->setQuery('SELECT * FROM tab_clients_savings WHERE saving_id_client = :saving_id_client')
+                ->setConditions(['saving_id_client' => "$idClient"]);
+            $shResultsClientSavings = $sqlManager->fetchAll($shSelectClientSavings);
+
+            foreach ($shResultsClientSavings as $clientSavingAll) {
+                $tr = "<tr>
+                      <td>$clientSavingAll[saving_value]</td>
+                      <td>$clientSavingAll[saving_date]</td>
+                      <td>" . strtoupper($clientSavingAll[saving_bank]) . "</td>
+                      <td>$clientSavingAll[saving_number]</td>
+                      <td><a href='../docs/clients/" . "$idClient/savings/$clientSavingAll[saving_filename]' target='_blank'>Comprovante</a> </td>                      
+                    </tr>";
+                $listClientSavingsRegists .= $tr;
+            }
+
+        } catch
+        (Exception $e) {
+            $error = $e->getMessage();
+            echo "Erro ao receber lista de poupanças" . $error;
+        }
+
+        return $listClientSavingsRegists;
     }
 
     /*Listando os id do CLiente no Find das telas*/
@@ -532,6 +653,8 @@ class DbManagerRecords
     /*Pegando os dados dos clientes para carregar e tela de Cliente*/
     public function find_client_data($dbInstance, $clientID)
     {
+        $clientData = null;
+
         try {
             $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
             $shSelectClientAll = (new \Simplon\Db\SqlQueryBuilder())
@@ -583,37 +706,5 @@ class DbManagerRecords
 
         return $clientData;
     }
-
-    /*Incluido Boleto a Avulso para Cliente*/
-    public function manager_billet_detached($dbInstance, $regists_billet_client)
-    {
-        try {
-
-            /* $conds = ['id' => "$regists_billet_client[find_client]"];*/
-            $billet_value = str_replace('.', '', $regists_billet_client['billet_value']); // remove o ponto
-            $billet_value = str_replace(',', '.', $billet_value); // troca a vírgula por ponto
-
-            $data = [
-                'id_client' => "$regists_billet_client[find_client]",
-                'billet_value' => "$billet_value",
-                'billet_due_date' => "$regists_billet_client[billet_due_date]",
-                'billet_send_mail_client' => "$regists_billet_client[billet_send_mail_client]"
-            ];
-
-            $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-            $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
-                ->setTableName('tab_clients_billet_detached')
-                ->setData($data);
-            $sqlManager->insert($sqlQuery);
-            $resp = 1;
-
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            $resp = $error;
-        }
-
-        return $resp;
-    }
-
 
 }

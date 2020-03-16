@@ -16,7 +16,8 @@ Class shFooter
             <script src="../js/alter_user_perfil.js" type="text/javascript"></script>
             <script src="../js/insert_billet_detached.js" type="text/javascript"></script>
             <script src="../js/insert_update_clients.js" type="text/javascript"></script>
-            <script src="../js/insert_docs_clients.js" type="text/javascript"></script>
+            <script src="../js/insert_update_propertie.js" type="text/javascript"></script>
+            <script src="../js/insert_docs_clients.js" type="text/javascript"></script>            
             <script src="../js/insert_savings_attached_clients.js" type="text/javascript"></script>
 
             <!-- Bootstrap core JavaScript-->

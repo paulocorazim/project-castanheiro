@@ -123,6 +123,10 @@ EOT;
             //Vistorias
             $icone_fas_fan = "<i class=\"fas fa-paper-plane\"></i>";
         }
+        if ($param == 7) {
+            //Vistorias
+            $icone_fas_fan = "<i class=\"fas fa-building\"></i>";
+        }
 
         return $icone_fas_fan;
     }
@@ -137,18 +141,17 @@ EOT;
         // Pasta onde o arquivo vai ser salvo
         if ($typeDoc == 'Documents') {
             $_UP['pasta'] = "../docs/clients/$clientID/";
+            $_UP['renomeia'] = false;
         } else {
             $_UP['pasta'] = "../docs/clients/$clientID/savings/";
+            $_UP['renomeia'] = true;
         }
 
         // Tamanho máximo do arquivo (em Bytes)
-        $_UP['tamanho'] = 1024 * 1024 * 2; // 2Mb
+        $_UP['tamanho'] = 1024 * 1024 * 4; // 2Mb
 
         // Array com as extensões permitidas
         $_UP['extensoes'] = array('jpg', 'png', 'gif', 'pdf', 'doc', 'docx');
-
-        // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
-        $_UP['renomeia'] = false;
 
         // Array com os tipos de erros de upload do PHP
         $_UP['erros'][0] = 'Não houve erro';
@@ -180,8 +183,7 @@ EOT;
             } else {
 
                 if ($_UP['renomeia'] == true) {
-                    $nome_final = time() . '.jpg';
-
+                    $nome_final = date('Y-m-d') . ".$extensao";
                 } else {
                     $nome_final = $_FILES['name'];
                 }
@@ -198,7 +200,7 @@ EOT;
             }
         }
 
-        return array($type, $resp);
+        return array($type, $resp, $nome_final);
     }
 
     public function load_files($clientID)
@@ -217,7 +219,7 @@ EOT;
         }
 
         if (empty($files_name)) {
-            return $files_name = "Cliente não possui arquivos";
+            return $files_name = null;
         } else {
             return $files_name;
         }
