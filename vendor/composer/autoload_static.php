@@ -15,6 +15,11 @@ class ComposerStaticInit3c65de0f788adfb9a4ec89a55717328e
     );
 
     public static $prefixLengthsPsr4 = array (
+        'v' => 
+        array (
+            'voku\\tests\\' => 11,
+            'voku\\' => 5,
+        ),
         'U' => 
         array (
             'UxWeb\\SweetAlert\\' => 17,
@@ -53,6 +58,14 @@ class ComposerStaticInit3c65de0f788adfb9a4ec89a55717328e
     );
 
     public static $prefixDirsPsr4 = array (
+        'voku\\tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/voku/portable-ascii/tests',
+        ),
+        'voku\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
         'UxWeb\\SweetAlert\\' => 
         array (
             0 => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert',

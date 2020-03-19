@@ -9,6 +9,11 @@ $(document).ready(function () {
                 alert("Por favor, o campo ( | Número | ) precisa ser preenchido! Verifique !");
                 $('#client_number').focus();
 
+            } else if ($('#property_type').val() === '') {
+                alert("Por favor, o campo | TIPO IMÓVEL | precisa ser preenchido!");
+                $('#property_type').focus();
+
+
             } else {
 
                 $.ajax({
@@ -39,6 +44,7 @@ $(document).ready(function () {
                         cep: $('#cep').val(),
                         client_address: $('#client_address').val(),
                         client_number: $('#client_number').val(),
+                        number_apto: $('#number_apto').val(),
                         client_county: $('#client_county').val(),
                         client_city: $('#client_city').val(),
                         client_state: $('#client_state').val(),

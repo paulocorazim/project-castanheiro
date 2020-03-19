@@ -22,19 +22,19 @@ $dbInstance = $conn->connection();
 
 
 $typeModule = new LinkModule();
-$typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
+$typeModules = $typeModule->LinkModules($dbInstance, $_SESSION[ 'id' ], $_SESSION[ 'user_type' ]);
 
 $head = new shHead();
 echo $head->sh_head("Castanheiro App v1");
 
 $screenManager = new ScreenManager();
-echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa DashBoard", null, null);
+echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa DashBoard", null);
 
 
-if (isset($_GET['exit'])) {
-    $appFunctions->delete_session();
-    $appFunctions->redirect_page('0', '../index.php');
-    exit;
+if (isset($_GET[ 'exit' ])) {
+	$appFunctions->delete_session();
+	$appFunctions->redirect_page('0', '../index.php');
+	exit;
 }
 
 $footer = new shFooter();

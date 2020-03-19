@@ -69,3 +69,11 @@ function find_clitn() {
     const find_client_name = document.getElementById('find_client');
     document.getElementById('client_name').value = find_client_name.options[find_client_name.selectedIndex].text;
 }
+
+function active_number_apto() {
+    const number_type = document.getElementById('property_type');
+    const number_apto = number_type.options[number_type.selectedIndex].text;
+
+    document.getElementById('number_apto').disabled = number_apto !== 'Apartamento';
+    $('#cep').focus();
+}
