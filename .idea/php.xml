@@ -23,6 +23,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/illuminate/support" />
+      <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

@@ -2,6 +2,7 @@
 
 class DbManagerRecords
 {
+
 	/*Inclusão/Alteração de usuários*/
 	public function manager_user($dbInstance, $regists_user, $regists_module, $regists_permission, $appFunctions)
 	{
@@ -503,6 +504,123 @@ class DbManagerRecords
 		return $resp;
 	}
 
+	/*Listando os registros de depósito poupanças*/
+	public function list_client_saving($dbInstance, $idClient)
+	{
+		try {
+
+			$tr = null;
+			$listClientSavingsRegists = null;
+
+			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$shSelectClientSavings = (new \Simplon\Db\SqlQueryBuilder())
+				->setQuery('SELECT * FROM tab_clients_savings WHERE saving_id_client = :saving_id_client')
+				->setConditions(['saving_id_client' => "$idClient"]);
+			$shResultsClientSavings = $sqlManager->fetchAll($shSelectClientSavings);
+
+			foreach ($shResultsClientSavings as $clientSavingAll) {
+				$tr = "<tr>
+                      <td>$clientSavingAll[saving_value]</td>
+                      <td>$clientSavingAll[saving_date]</td>
+                      <td>" . strtoupper($clientSavingAll[ saving_bank ]) . "</td>
+                      <td>$clientSavingAll[saving_number]</td>
+                      <td><a href='../docs/clients/" . "$idClient/savings/$clientSavingAll[saving_filename]' target='_blank'>Comprovante</a> </td>                      
+                    </tr>";
+				$listClientSavingsRegists .= $tr;
+			}
+
+		} catch
+		(Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de poupanças" . $error;
+		}
+
+		return $listClientSavingsRegists;
+	}
+
+	/*Listando os id do CLiente no Find das telas*/
+	public function find_client_id($dbInstance)
+	{
+		try {
+
+			$optionList = null;
+
+			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$shSelectClientID = (new \Simplon\Db\SqlQueryBuilder())
+				->setQuery('SELECT id, corporate_name from tab_clients');
+			$shResultsClientID = $sqlManager->fetchAll($shSelectClientID);
+
+			foreach ($shResultsClientID as $clientsAll) {
+				$option = "<option value=\"manager.clients.php?editID=$clientsAll[id]\">Cód: $clientsAll[id] | $clientsAll[corporate_name]</option>";
+				$optionList .= $option;
+			}
+
+		} catch
+		(Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de clientes" . $error;
+		}
+
+		return $optionList;
+	}
+
+	/*Pegando os dados dos clientes para carregar e tela de Cliente*/
+	public function find_client_data($dbInstance, $clientID)
+	{
+		$clientData = null;
+
+		try {
+			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$shSelectClientAll = (new \Simplon\Db\SqlQueryBuilder())
+				->setQuery('SELECT * from tab_clients WHERE id = :id')
+				->setConditions(['id' => "$clientID"]);
+			$shResultsClientAll = $sqlManager->fetchAll($shSelectClientAll);
+
+			foreach ($shResultsClientAll as $clientValue) {
+
+				$clientData = [
+					'id' => "$clientValue[id]",
+					'name' => "$clientValue[name]",
+					'corporate_name' => "$clientValue[corporate_name]",
+					'dt_update' => "$clientValue[dt_update]",
+					'dt_created' => "$clientValue[dt_created]",
+					'zip_code' => "$clientValue[zip_code]",
+					'address' => "$clientValue[address]",
+					'number' => "$clientValue[number]",
+					'county' => "$clientValue[county]",
+					'city' => "$clientValue[city]",
+					'neighbordhood' => "$clientValue[neighbordhood]",
+					'state' => "$clientValue[state]",
+					'phone1' => "$clientValue[phone1]",
+					'phone2' => "$clientValue[phone2]",
+					'phone3' => "$clientValue[phone3]",
+					'cpf' => "$clientValue[cpf]",
+					'cnpj' => "$clientValue[cnpj]",
+					'rg' => "$clientValue[rg]",
+					'type_cli' => "$clientValue[type_cli]",
+					'type_for' => "$clientValue[type_for]",
+					'type_col' => "$clientValue[type_col]",
+					'client_state_registration_free' => "$clientValue[state_registration_free]",
+					'state_registration' => "$clientValue[state_registration]",
+					'municipal_registration' => "$clientValue[municipal_registration]",
+					'email1' => "$clientValue[email1]",
+					'email2' => "$clientValue[email2]",
+					'site' => "$clientValue[site]",
+					'obs' => "$clientValue[obs]",
+					'active' => "$clientValue[active]",
+					'responsible' => "$clientValue[responsible]",
+					'complement' => "$clientValue[complement]"
+				];
+			}
+
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de clientes" . $error;
+		}
+
+		return $clientData;
+	}
+
 	/*Incluido Boleto a Avulso para Cliente*/
 	public function manager_billet_detached($dbInstance, $regists_billet_client)
 	{
@@ -578,10 +696,10 @@ class DbManagerRecords
 			'property_city' => "$regist_property[client_city]",
 			'property_state' => "$regist_property[client_state]",
 			'property_neighbordhood' => "$regist_property[client_neighbordhood]",
-			'property_complement' => "$regist_property[property_complement]",
+			'property_complement' => "$regist_property[property_complement]"
 		];
 
-		
+
 		try {
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
@@ -600,66 +718,6 @@ class DbManagerRecords
 		}
 
 		return array($resp, $msg);
-	}
-
-	/*Listando os registros de depósito poupanças*/
-	public function list_client_saving($dbInstance, $idClient)
-	{
-		try {
-
-			$tr = null;
-			$listClientSavingsRegists = null;
-
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$shSelectClientSavings = (new \Simplon\Db\SqlQueryBuilder())
-				->setQuery('SELECT * FROM tab_clients_savings WHERE saving_id_client = :saving_id_client')
-				->setConditions(['saving_id_client' => "$idClient"]);
-			$shResultsClientSavings = $sqlManager->fetchAll($shSelectClientSavings);
-
-			foreach ($shResultsClientSavings as $clientSavingAll) {
-				$tr = "<tr>
-                      <td>$clientSavingAll[saving_value]</td>
-                      <td>$clientSavingAll[saving_date]</td>
-                      <td>" . strtoupper($clientSavingAll[ saving_bank ]) . "</td>
-                      <td>$clientSavingAll[saving_number]</td>
-                      <td><a href='../docs/clients/" . "$idClient/savings/$clientSavingAll[saving_filename]' target='_blank'>Comprovante</a> </td>                      
-                    </tr>";
-				$listClientSavingsRegists .= $tr;
-			}
-
-		} catch
-		(Exception $e) {
-			$error = $e->getMessage();
-			echo "Erro ao receber lista de poupanças" . $error;
-		}
-
-		return $listClientSavingsRegists;
-	}
-
-	/*Listando os id do CLiente no Find das telas*/
-	public function find_client_id($dbInstance)
-	{
-		try {
-
-			$optionList = null;
-
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$shSelectClientID = (new \Simplon\Db\SqlQueryBuilder())
-				->setQuery('SELECT id, corporate_name from tab_clients');
-			$shResultsClientID = $sqlManager->fetchAll($shSelectClientID);
-
-			foreach ($shResultsClientID as $clientsAll) {
-				$option = "<option value=\"manager.clients.php?editID=$clientsAll[id]\">Cód: $clientsAll[id] | $clientsAll[corporate_name]</option>";
-				$optionList .= $option;
-			}
-
-		} catch
-		(Exception $e) {
-			$error = $e->getMessage();
-			echo "Erro ao receber lista de clientes" . $error;
-		}
-
-		return $optionList;
 	}
 
 	/*Listando os id do Imóvel no Find das telas*/
@@ -696,61 +754,58 @@ class DbManagerRecords
 		return $optionList;
 	}
 
-	/*Pegando os dados dos clientes para carregar e tela de Cliente*/
-	public function find_client_data($dbInstance, $clientID)
+	/*Listando os id do Imóvel no Find das telas*/
+	public function find_property_data($dbInstance, $propertyID)
 	{
-		$clientData = null;
+		$propertyData = null;
 
 		try {
+
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$shSelectClientAll = (new \Simplon\Db\SqlQueryBuilder())
-				->setQuery('SELECT * from tab_clients WHERE id = :id')
-				->setConditions(['id' => "$clientID"]);
-			$shResultsClientAll = $sqlManager->fetchAll($shSelectClientAll);
+			$shSelectPropertyAll = (new \Simplon\Db\SqlQueryBuilder())
+				->setQuery('SELECT * from tab_properties WHERE id = :id')
+				->setConditions(['id' => "$propertyID"]);
+			$shResultsPropertyAll = $sqlManager->fetchAll($shSelectPropertyAll);
 
-			foreach ($shResultsClientAll as $clientValue) {
-
-				$clientData = [
-					'id' => "$clientValue[id]",
-					'name' => "$clientValue[name]",
-					'corporate_name' => "$clientValue[corporate_name]",
-					'dt_update' => "$clientValue[dt_update]",
-					'dt_created' => "$clientValue[dt_created]",
-					'zip_code' => "$clientValue[zip_code]",
-					'address' => "$clientValue[address]",
-					'number' => "$clientValue[number]",
-					'county' => "$clientValue[county]",
-					'city' => "$clientValue[city]",
-					'neighbordhood' => "$clientValue[neighbordhood]",
-					'state' => "$clientValue[state]",
-					'phone1' => "$clientValue[phone1]",
-					'phone2' => "$clientValue[phone2]",
-					'phone3' => "$clientValue[phone3]",
-					'cpf' => "$clientValue[cpf]",
-					'cnpj' => "$clientValue[cnpj]",
-					'rg' => "$clientValue[rg]",
-					'type_cli' => "$clientValue[type_cli]",
-					'type_for' => "$clientValue[type_for]",
-					'type_col' => "$clientValue[type_col]",
-					'client_state_registration_free' => "$clientValue[state_registration_free]",
-					'state_registration' => "$clientValue[state_registration]",
-					'municipal_registration' => "$clientValue[municipal_registration]",
-					'email1' => "$clientValue[email1]",
-					'email2' => "$clientValue[email2]",
-					'site' => "$clientValue[site]",
-					'obs' => "$clientValue[obs]",
-					'active' => "$clientValue[active]",
-					'responsible' => "$clientValue[responsible]",
-					'complement' => "$clientValue[complement]"
+			foreach ($shResultsPropertyAll as $propertyALL) {
+				$propertyData = [
+					'property_client_id' => "$propertyALL[property_client_id]",
+					'property_type' => "$propertyALL[property_type]",
+					'property_destination' => "$propertyALL[property_destination]",
+					'property_usefull_area' => "$propertyALL[property_usefull_area]",
+					'property_usefull_built' => "$propertyALL[property_usefull_built]",
+					'property_ground' => "$propertyALL[property_ground]",
+					'property_value' => "$propertyALL[property_value]",
+					'property_value_location' => "$propertyALL[property_value_location]",
+					'property_value_location' => "$propertyALL[property_value_location]",
+					'property_value_condo' => "$propertyALL[property_value_condo]",
+					'property_amount_dorm' => "$propertyALL[property_amount_dorm]",
+					'property_amount_suite' => "$propertyALL[property_amount_suite]",
+					'property_amount_room' => "$propertyALL[property_amount_room]",
+					'property_amount_bathroom' => "$propertyALL[property_amount_bathroom]",
+					'property_amount_floors' => "$propertyALL[property_amount_floors]",
+					'property_amount_vague_garage' => "$propertyALL[property_amount_vague_garage]",
+					'property_amount_deposit' => "$propertyALL[property_amount_deposit]",
+					'property_amount_elevators' => "$propertyALL[property_amount_elevators]",
+					'property_age' => "$propertyALL[property_age]",
+					'property_cep' => "$propertyALL[cep]",
+					'property_address' => "$propertyALL[client_address]",
+					'property_number' => "$propertyALL[client_number]",
+					'property_number_apto' => "$propertyALL[number_apto]",
+					'property_county' => "$propertyALL[client_county]",
+					'property_city' => "$propertyALL[client_city]",
+					'property_state' => "$propertyALL[client_state]",
+					'property_neighbordhood' => "$propertyALL[client_neighbordhood]",
+					'property_complement' => "$propertyALL[property_complement]"
 				];
 			}
 
 		} catch (Exception $e) {
 			$error = $e->getMessage();
-			echo "Erro ao receber lista de clientes" . $error;
+			echo "Erro ao receber dados Imóveis" . $error;
 		}
 
-		return $clientData;
+		return $propertyData;
 	}
 
 }

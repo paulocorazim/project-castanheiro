@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bases/docs/clients/95/savings/2020-03-20.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/castanheiro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/castanheiro.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.Functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenPropertie.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenPropertie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/js/insert_update_propertie.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/insert_update_propertie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/man/manager.properties.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.properties.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.salaries.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.salaries.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,13 +67,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="$PROJECT_DIR$/.idea" />
-      </set>
-    </option>
-  </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/bases/package.json" />
   </component>
@@ -107,6 +98,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/illuminate/support" />
+      <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
     </include_path>
   </component>
   <component name="ProjectId" id="1W7yJNZSLPz8DN0QjAsponsntt9" />
@@ -116,16 +108,16 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mariadb&#10;mysql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -133,7 +125,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -157,19 +149,6 @@
       <map>
         <entry key="MARIADB.CreateComplete" value="UseSurrogates=1, CreateOrReplace=1, CreateIfNotExists=1" />
       </map>
-    </option>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <option name="contentProportion" value="0.12660772" />
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
     </option>
   </component>
   <component name="SvnConfiguration">
@@ -259,6 +238,11 @@
       <workItem from="1584361226051" duration="98000" />
       <workItem from="1584454833380" duration="1208000" />
       <workItem from="1584484067879" duration="17231000" />
+      <workItem from="1584736023090" duration="2886000" />
+      <workItem from="1585073734931" duration="1706000" />
+      <workItem from="1585272522719" duration="12000" />
+      <workItem from="1586834287623" duration="1009000" />
+      <workItem from="1588531005060" duration="30000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -306,13 +290,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -445,7 +428,7 @@
       <screen x="0" y="36" width="1366" height="732" />
     </state>
     <state x="522" y="298" width="314" height="144" key="NewPhpFileDialog/0.36.1366.732@0.36.1366.732" timestamp="1579227457239" />
-    <state x="317" y="3" width="1035" height="708" key="SettingsEditor" timestamp="1584487074037">
+    <state x="317" y="3" width="1035" height="708" key="SettingsEditor" timestamp="1585073761318">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="660" y="202" key="SettingsEditor/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579634166737" />
@@ -453,7 +436,7 @@
     <state x="158" y="28" width="916" height="708" key="SettingsEditor/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1579616107530" />
     <state x="225" y="0" width="1141" height="738" key="SettingsEditor/0.0.1366.738/1366.0.2560.1050@0.0.1366.738" timestamp="1583174169937" />
     <state x="1954" y="54" width="1606" height="928" key="SettingsEditor/0.0.1366.738/1366.0.2560.1050@1366.0.2560.1050" timestamp="1582728017901" />
-    <state x="317" y="3" width="1035" height="708" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1584487074037" />
+    <state x="317" y="3" width="1035" height="708" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1585073761318" />
     <state x="1473" y="7" width="916" height="708" key="SettingsEditor/0.30.1366.738/1366.0.1024.738@0.30.1366.738" timestamp="1580053160395" />
     <state x="68" y="41" width="1214" height="727" key="SettingsEditor/0.30.1366.738@0.30.1366.738" timestamp="1579895116732" />
     <state x="1163" y="188" key="SettingsEditor/0.32.2560.1048@0.32.2560.1048" timestamp="1580045879461" />
@@ -489,7 +472,7 @@
     <state x="649" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1366.738@0.0.1366.738" timestamp="1584492156180" />
     <state x="271" y="47" width="568" height="705" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.36.1366.732@0.36.1366.732" timestamp="1579232039323" />
     <state x="271" y="36" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1366.0.2560.1080/0.36.1366.732@0.36.1366.732" timestamp="1579717679804" />
-    <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1584454834941">
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1585272524948">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="731" y="310" key="com.intellij.ide.util.TipDialog/-1366.0.1366.738/0.0.2560.1050@0.0.2560.1050" timestamp="1579626531425" />
@@ -498,7 +481,7 @@
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.0.1440.870@0.0.1366.738" timestamp="1581092579716" />
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.0.1920.1050@0.0.1366.738" timestamp="1579615407193" />
     <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.0.2560.1050@0.0.1366.738" timestamp="1583415675128" />
-    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1584454834941" />
+    <state x="390" y="218" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1585272524948" />
     <state x="731" y="310" key="com.intellij.ide.util.TipDialog/0.0.2560.1050@0.0.2560.1050" timestamp="1579360102897" />
     <state x="390" y="248" key="com.intellij.ide.util.TipDialog/0.30.1366.738@0.30.1366.738" timestamp="1579785051147" />
     <state x="731" y="342" key="com.intellij.ide.util.TipDialog/0.32.2560.1048@0.32.2560.1048" timestamp="1580045617428" />
@@ -548,15 +531,6 @@
           <url>file://$PROJECT_DIR$/bases/man/manager.clients.inspections.php</url>
           <line>36</line>
           <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/bases/class/class.DbManagerRecords.php</url>
-          <line>350</line>
-          <properties>
-            <option name="className" value="\DbManagerRecords" />
-            <option name="methodName" value="manager_perfil" />
-          </properties>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

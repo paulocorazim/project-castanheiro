@@ -2,8 +2,10 @@
 
 class ScreenProperties
 {
-	public function screenProperty($findProperty)
+	public function screenProperty($findProperty, $propertyData)
 	{
+		var_dump($propertyData);
+
 		return <<< EOT
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <div class="container-fluid">
@@ -13,7 +15,7 @@ class ScreenProperties
                     <div class="d-flex align-items-end flex-column bd-highlight">
                         <div class="bd-highlight">
                                 <div class="input-group mb-3">
-                                    <select type="text" aria-describedby="basic-addon2" aria-label="Search"
+                                    <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" type="text" aria-describedby="basic-addon2" aria-label="Search"
                                         class="form-control-sm form-control bg-light border-0 small" name="find_client"
                                         id="find_client" >
                                         <option value="">Localizar Imóvel</option>
@@ -32,6 +34,7 @@ class ScreenProperties
                     <div class="px-4 py-3 row">
                         <div class="col-sm-4">
                             <span class="small">Cliente Atual</span>
+                            <input type="hidden" name="property_id" id="property_id">
                             <input type="text" disabled name="property_client_id" id="property_client_id" class="form-control-sm form-control" value="">
                         </div>
                         <div class="col-sm-4">
