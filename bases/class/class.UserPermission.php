@@ -30,7 +30,7 @@ class UserPermission
 
                 foreach ($results as $key) {
 
-                    if ($key['status'] === '0') {
+                    if ($key['active'] === '0') {
 
                         $appFunctions->alert_system(5, "Usuário com status desabilitado, não será possivel continuar");
                         exit();
@@ -43,7 +43,7 @@ class UserPermission
                             $key['name'],
                             $key['email'],
                             $key['type'],
-                            $key['dt_creatd'],
+                            $key['dt_created'],
                             $key['dt_update'],
                             'Conected'
                         );
