@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('#btn_insert_billet').on('click', function () {
 
-        if ($('#billet_due_date').val(null) || $('#billet_value').val(null)) {
+        if ($('#billet_due_date').val()  == '' || $('#billet_value').val() == '') {
             alert("Por favor entre com os dados de : Cliente | Data Vencimento | Valor |");
             $('#client_name').val(null);
             $('#billet_due_date').val(null);

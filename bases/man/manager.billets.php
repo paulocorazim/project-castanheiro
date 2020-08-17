@@ -18,7 +18,6 @@ $appFunctions = new appFunctions();
 $appFunctions->validate_session();
 $icone_fas_fa = $appFunctions->icone_fas_fan(1);
 
-
 $conn = new DBconnect();
 $dbInstance = $conn->connection();
 
@@ -34,11 +33,14 @@ if (isset($_POST['btn_insert_billet'])) {
     $regists_billet_client = $_POST;
 
     $resp = $activeRecords->manager_billet_detached($dbInstance, $regists_billet_client);
-    if ($resp == 1) {
+    if ($resp == 1)
+    {
         echo $appFunctions->alert_system('1', "Ok! Boleto Inserido!");
         exit();
+
     } else {
-        echo $appFunctions->alert_system('0', "Ops! Erro ao Incluir Boleto! [$resp]");
+
+    	echo $appFunctions->alert_system('0', "Ops! Erro ao Incluir Boleto! [$resp]");
         exit();
     }
 
@@ -78,6 +80,7 @@ if (isset($_GET['exit'])) {
 
 $contentNow = $screenBillets->screenFormBillet($findClients); // aqui atribuimos o contenNow com o form desejado
 $screenManager = new ScreenManager();
+
 echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Boleto Avulso", $contentNow);
 
 //Fim

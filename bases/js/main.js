@@ -68,6 +68,7 @@ function disable_billet_dues() {
 function find_clitn() {
     const find_client_name = document.getElementById('find_client');
     document.getElementById('client_name').value = find_client_name.options[find_client_name.selectedIndex].text;
+    alert(find_client_name.options[find_client_name.selectedIndex].value);
 }
 
 function active_number_apto() {

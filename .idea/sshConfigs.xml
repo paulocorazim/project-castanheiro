@@ -2,7 +2,12 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="localhost" id="bc802cc4-32ee-459d-a357-428b56b03f29" port="2022" customName="vm" nameFormat="CUSTOM" />
+      <sshConfig authType="PASSWORD" host="localhost" id="bc802cc4-32ee-459d-a357-428b56b03f29" port="2022" customName="vm" nameFormat="CUSTOM">
+        <option name="customName" value="vm" />
+      </sshConfig>
+      <sshConfig authType="PASSWORD" host="localhost" id="76c64fef-bb18-4842-b240-c371f6e5e8e8" port="2022" customName="vm" nameFormat="CUSTOM" username="vagrant">
+        <option name="customName" value="vm" />
+      </sshConfig>
     </configs>
   </component>
 </project>
