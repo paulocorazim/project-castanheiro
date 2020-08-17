@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.DbConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbConnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.UserPermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.UserPermission.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +227,7 @@
       <workItem from="1588531005060" duration="30000" />
       <workItem from="1596993614662" duration="2027000" />
       <workItem from="1597098552369" duration="890000" />
-      <workItem from="1597603093962" duration="7172000" />
+      <workItem from="1597603093962" duration="7581000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
