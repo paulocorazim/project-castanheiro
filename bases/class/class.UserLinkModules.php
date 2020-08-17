@@ -36,6 +36,7 @@
                     $resultsSubModule = $sqlManager->fetchAll($sqlQuerySubModule);
 
 	                $href_sub_module = null;
+	                $user_href_sub_module = null;
 
                     if (!$resultsSubModule) {
                         $user_href_sub_module = null;
