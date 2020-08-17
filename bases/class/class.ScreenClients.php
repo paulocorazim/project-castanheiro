@@ -32,7 +32,7 @@ Class ScreenClients
         return <<< EOT
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <div class="container-fluid"> 
-                <div class="card o-hidden border-0 shadow-lg">
+                <div class="card o-hidden border-0 shadow-lg my-4">
                     <div class="p-4">
                         <div class="d-flex align-items-end flex-column bd-highlight">
                             <div class="bd-highlight">

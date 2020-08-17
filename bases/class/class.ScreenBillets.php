@@ -9,7 +9,6 @@
 	        <div class="container-fluid">         
 	                <div class="card o-hidden border-0 shadow-lg my-4">
 	                    <div class="p-4">
-                        
                         <div class="d-flex align-items-end flex-column bd-highlight">
                           <div class="bd-highlight">
                                   <div class="input-group mb-3">
