@@ -35,6 +35,8 @@
                         ->setConditions(['id_module' => "$key[id]"]);
                     $resultsSubModule = $sqlManager->fetchAll($sqlQuerySubModule);
 
+	                $href_sub_module = null;
+
                     if (!$resultsSubModule) {
                         $user_href_sub_module = null;
                     } else {
