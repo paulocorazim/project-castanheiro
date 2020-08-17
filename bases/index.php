@@ -63,7 +63,7 @@
                                     <div class="form-group">
                                         <input aria-describedby="emailHelp" class="form-control form-control-user"
                                                id="email" name="email"
-                                               placeholder="Entre com seu e-mail .." type="email">
+                                               placeholder="Seu e-mail" type="email">
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control form-control-user" id="password" name="password"
@@ -80,6 +80,7 @@
                                     <button class="btn btn-primary btn-user btn-block">Entrar</button>
                                     <hr>
                                 </form>
+                                <!--
                                 <hr>
                                 <div class="text-center">
                                     <a class="small" href="forgot-password.html">Esqueci a senha?</a>
@@ -87,6 +88,7 @@
                                 <div class="text-center">
 
                                 </div>
+                                -->
                             </div>
                         </div>
                     </div>
