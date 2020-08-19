@@ -185,9 +185,9 @@ if (isset($_POST[ 'j_btn_doc' ])) {
 /*Inserindo Poupanças/Depósitos*/
 if (isset($_POST[ 'j_btn_salve_savings' ])) {
 
-	var_dump($_POST);
-	var_dump($_FILES);
-	exit;
+	// var_dump($_POST);
+	// var_dump($_FILES);
+	// exit;
 
 	$typeDoc = null;
 	$resp_process = $appFunctions->upload_files($_POST[ 'client_savings_id' ], $_FILES[ 'fileSavings' ], $typeDoc);
