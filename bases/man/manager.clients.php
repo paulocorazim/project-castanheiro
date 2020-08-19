@@ -105,6 +105,9 @@ if (isset($_POST[ 'btn_insert_update_client' ])) {
 
 	} elseif ($_POST[ 'client_type' ] == 'for') {
 		$client_type_for = $_POST[ 'client_type' ];
+	
+	} elseif ($_POST[ 'client_type' ] == 'loc') {
+		$client_type_loc = $_POST[ 'client_type' ];	
 
 	} else {
 		$client_type_col = $_POST[ 'client_type' ];
@@ -135,6 +138,7 @@ if (isset($_POST[ 'btn_insert_update_client' ])) {
 		'type_cli' => "$client_type_cli",
 		'type_for' => "$client_type_for",
 		'type_col' => "$client_type_col",
+		'type_loc' => "$client_type_loc",
 		'neighbordhood' => "$_POST[client_neighbordhood]",
 		'state' => "$_POST[client_state]",
 		'phone1' => "$_POST[client_phone1]",
