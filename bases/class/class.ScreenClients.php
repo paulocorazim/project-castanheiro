@@ -212,6 +212,7 @@ Class ScreenClients
                                <div class="form-control-sm form-control bg-light border-0 small">Tipo Atual : <strong>$type_current</strong></div><hr>                                  
                                 <select name="client_type" id="client_type" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">	                         
                                     <option value="--">Selecione o Tipo de Cliente</option>
+                                    <option value="loc">LOCATÁRIO</option>
                                     <option value="cli">CLIENTE</option>
                                     <option value="for">FORNECEDOR</option>
                                     <option value="col">COLABORADOR</option>
