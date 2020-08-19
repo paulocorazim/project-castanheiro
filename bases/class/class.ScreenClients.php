@@ -16,6 +16,9 @@ Class ScreenClients
         } elseif ($clientValues['type_for'] == 'for') {
             $type_current = "FORNECEDOR";
 
+        } elseif ($clientValues['type_for'] == 'loc') {
+            $type_current = "LOCATÁRIO";
+
         } elseif ($clientValues['type_for'] == 'col') {
             $type_current = "COLABORADOR";
 
