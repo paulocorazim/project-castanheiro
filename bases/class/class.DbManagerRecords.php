@@ -489,8 +489,8 @@ class DbManagerRecords
 				'saving_filename' => "$filename"
 			];
 
-			print_r($data);
-			exit();
+			// print_r($data);
+			// exit();
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
 			$sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
