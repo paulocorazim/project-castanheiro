@@ -5,9 +5,7 @@ Class ScreenClients
     public function screenFormClient($findClients, $clientValues, $clientDocs, $clientTableSavings)
     {
        print_r($clientValues);
-       exit;
 
-       
         if (empty($clientValues)) {
             $btn_txt = "C A D A S T R A R";
         } else {
