@@ -404,6 +404,7 @@ class DbManagerRecords
 			'type_cli' => "$regists_client[type_cli]",
 			'type_for' => "$regists_client[type_for]",
 			'type_col' => "$regists_client[type_col]",
+			'type_loc' => "$regists_client[type_loc]",
 			'state_registration' => "$regists_client[state_registration]",
 			'municipal_registration' => "$regists_client[municipal_registration]",
 			'email1' => "$regists_client[email1]",
