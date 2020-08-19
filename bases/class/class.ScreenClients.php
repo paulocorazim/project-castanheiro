@@ -242,9 +242,16 @@ Class ScreenClients
                                         <span>Data do Depósito :</span>
                                         <input type="date" required name="client_savings_date" id="client_savings_date" class="form-control">
                                         <span>Banco Depósito :</span>
-                                        <input type="text" required name="client_savings_bank" id="client_savings_bank" class="form-control">
-                                        <span>Conta Depósito :</span>
+
+                                        <select class="custom-select"  name="client_savings_bank" id="client_savings_bank">
+                                            <option value="ITAU-350-30833-4"><font color='blue'>ITAU AG:350 CC:30833-4</font></option>
+                                            <option value="SANTANDER-3986-130048-2"><font color='red'>SANTANDER AG:3186 CC:1300482</font></option>
+                                        </select> 
+
+                                        <span>Conta Poupança :</span>
                                         <input type="text" required name="client_savings_number" id="client_savings_number" class="form-control"><br>
+                                        
+                                        
                                         <input type="file" class="btn btn-sm btn-info" name="fileSavings" id="fileSavings"><hr>
                                         <button name="j_btn_salve_savings" id="j_btn_salve_savings" value="InsertSavings" class="btn btn-sm btn-success">Salvar Depósito</button>
                                     </form>
@@ -305,7 +312,7 @@ EOT;
                         <th>R$</th>
                         <th>Data</th>
                         <th>Banco</th>
-                        <th>Conta</th>
+                        <th>Poupança</th>
                         <th>Arquivo</th>
                       </tr>
                       </thead>                      

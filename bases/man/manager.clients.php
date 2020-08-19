@@ -1,4 +1,7 @@
 <?php
+// ini_set('display_errors', 1);
+// ini_set('display_startup_erros', 1);
+// error_reporting(E_ALL);
 
 include("head.php");
 include("../class/class.ScreenStartManager.php");
@@ -181,6 +184,10 @@ if (isset($_POST[ 'j_btn_doc' ])) {
 
 /*Inserindo Poupanças/Depósitos*/
 if (isset($_POST[ 'j_btn_salve_savings' ])) {
+
+	var_dump($_POST);
+	var_dump($_FILES);
+	exit;
 
 	$typeDoc = null;
 	$resp_process = $appFunctions->upload_files($_POST[ 'client_savings_id' ], $_FILES[ 'fileSavings' ], $typeDoc);
