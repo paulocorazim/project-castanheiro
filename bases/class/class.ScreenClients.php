@@ -4,6 +4,10 @@ Class ScreenClients
 {
     public function screenFormClient($findClients, $clientValues, $clientDocs, $clientTableSavings)
     {
+       var_dump($clientValues);
+       exit;
+       
+       
         if (empty($clientValues)) {
             $btn_txt = "C A D A S T R A R";
         } else {
@@ -19,7 +23,7 @@ Class ScreenClients
         } elseif ($clientValues['type_loc'] == 'loc') {
             $type_current = "LOCATÁRIO";
 
-        } elseif ($clientValues['type_for'] == 'col') {
+        } elseif ($clientValues['type_col'] == 'col') {
             $type_current = "COLABORADOR";
 
         } else {
