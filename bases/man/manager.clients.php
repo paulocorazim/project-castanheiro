@@ -58,11 +58,14 @@ if (isset($_GET[ 'editID' ])) {
 	/*Leando documentos anexados do cliente*/
 	$clientDocs = $appFunctions->load_files($clientID);
 
+	/*Leando contratos anexados do cliente*/
+	$clientContracts = $appFunctions->load_contracts($clientID);
+
 	/*Leando poupanças do cliente*/
 	$clientListSavings = $activeRecords->list_client_saving($dbInstance, $clientID);
 	$clientTableSavings = $screenClient->screenListClientSavings($clientListSavings);
 
-	$contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs, $clientTableSavings);
+	$contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs, $clientContracts, $clientTableSavings);
 
 	echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow);
 	$footer = new shFooter();

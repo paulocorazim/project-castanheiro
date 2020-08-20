@@ -2,7 +2,7 @@
 
 Class ScreenClients
 {
-    public function screenFormClient($findClients, $clientValues, $clientDocs, $clientTableSavings)
+    public function screenFormClient($findClients, $clientValues, $clientDocs, $clientContracts, $clientTableSavings)
     {
     //    print_r($clientValues);
 
