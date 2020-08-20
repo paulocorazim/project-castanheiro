@@ -266,14 +266,14 @@ Class ScreenClients
                             $clientTableSavings
                             
                             <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
-                                <form method="post" enctype="multipart/form-data" id="fileUploadForm">
-                                    <input type="hidden" name="clientIDdoc" id="clientIDdoc" value="$clientValues[id]">
-                                    <input type="file" class="btn btn-sm btn-info" name="file" id="file">
-                                    <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info"><strong>Anexar Documentos</strong></button>                             
+                                <form method="post" enctype="multipart/form-data" id="fileUploadFormContract">
+                                    <input type="hidden" name="clientIDcontract" id="clientIDcontract" value="$clientValues[id]">
+                                    <input type="file" class="btn btn-sm btn-info" name="file" id="fileContract">
+                                    <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info"><strong>Anexar Contrato</strong></button>                             
                                  </form>   
                                     <hr>
                                 <hr>
-                                Arquivos atuais : <br>
+                                Contratos atuais : <br>
                                 <div class="btn btn-sm btn-light">                                     
                                     <strong>$clientContracts</strong>
                                 </div>
@@ -293,7 +293,7 @@ Class ScreenClients
                                     </div><br>                            
                                 </div>
                             </div>
-                            
+
                             <div class="tab-pane fade" id="observacoes" role="tabpanel" aria-labelledby="contact-tab">
                                 <textarea name="client_obs" id="client_obs" cols="30" rows="10"></textarea>   
                                 <br>

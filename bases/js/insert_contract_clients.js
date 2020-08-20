@@ -4,12 +4,12 @@ $(document).ready(function () {
         // parar o envio para que possamos faze-lo manualmente.
         event.preventDefault();
         // capture o formulário
-        var form = $('#fileUploadForm')[0];
+        var form = $('#fileUploadFormContract')[0];
         // crie um FormData {Object}
         var data = new FormData(form);
 
         data.append('file', $('#file').prop('files')[0]);
-        data.append('clientIDdoc', $("#clientIDdoc").val());
+        data.append('clientIDcontract', $("#clientIDcontract").val());
         data.append('j_btn_contract', $("#j_btn_contract").val());
         // caso queira adicionar um campo extra ao FormData
         // data.append("customfield", "Este é um campo extra para teste");
