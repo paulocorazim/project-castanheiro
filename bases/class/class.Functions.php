@@ -144,7 +144,7 @@ EOT;
 			$_UP[ 'renomeia' ] = false;
 		
 		} elseif ($typeDoc == 'Contract') {
-			$_UP[ 'pasta' ] = "../docs/clients/$clientID/contract/";
+			$_UP[ 'pasta' ] = "../docs/clients/$clientID/contracts/";
 			$_UP[ 'renomeia' ] = false;
 		
 		} else {

@@ -440,8 +440,11 @@ class DbManagerRecords
 				//Criando diretoria do usuário
 				mkdir("..//docs/clients/$client_dir_create", 0777, true);
 				mkdir("..//docs/clients/$client_dir_create/savings", 0777, true);
+				mkdir("..//docs/clients/$client_dir_create/contracts", 0777, true);
 				chmod("..//docs/clients/$client_dir_create", 0777);
 				chmod("..//docs/clients/$client_dir_create/savings", 0777);
+				chmod("..//docs/clients/$client_dir_create/contracts", 0777);
+
 
 				//Aviso do sucesso e redireciona a pagina
 				$resp = 1;
