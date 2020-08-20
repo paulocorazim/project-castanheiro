@@ -266,7 +266,6 @@ Class ScreenClients
                             $clientTableSavings
                             
                             <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
-                               <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="contact-tab">
                                 <form method="post" enctype="multipart/form-data" id="fileUploadForm">
                                     <input type="hidden" name="clientIDdoc" id="clientIDdoc" value="$clientValues[id]">
                                     <input type="file" class="btn btn-sm btn-info" name="file" id="file">
@@ -280,7 +279,6 @@ Class ScreenClients
                                 </div>
                             </div>
 
-                            </div>
 
                             <div class="tab-pane fade" id="imoveis" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="custom-file">                            
@@ -295,6 +293,7 @@ Class ScreenClients
                                     </div><br>                            
                                 </div>
                             </div>
+                            
                             <div class="tab-pane fade" id="observacoes" role="tabpanel" aria-labelledby="contact-tab">
                                 <textarea name="client_obs" id="client_obs" cols="30" rows="10"></textarea>   
                                 <br>
