@@ -232,7 +232,7 @@ EOT;
 
 	public function load_contracts($clientID)
 	{
-		$clientPathFile = "../docs/clients/$clientID/contracts";
+		$clientPathFile = "../docs/clients/$clientID/contracts/";
 		$dirPath = dir($clientPathFile);
 		$files_name = null;
 
