@@ -106,7 +106,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -229,7 +229,7 @@
       <workItem from="1597098552369" duration="890000" />
       <workItem from="1597603093962" duration="13873000" />
       <workItem from="1597688891384" duration="149000" />
-      <workItem from="1597881743420" duration="466000" />
+      <workItem from="1597881743420" duration="756000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -301,10 +301,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1366.738@0.0.1366.738" timestamp="1597603147425" />
-    <state x="184" y="14" key="SettingsEditor" timestamp="1597882205574">
+    <state x="184" y="14" key="SettingsEditor" timestamp="1597882323890">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1597882205574" />
+    <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1597882323890" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1597679343305">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
