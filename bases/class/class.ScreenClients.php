@@ -8,6 +8,10 @@ Class ScreenClients
 
         if (empty($clientValues)) {
             $btn_txt = "C A D A S T R A R";
+            $btn_docs = 'disabled';
+            $btn_saving = 'disabled';
+            $btn_contract = 'disabled';
+
         } else {
             $btn_txt = "A L T E R A R";
         }
@@ -228,7 +232,7 @@ Class ScreenClients
                                 <form method="post" enctype="multipart/form-data" id="fileUploadForm">
                                     <input type="hidden" name="clientIDdoc" id="clientIDdoc" value="$clientValues[id]">
                                     <input type="file" class="btn btn-sm btn-info" name="file" id="file">
-                                    <button name="j_btn_doc" id="j_btn_doc" value="insertDoc" class="btn btn-info"><strong>Anexar Documentos</strong></button>                             
+                                    <button name="j_btn_doc" id="j_btn_doc" value="insertDoc" class="btn btn-info" $btn_docs /><strong>Anexar Documentos</strong></button>                             
                                  </form>   
                                     <hr>
                                 <hr>
@@ -259,7 +263,7 @@ Class ScreenClients
                                         
                                         
                                         <input type="file" class="btn btn-sm btn-info" name="fileSavings" id="fileSavings"><hr>
-                                        <button name="j_btn_salve_savings" id="j_btn_salve_savings" value="InsertSavings" class="btn btn-sm btn-success">Salvar Depósito</button>
+                                        <button name="j_btn_salve_savings" id="j_btn_salve_savings" value="InsertSavings" class="btn btn-sm btn-success" $btn_saving />Salvar Depósito</button>
                                     </form>
                                 </div>     
                                 
@@ -269,7 +273,7 @@ Class ScreenClients
                                 <form method="post" enctype="multipart/form-data" id="fileUploadFormContract">
                                     <input type="hidden" name="clientIDcontract" id="clientIDcontract" value="$clientValues[id]">
                                     <input type="file" class="btn btn-sm btn-info" name="file" id="fileContract">
-                                    <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info"><strong>Anexar Contrato</strong></button>                             
+                                    <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info" $btn_contract /><strong>Anexar Contrato</strong></button>                             
                                  </form>   
                                     <hr>
                                 <hr>
