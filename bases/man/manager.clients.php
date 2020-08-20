@@ -186,6 +186,15 @@ if (isset($_POST[ 'j_btn_doc' ])) {
 	exit();
 }
 
+/*Inserindo Contrato ao Cliente*/
+if (isset($_POST[ 'j_btn_contract' ])) {
+	$typeDoc = 'Contract';
+	$resp_process = $appFunctions->upload_files($_POST[ 'clientIDdoc' ], $_FILES[ 'file' ], $typeDoc);
+	$resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
+	echo $resp_process;
+	exit();
+}
+
 /*Inserindo Poupanças/Depósitos*/
 if (isset($_POST[ 'j_btn_salve_savings' ])) {
 

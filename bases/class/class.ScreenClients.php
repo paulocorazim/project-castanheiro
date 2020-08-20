@@ -267,11 +267,11 @@ Class ScreenClients
                             
                             <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                    <label class="custom-file-label" for="validatedCustomFile">Anexar PDF do contrato ...</label>
-                                    <hr>                            
-                                    <div class="btn-success btn-sm">
-                                     <a href="../docs/clients/19/CONTRATO_COMERCIAL_PADRAO_REVISADO.pdf" target="_blank">CONTRATO COMERCIAL PADRAO</a>
+                                    <form method="post" enctype="multipart/form-data" id="fileUploadForm">
+                                    <input type="hidden" name="clientIDdoc" id="clientIDdoc" value="$clientValues[id]">
+                                    <input type="file" class="btn btn-sm btn-info" name="file" id="file">
+                                    <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info"><strong>Anexar Documentos</strong></button>                             
+                                 </form> 
                                     </div><br>                            
                                 </div>
                             </div>
