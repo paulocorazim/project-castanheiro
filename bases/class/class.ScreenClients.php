@@ -288,12 +288,11 @@ Class ScreenClients
                                 <div class="custom-file">                            
                                     <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small" name="" id="">	                         
                                         <option value="--">Adicionar Imóveis ... </option>
-                                        <option value="--">CASA</option>
-                                        <option value="--">GALPÃO</option>
+                                        
                                     </select>                              
                                     <hr>                            
                                     <div class="btn-info btn-sm">
-                                     GALPÃO AVINADA POA <hr> Inicio da Locação em : 22/11/2018 <br> Término Locação em : 22/11/2022 <br> Valor: R$ 15.000,00
+                                     Dados dos Imóveis
                                     </div><br>                            
                                 </div>
                             </div>
