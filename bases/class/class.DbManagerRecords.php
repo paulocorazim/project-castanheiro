@@ -518,7 +518,7 @@ class DbManagerRecords
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
 			$shSelectClientSavings = (new \Simplon\Db\SqlQueryBuilder())
-				->setQuery("SELECT DATE_FORMAT (saving_date,'%d-%m-%Y') as saving_date, saving_bank, saving_value, saving_filename
+				->setQuery("SELECT DATE_FORMAT (saving_date,'%d-%m-%Y') as saving_date, saving_bank, saving_value, saving_filename, saving_number
 									FROM tab_clients_savings WHERE saving_id_client = :saving_id_client")
 				->setConditions(['saving_id_client' => "$idClient"]);
 			$shResultsClientSavings = $sqlManager->fetchAll($shSelectClientSavings);
