@@ -229,7 +229,7 @@
       <workItem from="1597098552369" duration="890000" />
       <workItem from="1597603093962" duration="13873000" />
       <workItem from="1597688891384" duration="149000" />
-      <workItem from="1597881743420" duration="756000" />
+      <workItem from="1597881743420" duration="1101000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -293,6 +293,10 @@
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="390" y="12" key="#PHP" timestamp="1597882740164">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="390" y="12" key="#PHP/0.0.1366.738@0.0.1366.738" timestamp="1597882740164" />
     <state x="274" y="9" width="1092" height="729" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597603802652">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
