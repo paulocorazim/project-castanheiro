@@ -42,7 +42,7 @@ $screenManager = new ScreenManager();
 /* Conteudo*/
 $screenProperty = new ScreenProperties(); // aqui estanciamos a tela
 $contentNow = $screenProperty->screenProperty($findProperty, null); // aqui atribuimos o contenNow com o form desejado
-
+$contentNow = "Módulo em correção";
 
 /* Trazendo dados do Imóvel para Edição*/
 if (isset($_GET[ 'editID' ])) {
