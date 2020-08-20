@@ -266,15 +266,22 @@ Class ScreenClients
                             $clientTableSavings
                             
                             <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
-                                <div class="custom-file">
-                                    <form method="post" enctype="multipart/form-data" id="fileUploadForm">
+                               <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="contact-tab">
+                                <form method="post" enctype="multipart/form-data" id="fileUploadForm">
                                     <input type="hidden" name="clientIDdoc" id="clientIDdoc" value="$clientValues[id]">
                                     <input type="file" class="btn btn-sm btn-info" name="file" id="file">
                                     <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info"><strong>Anexar Documentos</strong></button>                             
-                                 </form> 
-                                    </div><br>                            
+                                 </form>   
+                                    <hr>
+                                <hr>
+                                Arquivos atuais : <br>
+                                <div class="btn btn-sm btn-light">                                     
+                                    <strong>$clientContracts</strong>
                                 </div>
                             </div>
+
+                            </div>
+
                             <div class="tab-pane fade" id="imoveis" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="custom-file">                            
                                     <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small" name="" id="">	                         

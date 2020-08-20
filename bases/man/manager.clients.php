@@ -188,6 +188,11 @@ if (isset($_POST[ 'j_btn_doc' ])) {
 
 /*Inserindo Contrato ao Cliente*/
 if (isset($_POST[ 'j_btn_contract' ])) {
+	
+	var_dump($_POST);
+	var_dump($_FILES);
+	exit;
+
 	$typeDoc = 'Contract';
 	$resp_process = $appFunctions->upload_files($_POST[ 'clientIDdoc' ], $_FILES[ 'file' ], $typeDoc);
 	$resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
