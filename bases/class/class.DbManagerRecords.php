@@ -524,7 +524,7 @@ class DbManagerRecords
 
 			foreach ($shResultsClientSavings as $clientSavingAll) {
 				$tr = "<tr>
-                      <td>$clientSavingAll[saving_value]</td>
+                      <td>R$ ". number_format($clientSavingAll[saving_value], 2, ',', '.')."</td>
                       <td>$clientSavingAll[saving_date]</td>
                       <td>" . strtoupper($clientSavingAll[ saving_bank ]) . "</td>
                       <td>$clientSavingAll[saving_number]</td>
