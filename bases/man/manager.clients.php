@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_erros', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_erros', 1);
+// error_reporting(E_ALL);
 
 include("head.php");
 include("../class/class.ScreenStartManager.php");
@@ -46,7 +46,7 @@ $screenManager = new ScreenManager();
 $screenClient = new ScreenClients();
 
 /* Atribuindo a content o valor da tela pra apresentar a pagina*/
-$contentNow = $screenClient->screenFormClient($findClients, null, null, null);
+$contentNow = $screenClient->screenFormClient($findClients, null, null, null, null);
 
 /*Trazendo dados do cliente para edição*/
 if (isset($_GET[ 'editID' ])) {
