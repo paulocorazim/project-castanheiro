@@ -48,6 +48,18 @@ $screenClient = new ScreenClients();
 /* Atribuindo a content o valor da tela pra apresentar a pagina*/
 $contentNow = $screenClient->screenFormClient($findClients, null, null, null, null);
 
+
+/*Lista de Usuários*/
+if ($_GET['report']== true) 
+{
+	$reportClients =$activeRecords->report_client($dbInstance);
+	$contentNow = $screenClient->screenListClients($reportClients);
+	echo $screenManager->pageWrapper($typeModules, "Relatório de Clientes", $contentNow, $alert_type);
+	$footer = new shFooter();
+	echo $footer->sh_footer();
+	exit();
+}
+	
 /*Trazendo dados do cliente para edição*/
 if (isset($_GET[ 'editID' ])) {
 

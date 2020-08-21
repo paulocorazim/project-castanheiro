@@ -343,4 +343,44 @@ EOT;
 EOT;
     }
 
+
+ public function screenListClients($reportClients)
+ {
+    return <<< EOT
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">[ Relatório de Clientes Cadastrados ]</h6>
+        </div>
+        <div class="card-body">
+        <div class="table-responsive">
+            <table cellspacing="1" class="table table-bordered" id="dataTable" width="100%">
+            <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Endereço</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th>Cliente</th>
+                <th>Endereço</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th></th>
+            </tr>
+            </tfoot>
+            <tbody>
+                $reportClients
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+
+EOT;
+        }    
+
 }

@@ -526,7 +526,7 @@ class DbManagerRecords
 				->setConditions(['saving_id_client' => "$idClient"]);
 			$shResultsClientSavings = $sqlManager->fetchAll($shSelectClientSavings);
 
-			foreach ($shResultsClientSavings as $clientSavingAll) {
+			foreach ($shResultsClientSavings as $reportClients) {
 				$tr = "<tr>
                       <td>R$" . number_format($clientSavingAll[ 'saving_value' ], 2, ',', '.') . "</td>
                       <td>$clientSavingAll[saving_date]</td>
@@ -545,6 +545,41 @@ class DbManagerRecords
 
 		return $listClientSavingsRegists;
 	}
+
+	public function report_client($dbInstance)
+	{
+		try {
+
+			$tr = null;
+			$trResults = null;
+
+			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$shSelectClients = (new \Simplon\Db\SqlQueryBuilder())
+				->setQuery("SELECT * FROM tab_clients");
+			$shResultsClients = $sqlManager->fetchAll($shSelectClients);
+
+			foreach ($shResultsClients as $reportClients) {
+				$tr = "<tr>
+                      <td>$reportClients[name]</td>
+                      <td>$reportClients[address], $reportClients[number] - $reportClients[neighbordhood] | $reportClients[city]</td>
+                      <td>$reportClients[email1]</td>
+                      <td>$reportClients[phone1]</td>
+                      <td></td>                      
+                    </tr>";
+				$trResults .= $tr;
+			}
+
+		} catch
+			(Exception $e) 
+		{
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de poupanças" . $error;
+		}
+
+		return $trResults;
+	}
+
+
 
 	/*Listando os id do CLiente no Find das telas*/
 	public function find_client_id($dbInstance)

@@ -67,8 +67,7 @@
 
     /*Lista de Usuários*/
     if ($_GET['user_report'] != null) {
-        $contentNow = $screenUsers->screenListUser($typeModule->listModulesPermission($dbInstance,
-            $_SESSION['user_type']));
+        $contentNow = $screenUsers->screenListUser($typeModule->listModulesPermission($dbInstance, $_SESSION['user_type']));
         echo $screenManager->pageWrapper($typeModules, "Report de Usuários", $contentNow, $alert_type);
         $footer = new shFooter();
         echo $footer->sh_footer();
