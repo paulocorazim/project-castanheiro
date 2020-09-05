@@ -590,7 +590,7 @@ class DbManagerRecords
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
 			$shSelectClientID = (new \Simplon\Db\SqlQueryBuilder())
-				->setQuery('SELECT id, corporate_name from tab_clients');
+				->setQuery('SELECT id, corporate_name from tab_clients order by corporate_name');
 			$shResultsClientID = $sqlManager->fetchAll($shSelectClientID);
 
 			foreach ($shResultsClientID as $clientsAll) {
@@ -811,36 +811,37 @@ class DbManagerRecords
 				->setConditions(['id' => "$propertyID"]);
 			$shResultsPropertyAll = $sqlManager->fetchAll($shSelectPropertyAll);
 
-			foreach ($shResultsPropertyAll as $propertyALL) {
+			foreach ($shResultsPropertyAll as $propertyAll) 
+			{
 				$propertyData = [
-					'property_client_id' => "$propertyALL[property_client_id]",
-					'property_type' => "$propertyALL[property_type]",
-					'property_destination' => "$propertyALL[property_destination]",
-					'property_usefull_area' => "$propertyALL[property_usefull_area]",
-					'property_usefull_built' => "$propertyALL[property_usefull_built]",
-					'property_ground' => "$propertyALL[property_ground]",
-					'property_value' => "$propertyALL[property_value]",
-					'property_value_location' => "$propertyALL[property_value_location]",
-					'property_value_location' => "$propertyALL[property_value_location]",
-					'property_value_condo' => "$propertyALL[property_value_condo]",
-					'property_amount_dorm' => "$propertyALL[property_amount_dorm]",
-					'property_amount_suite' => "$propertyALL[property_amount_suite]",
-					'property_amount_room' => "$propertyALL[property_amount_room]",
-					'property_amount_bathroom' => "$propertyALL[property_amount_bathroom]",
-					'property_amount_floors' => "$propertyALL[property_amount_floors]",
-					'property_amount_vague_garage' => "$propertyALL[property_amount_vague_garage]",
-					'property_amount_deposit' => "$propertyALL[property_amount_deposit]",
-					'property_amount_elevators' => "$propertyALL[property_amount_elevators]",
-					'property_age' => "$propertyALL[property_age]",
-					'property_cep' => "$propertyALL[cep]",
-					'property_address' => "$propertyALL[client_address]",
-					'property_number' => "$propertyALL[client_number]",
-					'property_number_apto' => "$propertyALL[number_apto]",
-					'property_county' => "$propertyALL[client_county]",
-					'property_city' => "$propertyALL[client_city]",
-					'property_state' => "$propertyALL[client_state]",
-					'property_neighbordhood' => "$propertyALL[client_neighbordhood]",
-					'property_complement' => "$propertyALL[property_complement]"
+					'property_client_id' => "$propertyAll[property_client_id]",
+					'property_type' => "$propertyAll[property_type]",
+					'property_destination' => "$propertyAll[property_destination]",
+					'property_usefull_area' => "$propertyAll[property_usefull_area]",
+					'property_usefull_built' => "$propertyAll[property_usefull_built]",
+					'property_ground' => "$propertyAll[property_ground]",
+					'property_value' => "$propertyAll[property_value]",
+					'property_value_location' => "$propertyAll[property_value_location]",
+					'property_value_location' => "$propertyAll[property_value_location]",
+					'property_value_condo' => "$propertyAll[property_value_condo]",
+					'property_amount_dorm' => "$propertyAll[property_amount_dorm]",
+					'property_amount_suite' => "$propertyAll[property_amount_suite]",
+					'property_amount_room' => "$propertyAll[property_amount_room]",
+					'property_amount_bathroom' => "$propertyAll[property_amount_bathroom]",
+					'property_amount_floors' => "$propertyAll[property_amount_floors]",
+					'property_amount_vague_garage' => "$propertyAll[property_amount_vague_garage]",
+					'property_amount_deposit' => "$propertyAll[property_amount_deposit]",
+					'property_amount_elevators' => "$propertyAll[property_amount_elevators]",
+					'property_age' => "$propertyAll[property_age]",
+					'property_cep' => "$propertyAll[property_cep]",
+					'property_address' => "$propertyAll[property_address]",
+					'property_number' => "$propertyAll[property_number]",
+					'property_number_apto' => "$propertyAll[property_number_apto]",
+					'property_county' => "$propertyAll[client_county]",
+					'property_city' => "$propertyAll[property_city]",
+					'property_state' => "$propertyAll[property_state]",
+					'property_neighbordhood' => "$propertyAll[property_neighbordhood]",
+					'property_complement' => "$propertyAll[property_complement]"
 				];
 			}
 

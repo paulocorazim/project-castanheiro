@@ -1,5 +1,9 @@
 <?php
 
+// ini_set('display_errors', 1);
+// ini_set('display_startup_erros', 1);
+// error_reporting(E_ALL);
+
 include "head.php";
 include "../class/class.ScreenStartManager.php";
 include "../class/class.ScreenEndManager.php";
@@ -22,7 +26,7 @@ $dbInstance = $conn->connection();
 /*Definindo o icone de tela correspondente*/
 $icone_fas_fa = $appFunctions->icone_fas_fan(7);
 
-/* Carregando a classe Dados*/
+ /* Carregando a classe Dados*/
 $activeRecords = new DbManagerRecords();
 $findProperty = $activeRecords->find_property_id($dbInstance); // Lista dos imóveis
 
@@ -42,15 +46,16 @@ $screenManager = new ScreenManager();
 /* Conteudo*/
 $screenProperty = new ScreenProperties(); // aqui estanciamos a tela
 $contentNow = $screenProperty->screenProperty($findProperty, null); // aqui atribuimos o contenNow com o form desejado
-$contentNow = $appFunctions->alert_system('4', "Ops! Módulo Imóveis em Manutenção <hr>");
+//$contentNow = $appFunctions->alert_system('4', "Ops! Módulo Imóveis em Manutenção <hr>");
 		
 
 /* Trazendo dados do Imóvel para Edição*/
 if (isset($_GET[ 'editID' ])) {
 
-	$propertyID = $_GET[ 'editID' ];
-	$propertyData = $activeRecords->find_property_data($dbInstance, $propertyID);
+	$propertyID = $_GET['editID'];
+	$propertyData = $activeRecords->find_property_data($dbInstance, $propertyID);	
 	$contentNow = $screenProperty->screenProperty($findProperty, $propertyData); // aqui atribuimos o contenNow com o form desejado
+	echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Imóveis", $contentNow);
 	exit();
 }
 

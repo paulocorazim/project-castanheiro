@@ -3,10 +3,11 @@
 class ScreenProperties
 {
 	public function screenProperty($findProperty, $propertyData)
-	{
-		var_dump($propertyData);
+	{	
+        
+        //var_dump($propertyData);
 
-		return <<< EOT
+        return <<< EOT
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <div class="container-fluid">
             <div class="card o-hidden border-0 shadow-lg my-4">
@@ -40,7 +41,7 @@ class ScreenProperties
                         <div class="col-sm-4">
                             <span class="small">Tipo de Imóvel</span>
                             <select name="property_type" id="property_type" class="form-control-sm form-control" onchange="active_number_apto()"  >
-                                <option value=""></option>
+                                <option value="">$propertyData[property_type]</option>
                                 <option value="Apartamento">Apartamento</option>
                                 <option value="Casa">Casa</option>
                                 <option value="Fazenda">Fazenda</option>                                
@@ -50,6 +51,7 @@ class ScreenProperties
                         <div class="col-sm-4">
                             <span class="small">Finalidade</span>
                             <select name="property_destination" id="property_destination" class="form-control-sm form-control">
+                                <option value="">$propertyData[property_destination]</option>
                                 <option value="Locacao">Locação</option>
                                 <option value="Arrendamento">Arrendamento</option>
                                 <option value="Compra">Compra</option>
@@ -69,45 +71,45 @@ class ScreenProperties
 	                                <div class="form-group row">
 	                                    <div class="col-sm-2">
 	                                        <span class="small">Cep</span>
-	                                        <input type="text" required name="cep" id="cep" class="form-control form-control-sm">
+	                                        <input type="text" required name="cep" id="cep" class="form-control form-control-sm" value="$propertyData[property_cep]" />
 	                                    </div>
 	                                    <div class="col-sm-6">
 	                                        <span class="small">Endereço</span>
-	                                        <input type="text" required name="client_address" id="client_address" class="form-control form-control-sm">
+	                                        <input type="text" required name="client_address" id="client_address" class="form-control form-control-sm" value="$propertyData[property_address]" />
 	                                    </div>
 	                                     <div class="col-sm-2">
 	                                        <span class="small">Número</span>
-	                                        <input type="text" required name="client_number" id="client_number" class="form-control form-control-sm">                  
+	                                        <input type="text" required name="client_number" id="client_number" class="form-control form-control-sm" value="$propertyData[property_number]" />                  
 	                                    </div>
 	                                    <div class="col-sm-2">
 	                                        <span class="small">Apto</span>
-	                                        <input type="text" disabled name="number_apto" id="number_apto" class="form-control form-control-sm">                  
+	                                        <input type="text" disabled name="number_apto" id="number_apto" class="form-control form-control-sm" value="$propertyData[property_number_apto]" >                  
 	                                    </div>
 	                                </div>
 	    
 	                                <div class="form-group row">
 	                                    <div class="col-sm-6">
 	                                        <span class="small">Município</span>
-	                                        <input type="text"  name="client_county" id="client_county" class="form-control form-control-sm">                  
+	                                        <input type="text"  name="client_county" id="client_county" class="form-control form-control-sm" value="$propertyData[property_county]" />                  
 	                                    </div>
 	                                    <div class="col-sm-6">
 	                                        <span class="small">Cidade</span>
-	                                        <input type="text" name="client_city" id="client_city" class="form-control form-control-sm">                  
+	                                        <input type="text" name="client_city" id="client_city" class="form-control form-control-sm" value="$propertyData[property_city]" />                  
 	                                    </div> 
 	                                </div>
 	    
 	                                <div class="form-group row">
 	                                    <div class="col-sm-4">
 	                                        <span class="small">Estado</span>
-	                                        <input type="text" required name="client_state" id="client_state" class="form-control form-control-sm">                  
+	                                        <input type="text" required name="client_state" id="client_state" class="form-control form-control-sm" value="$propertyData[property_state]" />                  
 	                                    </div>
 	                                    <div class="col-sm-4">
 	                                        <span class="small">Bairro</span>
-	                                        <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control form-control-sm">                  
+	                                        <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control form-control-sm" value="$propertyData[property_neighbordhood]" />                  
 	                                    </div> 
 	                                    <div class="col-sm-4">
 	                                        <span class="small">Complemento</span>
-	                                        <input type="text" name="property_complement" id="property_complement" class="form-control form-control-sm">                  
+	                                        <input type="text" name="property_complement" id="property_complement" class="form-control form-control-sm" value="$propertyData[property_complement]" />                  
 	                                    </div> 
 	                                </div>
 	                            </div>
