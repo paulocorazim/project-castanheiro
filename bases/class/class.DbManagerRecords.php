@@ -528,11 +528,11 @@ class DbManagerRecords
 
 			foreach ($shResultsClientSavings as $reportClients) {
 				$tr = "<tr>
-                      <td>R$" . number_format($clientSavingAll[ 'saving_value' ], 2, ',', '.') . "</td>
-                      <td>$clientSavingAll[saving_date]</td>
-                      <td>" . strtoupper($clientSavingAll[ 'saving_bank' ]) . "</td>
-                      <td>$clientSavingAll[saving_number]</td>
-                      <td><a href='../docs/clients/" . "$idClient/savings/$clientSavingAll[saving_filename]' target='_blank'>Comprovante</a> </td>                      
+                      <td>R$" . number_format($reportClients[ 'saving_value' ], 2, ',', '.') . "</td>
+                      <td>$reportClients[saving_date]</td>
+                      <td>" . strtoupper($reportClients[ 'saving_bank' ]) . "</td>
+                      <td>$reportClients[saving_number]</td>
+                      <td><a href='../docs/clients/" . "$idClient/savings/$reportClients[saving_filename]' target='_blank'>Comprovante</a> </td>                      
                     </tr>";
 				$listClientSavingsRegists .= $tr;
 			}

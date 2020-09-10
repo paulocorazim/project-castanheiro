@@ -54,7 +54,7 @@ if ($_GET['report']== true)
 {
 	$reportClients =$activeRecords->report_client($dbInstance);
 	$contentNow = $screenClient->screenListClients($reportClients);
-	echo $screenManager->pageWrapper($typeModules, "Relatório de Clientes", $contentNow, $alert_type);
+	echo $screenManager->pageWrapper($typeModules, "Relatório de Clientes", $contentNow, null);
 	$footer = new shFooter();
 	echo $footer->sh_footer();
 	exit();
