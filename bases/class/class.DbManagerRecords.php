@@ -416,6 +416,9 @@ class DbManagerRecords
 			'complement' => "$regists_client[complement]"
 		];
 
+		print_r($data);
+		exit;
+
 		if ($regists_client[ 'id' ] == null) { //inclusão
 
 			try {

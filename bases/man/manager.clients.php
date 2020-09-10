@@ -173,8 +173,6 @@ if (isset($_POST[ 'btn_insert_update_client' ])) {
 		'responsible' => "$_POST[client_responsible]",
 		'complement' => "$_POST[client_complement]"
 	];
-	var_dump($regists_client);
-	exit;
 
 	$resp = $activeRecords->manager_client($dbInstance, $regists_client);
 
