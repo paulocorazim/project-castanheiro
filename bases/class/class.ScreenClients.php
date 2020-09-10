@@ -13,7 +13,7 @@ Class ScreenClients
             $btn_contract = 'disabled';
 
         } else {
-            $btn_txt = "A L T E R A R";
+            $btn_txt = "ALTERAR [ Cliente: $clientValues[name] ]";
         }
 
         if ($clientValues['type_cli'] == 'cli') {

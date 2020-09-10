@@ -178,12 +178,12 @@ if (isset($_POST[ 'btn_insert_update_client' ])) {
 
 	if ($resp == 1) {
 		echo $appFunctions->alert_system('1',
-			"Cliente $_POST[client_name] foi CADASTRADO com sucesso! <strong> Deseja cadastrar novo Cliente? </strong> <a href='?insert=true' class=\"alert-link\" > [SIM] </a>");
+			"Cliente $_POST[client_name] foi CADASTRADO com sucesso! <strong> Deseja continuar para documentos? </strong> <a href='?editID=$_POST[client_id]' class=\"alert-link\" > [SIM] </a> | <a href='?insert=true' class=\"alert-link\" > [NÃO] </a>");
 		exit();
 
 	} elseif ($resp == 2) {
 		echo $appFunctions->alert_system('2',
-			"Cliente $_POST[client_name] foi ALTERADDO com sucesso! <strong> Deseja cadastrar novo Cliente? </strong> <a href='?insert=true' class=\"alert-link\" > [SIM] </a>");
+			"Cliente $_POST[client_name] foi ALTERADDO com sucesso! <strong> Deseja continuar alterações? </strong> <a href='?editID=$_POST[client_id]' class=\"alert-link\" > [SIM] </a> | <a href='?insert=true' class=\"alert-link\" > [NÃO] </a>");
 		exit();
 
 	} else {
