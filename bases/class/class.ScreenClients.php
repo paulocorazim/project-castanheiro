@@ -71,10 +71,10 @@ Class ScreenClients
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#dadosadicionais2" role="tab" aria-controls="contact" aria-selected="false">Tipo Cliente</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="contact" aria-selected="false">Documentos</a>
+                              <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="contact" aria-selected="false">Documentos</a>
                             </li>                           
                             <li class="nav-item">
-                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#poupanca" role="tab" aria-controls="contact" aria-selected="false">Poupança / Depósito</a>
+                                <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#poupanca" role="tab" aria-controls="contact" aria-selected="false">Poupança / Depósito</a>
                               </li>
                             <li class="nav-item">
                               <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#contratos" role="tab" aria-controls="contact" aria-selected="false">Contratos</a>
@@ -303,11 +303,13 @@ Class ScreenClients
                                 </textarea>                                   
                                 <hr>
                             </div>
-                          </div>
-                          <div class="d-flex align-items-end flex-column bd-highlight mt-3">
-                            <div class="p-2 bd-highlight"><button name="btn_insert_update_client" id="btn_insert_update_client" value="InsertUpdate"  class="btn btn-success">$btn_txt</button></div>
-                          </div>                                              
-                           </div>                           
+                          </div>                                                                      
+                           </div>
+						  <div class="d-flex align-items-end flex-column bd-highlight mt-3">
+                            <div class="p-2 bd-highlight">
+                             <button name="btn_insert_update_client" id="btn_insert_update_client" value="InsertUpdate" class="btn btn-success">$btn_txt</button>
+                            </div>
+                          </div>                                                        
                         </div>
                     </div>
             
@@ -345,7 +347,7 @@ EOT;
     }
 
 
- public function screenListClients($reportClients)
+    public function screenListClients($reportClients)
  {
     return <<< EOT
     <div class="card shadow mb-4">
