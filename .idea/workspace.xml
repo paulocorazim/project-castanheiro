@@ -22,7 +22,7 @@
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +235,7 @@
       <workItem from="1598319948309" duration="619000" />
       <workItem from="1599312146145" duration="50000" />
       <workItem from="1599312297038" duration="756000" />
-      <workItem from="1599696300121" duration="2039000" />
+      <workItem from="1599696300121" duration="3102000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>

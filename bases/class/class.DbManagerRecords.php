@@ -1,5 +1,7 @@
 <?php
 
+use Simplon\Db\SqlQueryBuilder;
+
 class DbManagerRecords
 {
 
@@ -43,20 +45,20 @@ class DbManagerRecords
 
 				//Verificação do uso do CPF
 				$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-				$CheckCpf = (new \Simplon\Db\SqlQueryBuilder())
+				$CheckCpf = (new SqlQueryBuilder())
 					->setQuery("SELECT cpf from tab_users WHERE cpf='$data[cpf]'");
 				$user_cpf = $sqlManager->fetchAll($CheckCpf);
 
 				if (!$user_cpf) {
 
 					//Se o cpf não existe ainda, da sequencia no cadastro
-					$sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+					$sqlQuery = (new SqlQueryBuilder())
 						->setTableName('tab_users') // define the table name
 						->setData($data); // set data (keys = database column name)
 					$sqlManager->insert($sqlQuery);
 
 					//Verifica ultimo ID cadastrado
-					$lastID = (new \Simplon\Db\SqlQueryBuilder())
+					$lastID = (new SqlQueryBuilder())
 						->setQuery('SELECT LAST_INSERT_ID() as ID');
 					$results = $sqlManager->fetchAll($lastID);
 
@@ -77,7 +79,7 @@ class DbManagerRecords
 									];
 
 									//Insere as permissões
-									$sqlInsert = (new \Simplon\Db\SqlQueryBuilder())
+									$sqlInsert = (new SqlQueryBuilder())
 										->setTableName('tab_permissions') // define the table name
 										->setData($data_modules_permission); // set data (keys = database column name)
 									$sqlManager->insert($sqlInsert);
@@ -178,7 +180,7 @@ class DbManagerRecords
 				}
 
 				/*Update da Usuário*/
-				$sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+				$sqlQuery = (new SqlQueryBuilder())
 					->setTableName('tab_users')    // define the table name
 					->setConditions($conds)     // set conditions
 					->setData($data);           // set data (keys = database column name)
@@ -197,7 +199,7 @@ class DbManagerRecords
 				try {
 
 					$conds_modules = ['id_user' => "$regists_user[id]"];
-					$sqlDelete = (new \Simplon\Db\SqlQueryBuilder())
+					$sqlDelete = (new SqlQueryBuilder())
 						->setTableName('tab_permissions')
 						->setConditions($conds_modules);
 					$sqlManager->remove($sqlDelete);
@@ -225,7 +227,7 @@ class DbManagerRecords
 							];
 
 							//Insere as permissões
-							$sqlInsert = (new \Simplon\Db\SqlQueryBuilder())
+							$sqlInsert = (new SqlQueryBuilder())
 								->setTableName('tab_permissions') // define the table name
 								->setData($data_modules_permission); // set data (keys = database column name)
 							$sqlManager->insert($sqlInsert);
@@ -255,7 +257,7 @@ class DbManagerRecords
 		try {
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$shSelectUser = (new \Simplon\Db\SqlQueryBuilder())
+			$shSelectUser = (new SqlQueryBuilder())
 				->setQuery('SELECT * from tab_users WHERE id = :id')
 				->setConditions(['id' => "$user_id"]);
 			$shResultsUser = $sqlManager->fetchAll($shSelectUser);
@@ -265,7 +267,7 @@ class DbManagerRecords
 				foreach ($shResultsUser as $shResultsUserId) {
 
 					/*Módulos do usuário*/
-					$shSelectModules = (new \Simplon\Db\SqlQueryBuilder())
+					$shSelectModules = (new SqlQueryBuilder())
 						->setQuery('SELECT
                                         distinct
                                         a.id_module,
@@ -283,7 +285,7 @@ class DbManagerRecords
 						foreach ($shResultsModulesUser as $type_permission) {
 
 							/*Permissões dos módulos*/
-							$shSelectPermission = (new \Simplon\Db\SqlQueryBuilder())
+							$shSelectPermission = (new SqlQueryBuilder())
 								->setQuery('SELECT
                                                     a.type
                                                 from
@@ -318,7 +320,7 @@ class DbManagerRecords
 
 		/*Setando como 'selected' os módulos que o usuário tem acesso no BOX de Módulos na tela de Edição*/
 		$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-		$shSelectModulesAll = (new \Simplon\Db\SqlQueryBuilder())
+		$shSelectModulesAll = (new SqlQueryBuilder())
 			->setQuery('SELECT * from tab_modules');
 		$shResultsModulesAll = $sqlManager->fetchAll($shSelectModulesAll);
 
@@ -330,7 +332,7 @@ class DbManagerRecords
 	public function select_user_perfil($dbInstance, $user_id)
 	{
 		$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-		$shSelectUser = (new \Simplon\Db\SqlQueryBuilder())
+		$shSelectUser = (new SqlQueryBuilder())
 			->setQuery('SELECT * from tab_users WHERE id = :id')
 			->setConditions(['id' => "$user_id"]);
 		$shResultsPerfilUser = $sqlManager->fetchAll($shSelectUser);
@@ -364,7 +366,7 @@ class DbManagerRecords
 			];
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+			$sqlQuery = (new SqlQueryBuilder())
 				->setTableName('tab_users')
 				->setConditions($conds)
 				->setData($data);
@@ -416,8 +418,6 @@ class DbManagerRecords
 			'complement' => "$regists_client[complement]"
 		];
 
-		print_r($data);
-		exit;
 
 		if ($regists_client[ 'id' ] == null) { //inclusão
 
@@ -426,13 +426,13 @@ class DbManagerRecords
 				$client_dir_create = null;
 
 				$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-				$sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+				$sqlQuery = (new SqlQueryBuilder())
 					->setTableName('tab_clients') // define the table name
 					->setData($data); // set data (keys = database column name)
 				$sqlManager->insert($sqlQuery);
 
 				//Verifica ultimo ID cadastrado
-				$lastID = (new \Simplon\Db\SqlQueryBuilder())
+				$lastID = (new SqlQueryBuilder())
 					->setQuery('SELECT LAST_INSERT_ID() as ID');
 				$resultslastID = $sqlManager->fetchAll($lastID);
 
@@ -464,7 +464,7 @@ class DbManagerRecords
 			try {
 
 				$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-				$sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+				$sqlQuery = (new SqlQueryBuilder())
 					->setTableName('tab_clients')
 					->setConditions($conds)
 					->setData($data);
@@ -500,7 +500,7 @@ class DbManagerRecords
 			// exit();
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+			$sqlQuery = (new SqlQueryBuilder())
 				->setTableName('tab_clients_savings')
 				->setData($data);
 			$sqlManager->insert($sqlQuery);
@@ -523,7 +523,7 @@ class DbManagerRecords
 			$listClientSavingsRegists = null;
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$shSelectClientSavings = (new \Simplon\Db\SqlQueryBuilder())
+			$shSelectClientSavings = (new SqlQueryBuilder())
 				->setQuery("SELECT DATE_FORMAT (saving_date,'%d-%m-%Y') as saving_date, saving_bank, saving_value, saving_filename, saving_number
 									FROM tab_clients_savings WHERE saving_id_client = :saving_id_client")
 				->setConditions(['saving_id_client' => "$idClient"]);
@@ -557,7 +557,7 @@ class DbManagerRecords
 			$trResults = null;
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$shSelectClients = (new \Simplon\Db\SqlQueryBuilder())
+			$shSelectClients = (new SqlQueryBuilder())
 				->setQuery("SELECT * FROM tab_clients");
 			$shResultsClients = $sqlManager->fetchAll($shSelectClients);
 
@@ -592,7 +592,7 @@ class DbManagerRecords
 			$optionList = null;
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$shSelectClientID = (new \Simplon\Db\SqlQueryBuilder())
+			$shSelectClientID = (new SqlQueryBuilder())
 				->setQuery('SELECT id, corporate_name from tab_clients order by corporate_name');
 			$shResultsClientID = $sqlManager->fetchAll($shSelectClientID);
 
@@ -617,7 +617,7 @@ class DbManagerRecords
 
 		try {
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$shSelectClientAll = (new \Simplon\Db\SqlQueryBuilder())
+			$shSelectClientAll = (new SqlQueryBuilder())
 				->setQuery('SELECT * from tab_clients WHERE id = :id')
 				->setConditions(['id' => "$clientID"]);
 			$shResultsClientAll = $sqlManager->fetchAll($shSelectClientAll);
@@ -685,7 +685,7 @@ class DbManagerRecords
 			];
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+			$sqlQuery = (new SqlQueryBuilder())
 				->setTableName('tab_clients_billet_detached')
 				->setData($data);
 			$sqlManager->insert($sqlQuery);
@@ -750,7 +750,7 @@ class DbManagerRecords
 		try {
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
+			$sqlQuery = (new SqlQueryBuilder())
 				->setTableName('tab_properties')
 				->setData($data);
 			$sqlManager->insert($sqlQuery);
@@ -775,7 +775,7 @@ class DbManagerRecords
 			$optionList = null;
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$shSelectPropertyID = (new \Simplon\Db\SqlQueryBuilder())
+			$shSelectPropertyID = (new SqlQueryBuilder())
 				->setQuery('SELECT * from tab_properties ORDER BY property_address , property_number, property_number_apto');
 			$shResultsPropertyID = $sqlManager->fetchAll($shSelectPropertyID);
 
@@ -809,7 +809,7 @@ class DbManagerRecords
 		try {
 
 			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
-			$shSelectPropertyAll = (new \Simplon\Db\SqlQueryBuilder())
+			$shSelectPropertyAll = (new SqlQueryBuilder())
 				->setQuery('SELECT * from tab_properties WHERE id = :id')
 				->setConditions(['id' => "$propertyID"]);
 			$shResultsPropertyAll = $sqlManager->fetchAll($shSelectPropertyAll);

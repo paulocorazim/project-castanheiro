@@ -298,9 +298,10 @@ Class ScreenClients
                             </div>
 
                             <div class="tab-pane fade" id="observacoes" role="tabpanel" aria-labelledby="contact-tab">
-                                <textarea name="client_obs" id="client_obs" cols="30" rows="10"></textarea>   
-                                <br>
-                                <br>
+                                <textarea name="client_obs" id="client_obs" cols="70" rows="10">
+                                $clientValues[obs]
+                                </textarea>                                   
+                                <hr>
                             </div>
                           </div>
                           <div class="d-flex align-items-end flex-column bd-highlight mt-3">
