@@ -71,7 +71,7 @@ Class ScreenClients
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#dadosadicionais2" role="tab" aria-controls="contact" aria-selected="false">Tipo Cliente</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="contact" aria-selected="false">Documentos</a>
+                              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="contact" aria-selected="false">Documentos</a>
                             </li>                           
                             <li class="nav-item">
                                 <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#poupanca" role="tab" aria-controls="contact" aria-selected="false">Poupança / Depósito</a>
