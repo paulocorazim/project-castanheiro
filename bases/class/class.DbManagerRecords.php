@@ -1,5 +1,6 @@
 <?php
 
+use Simplon\Db\SqlManager;
 use Simplon\Db\SqlQueryBuilder;
 
 class DbManagerRecords
@@ -44,7 +45,7 @@ class DbManagerRecords
 				}
 
 				//Verificação do uso do CPF
-				$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+				$sqlManager = new SqlManager($dbInstance);
 				$CheckCpf = (new SqlQueryBuilder())
 					->setQuery("SELECT cpf from tab_users WHERE cpf='$data[cpf]'");
 				$user_cpf = $sqlManager->fetchAll($CheckCpf);
@@ -126,7 +127,7 @@ class DbManagerRecords
 			//id do usuário
 			$conds = ['id' => "$regists_user[id]"];
 
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 
 			try {
 
@@ -256,7 +257,7 @@ class DbManagerRecords
 	{
 		try {
 
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 			$shSelectUser = (new SqlQueryBuilder())
 				->setQuery('SELECT * from tab_users WHERE id = :id')
 				->setConditions(['id' => "$user_id"]);
@@ -319,7 +320,7 @@ class DbManagerRecords
 		}
 
 		/*Setando como 'selected' os módulos que o usuário tem acesso no BOX de Módulos na tela de Edição*/
-		$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+		$sqlManager = new SqlManager($dbInstance);
 		$shSelectModulesAll = (new SqlQueryBuilder())
 			->setQuery('SELECT * from tab_modules');
 		$shResultsModulesAll = $sqlManager->fetchAll($shSelectModulesAll);
@@ -331,7 +332,7 @@ class DbManagerRecords
 	/*Lendo usuário especifico para pegar dados de perfil*/
 	public function select_user_perfil($dbInstance, $user_id)
 	{
-		$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+		$sqlManager = new SqlManager($dbInstance);
 		$shSelectUser = (new SqlQueryBuilder())
 			->setQuery('SELECT * from tab_users WHERE id = :id')
 			->setConditions(['id' => "$user_id"]);
@@ -365,7 +366,7 @@ class DbManagerRecords
 				'dt_update' => date('Y-m-d H:m:s')
 			];
 
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 			$sqlQuery = (new SqlQueryBuilder())
 				->setTableName('tab_users')
 				->setConditions($conds)
@@ -425,7 +426,7 @@ class DbManagerRecords
 
 				$client_dir_create = null;
 
-				$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+				$sqlManager = new SqlManager($dbInstance);
 				$sqlQuery = (new SqlQueryBuilder())
 					->setTableName('tab_clients') // define the table name
 					->setData($data); // set data (keys = database column name)
@@ -437,7 +438,7 @@ class DbManagerRecords
 				$resultslastID = $sqlManager->fetchAll($lastID);
 
 				foreach ($resultslastID as $docID) {
-					$client_dir_create = $docID[ 'ID' ];
+					$client_dir_create = $docID['ID'];
 				}
 
 				//Criando diretoria do usuário
@@ -450,7 +451,7 @@ class DbManagerRecords
 
 
 				//Aviso do sucesso e redireciona a pagina
-				$resp = 1;
+				$resp = $docID['ID'];
 
 			} catch (Exception $e) {
 				$error = $e->getMessage();
@@ -463,7 +464,7 @@ class DbManagerRecords
 
 			try {
 
-				$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+				$sqlManager = new SqlManager($dbInstance);
 				$sqlQuery = (new SqlQueryBuilder())
 					->setTableName('tab_clients')
 					->setConditions($conds)
@@ -499,7 +500,7 @@ class DbManagerRecords
 			// print_r($data);
 			// exit();
 
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 			$sqlQuery = (new SqlQueryBuilder())
 				->setTableName('tab_clients_savings')
 				->setData($data);
@@ -522,7 +523,7 @@ class DbManagerRecords
 			$tr = null;
 			$listClientSavingsRegists = null;
 
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 			$shSelectClientSavings = (new SqlQueryBuilder())
 				->setQuery("SELECT DATE_FORMAT (saving_date,'%d-%m-%Y') as saving_date, saving_bank, saving_value, saving_filename, saving_number
 									FROM tab_clients_savings WHERE saving_id_client = :saving_id_client")
@@ -556,7 +557,7 @@ class DbManagerRecords
 			$tr = null;
 			$trResults = null;
 
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 			$shSelectClients = (new SqlQueryBuilder())
 				->setQuery("SELECT * FROM tab_clients");
 			$shResultsClients = $sqlManager->fetchAll($shSelectClients);
@@ -591,7 +592,7 @@ class DbManagerRecords
 
 			$optionList = null;
 
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 			$shSelectClientID = (new SqlQueryBuilder())
 				->setQuery('SELECT id, corporate_name from tab_clients order by corporate_name');
 			$shResultsClientID = $sqlManager->fetchAll($shSelectClientID);
@@ -616,7 +617,7 @@ class DbManagerRecords
 		$clientData = null;
 
 		try {
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 			$shSelectClientAll = (new SqlQueryBuilder())
 				->setQuery('SELECT * from tab_clients WHERE id = :id')
 				->setConditions(['id' => "$clientID"]);
@@ -684,7 +685,7 @@ class DbManagerRecords
 				'billet_send_mail_client' => "$regists_billet_client[billet_send_mail_client]"
 			];
 
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 			$sqlQuery = (new SqlQueryBuilder())
 				->setTableName('tab_clients_billet_detached')
 				->setData($data);
@@ -749,7 +750,7 @@ class DbManagerRecords
 
 		try {
 
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 			$sqlQuery = (new SqlQueryBuilder())
 				->setTableName('tab_properties')
 				->setData($data);
@@ -774,7 +775,7 @@ class DbManagerRecords
 
 			$optionList = null;
 
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 			$shSelectPropertyID = (new SqlQueryBuilder())
 				->setQuery('SELECT * from tab_properties ORDER BY property_address , property_number, property_number_apto');
 			$shResultsPropertyID = $sqlManager->fetchAll($shSelectPropertyID);
@@ -808,7 +809,7 @@ class DbManagerRecords
 
 		try {
 
-			$sqlManager = new \Simplon\Db\SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 			$shSelectPropertyAll = (new SqlQueryBuilder())
 				->setQuery('SELECT * from tab_properties WHERE id = :id')
 				->setConditions(['id' => "$propertyID"]);

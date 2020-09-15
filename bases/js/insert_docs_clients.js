@@ -4,9 +4,9 @@ $(document).ready(function () {
         // parar o envio para que possamos faze-lo manualmente.
         event.preventDefault();
         // capture o formulário
-        var form = $('#fileUploadForm')[0];
+        const form = $('#fileUploadForm')[0];
         // crie um FormData {Object}
-        var data = new FormData(form);
+        const data = new FormData(form);
 
         data.append('file', $('#file').prop('files')[0]);
         data.append('clientIDdoc', $("#clientIDdoc").val());

@@ -3,6 +3,8 @@
 // ini_set('display_startup_erros', 1);
 // error_reporting(E_ALL);
 
+use Bissolli\ValidadorCpfCnpj\Documento;
+
 include("head.php");
 include("../class/class.ScreenStartManager.php");
 include("../class/class.ScreenEndManager.php");
@@ -89,7 +91,7 @@ if (isset($_GET[ 'editID' ])) {
 if (isset($_POST[ 'btn_insert_update_client' ])) {
 
 	// Não importa se é CPF ou CNPJ e se já vem formatado
-	$checkCPFCNPJ = new \Bissolli\ValidadorCpfCnpj\Documento("$_POST[cpfcnpj]");
+	$checkCPFCNPJ = new Documento("$_POST[cpfcnpj]");
 
 	// Retorna se é CPF ou CNP
 	// Retorna se for um número inválido retorna false
@@ -176,12 +178,12 @@ if (isset($_POST[ 'btn_insert_update_client' ])) {
 
 	$resp = $activeRecords->manager_client($dbInstance, $regists_client);
 
-	if ($resp == 1) {
+	if ($resp >= 1 AND $resp != 2 ) {
 		echo $appFunctions->alert_system('1',
-			"Cliente $_POST[client_name] foi CADASTRADO com sucesso! <strong> Deseja continuar para documentos? </strong> <a href='?editID=$_POST[client_id]' class=\"alert-link\" > [SIM] </a> | <a href='?insert=true' class=\"alert-link\" > [NÃO] </a>");
+			"Cliente $_POST[client_name] foi CADASTRADO com sucesso! <strong> Deseja continuar para documentos? </strong> <a href='?editID=$resp' class=\"alert-link\" > [SIM] </a> | <a href='?insert=true' class=\"alert-link\" > [NÃO] </a>");
 		exit();
 
-	} elseif ($resp == 2) {
+	} elseif ($resp === 2) {
 		echo $appFunctions->alert_system('2',
 			"Cliente $_POST[client_name] foi ALTERADDO com sucesso! <strong> Deseja continuar alterações? </strong> <a href='?editID=$_POST[client_id]' class=\"alert-link\" > [SIM] </a> | <a href='?insert=true' class=\"alert-link\" > [NÃO] </a>");
 		exit();
