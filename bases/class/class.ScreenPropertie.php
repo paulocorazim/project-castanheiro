@@ -2,15 +2,15 @@
 
 class ScreenProperties
 {
-	public function screenProperty($findProperty, $propertyData)
-	{	
-        
+    public function screenProperty($findProperty, $propertyData)
+    {
+
         return <<< EOT
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <div class="container-fluid">
             <div class="card o-hidden border-0 shadow-lg my-4">
                 <div class="p-4">
-        
+
                     <div class="d-flex align-items-end flex-column bd-highlight">
                         <div class="bd-highlight">
                                 <div class="input-group mb-3">
@@ -28,12 +28,12 @@ class ScreenProperties
                                 </div>
                         </div>
                     </div>
-        
-                
+
+
                     <div class="px-4 py-3 row">
                         <div class="col-sm-4">
                             <span class="small">Cliente Atual</span>
-                            <input type="hidden" name="property_id" id="property_id">
+                            <input type="hidden" name="property_id" id="property_id" value="$propertyData[property_id]" >
                             <input type="text" disabled name="property_client_id" id="property_client_id" class="form-control-sm form-control" value="">
                         </div>
                         <div class="col-sm-4">
@@ -42,7 +42,7 @@ class ScreenProperties
                                 <option value="">$propertyData[property_type]</option>
                                 <option value="Apartamento">Apartamento</option>
                                 <option value="Casa">Casa</option>
-                                <option value="Fazenda">Fazenda</option>                                
+                                <option value="Fazenda">Fazenda</option>
                                 <option value="Terreno">Terreno</option>
                             </select>
                         </div>
@@ -61,7 +61,7 @@ class ScreenProperties
                             </select>
                         </div>
                     </div>
-        
+
 	                <div class="px-4 py-3">
 	                        <div class="card">
 	                            <div class="card-body">
@@ -77,43 +77,43 @@ class ScreenProperties
 	                                    </div>
 	                                     <div class="col-sm-2">
 	                                        <span class="small">Número</span>
-	                                        <input type="text" required name="client_number" id="client_number" class="form-control form-control-sm" value="$propertyData[property_number]" />                  
+	                                        <input type="text" required name="client_number" id="client_number" class="form-control form-control-sm" value="$propertyData[property_number]" />
 	                                    </div>
 	                                    <div class="col-sm-2">
 	                                        <span class="small">Apto</span>
-	                                        <input type="text" disabled name="number_apto" id="number_apto" class="form-control form-control-sm" value="$propertyData[property_number_apto]" >                  
+	                                        <input type="text" disabled name="number_apto" id="number_apto" class="form-control form-control-sm" value="$propertyData[property_number_apto]" >
 	                                    </div>
 	                                </div>
-	    
+
 	                                <div class="form-group row">
 	                                    <div class="col-sm-6">
 	                                        <span class="small">Município</span>
-	                                        <input type="text"  name="client_county" id="client_county" class="form-control form-control-sm" value="$propertyData[property_county]" />                  
+	                                        <input type="text"  name="client_county" id="client_county" class="form-control form-control-sm" value="$propertyData[property_county]" />
 	                                    </div>
 	                                    <div class="col-sm-6">
 	                                        <span class="small">Cidade</span>
-	                                        <input type="text" name="client_city" id="client_city" class="form-control form-control-sm" value="$propertyData[property_city]" />                  
-	                                    </div> 
+	                                        <input type="text" name="client_city" id="client_city" class="form-control form-control-sm" value="$propertyData[property_city]" />
+	                                    </div>
 	                                </div>
-	    
+
 	                                <div class="form-group row">
 	                                    <div class="col-sm-4">
 	                                        <span class="small">Estado</span>
-	                                        <input type="text" required name="client_state" id="client_state" class="form-control form-control-sm" value="$propertyData[property_state]" />                  
+	                                        <input type="text" required name="client_state" id="client_state" class="form-control form-control-sm" value="$propertyData[property_state]" />
 	                                    </div>
 	                                    <div class="col-sm-4">
 	                                        <span class="small">Bairro</span>
-	                                        <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control form-control-sm" value="$propertyData[property_neighbordhood]" />                  
-	                                    </div> 
+	                                        <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control form-control-sm" value="$propertyData[property_neighbordhood]" />
+	                                    </div>
 	                                    <div class="col-sm-4">
 	                                        <span class="small">Complemento</span>
-	                                        <input type="text" name="property_complement" id="property_complement" class="form-control form-control-sm" value="$propertyData[property_complement]" />                  
-	                                    </div> 
+	                                        <input type="text" name="property_complement" id="property_complement" class="form-control form-control-sm" value="$propertyData[property_complement]" />
+	                                    </div>
 	                                </div>
 	                            </div>
 	                        </div>
 	                    </div>
-        
+
                     <div class="row px-4 py-3">
                         <div class="col-sm-5">
                             <div class="card">
@@ -122,21 +122,21 @@ class ScreenProperties
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <span class="small">Útil:</span>
-                                            <input type="number" name="property_usefull_area" id="property_usefull_area" class="form-control-sm form-control" value="">
+                                            <input type="number" name="property_usefull_area" id="property_usefull_area" class="form-control-sm form-control" value="$propertyData[property_usefull_area]" />
                                         </div>
                                         <div class="col-sm-4">
                                             <span class="small">Construida:</span>
-                                            <input type="number" name="property_usefull_built" id="property_usefull_built" class="form-control-sm form-control" value="">
+                                            <input type="number" name="property_usefull_built" id="property_usefull_built" class="form-control-sm form-control" value="$propertyData[property_usefull_built]" />
                                         </div>
                                         <div class="col-sm-4">
                                             <span class="small">Terreno:</span>
-                                            <input type="number" name="property_ground" id="property_ground" class="form-control-sm form-control" value="">
+                                            <input type="number" name="property_ground" id="property_ground" class="form-control-sm form-control" value="$propertyData[property_ground]" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-        
+
                         <div class="col-sm-7">
                             <div class="card">
                                 <div class="card-body">
@@ -144,20 +144,20 @@ class ScreenProperties
                                     <div class="form-group row">
                                         <div class="col-sm-3">
                                             <span class="small">Valor</span>
-                                            <input name="property_value" id="property_value" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="">
+                                            <input name="property_value" id="property_value" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$propertyData[property_value]" />
                                         </div>
                                         <div class="col-sm-3">
                                             <span class="small">Locação</span>
-                                            <input name="property_value_location" id="property_value_location" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="">
+                                            <input name="property_value_location" id="property_value_location" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$propertyData[property_value_location]" />
                                         </div>
-        
+
                                         <div class="col-sm-3">
                                             <span class="small">Iptu</span>
-                                            <input name="property_value_iptu" id="property_value_iptu" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="">
+                                            <input name="property_value_iptu" id="property_value_iptu" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$propertyData[property_value_iptu]" />
                                         </div>
                                         <div class="col-sm-3">
                                             <span class="small">Condomínio</span>
-                                            <input name="property_value_condo" id="property_value_condo" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="">
+                                            <input name="property_value_condo" id="property_value_condo" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$propertyData[property_value_condo]" />
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@ class ScreenProperties
                                     <span class="small">Dormitório:</span>
                                     <div class="form-group">
                                         <select name="property_amount_dorm" id="property_amount_dorm"  class="form-control form-control-sm">
-                                            <option value=""></option>
+                                            <option value="">$propertyData[property_amount_dorm]</option>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -188,7 +188,7 @@ class ScreenProperties
                                     <span class="small">Suites:</span>
                                     <div class="form-group">
                                         <select name="property_amount_suite" id="property_amount_suite" class="form-control form-control-sm">
-                                            <option value=""></option>
+                                            <option value="">$propertyData[property_amount_suite]</option>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -202,7 +202,7 @@ class ScreenProperties
                                     <span class="small">Sala:</span>
                                     <div class="form-group">
                                         <select name="property_amount_room" id="property_amount_room" class="form-control form-control-sm">
-                                            <option value=""></option>
+                                            <option value="">$propertyData[property_amount_room]</option>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -216,7 +216,7 @@ class ScreenProperties
                                     <span class="small">Banheiro:</span>
                                     <div class="form-group">
                                         <select name="property_amount_bathroom" id="property_amount_bathroom" class="form-control form-control-sm">
-                                            <option value=""></option>
+                                            <option value="">$propertyData[property_amount_bathroom]</option>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -232,7 +232,7 @@ class ScreenProperties
                                     <span class="small">Pavimentos:</span>
                                     <div class="form-group">
                                         <select name="property_amount_floors" id="property_amount_floors" class="form-control form-control-sm">
-                                            <option value=""></option>
+                                            <option value="">$propertyData[property_amount_floors]</option>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -246,7 +246,7 @@ class ScreenProperties
                                 <div class="col-sm-3">
                                     <span class="small">Vagas Garagem:</span>
                                     <select name="property_amount_vague_garage" id="property_amount_vague_garage" class="form-control form-control-sm">
-                                        <option value=""></option>
+                                        <option value="">$propertyData[property_amount_vague_garage]</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -258,7 +258,7 @@ class ScreenProperties
                                 <div class="col-sm-3">
                                     <span class="small">Vagas Visitante:</span>
                                     <select name="property_amount_vague_visitor" id="property_amount_vague_vistor" class="form-control form-control-sm">
-                                        <option value=""></option>
+                                        <option value="">$propertyData[property_amount_vague_visitor]</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -270,7 +270,7 @@ class ScreenProperties
                                 <div class="col-sm-3">
                                     <span class="small">Depósito:</span>
                                     <select name="property_amount_deposit" id="property_amount_deposit" class="form-control form-control-sm">
-                                        <option value=""></option>
+                                        <option value="">$propertyData[property_amount_deposit]</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -284,7 +284,7 @@ class ScreenProperties
                                 <div class="col-sm-3">
                                     <span class="small">Elevadores:</span>
                                     <select name="property_amount_elevators" id="property_amount_elevators" class="form-control form-control-sm">
-                                        <option value=""></option>
+                                        <option value="">$propertyData[property_amount_elevators]</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -295,21 +295,21 @@ class ScreenProperties
                                 </div>
                                 <div class="col-sm-3">
                                     <span class="small">Idade:</span>
-                                    <input name="property_age" id="property_age" type="text" name="" id="" class="form-control-sm form-control" value="">
+                                    <input name="property_age" id="property_age" type="text" name="" id="" class="form-control-sm form-control" value="$propertyData[property_age]" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </div>                                       
-        
+                    </div>
+
                     <div class="d-flex align-items-end flex-column bd-highlight mt-3">
                         <div class="mx-4 bd-highlight">
                             <button name="j_btn_salve_property" id="j_btn_salve_property" value="insert_update_property" class="btn btn-success" type="submit">SALVAR <i class="fas fa-save"></i></button></div>
                     </div>
-                       
+
                 </div>
             </div>
         </div>
 EOT;
-	}
+    }
 }
