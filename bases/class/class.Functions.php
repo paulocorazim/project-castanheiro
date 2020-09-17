@@ -181,28 +181,31 @@ EOT;
 
 		} else {
 
-			if ($_UP[ 'tamanho' ] < $_FILES[ 'size' ]) {
-				$type = '3';
-				$resp = "O arquivo enviado é muito grande, envie arquivos de até 2Mb.";
+			
+			if ($_UP[ 'renomeia' ] == true) {
+				$nome_final = date('Y-m-d') . ".$extensao";
+			} else {
+				$nome_final = $_FILES[ 'name' ];
+			}
+
+			if (move_uploaded_file($_FILES[ 'tmp_name' ], $_UP[ 'pasta' ] . $nome_final)) {
+				$type = '1';
+				$resp = "Upload do arquivo -> $nome_final  efetuado com sucesso!";
 
 			} else {
+				$type = '0';
+				$resp = "Não foi possível enviar o arquivo, tente novamente";
 
-				if ($_UP[ 'renomeia' ] == true) {
-					$nome_final = date('Y-m-d') . ".$extensao";
-				} else {
-					$nome_final = $_FILES[ 'name' ];
-				}
-
-				if (move_uploaded_file($_FILES[ 'tmp_name' ], $_UP[ 'pasta' ] . $nome_final)) {
-					$type = '1';
-					$resp = "Upload do arquivo -> $nome_final  efetuado com sucesso!";
-
-				} else {
-					$type = '0';
-					$resp = "Não foi possível enviar o arquivo, tente novamente";
-
-				}
 			}
+			
+			// if ($_UP[ 'tamanho' ] < $_FILES[ 'size' ]) {
+			// 	$type = '3';
+			// 	$resp = "O arquivo enviado é muito grande, envie arquivos de até 2Mb.";
+
+			// } else {
+
+				
+			// }
 		}
 
 		return array($type, $resp, $nome_final);
