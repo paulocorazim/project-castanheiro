@@ -56,6 +56,8 @@ if (isset($_GET[ 'editID' ])) {
 	$propertyData = $activeRecords->find_property_data($dbInstance, $propertyID);	
 	$contentNow = $screenProperty->screenProperty($findProperty, $propertyData); // aqui atribuimos o contenNow com o form desejado
 	echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Imóveis", $contentNow);
+	$footer = new shFooter();
+	echo $footer->sh_footer();
 	exit();
 }
 

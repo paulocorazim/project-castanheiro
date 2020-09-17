@@ -5,8 +5,6 @@ class ScreenProperties
 	public function screenProperty($findProperty, $propertyData)
 	{	
         
-        //var_dump($propertyData);
-
         return <<< EOT
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <div class="container-fluid">
