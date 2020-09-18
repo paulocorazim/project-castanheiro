@@ -71,10 +71,10 @@ function find_clitn() {
     //alert(find_client_name.options[find_client_name.selectedIndex].value);
 }
 
-function active_number_apto() {
-    const number_type = document.getElementById('property_type');
-    const number_apto = number_type.options[number_type.selectedIndex].text;
+// function active_number_apto() {
+//     const number_type = document.getElementById('property_type');
+//     const number_apto = number_type.options[number_type.selectedIndex].text;
 
-    document.getElementById('number_apto').disabled = number_apto !== 'Apartamento';
-    $('#cep').focus();
-}
+//     document.getElementById('number_apto').disabled = number_apto !== 'Apartamento';
+//     $('#cep').focus();
+// }

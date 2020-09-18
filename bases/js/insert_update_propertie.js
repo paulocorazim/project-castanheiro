@@ -1,19 +1,18 @@
 $(document).ready(function () {
-  $("#j_btn_salve_property").on("click", function () {
-    if ($("#client_address").val() === "") {
-      alert(
-        "Por favor, o campo ( | Endereço | ) precisa ser preenchido! Verifique !"
-      );
+  $("#j_btn_salve_property").on("click", function () 
+   {
+    if ($("#client_address").val() === "") 
+    {
+      alert("Por favor, o campo ( | Endereço | ) precisa ser preenchido! Verifique !");
       $("#client_address").focus();
-    } else if ($("#client_number").val() === "") {
-      alert(
-        "Por favor, o campo ( | Número | ) precisa ser preenchido! Verifique !"
-      );
+    } 
+    else if ($("#client_number").val() === "") 
+    {
+      alert("Por favor, o campo ( | Número | ) precisa ser preenchido! Verifique !");
       $("#client_number").focus();
-    } else if ($("#property_type").val() === "") {
-      alert("Por favor, o campo | TIPO IMÓVEL | precisa ser preenchido!");
-      $("#property_type").focus();
-    } else {
+
+    } 
+    else {
       $.ajax({
         url: "manager.properties.php",
         type: "POST",
@@ -35,12 +34,8 @@ $(document).ready(function () {
           property_amount_room: $("#property_amount_room").val(),
           property_amount_bathroom: $("#property_amount_bathroom").val(),
           property_amount_floors: $("#property_amount_floors").val(),
-          property_amount_vague_garage: $(
-            "#property_amount_vague_garage"
-          ).val(),
-          property_amount_vague_visitor: $(
-            "#property_amount_vague_visitor"
-          ).val(),
+          property_amount_vague_garage: $("#property_amount_vague_garage").val(),
+          property_amount_vague_visitor: $("#property_amount_vague_visitor").val(),
           property_amount_deposit: $("#property_amount_deposit").val(),
           property_amount_elevators: $("#property_amount_elevators").val(),
           property_age: $("#property_age").val(),

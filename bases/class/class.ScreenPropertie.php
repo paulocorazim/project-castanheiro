@@ -86,7 +86,7 @@ class ScreenProperties
                         <div class="col-sm-4">
                             <span class="small">Tipo de Imóvel</span>
                             <select name="property_type" id="property_type" class="form-control-sm form-control" onchange="active_number_apto()"  >
-                                <option value="">$propertyData[property_type]</option>
+                                <option value="$propertyData[property_type]">$propertyData[property_type]</option>
                                 <option value="Apartamento">Apartamento</option>
                                 <option value="Casa">Casa</option>
                                 <option value="Fazenda">Fazenda</option>
@@ -126,7 +126,7 @@ class ScreenProperties
 	                                    </div>
 	                                    <div class="col-sm-2">
 	                                        <span class="small">Apto</span>
-	                                        <input type="text" disabled name="number_apto" id="number_apto" class="form-control form-control-sm" value="$propertyData[property_number_apto]" >
+	                                        <input type="text" required name="number_apto" id="number_apto" class="form-control form-control-sm" value="$propertyData[property_number_apto]" />
 	                                    </div>
 	                                </div>
 
@@ -219,7 +219,7 @@ class ScreenProperties
                                     <span class="small">Dormitório:</span>
                                     <div class="form-group">
                                         <select name="property_amount_dorm" id="property_amount_dorm"  class="form-control form-control-sm">
-                                            <option value="">$propertyData[property_amount_dorm]</option>
+                                            <option value="$propertyData[property_amount_dorm]">$propertyData[property_amount_dorm]</option>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -233,7 +233,7 @@ class ScreenProperties
                                     <span class="small">Suites:</span>
                                     <div class="form-group">
                                         <select name="property_amount_suite" id="property_amount_suite" class="form-control form-control-sm">
-                                            <option value="">$propertyData[property_amount_suite]</option>
+                                            <option value="$propertyData[property_amount_suite]">$propertyData[property_amount_suite]</option>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -247,7 +247,7 @@ class ScreenProperties
                                     <span class="small">Sala:</span>
                                     <div class="form-group">
                                         <select name="property_amount_room" id="property_amount_room" class="form-control form-control-sm">
-                                            <option value="">$propertyData[property_amount_room]</option>
+                                            <option value="$propertyData[property_amount_room]">$propertyData[property_amount_room]</option>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -261,7 +261,7 @@ class ScreenProperties
                                     <span class="small">Banheiro:</span>
                                     <div class="form-group">
                                         <select name="property_amount_bathroom" id="property_amount_bathroom" class="form-control form-control-sm">
-                                            <option value="">$propertyData[property_amount_bathroom]</option>
+                                            <option value="$propertyData[property_amount_bathroom]">$propertyData[property_amount_bathroom]</option>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -277,7 +277,7 @@ class ScreenProperties
                                     <span class="small">Pavimentos:</span>
                                     <div class="form-group">
                                         <select name="property_amount_floors" id="property_amount_floors" class="form-control form-control-sm">
-                                            <option value="">$propertyData[property_amount_floors]</option>
+                                            <option value="$propertyData[property_amount_floors]">$propertyData[property_amount_floors]</option>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -291,7 +291,7 @@ class ScreenProperties
                                 <div class="col-sm-3">
                                     <span class="small">Vagas Garagem:</span>
                                     <select name="property_amount_vague_garage" id="property_amount_vague_garage" class="form-control form-control-sm">
-                                        <option value="">$propertyData[property_amount_vague_garage]</option>
+                                        <option value="$propertyData[property_amount_vague_garage]">$propertyData[property_amount_vague_garage]</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -302,8 +302,8 @@ class ScreenProperties
                                 </div>
                                 <div class="col-sm-3">
                                     <span class="small">Vagas Visitante:</span>
-                                    <select name="property_amount_vague_visitor" id="property_amount_vague_vistor" class="form-control form-control-sm">
-                                        <option value="">$propertyData[property_amount_vague_visitor]</option>
+                                    <select name="property_amount_vague_visitor" id="property_amount_vague_visitor" class="form-control form-control-sm">
+                                        <option value="$propertyData[property_amount_vague_visitor]">$propertyData[property_amount_vague_visitor]</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -315,7 +315,7 @@ class ScreenProperties
                                 <div class="col-sm-3">
                                     <span class="small">Depósito:</span>
                                     <select name="property_amount_deposit" id="property_amount_deposit" class="form-control form-control-sm">
-                                        <option value="">$propertyData[property_amount_deposit]</option>
+                                        <option value="$propertyData[property_amount_deposit]">$propertyData[property_amount_deposit]</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -329,7 +329,7 @@ class ScreenProperties
                                 <div class="col-sm-3">
                                     <span class="small">Elevadores:</span>
                                     <select name="property_amount_elevators" id="property_amount_elevators" class="form-control form-control-sm">
-                                        <option value="">$propertyData[property_amount_elevators]</option>
+                                        <option value="$propertyData[property_amount_elevators]">$propertyData[property_amount_elevators]</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
