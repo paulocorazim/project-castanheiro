@@ -794,13 +794,15 @@ class DbManagerRecords
                 ->setQuery('SELECT * from tab_properties ORDER BY property_address , property_number, property_number_apto');
             $shResultsPropertyID = $sqlManager->fetchAll($shSelectPropertyID);
 
-            foreach ($shResultsPropertyID as $propertyALL) {
-
-                if ($propertyALL['property_type'] == 'Apartamento') {
+            foreach ($shResultsPropertyID as $propertyALL) 
+            {
+                if ($propertyALL['property_type'] == 'Apartamento') 
+                {
                     $Apto = "- Apto: $propertyALL[property_number_apto]";
-                } else {
+                } 
+                else {
+                    
                     $Apto = null;
-
                 }
 
                 $option = "<option value=\"manager.properties.php?editID=$propertyALL[id]\">$propertyALL[property_address], $propertyALL[property_number] $Apto </option>";
@@ -838,7 +840,7 @@ class DbManagerRecords
                     'property_usefull_built' => "$propertyAll[property_usefull_built]",
                     'property_ground' => "$propertyAll[property_ground]",
                     'property_value' => "$propertyAll[property_value]",
-                    'property_value_location' => "$propertyAll[property_value_location]",
+                    'property_value_iptu' => "$propertyAll[property_value_iptu]",
                     'property_value_location' => "$propertyAll[property_value_location]",
                     'property_value_condo' => "$propertyAll[property_value_condo]",
                     'property_amount_dorm' => "$propertyAll[property_amount_dorm]",

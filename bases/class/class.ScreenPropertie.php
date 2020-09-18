@@ -5,6 +5,11 @@ class ScreenProperties
     public function screenProperty($findProperty, $propertyData)
     {
 
+        $property_value          = number_format($propertyData[property_value],2,",",".");
+        $property_value_location = number_format($propertyData[property_value_location],2,",",".");
+        $property_value_iptu     = number_format($propertyData[property_value_iptu],2,",",".");
+        $property_value_condo    = number_format($propertyData[property_value_condo],2,",",".");
+
         return <<< EOT
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <div class="container-fluid">
@@ -144,20 +149,20 @@ class ScreenProperties
                                     <div class="form-group row">
                                         <div class="col-sm-3">
                                             <span class="small">Valor</span>
-                                            <input name="property_value" id="property_value" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$propertyData[property_value]" />
+                                            <input name="property_value" id="property_value" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$property_value" />
                                         </div>
                                         <div class="col-sm-3">
                                             <span class="small">Locação</span>
-                                            <input name="property_value_location" id="property_value_location" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$propertyData[property_value_location]" />
+                                            <input name="property_value_location" id="property_value_location" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$property_value_location" />
                                         </div>
 
                                         <div class="col-sm-3">
                                             <span class="small">Iptu</span>
-                                            <input name="property_value_iptu" id="property_value_iptu" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$propertyData[property_value_iptu]" />
+                                            <input name="property_value_iptu" id="property_value_iptu" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$property_value_iptu" />
                                         </div>
                                         <div class="col-sm-3">
                                             <span class="small">Condomínio</span>
-                                            <input name="property_value_condo" id="property_value_condo" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$propertyData[property_value_condo]" />
+                                            <input name="property_value_condo" id="property_value_condo" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$property_value_condo" />
                                         </div>
                                     </div>
                                 </div>
