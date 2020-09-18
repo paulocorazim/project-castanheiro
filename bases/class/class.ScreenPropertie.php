@@ -10,6 +10,48 @@ class ScreenProperties
         $property_value_iptu     = number_format($propertyData[property_value_iptu],2,",",".");
         $property_value_condo    = number_format($propertyData[property_value_condo],2,",",".");
 
+        if($propertyData[property_destination] =='Locacao')
+        { 
+            $locacao = 'selected';
+        }
+
+        if($propertyData[property_destination] =='Arrendamento')
+        { 
+            $arrendamento = 'selected';
+        }
+
+        if($propertyData[property_destination] =='Compra')
+        { 
+            $compra = 'selected';
+        }
+
+        if($propertyData[property_destination] =='Comodato')
+        { 
+            $comodato = 'selected';
+        }
+
+        if($propertyData[property_destination] =='Locacao')
+        { 
+            $locacao = 'selected';
+        }
+         
+        if($propertyData[property_destination] =='Permuta')
+        { 
+            $permuta = 'selected';
+        }
+
+        if($propertyData[property_destination] =='Venda')
+        { 
+            $venda = 'selected';
+        }
+
+        if($propertyData[property_destination] =='Incorporacao')
+        { 
+            $incorporacao = 'selected';
+        }
+        
+                     
+                                
         return <<< EOT
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <div class="container-fluid">
@@ -54,15 +96,13 @@ class ScreenProperties
                         <div class="col-sm-4">
                             <span class="small">Finalidade</span>
                             <select name="property_destination" id="property_destination" class="form-control-sm form-control">
-                                <option value="">$propertyData[property_destination]</option>
-                                <option value="Locacao">Locação</option>
-                                <option value="Arrendamento">Arrendamento</option>
-                                <option value="Compra">Compra</option>
-                                <option value="Comodato">Comodato</option>
-                                <option value="Incorporacao">Incorporação</option>
-                                <option value="Locacao">Locação</option>
-                                <option value="Permuta">Permuta</option>
-                                <option value="Venda">Venda</option>
+                                <option value="Locacao" $locacao>Locação</option>
+                                <option value="Arrendamento" $arrendamento>Arrendamento</option>
+                                <option value="Compra" $compra>Compra</option>
+                                <option value="Comodato" $comodato>Comodato</option>
+                                <option value="Incorporacao" $incorporacao>Incorporação</option>
+                                <option value="Permuta" $permuta>Permuta</option>
+                                <option value="Venda" $venda>Venda</option>
                             </select>
                         </div>
                     </div>
