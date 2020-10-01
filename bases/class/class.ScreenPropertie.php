@@ -5,53 +5,51 @@ class ScreenProperties
     public function screenProperty($findProperty, $propertyData)
     {
 
-        $property_value          = number_format($propertyData[property_value],2,",",".");
-        $property_value_location = number_format($propertyData[property_value_location],2,",",".");
-        $property_value_iptu     = number_format($propertyData[property_value_iptu],2,",",".");
-        $property_value_condo    = number_format($propertyData[property_value_condo],2,",",".");
+        $property_value = number_format($propertyData[property_value], 2, ",", ".");
+        $property_value_location = number_format($propertyData[property_value_location], 2, ",", ".");
+        $property_value_iptu = number_format($propertyData[property_value_iptu], 2, ",", ".");
+        $property_value_condo = number_format($propertyData[property_value_condo], 2, ",", ".");
 
-        if($propertyData[property_destination] =='Locacao')
-        { 
+        if ($propertyData[property_destination] == 'Locacao') {
             $locacao = 'selected';
         }
 
-        if($propertyData[property_destination] =='Arrendamento')
-        { 
+        if ($propertyData[property_destination] == 'Arrendamento') {
             $arrendamento = 'selected';
         }
 
-        if($propertyData[property_destination] =='Compra')
-        { 
+        if ($propertyData[property_destination] == 'Compra') {
             $compra = 'selected';
         }
 
-        if($propertyData[property_destination] =='Comodato')
-        { 
+        if ($propertyData[property_destination] == 'Comodato') {
             $comodato = 'selected';
         }
 
-        if($propertyData[property_destination] =='Locacao')
-        { 
+        if ($propertyData[property_destination] == 'Locacao') {
             $locacao = 'selected';
         }
-         
-        if($propertyData[property_destination] =='Permuta')
-        { 
+
+        if ($propertyData[property_destination] == 'Permuta') {
             $permuta = 'selected';
         }
 
-        if($propertyData[property_destination] =='Venda')
-        { 
+        if ($propertyData[property_destination] == 'Venda') {
             $venda = 'selected';
         }
 
-        if($propertyData[property_destination] =='Incorporacao')
-        { 
+        if ($propertyData[property_destination] == 'Incorporacao') {
             $incorporacao = 'selected';
         }
-        
-                     
-                                
+
+        if ($propertyData[property_destination] == 'Loja') {
+            $incorporacao = 'selected';
+        }
+
+        if ($propertyData[property_destination] == 'Sala') {
+            $incorporacao = 'selected';
+        }
+
         return <<< EOT
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <div class="container-fluid">
@@ -79,9 +77,9 @@ class ScreenProperties
 
                     <div class="px-4 py-3 row">
                         <div class="col-sm-4">
-                            <span class="small">Cliente Atual</span>
+                            <span class="small">Locatário Atual</span>
                             <input type="hidden" name="property_id" id="property_id" value="$propertyData[property_id]" >
-                            <input type="text" disabled name="property_client_id" id="property_client_id" class="form-control-sm form-control" value="">
+                            <input type="text" disabled name="property_client" id="property_client" class="form-control-sm form-control" value="$propertyData[property_client]">
                         </div>
                         <div class="col-sm-4">
                             <span class="small">Tipo de Imóvel</span>
@@ -90,6 +88,8 @@ class ScreenProperties
                                 <option value="Apartamento">Apartamento</option>
                                 <option value="Casa">Casa</option>
                                 <option value="Fazenda">Fazenda</option>
+                                <option value="Loja">Loja</option>
+                                <option value="Sala">Sala</option>
                                 <option value="Terreno">Terreno</option>
                             </select>
                         </div>

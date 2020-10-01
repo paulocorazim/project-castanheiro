@@ -524,7 +524,7 @@ class DbManagerRecords
                 ->setQuery("SELECT DATE_FORMAT (saving_date,'%d-%m-%Y') as saving_date, saving_bank, saving_value, saving_filename, saving_number
 									FROM tab_clients_savings WHERE saving_id_client = :saving_id_client")
                 ->setConditions(['saving_id_client' => "$idClient"]);
-            $shResultsClientSavings = $sqlManager->fetchAll($shSelectClientSavings);
+            $shResultsClientProperty = $sqlManager->fetchAll($shSelectClientSavings);
 
             foreach ($shResultsClientSavings as $reportClients) {
                 $tr = "<tr>
@@ -543,6 +543,94 @@ class DbManagerRecords
         }
 
         return $listClientSavingsRegists;
+    }
+
+    /*Incluido/Removendo Imóvel para Cliente*/
+    public function manager_client_property($dbInstance, $regists_client_property)
+    {
+
+        $conds = ['id_client' => "$regists_client_property[clientAddProperty]",
+            'id_property' => "$regists_client_property[SelectAddProperty]",
+        ];
+
+        $sqlManager = new SqlManager($dbInstance);
+        $shSelectClientProperty = (new SqlQueryBuilder())
+            ->setQuery("SELECT  * FROM tab_clients_property WHERE id_client = :id_client AND id_property = :id_property")
+            ->setConditions($conds);
+        $shResultsClientProperty = $sqlManager->fetchAll($shSelectClientProperty);
+
+        if (!$shResultsClientProperty) {
+
+            try {
+
+                $data = [
+                    'id_client' => "$regists_client_property[clientAddProperty]",
+                    'id_property' => "$regists_client_property[SelectAddProperty]",
+                    'date_add' => date('Y-m-d h:m:s'),
+                ];
+
+                $sqlManager = new SqlManager($dbInstance);
+                $sqlQuery = (new SqlQueryBuilder())
+                    ->setTableName('tab_clients_property')
+                    ->setData($data);
+                $sqlManager->insert($sqlQuery);
+                $resp = 1;
+
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+                $resp = $error;
+            }
+
+        } else {
+            $resp = 2;
+        }
+
+        return $resp;
+    }
+
+    /*Listando os imoveis do locatário*/
+    public function list_client_property($dbInstance, $idClient)
+    {
+        try {
+
+            $tr = null;
+            $listClientPropertyRegists = null;
+
+            $sqlManager = new SqlManager($dbInstance);
+            $shSelectClientProperty = (new SqlQueryBuilder())
+                ->setQuery("SELECT
+                        DATE_FORMAT (a.date_add,'%d-%m-%Y') as date_add,
+                        a.id_client,  a.id_property, b.property_type, b.property_address, b.property_number,
+                        b.property_number_apto, b.property_city, b.property_state
+                        FROM
+                        tab_clients_property as a,
+                        tab_properties as b
+                        WHERE
+                        b.id = a.id_property and a.id_client = :id_client"
+                )
+                ->setConditions(['id_client' => "$idClient"]);
+            $shResultsClientProperty = $sqlManager->fetchAll($shSelectClientProperty);
+
+            foreach ($shResultsClientProperty as $reportClientProperty) {
+                $tr = "<tr>
+                        <td>$reportClientProperty[date_add]</td>
+                        <td>$reportClientProperty[property_type]</td>
+                        <td>$reportClientProperty[property_address],
+                            Número: $reportClientProperty[property_number],
+                            Apto: $reportClientProperty[property_number_apto],
+                            Cidade: $reportClientProperty[property_city],
+                            Estado: $reportClientProperty[property_state]
+                        </td>
+                      </tr>";
+                $listClientPropertyRegists .= $tr;
+            }
+
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            echo "Erro ao receber lista de imoveis" . $error;
+        }
+
+        return $listClientPropertyRegists;
     }
 
     public function report_client($dbInstance)
@@ -589,7 +677,7 @@ class DbManagerRecords
             $shResultsClientID = $sqlManager->fetchAll($shSelectClientID);
 
             foreach ($shResultsClientID as $clientsAll) {
-                $option = "<option value=\"manager.clients.php?editID=$clientsAll[id]\">Cód: $clientsAll[id] | $clientsAll[corporate_name]</option>";
+                $option = "<option value=\"manager.clients.php?editID=$clientsAll[id]\">$clientsAll[id] | $clientsAll[corporate_name]</option>";
                 $optionList .= $option;
             }
 
@@ -795,18 +883,48 @@ class DbManagerRecords
                 ->setQuery('SELECT * from tab_properties ORDER BY property_address , property_number, property_number_apto');
             $shResultsPropertyID = $sqlManager->fetchAll($shSelectPropertyID);
 
-            foreach ($shResultsPropertyID as $propertyALL) 
-            {
-                if ($propertyALL['property_type'] == 'Apartamento') 
-                {
+            foreach ($shResultsPropertyID as $propertyALL) {
+                if ($propertyALL['property_type'] == 'Apartamento') {
                     $Apto = "- Apto: $propertyALL[property_number_apto]";
-                } 
-                else {
-                    
+                } else {
+
                     $Apto = null;
                 }
 
                 $option = "<option value=\"manager.properties.php?editID=$propertyALL[id]\">$propertyALL[property_address], $propertyALL[property_number] $Apto </option>";
+                $optionList .= $option;
+            }
+
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            echo "Erro ao receber lista de clientes" . $error;
+        }
+
+        return $optionList;
+    }
+
+    /*Listando os id do Imóvel no Find no Cadastro de CLientes, para associar o imóvel*/
+    public function find_property_to_client($dbInstance)
+    {
+        try {
+
+            $optionList = null;
+
+            $sqlManager = new SqlManager($dbInstance);
+            $shSelectPropertyID = (new SqlQueryBuilder())
+                ->setQuery('SELECT * from tab_properties ORDER BY property_address , property_number, property_number_apto');
+            $shResultsPropertyID = $sqlManager->fetchAll($shSelectPropertyID);
+
+            foreach ($shResultsPropertyID as $propertyALL) {
+                if ($propertyALL['property_type'] == 'Apartamento') {
+                    $Apto = "- Apto: $propertyALL[property_number_apto]";
+
+                } else {
+
+                    $Apto = null;
+                }
+
+                $option = "<option value=\"$propertyALL[id]\">$propertyALL[property_address], $propertyALL[property_number] $Apto </option>";
                 $optionList .= $option;
             }
 
@@ -827,14 +945,20 @@ class DbManagerRecords
 
             $sqlManager = new SqlManager($dbInstance);
             $shSelectPropertyAll = (new SqlQueryBuilder())
-                ->setQuery('SELECT * from tab_properties WHERE id = :id')
+                ->setQuery('SELECT c.*,
+                            (SELECT b.name FROM  tab_clients_property as a, tab_clients as b WHERE b.id = a.id_client AND a.id_property = c.id) as client
+                            from
+                            tab_properties as c
+                            WHERE
+                            id = :id'
+                )
                 ->setConditions(['id' => "$propertyID"]);
             $shResultsPropertyAll = $sqlManager->fetchAll($shSelectPropertyAll);
 
             foreach ($shResultsPropertyAll as $propertyAll) {
                 $propertyData = [
                     'property_id' => "$propertyAll[id]",
-                    'property_client_id' => "$propertyAll[property_client_id]",
+                    'property_client' => "$propertyAll[client]",
                     'property_type' => "$propertyAll[property_type]",
                     'property_destination' => "$propertyAll[property_destination]",
                     'property_usefull_area' => "$propertyAll[property_usefull_area]",

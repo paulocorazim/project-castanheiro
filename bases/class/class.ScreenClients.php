@@ -1,10 +1,10 @@
 <?php
 
-Class ScreenClients
+class ScreenClients
 {
-    public function screenFormClient($findClients, $clientValues, $clientDocs, $clientContracts, $clientTableSavings)
+    public function screenFormClient($findClients, $clientValues, $clientDocs, $clientContracts, $clientTableSavings, $findProperty, $clientTablePropertys)
     {
-    //    print_r($clientValues);
+        //    print_r($clientValues);
 
         if (empty($clientValues)) {
             $btn_txt = "C A D A S T R A R";
@@ -40,14 +40,14 @@ Class ScreenClients
 
         return <<< EOT
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <div class="container-fluid"> 
+            <div class="container-fluid">
                 <div class="card o-hidden border-0 shadow-lg my-4">
                     <div class="p-4">
                         <div class="d-flex align-items-end flex-column bd-highlight">
                             <div class="bd-highlight">
                             <div class="input-group mb-3">
                                 <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
-                                  name="select_find_client_id" id="select_find_client_id" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">	                         
+                                  name="select_find_client_id" id="select_find_client_id" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">
                                     <option value="--">Localizar Cliente ... </option>
                                     $findClients
                                 </select>
@@ -59,7 +59,7 @@ Class ScreenClients
                                 </div>
                           </div>
                         </div>
-        
+
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#novocliente" role="tab" aria-controls="home" aria-selected="true">Cliente</a>
@@ -72,7 +72,7 @@ Class ScreenClients
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="contact" aria-selected="false">Documentos</a>
-                            </li>                           
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#poupanca" role="tab" aria-controls="contact" aria-selected="false">Poupança / Depósito</a>
                               </li>
@@ -88,22 +88,22 @@ Class ScreenClients
                           </ul>
                           <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="novocliente" role="tabpanel" aria-labelledby="home-tab">
-                                                                             
+
                                           <div class="form-group row">
                                             <div class="col-sm-2 mb-sm-0">
                                                 <br>
                                                 <select class="custom-select"  name="client_active" id="client_active">
                                                     <option value="1">Ativo</option>
                                                     <option value="0">Bloqueado</option>
-                                                </select>  
-                                            </div> 
+                                                </select>
+                                            </div>
                                             <div class="col-sm-5 mb-3 mb-sm-0">
                                                 <span>Nome</span>
                                                 <input type="hidden" id="client_id"  name="client_id" value="$clientValues[id]">
                                                 <input type="text" required name="client_name" id="client_name" class="form-control"  value="$clientValues[name]">
                                             </div>
                                         </div>
-                    
+
                                         <div class="form-group row">
                                             <div class="col-sm-4 mb-3 mb-sm-0">
                                                 <span>Razão Social</span>
@@ -113,7 +113,7 @@ Class ScreenClients
                                                 <span>CPF / CNPJ</span>
                                                 <input type="text" required name="cpfcnpj" id="cpfcnpj" onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' class="form-control" value="$clientValues[cpf] $clientValues[cnpj]">
                                             </div>
-                                            <div class="col-sm-3 mb-3 mb-sm-0">   
+                                            <div class="col-sm-3 mb-3 mb-sm-0">
                                                 <span>Inscrição Estadual</span>
                                                 <input type="text" name="client_state_registration" id="client_state_registration"  class="form-control" value="$clientValues[state_registration]">
                                             </div>
@@ -122,7 +122,7 @@ Class ScreenClients
                                                 <input class="custom-checkbox" type="checkbox" name="client_state_registration_free" id="client_state_registration_free" value="fr" OnClick="disable_client_state_registration_free()">
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-group row">
                                             <div class="col-sm-4 mb-3 mb-sm-0">
                                                 <span>Inscrição Municipal</span>
@@ -138,28 +138,28 @@ Class ScreenClients
                                             </div>
                                         </div>
                             </div>
-                            
+
                             <div class="tab-pane fade" id="dadosadicionais1" role="tabpanel" aria-labelledby="profile-tab">
-                              
-                                <!-- <h3 class="h-auto">Dados Adicionais 1</h3> -->  
-                                                               
+
+                                <!-- <h3 class="h-auto">Dados Adicionais 1</h3> -->
+
                                 <div class="form-group row">
                                     <div class="col-sm-4 mb-3 mb-sm-0">
                                         <span>E-mail 1</span>
-                                        <input type="email" required name="client_email1" id="client_email1" class="form-control" value="$clientValues[email1]">                           
+                                        <input type="email" required name="client_email1" id="client_email1" class="form-control" value="$clientValues[email1]">
                                     </div>
                                     <div class="col-sm-4 mb-3 mb-sm-0">
                                     <span>E-mail 2</span>
-                                    <input type="email" name="client_email2" id="client_email2" class="form-control" value="$clientValues[email2]">                            
-                                    </div> 
+                                    <input type="email" name="client_email2" id="client_email2" class="form-control" value="$clientValues[email2]">
+                                    </div>
                                     <div class="col-sm-4 mb-3 mb-sm-0">
-                                        <span>Site (www)</span> 
-                                        <input type="text" name="client_site" id="client_site" class="form-control" value="$clientValues[site]">                            
-                                    </div> 
+                                        <span>Site (www)</span>
+                                        <input type="text" name="client_site" id="client_site" class="form-control" value="$clientValues[site]">
+                                    </div>
                                 </div>
-                                
+
                                 <div class="form-group row">
-                                    
+
                                     <div class="col-sm-4 mb-2 mb-sm-0">
                                        <span>Tel1</span>
                                        <input data-mask='+55 (00) 00000-0000' required type="text" name="client_phone1" id="client_phone1" class="form-control" onclick="format_phones()" value="$clientValues[phone1]">
@@ -167,13 +167,13 @@ Class ScreenClients
                                     <div class="col-sm-4 mb-2 mb-sm-0">
                                        <span>Tel2</span>
                                        <input data-mask='+55 (00) 00000-0000'type="text" name="client_phone2" id="client_phone2" class="form-control" onclick="format_phones()" value="$clientValues[phone2]">
-                                    </div>   
-                                    <div class="col-sm-4 mb-2 mb-sm-0">   
+                                    </div>
+                                    <div class="col-sm-4 mb-2 mb-sm-0">
                                         <span>Tel3</span>
                                         <input data-mask='+55 (00) 00000-0000' type="text" name="client_phone3" id="client_phone3" class="form-control" onclick="format_phones()" value="$clientValues[phone3]">
-                                    </div> 
-                                    </div>                 
-                                
+                                    </div>
+                                    </div>
+
                                     <div class="form-group row">
                                         <div class="col-sm-2 mb-3 mb-sm-0">
                                             <span>Cep</span>
@@ -185,64 +185,64 @@ Class ScreenClients
                                         </div>
                                          <div class="col-sm-2 mb-2 mb-sm-0">
                                             <span>Número</span>
-                                            <input type="text" required name="client_number" id="client_number" class="form-control" value="$clientValues[number]">                  
+                                            <input type="text" required name="client_number" id="client_number" class="form-control" value="$clientValues[number]">
                                         </div>
                                     </div>
-        
+
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <span>Município</span>
-                                            <input type="text" name="client_county" id="client_county" class="form-control" value="$clientValues[county]">                  
+                                            <input type="text" name="client_county" id="client_county" class="form-control" value="$clientValues[county]">
                                         </div>
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <span>Cidade</span>
-                                            <input type="text" name="client_city" id="client_city" class="form-control" value="$clientValues[city]">                  
-                                        </div> 
+                                            <input type="text" name="client_city" id="client_city" class="form-control" value="$clientValues[city]">
+                                        </div>
                                     </div>
-        
+
                                     <div class="form-group row">
                                         <div class="col-sm-4 mb-2 mb-sm-0">
                                             <span>Estado</span>
-                                            <input type="text" required name="client_state" id="client_state" class="form-control" value="$clientValues[state]">                  
+                                            <input type="text" required name="client_state" id="client_state" class="form-control" value="$clientValues[state]">
                                         </div>
                                         <div class="col-sm-4 mb-2 mb-sm-0">
                                             <span>Bairro</span>
-                                            <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control" value="$clientValues[neighbordhood]">                  
-                                        </div> 
+                                            <input type="text" name="client_neighbordhood" id="client_neighbordhood" class="form-control" value="$clientValues[neighbordhood]">
+                                        </div>
                                         <div class="col-sm-4 mb-2 mb-sm-0">
                                             <span>Complemento</span>
-                                            <input type="text" name="client_complement" id="client_complement" class="form-control" value="$clientValues[complement]">                  
-                                        </div> 
+                                            <input type="text" name="client_complement" id="client_complement" class="form-control" value="$clientValues[complement]">
+                                        </div>
                                     </div>
-        
+
                             </div>
-                            
+
                             <div class="tab-pane fade" id="dadosadicionais2" role="tabpanel" aria-labelledby="contact-tab">
-                               <div class="form-control-sm form-control bg-light border-0 small">Tipo Atual : <strong>$type_current</strong></div><hr>                                  
-                                <select name="client_type" id="client_type" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">	                         
+                               <div class="form-control-sm form-control bg-light border-0 small">Tipo Atual : <strong>$type_current</strong></div><hr>
+                                <select name="client_type" id="client_type" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">
                                     <option value="--">Selecione o Tipo de Cliente</option>
                                     <option value="loc">LOCATÁRIO</option>
                                     <option value="cli">CLIENTE</option>
                                     <option value="for">FORNECEDOR</option>
                                     <option value="col">COLABORADOR</option>
-                                </select>                                                                           
+                                </select>
                             </div>
-                            
+
                             <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="contact-tab">
                                 <form method="post" enctype="multipart/form-data" id="fileUploadForm">
                                     <input type="hidden" name="clientIDdoc" id="clientIDdoc" value="$clientValues[id]">
                                     <input type="file" class="btn btn-sm btn-info" name="file" id="file">
-                                    <button name="j_btn_doc" id="j_btn_doc" value="insertDoc" class="btn btn-info" $btn_docs /><strong>Anexar Documentos</strong></button>                             
-                                 </form>   
+                                    <button name="j_btn_doc" id="j_btn_doc" value="insertDoc" class="btn btn-info" $btn_docs /><strong>Anexar Documentos</strong></button>
+                                 </form>
                                     <hr>
                                 <hr>
                                 Arquivos atuais : <br>
-                                <div class="btn btn-sm btn-light">                                     
+                                <div class="btn btn-sm btn-light">
                                     <strong>$clientDocs</strong>
                                 </div>
                             </div>
-                            
-                            <div class="tab-pane fade" id="poupanca" role="tabpanel" aria-labelledby="contact-tab">                               
+
+                            <div class="tab-pane fade" id="poupanca" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="row">
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <form method="post" enctype="multipart/form-data" id="fileUploadFormSaving">
@@ -256,72 +256,79 @@ Class ScreenClients
                                         <select class="custom-select"  name="client_savings_bank" id="client_savings_bank">
                                             <option value="ITAU-350-30833-4"><font color='blue'>ITAU AG:350 CC:30833-4</font></option>
                                             <option value="SANTANDER-3986-130048-2"><font color='red'>SANTANDER AG:3186 CC:1300482</font></option>
-                                        </select> 
+                                        </select>
 
                                         <span>Conta Poupança :</span>
                                         <input type="text" required name="client_savings_number" id="client_savings_number" class="form-control"><br>
-                                        
-                                        
+
+
                                         <input type="file" class="btn btn-sm btn-info" name="fileSavings" id="fileSavings"><hr>
                                         <button name="j_btn_salve_savings" id="j_btn_salve_savings" value="InsertSavings" class="btn btn-sm btn-success" $btn_saving />Salvar Depósito</button>
                                     </form>
-                                </div>     
-                                
+                                </div>
+
                             $clientTableSavings
-                            
+
                             <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
                                 <form method="post" enctype="multipart/form-data" id="fileUploadFormContract">
                                     <input type="hidden" name="clientIDcontract" id="clientIDcontract" value="$clientValues[id]">
                                     <input type="file" class="btn btn-sm btn-info" name="file" id="fileContract">
-                                    <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info" $btn_contract /><strong>Anexar Contrato</strong></button>                             
-                                 </form>   
+                                    <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info" $btn_contract /><strong>Anexar Contrato</strong></button>
+                                 </form>
                                     <hr>
                                 <hr>
                                 Contratos atuais : <br>
-                                <div class="btn btn-sm btn-light">                                     
+                                <div class="btn btn-sm btn-light">
                                     <strong>$clientContracts</strong>
                                 </div>
                             </div>
 
 
                             <div class="tab-pane fade" id="imoveis" role="tabpanel" aria-labelledby="contact-tab">
-                                <div class="custom-file">                            
-                                    <select type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small" name="" id="">	                         
-                                        <option value="--">Adicionar Imóveis ... </option>
-                                        
-                                    </select>                              
-                                    <hr>                            
-                                    <div class="btn-info btn-sm">
-                                     Dados dos Imóveis
-                                    </div><br>                            
+                                <div class="custom-file">
+
+                                <form method="post" enctype="multipart/form-data" id="FormAddProperty">
+                                <input type="hidden" name="clientAddProperty" id="clientAddProperty" value="$clientValues[id]">
+
+                                    <select  type="text" class="form-control-sm form-control bg-light border-0 small" name="SelectAddProperty"  id="SelectAddProperty" >
+                                    <option value="">Adicionar Imóvel ... </option>
+                                        $findProperty
+                                    </select>
+                                    <hr>
+
+                                    <button name="j_btn_salve_client_Property" id="j_btn_salve_client_Property" value="Insert_client_Property" class="btn btn-sm btn-success" />Adicionar Imóvel</button>
+                                </form>
+
+                                    <hr>
+                                    $clientTablePropertys
+
                                 </div>
                             </div>
 
                             <div class="tab-pane fade" id="observacoes" role="tabpanel" aria-labelledby="contact-tab">
                                 <textarea name="client_obs" id="client_obs" cols="70" rows="10">
                                 $clientValues[obs]
-                                </textarea>                                   
+                                </textarea>
                                 <hr>
                             </div>
-                          </div>                                                                      
+                          </div>
                            </div>
 						  <div class="d-flex align-items-end flex-column bd-highlight mt-3">
                             <div class="p-2 bd-highlight">
                              <button name="btn_insert_update_client" id="btn_insert_update_client" value="InsertUpdate" class="btn btn-success">$btn_txt</button>
                             </div>
-                          </div>                                                        
+                          </div>
                         </div>
                     </div>
-            
-        
+
+
 EOT;
     }
-
 
     public function screenListClientSavings($listClientSavingsRegists)
     {
         return <<< EOT
-            <div id="table_savings" class="col-sm-8 mb-auto mb-sm-1">                               
+            <div id="table_savings" class="col-sm-8 mb-auto mb-sm-1">
                 <div class="card-body">
                   <div class="table-responsive">
                     <table cellspacing="0" class="table small table-hover table-bordered">
@@ -333,23 +340,48 @@ EOT;
                         <th>Poupança</th>
                         <th>Arquivo</th>
                       </tr>
-                      </thead>                      
-                      <tbody>                 
+                      </thead>
+                      <tbody>
                          $listClientSavingsRegists
                       </tbody>
                     </table>
                   </div>
                 </div>
-              </div>                          
+              </div>
             </div>
             </div>
 EOT;
     }
 
+    public function screenListClientProperty($listClientPropertys)
+    {
+        return <<< EOT
+            <div id="table_propertys" class="col-sm-8 mb-auto mb-sm-1">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table cellspacing="0" class="table small table-hover table-bordered">
+                      <thead>
+                      <tr>
+                        <th>Data Associação</th>
+                        <th>Tipo</th>
+                        <th>Endereço</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                         $listClientPropertys
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+EOT;
+    }
 
     public function screenListClients($reportClients)
- {
-    return <<< EOT
+    {
+        return <<< EOT
     <div class="card shadow mb-4">
         <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">[ Relatório de Clientes Cadastrados ]</h6>
@@ -384,6 +416,6 @@ EOT;
     </div>
 
 EOT;
-        }    
+    }
 
 }
