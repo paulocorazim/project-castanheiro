@@ -276,7 +276,7 @@ if (isset($_POST['j_btn_salve_client_Property'])) {
     }
 
     if ($resp == 2) {
-        echo $appFunctions->alert_system('3', "Não é possivel acessor imóvel, já está associado a esse locatário");
+        echo $appFunctions->alert_system('3', "ops!  Não é possivel associar imóvel, já está associado a esse locatário!");
         exit();
     }
 }

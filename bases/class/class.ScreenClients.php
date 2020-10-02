@@ -356,7 +356,7 @@ EOT;
     public function screenListClientProperty($listClientPropertys)
     {
         return <<< EOT
-            <div id="table_propertys" class="col-sm-8 mb-auto mb-sm-1">
+            <div id="table_propertys>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table cellspacing="0" class="table small table-hover table-bordered">
@@ -365,6 +365,11 @@ EOT;
                         <th>Data Associação</th>
                         <th>Tipo</th>
                         <th>Endereço</th>
+                        <th>Numero</td>
+                        <th>Apto</td>
+                        <th>Cidade</td>
+                        <th>UF</td>
+                        <th>Ações</td>
                       </tr>
                       </thead>
                       <tbody>

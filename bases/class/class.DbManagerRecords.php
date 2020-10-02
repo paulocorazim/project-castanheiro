@@ -598,7 +598,7 @@ class DbManagerRecords
 
             $sqlManager = new SqlManager($dbInstance);
             $shSelectClientProperty = (new SqlQueryBuilder())
-                ->setQuery("SELECT
+                ->setQuery("SELECT a.id,
                         DATE_FORMAT (a.date_add,'%d-%m-%Y') as date_add,
                         a.id_client,  a.id_property, b.property_type, b.property_address, b.property_number,
                         b.property_number_apto, b.property_city, b.property_state
@@ -615,12 +615,12 @@ class DbManagerRecords
                 $tr = "<tr>
                         <td>$reportClientProperty[date_add]</td>
                         <td>$reportClientProperty[property_type]</td>
-                        <td>$reportClientProperty[property_address],
-                            Número: $reportClientProperty[property_number],
-                            Apto: $reportClientProperty[property_number_apto],
-                            Cidade: $reportClientProperty[property_city],
-                            Estado: $reportClientProperty[property_state]
-                        </td>
+                        <td>$reportClientProperty[property_address]</td>
+                        <td>$reportClientProperty[property_number]</td>
+                        <td>$reportClientProperty[property_number_apto]</td>
+                        <td>$reportClientProperty[property_city]</td>
+                        <td>$reportClientProperty[property_state]</td>
+                        <td><a class='btn btn-sm btn-secondary' href='#'>Remover</a></td>
                       </tr>";
                 $listClientPropertyRegists .= $tr;
             }
