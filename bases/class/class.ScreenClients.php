@@ -251,14 +251,14 @@ class ScreenClients
                                         <input type="text" required name="client_savings_value" id="client_savings_value" class="form-control" data-mask="#.##0,00" placeholder="R$ 0.000,00">
                                         <span>Data do Depósito :</span>
                                         <input type="date" required name="client_savings_date" id="client_savings_date" class="form-control">
-                                        <span>Banco Depósito :</span>
+                                        <span>Banco Depósito</span>
 
                                         <select class="custom-select"  name="client_savings_bank" id="client_savings_bank">
+                                            <option value="SANTANDER-3986-130048-2"><font color='red'>SANTANDER AG:3986 CC:1300482</font></option>
                                             <option value="ITAU-350-30833-4"><font color='blue'>ITAU AG:350 CC:30833-4</font></option>
-                                            <option value="SANTANDER-3986-130048-2"><font color='red'>SANTANDER AG:3186 CC:1300482</font></option>
                                         </select>
 
-                                        <span>Conta Poupança :</span>
+                                        <span>Conta Poupança ou Apólices </span>
                                         <input type="text" required name="client_savings_number" id="client_savings_number" class="form-control"><br>
 
 
