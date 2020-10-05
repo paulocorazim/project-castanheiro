@@ -76,6 +76,7 @@ if (isset($_GET['editID'])) {
 
     /*Lendo poupanças do cliente*/
     $clientListSavings = $activeRecords->list_client_saving($dbInstance, $clientID);
+
     $clientTableSavings = $screenClient->screenListClientSavings($clientListSavings);
 
     /*Lendo imóveis do cliente*/
