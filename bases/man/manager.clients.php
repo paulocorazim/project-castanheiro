@@ -264,8 +264,6 @@ if (isset($_POST['j_btn_salve_savings'])) {
 /*inserindo Vistorias do Imóvel / Cliente*/
 if(isset($_POST['j_btn_salve_survey'])){
 
-	//var_dump($_POST);
-
 	$regists_client_survey = $_POST;
 	$resp = $activeRecords->manager_client_survey($dbInstance, $regists_client_survey);
 
@@ -276,17 +274,34 @@ if(isset($_POST['j_btn_salve_survey'])){
 
 	if ($resp == '1') {
 
+		//echo "<pre>";
+		//print_r($_FILES);
+
 		$activeRecords->manager_client_survey_file($dbInstance, $regists_client_survey, $_FILES);
 		echo $appFunctions->alert_system('1', "Vistorias Incluida com sucesso");
+
+		foreach ($_FILES as $fileSurvey => $fileData) {
+
+			$typeDoc = 'Survey';
+			$resp_process = $appFunctions->upload_files($_POST['clientAddSurvey'], $fileData, $typeDoc);
+
+			if ($resp_process['0'] == '0') { //erro ao fazer upload
+				$resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
+				echo $resp_process;
+				exit();
+			}
+
+			if ($resp_process['0'] == '1') { //sucesso para salvar o arquivo
+				$resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
+				echo $resp_process;
+			}
+
+
+		}
+
 		exit();
 	}
 
-
-	//	var_dump($_FILES);
-	//	exit;
-	//
-	//	$typeDoc = 'Survey';
-	//	$resp_process = $appFunctions->upload_files($_POST['client_savings_id'], $_FILES['fileSavings'], $typeDoc);
 
 }
 

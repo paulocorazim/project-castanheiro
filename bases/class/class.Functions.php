@@ -138,6 +138,7 @@ EOT;
 
 		$_FILES = $clientDOC;
 
+
 		// Pasta onde o arquivo vai ser salvo
 		if ($typeDoc == 'Documents') {
 			$_UP[ 'pasta' ] = "../docs/clients/$clientID/";
@@ -184,7 +185,6 @@ EOT;
 			$resp = "Por favor, envie arquivos com as seguintes extensões: jpg, png, gif, pdf, doc ou docx";
 
 		} else {
-
 			
 			if ($_UP[ 'renomeia' ] == true) {
 				$nome_final = date('Y-m-d') . ".$extensao";
