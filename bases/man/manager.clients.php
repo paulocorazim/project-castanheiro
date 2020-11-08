@@ -282,6 +282,15 @@ if(isset($_POST['j_btn_salve_survey'])){
 
 		foreach ($_FILES as $fileSurvey => $fileData) {
 
+			$clientPathFile = "../docs/clients/$_POST[clientAddSurvey]/survey";
+
+			if (file_exists($clientPathFile)) {
+				//echo "Arquivo ou diretórioexiste";
+			} else {
+				mkdir("..//docs/clients/$_POST[clientAddSurvey]/survey", 0777, true);
+				chmod("..//docs/clients/$_POST[clientAddSurvey]/survey", 0777);
+			}
+
 			$typeDoc = 'Survey';
 			$resp_process = $appFunctions->upload_files($_POST['clientAddSurvey'], $fileData, $typeDoc);
 
@@ -329,7 +338,6 @@ if (isset($_POST['j_btn_salve_client_Property'])) {
 
 /*Tela Principal*/
 echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow);
-
 
 /*Fim da pagina e carregamento dos JS */
 $footer = new shFooter();

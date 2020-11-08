@@ -223,7 +223,7 @@ EOT;
 
 		while ($file = $dirPath->read()) {
 
-			if ($file != 'Thumbs.db' AND $file != '.' AND $file != '..' AND $file != 'savings' AND $file != 'contracts') {
+			if ($file != 'Thumbs.db' AND $file != '.' AND $file != '..' AND $file != 'savings' AND $file != 'contracts' AND $file != 'survey') {
 
 				$file_name = "<a href='$clientPathFile$file' target='_blank'>$file</a><hr>";
 				$files_name .= $file_name;
