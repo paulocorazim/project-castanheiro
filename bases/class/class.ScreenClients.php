@@ -174,7 +174,7 @@ class ScreenClients
                                        <input data-mask='+55 (00) 00000-0000'type="text" name="client_phone2" id="client_phone2" class="form-control" onclick="format_phones()" value="$clientValues[phone2]">
                                     </div>
                                     <div class="col-sm-4 mb-2 mb-sm-0">
-                                        <span>Tel3</span>
+                                        <span>Cel1</span>
                                         <input data-mask='+55 (00) 00000-0000' type="text" name="client_phone3" id="client_phone3" class="form-control" onclick="format_phones()" value="$clientValues[phone3]">
                                     </div>
                                     </div>
@@ -342,11 +342,10 @@ class ScreenClients
                                         <td><input type="file" class="btn btn-sm btn-info" name="survey_livingroom_file" id="survey_livingroom_file"></td>
                                         <td><textarea class="form-control" name="survey_livingroom_textarea" id="survey_livingroom_textarea" rows="5"></textarea></td>
                                     </tr>
-                                    
-                                    <button name="j_btn_salve_survey" id="j_btn_salve_survey" value="InsertSurvey" class="btn btn-sm btn-success" $btn_survey />Salvar Vistorias</button>
-
                                     </tbody>
                                     </table>
+                                    <button name="j_btn_salve_survey" id="j_btn_salve_survey" value="InsertSurvey" class="btn btn-sm btn-success" $btn_survey>Salvar Vistorias</button>
+
                                </form>
                               </div>
                             </div>
