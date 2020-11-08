@@ -441,11 +441,14 @@ class DbManagerRecords
                 mkdir("..//docs/clients/$client_dir_create", 0777, true);
                 mkdir("..//docs/clients/$client_dir_create/savings", 0777, true);
                 mkdir("..//docs/clients/$client_dir_create/contracts", 0777, true);
+	            mkdir("..//docs/clients/$client_dir_create/survey", 0777, true);
                 chmod("..//docs/clients/$client_dir_create", 0777);
                 chmod("..//docs/clients/$client_dir_create/savings", 0777);
                 chmod("..//docs/clients/$client_dir_create/contracts", 0777);
+	            chmod("..//docs/clients/$client_dir_create/survey", 0777);
 
-                //Aviso do sucesso e redireciona a pagina
+
+	            //Aviso do sucesso e redireciona a pagina
                 $resp = $docID['ID'];
 
             } catch (Exception $e) {
@@ -510,6 +513,73 @@ class DbManagerRecords
 
         return $resp;
     }
+
+	/*Incluido Vistoria/Cliente*/
+	public function manager_client_survey($dbInstance, $regists_client_survey)
+	{
+		try {
+
+			/* $conds = ['id' => "$regists_billet_client[find_client]"];*/
+
+			$data = [
+				'survey_id_client' => "$regists_client_survey[clientAddSurvey]",
+				'survey_id_propertie' => "$regists_client_survey[clientAddSurvey]",
+				'survey_bedroom' => "$regists_client_survey[survey_bedrooms_textarea]",
+				'survey_wc' => "$regists_client_survey[survey_wc_textarea]",
+				'survey_livingroom' => "$regists_client_survey[survey_livingroom_textarea]"
+			];
+
+			// print_r($data);
+			// exit();
+
+			$sqlManager = new SqlManager($dbInstance);
+			$sqlQuery = (new SqlQueryBuilder())
+				->setTableName('tab_clients_survey')
+				->setData($data);
+			$sqlManager->insert($sqlQuery);
+			$resp = 1;
+
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			$resp = $error;
+		}
+
+		return $resp;
+	}
+
+	/*Incluido Vistoria/Cliente/UpDateFile*/
+	public function manager_client_survey_file($dbInstance, $regists_client_survey, $regists_client_survey_file)
+	{
+		try {
+
+			$data = array();
+
+			foreach ($regists_client_survey_file as $dataField => $fileName) {
+
+				$data[$dataField] =$fileName['name'];
+			}
+
+			$conds = ['survey_id_client' => "$regists_client_survey[clientAddSurvey]"];
+
+			$sqlManager = new SqlManager($dbInstance);
+			$sqlQuery = (new SqlQueryBuilder())
+				->setTableName('tab_clients_survey')
+				->setConditions($conds)
+				->setData($data);
+			$sqlManager->update($sqlQuery);
+
+			var_dump($data);
+			exit;
+
+			$resp = 1;
+
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			$resp = $error;
+		}
+
+		return $resp;
+	}
 
     /*Listando os registros de depósito poupanças*/
     public function list_client_saving($dbInstance, $idClient)

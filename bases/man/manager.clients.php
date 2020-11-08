@@ -50,7 +50,7 @@ $screenClient = new ScreenClients();
 /* Atribuindo a content o valor da tela pra apresentar a pagina*/
 $contentNow = $screenClient->screenFormClient($findClients, null, null, null, null, null, null);
 
-/*Lista de Usuários*/
+/*Lista de Clientes*/
 if ($_GET['report'] == true) {
     $reportClients = $activeRecords->report_client($dbInstance);
     $contentNow = $screenClient->screenListClients($reportClients);
@@ -261,6 +261,36 @@ if (isset($_POST['j_btn_salve_savings'])) {
     }
 }
 
+/*inserindo Vistorias do Imóvel / Cliente*/
+if(isset($_POST['j_btn_salve_survey'])){
+
+	//var_dump($_POST);
+
+	$regists_client_survey = $_POST;
+	$resp = $activeRecords->manager_client_survey($dbInstance, $regists_client_survey);
+
+	if ($resp != '1') {
+		echo $appFunctions->alert_system('0', "Erro ao processar Vistoria - $resp");
+		exit();
+	}
+
+	if ($resp == '1') {
+
+		$activeRecords->manager_client_survey_file($dbInstance, $regists_client_survey, $_FILES);
+		echo $appFunctions->alert_system('1', "Vistorias Incluida com sucesso");
+		exit();
+	}
+
+
+	//	var_dump($_FILES);
+	//	exit;
+	//
+	//	$typeDoc = 'Survey';
+	//	$resp_process = $appFunctions->upload_files($_POST['client_savings_id'], $_FILES['fileSavings'], $typeDoc);
+
+}
+
+/*Acessciando Cliente/Imóvel */
 if (isset($_POST['j_btn_salve_client_Property'])) {
 
     $regists_client_property = [
@@ -282,9 +312,9 @@ if (isset($_POST['j_btn_salve_client_Property'])) {
     }
 }
 
-/*Tela Principal*/{
-    echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow);
-}
+/*Tela Principal*/
+echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow);
+
 
 /*Fim da pagina e carregamento dos JS */
 $footer = new shFooter();

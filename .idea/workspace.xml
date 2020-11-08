@@ -20,9 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
+      <change afterPath="$PROJECT_DIR$/bases/js/insert_survey_clients.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/castanheiro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/castanheiro.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/js/insert_docs_clients.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/insert_docs_clients.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.Functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,6 +89,8 @@
       <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/collections" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/macroable" />
     </include_path>
   </component>
   <component name="ProjectId" id="1W7yJNZSLPz8DN0QjAsponsntt9" />
@@ -108,7 +117,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -239,6 +248,7 @@
       <workItem from="1599696300121" duration="7063000" />
       <workItem from="1600122214862" duration="1500000" />
       <workItem from="1600134068625" duration="648000" />
+      <workItem from="1604845623419" duration="20967000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -306,18 +316,28 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="390" y="12" key="#PHP/0.0.1366.738@0.0.1366.738" timestamp="1597882740164" />
-    <state x="274" y="9" width="1092" height="729" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597603802652">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="290" y="97" width="800" height="671" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604853472740">
+      <screen x="0" y="28" width="1366" height="740" />
     </state>
     <state x="274" y="9" width="1092" height="729" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1597603802652" />
+    <state x="290" y="97" width="800" height="671" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.28.1366.740@0.28.1366.740" timestamp="1604853472740" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1597603147425">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1366.738@0.0.1366.738" timestamp="1597603147425" />
-    <state x="184" y="14" key="SettingsEditor" timestamp="1600134300157">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="228" y="28" key="SettingsEditor" timestamp="1604852113106">
+      <screen x="0" y="28" width="1366" height="740" />
     </state>
     <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1600134300157" />
+    <state x="228" y="28" key="SettingsEditor/0.28.1366.740@0.28.1366.740" timestamp="1604852113106" />
+    <state x="409" y="202" width="369" height="323" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1604867832876">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state x="409" y="202" width="369" height="323" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.28.1366.740@0.28.1366.740" timestamp="1604867832876" />
+    <state x="152" y="43" width="864" height="679" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1604855092650">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state x="152" y="43" width="864" height="679" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.28.1366.740@0.28.1366.740" timestamp="1604855092650" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1597679343305">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

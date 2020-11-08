@@ -11,6 +11,7 @@ class ScreenClients
             $btn_docs = 'disabled';
             $btn_saving = 'disabled';
             $btn_contract = 'disabled';
+	        $btn_survey = 'disabled';
 
         } else {
             $btn_txt = "ALTERAR [ Cliente: $clientValues[name] ]";
@@ -83,11 +84,11 @@ class ScreenClients
                               <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#imoveis" role="tab" aria-controls="contact" aria-selected="false">Imóveis</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#observacoes" role="tab" aria-controls="contact" aria-selected="false">Observações</a>
+                                <a class="nav-link $desactive_tab_contract" data-toggle="tab" href="#vistorias" role="tab" aria-controls="contact" aria-selected="false">Vistorias</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#vistorias" role="tab" aria-controls="contact" aria-selected="false">Vistorias</a>
-                              </li>
+                              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#observacoes" role="tab" aria-controls="contact" aria-selected="false">Observações</a>
+                            </li>                            
                           </ul>
                           
                           <div class="tab-content" id="myTabContent">
@@ -236,7 +237,7 @@ class ScreenClients
                                 <form method="post" enctype="multipart/form-data" id="fileUploadForm">
                                     <input type="hidden" name="clientIDdoc" id="clientIDdoc" value="$clientValues[id]">
                                     <input type="file" class="btn btn-sm btn-info" name="file" id="file">
-                                    <button name="j_btn_doc" id="j_btn_doc" value="insertDoc" class="btn btn-info" $btn_docs><strong>Anexar Documentos</strong></button>
+                                    <button name="j_btn_doc" id="j_btn_doc" value="insertDoc" class="btn btn-info" $btn_docs ><strong>Anexar Documentos</strong></button>
                                  </form>
                                     
                                 <hr>
@@ -312,63 +313,60 @@ class ScreenClients
                                 </div>
                             </div>
 
-                            <div class="tab-pane" id="observacoes" role="tabpanel" aria-labelledby="contact-tab">
-                                <textarea name="client_obs" id="client_obs" cols="70" rows="10">
-                                $clientValues[obs]
-                                </textarea>
-                                <hr>
-                            </div>
-
                             <div class="tab-pane" id="vistorias" role="tabpanel" aria-labelledby="contact-tab">
-                                    <div class="card-body">
-                                      <div class="table-responsive">
-                                        <table  class="table table-bordered"  width="50%">
-                                          <thead>
-                                          <tr>
-                                            <th>Comodos</th>
-                                            <th>Imagens</th>
-                                            <th>Observações</th>
-                                          </tr>
-                                          </thead>
-                                          <tbody>                                          
-                                          <tr>
-                                            <td>Quarto(s)</td>
-                                            <td><input type="file" class="btn btn-sm btn-info" name="" id=""></td>
-                                            <td><textarea class="form-control" id="" rows="5"></textarea></td>
-                                          </tr>
-                                          <tr>
-                                            <td>Banheiro(s)</td>
-                                            <td><input type="file" class="btn btn-sm btn-info" name="" id=""></td>
-                                            <td><textarea class="form-control" id="" rows="5"></textarea></td>
-                                          </tr>
-                                          <tr>
-                                            <td>Sala(s)</td>
-                                            <td><input type="file" class="btn btn-sm btn-info" name="" id=""></td>
-                                            <td><textarea class="form-control" id="" rows="5"></textarea></td>
-                                          </tr>
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                    </div>
+                            <div class="card-body">
+                              <div class="table-responsive">
+                              <form method="post" enctype="multipart/form-data" id="FormAddSurvey">
+                                <input type="hidden" name="clientAddSurvey" id="clientAddSurvey" value="$clientValues[id]">
+                                    <table  class="table table-bordered"  width="50%">
+                                    <thead>
+                                    <tr>
+                                        <th>Comodos</th>
+                                        <th>Imagens</th>
+                                        <th>Observações</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>                                          
+                                    <tr>
+                                        <td>Quarto(s)</td>
+                                        <td><input type="file" class="btn btn-sm btn-info" name="survey_bedroom_file" id="survey_bedroom_file"></td>
+                                        <td><textarea class="form-control" name="survey_bedrooms_textarea" id="survey_bedrooms_textarea" rows="5"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Banheiro(s)</td>
+                                        <td><input type="file" class="btn btn-sm btn-info" name="survey_wc_file" id="survey_wc_file"></td>
+                                        <td><textarea class="form-control" name="survey_wc_textarea" id="survey_wc_textarea" rows="5"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sala(s)</td>
+                                        <td><input type="file" class="btn btn-sm btn-info" name="survey_livingroom_file" id="survey_livingroom_file"></td>
+                                        <td><textarea class="form-control" name="survey_livingroom_textarea" id="survey_livingroom_textarea" rows="5"></textarea></td>
+                                    </tr>
+                                    
+                                    <button name="j_btn_salve_survey" id="j_btn_salve_survey" value="InsertSurvey" class="btn btn-sm btn-success" $btn_survey />Salvar Vistorias</button>
+
+                                    </tbody>
+                                    </table>
+                               </form>
+                              </div>
                             </div>
 
-
-                          </div>
-                        </div>
-                         
-                            <div class="d-flex align-items-end flex-column bd-highlight mt-3">
-                                <div class="p-2 bd-highlight">
-                                    <button name="btn_insert_update_client" id="btn_insert_update_client" value="InsertUpdate" class="btn btn-success">$btn_txt</button>
+                            </div>
+                                <div class="tab-pane" id="observacoes" role="tabpanel" aria-labelledby="contact-tab">
+                                    <textarea name="client_obs" id="client_obs" cols="70" rows="10">
+                                    $clientValues[obs]
+                                    </textarea>
+                                    <hr>
+                                </div>                                    
                                 </div>
                             </div>
-                       
-                    </div>
-                </div>
-
-       
-    
-
-              
+                                <div class="d-flex align-items-end flex-column bd-highlight mt-3">
+                                    <div class="p-2 bd-highlight">
+                                        <button name="btn_insert_update_client" id="btn_insert_update_client" value="InsertUpdate" class="btn btn-success">$btn_txt</button>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
 
 
 EOT;

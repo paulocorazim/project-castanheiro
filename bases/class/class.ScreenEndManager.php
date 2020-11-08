@@ -6,7 +6,7 @@ class shFooter
     public function sh_footer()
     {
 
-        $footer = <<< EOT
+	    return <<< EOT
             <!-- JavaScript Mascaras-->
 
             <script src="https://bossanova.uk/jsuites/v2/jsuites.js"></script>
@@ -21,6 +21,7 @@ class shFooter
             <script src="../js/insert_docs_clients.js" type="text/javascript"></script>
             <script src="../js/insert_contract_clients.js" type="text/javascript"></script>
             <script src="../js/insert_savings_attached_clients.js" type="text/javascript"></script>
+            <script src="../js/insert_survey_clients.js" type="text/javascript"></script>
 
             <!-- Bootstrap core JavaScript-->
             <script src="../vendor/jquery/jquery.min.js"></script>
@@ -52,8 +53,6 @@ class shFooter
             </html>
 
 EOT;
-
-        return $footer;
 
     }
 }
