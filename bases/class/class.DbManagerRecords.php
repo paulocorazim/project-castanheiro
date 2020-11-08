@@ -568,9 +568,6 @@ class DbManagerRecords
 				->setData($data);
 			$sqlManager->update($sqlQuery);
 
-			var_dump($data);
-			exit;
-
 			$resp = 1;
 
 		} catch (Exception $e) {
