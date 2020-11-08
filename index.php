@@ -1,3 +1,3 @@
 <?php
-    header("Location: bases/"); /* Redirect browser */
-    exit;
+header("Location: bases/"); /* Redirect browser */
+exit;

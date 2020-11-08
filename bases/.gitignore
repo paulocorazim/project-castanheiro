@@ -1,2 +1,3 @@
 node_modules
-/class/class.DbConnection.php
+bases/class/class.DbConnection.php
+bases/docs
