@@ -258,4 +258,26 @@ EOT;
 			return $files_name;
 		}
 	}
+
+	public function load_survey($clientID)
+	{
+		$clientPathFile = "../docs/clients/$clientID/survey/";
+		$dirPath = dir($clientPathFile);
+		$files_name = null;
+
+		while ($file = $dirPath->read()) {
+
+			if ($file != 'Thumbs.db' AND $file != '.' AND $file != '..' AND $file != 'savings' AND $file != 'contracts') {
+
+				$file_name = "<a href='$clientPathFile$file' target='_blank'>$file</a><hr>";
+				$files_name .= $file_name;
+			}
+		}
+
+		if (empty($files_name)) {
+			return $files_name = null;
+		} else {
+			return $files_name;
+		}
+	}
 }

@@ -318,29 +318,45 @@ class ScreenClients
                               <div class="table-responsive">
                               <form method="post" enctype="multipart/form-data" id="FormAddSurvey">
                                 <input type="hidden" name="clientAddSurvey" id="clientAddSurvey" value="$clientValues[id]">
-                                    <table  class="table table-bordered"  width="50%">
+                                    <table  class="table table-bordered"  width="100%">
                                     <thead>
                                     <tr>
                                         <th>Comodos</th>
                                         <th>Imagens</th>
-                                        <th>Observações</th>
+                                        <th>Vstorias Relizadas</th>
                                     </tr>
                                     </thead>
                                     <tbody>                                          
                                     <tr>
                                         <td>Quarto(s)</td>
-                                        <td><input type="file" class="btn btn-sm btn-info" name="survey_bedroom_file" id="survey_bedroom_file"></td>
-                                        <td><textarea class="form-control" name="survey_bedrooms_textarea" id="survey_bedrooms_textarea" rows="5"></textarea></td>
+                                        <td>
+                                            <input type="file" class="btn btn-sm btn-info" name="survey_bedroom_file" id="survey_bedroom_file">
+                                            <hr>
+                                            Detalhamento
+                                            <textarea class="form-control" name="survey_bedrooms_textarea" id="survey_bedrooms_textarea" rows="5"></textarea>
+                                        </td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>Banheiro(s)</td>
-                                        <td><input type="file" class="btn btn-sm btn-info" name="survey_wc_file" id="survey_wc_file"></td>
-                                        <td><textarea class="form-control" name="survey_wc_textarea" id="survey_wc_textarea" rows="5"></textarea></td>
+                                        <td>
+                                            <input type="file" class="btn btn-sm btn-info" name="survey_wc_file" id="survey_wc_file">
+                                            <hr>
+                                            Detalhamento
+                                            <textarea class="form-control" name="survey_wc_textarea" id="survey_wc_textarea" rows="5"></textarea>
+                                        </td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>Sala(s)</td>
-                                        <td><input type="file" class="btn btn-sm btn-info" name="survey_livingroom_file" id="survey_livingroom_file"></td>
-                                        <td><textarea class="form-control" name="survey_livingroom_textarea" id="survey_livingroom_textarea" rows="5"></textarea></td>
+                                        <td>
+                                            <input type="file" class="btn btn-sm btn-info" name="survey_livingroom_file" id="survey_livingroom_file">
+                                            <hr>
+                                            Detalhamento
+                                            <textarea class="form-control" name="survey_livingroom_textarea" id="survey_livingroom_textarea" rows="5"></textarea>
+                                        </td>
+                                        <td>
+                                        </td>
                                     </tr>
                                     </tbody>
                                     </table>

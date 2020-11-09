@@ -612,6 +612,41 @@ class DbManagerRecords
         return $listClientSavingsRegists;
     }
 
+    /*Listando os registros de depósito poupanças*/
+    public function load_survey($dbInstance, $idClient)
+    {
+        try {
+
+            $tr = null;
+            $listClientSavingsRegists = null;
+
+            $sqlManager = new SqlManager($dbInstance);
+            $shSelectClientSavings = (new SqlQueryBuilder())
+                ->setQuery("SELECT DATE_FORMAT (saving_date,'%d-%m-%Y') as saving_date, saving_bank, saving_value, saving_filename, saving_number
+                                    FROM tab_clients_savings WHERE saving_id_client = :saving_id_client")
+                ->setConditions(['saving_id_client' => "$idClient"]);
+            $shResultsClientSavings = $sqlManager->fetchAll($shSelectClientSavings);
+
+            foreach ($shResultsClientSavings as $reportClients) {
+                $tr = "<tr>
+                    <td>R$" . number_format($reportClients['saving_value'], 2, ',', '.') . "</td>
+                    <td>$reportClients[saving_date]</td>
+                    <td>" . strtoupper($reportClients['saving_bank']) . "</td>
+                    <td>$reportClients[saving_number]</td>
+                    <td><a href='../docs/clients/" . "$idClient/savings/$reportClients[saving_filename]' target='_blank'>Comprovante</a> </td>
+                    </tr>";
+                $listClientSavingsRegists .= $tr;
+            }
+
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            echo "Erro ao receber lista de poupanças" . $error;
+        }
+
+        return $listClientSavingsRegists;
+    }
+    
+
     /*Incluido/Removendo Imóvel para Cliente*/
     public function manager_client_property($dbInstance, $regists_client_property)
     {
