@@ -4,7 +4,8 @@ class ScreenClients
 {
     public function screenFormClient($findClients, $clientValues, $clientDocs, $clientContracts, $clientTableSavings, $findProperty, $clientTablePropertys)
     {
-        //    print_r($clientValues);
+        // var_dump($clientContracts);
+        // exit;
 
         if (empty($clientValues)) {
             $btn_txt = "C A D A S T R A R";

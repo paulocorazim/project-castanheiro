@@ -75,7 +75,7 @@ if (isset($_GET['editID'])) {
     $clientContracts = $appFunctions->load_contracts($clientID);
 
     /*Lendo survey do cliente*/
-    $clientContracts = $appFunctions->load_survey($clientID);
+    $clientSurvey = $appFunctions->load_survey($clientID);
 
     /*Lendo poupanças do cliente*/
     $clientListSavings = $activeRecords->list_client_saving($dbInstance, $clientID);
