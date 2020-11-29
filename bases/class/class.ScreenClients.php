@@ -50,7 +50,7 @@ class ScreenClients
                             <div class="input-group mb-3">
                                 <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
                                   name="select_find_client_id" id="select_find_client_id" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">
-                                    <option value="--">Localizar Cliente ... </option>
+                                    <option value="--">Localizar Clientes / Endreços</option>
                                     $findClients
                                 </select>
                                   <div class="input-group-append">
@@ -448,41 +448,119 @@ EOT;
     public function screenListClients($reportClients)
     {
         return <<< EOT
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">[ Relatório de Clientes Cadastrados ]</h6>
-        </div>
-        <div class="card-body">
-        <div class="table-responsive">
-            <table cellspacing="1" class="table table-bordered" id="dataTable" width="100%">
-            <thead>
-            <tr>
-                <th>Cliente</th>
-                <th>Endereço</th>
-                <th>E-mail</th>
-                <th>Telefone</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tfoot>
-            <tr>
-                <th>Cliente</th>
-                <th>Endereço</th>
-                <th>E-mail</th>
-                <th>Telefone</th>
-                <th></th>
-            </tr>
-            </tfoot>
-            <tbody>
-                $reportClients
-            </tbody>
-            </table>
-        </div>
-        </div>
-    </div>
+	    <div class="card shadow mb-4">
+	        <div class="card-header py-3">
+	        <h6 class="m-0 font-weight-bold text-primary">[ Relatório de Clientes Cadastrados ]</h6>
+	        </div>
+	        <div class="card-body">
+	        <div class="table-responsive">
+	            <table cellspacing="1" class="table table-bordered" id="dataTable" width="100%">
+	            <thead>
+	            <tr>
+	                <th>Cliente</th>
+	                <th>Endereço</th>
+	                <th>E-mail</th>
+	                <th>Telefone</th>
+	                <th></th>
+	            </tr>
+	            </thead>
+	            <tfoot>
+	            <tr>
+	                <th>Cliente</th>
+	                <th>Endereço</th>
+	                <th>E-mail</th>
+	                <th>Telefone</th>
+	                <th></th>
+	            </tr>
+	            </tfoot>
+	            <tbody>
+	                $reportClients
+	            </tbody>
+	            </table>
+	        </div>
+	        </div>
+	    </div>
 
     
 EOT;
     }
 
+    public function screenListClientStreets(){
+    	return <<< EOT
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"></h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table cellspacing="1" class="table table-bordered" id="dataTable" width="100%">
+                    <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Nome</th>
+                      <th>E-mail</th>
+                      <th>Criado</th>
+                      <th>Ultima Alteração</th>
+                      <th>T.User</th>
+                      <th>Módulos</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                      <th>Status</th>
+                      <th>Nome</th>
+                      <th>E-mail</th>
+                      <th>Criado</th>
+                      <th>Ultima Alteração</th>
+                      <th>Tipo User</th>
+                      <th>Módulos</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                      --> conteudo aqui!
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+EOT;
+
+    }
+
+    public function screenFilterClientAndProperty($findClients){
+    	return <<< EOT
+			<div class="card shadow mb-4">
+              <!-- Card Header - Dropdown -->
+              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight text-primary">Utilize os campos para realizar sua pesquisa, encontre aqui Locatários ou Imóveis</h6>
+                <div class="dropdown no-arrow">                                   
+                </div>
+              </div>
+              <!-- Card Body -->
+              <div class="card-body">
+	              <div class="col-sm-5 mb-3 mb-sm-0">
+	                <input type="text"  name="client_name" id="client_name" class="form-control"  placeholder="Nome do Locatário ?" value="">
+	                <hr>
+	                <input type="text"  name="property_streel" id="property_streel" class="form-control"  placeholder="Endereço do Imóvel ?" value="">
+	                <hr>
+	                
+	                <div class="card mb-3 py-2 border-left-primary">
+		              <div class="card-body">
+			                Acesso Rápido. <hr>
+			                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
+		                      name="select_find_client_id" id="select_find_client_id" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">
+		                        <option value="manager.clients.php?filters=true">Listar Locatários por Endereços de Imóveis</option>
+		                        $findClients
+		                    </select>
+		              </div>
+		            </div>	                
+	                 
+	              </div>
+              </div>
+            </div>
+
+EOT;
+
+    }
 }

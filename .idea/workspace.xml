@@ -20,10 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.Functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.users.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.users.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +104,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../boxconnection" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -110,7 +112,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -242,6 +244,10 @@
       <workItem from="1600122214862" duration="1500000" />
       <workItem from="1600134068625" duration="648000" />
       <workItem from="1604845623419" duration="26418000" />
+      <workItem from="1605133051890" duration="128000" />
+      <workItem from="1606351754000" duration="4497000" />
+      <workItem from="1606425240218" duration="140000" />
+      <workItem from="1606569706444" duration="7043000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -305,36 +311,59 @@
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="390" y="12" key="#PHP" timestamp="1597882740164">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="290" y="96" width="800" height="671" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606353008859">
+      <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="390" y="12" key="#PHP/0.0.1366.738@0.0.1366.738" timestamp="1597882740164" />
-    <state x="290" y="97" width="800" height="671" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604853472740">
-      <screen x="0" y="28" width="1366" height="740" />
-    </state>
-    <state x="274" y="9" width="1092" height="729" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1597603802652" />
+    <state x="290" y="96" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.741@0.27.1366.741" timestamp="1606353008859" />
     <state x="290" y="97" width="800" height="671" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.28.1366.740@0.28.1366.740" timestamp="1604853472740" />
-    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1597603147425">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1366.738@0.0.1366.738" timestamp="1597603147425" />
-    <state x="228" y="28" key="SettingsEditor" timestamp="1604852113106">
+    <state x="466" y="129" width="424" height="480" key="FileChooserDialogImpl" timestamp="1605133105575">
       <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state x="466" y="129" width="424" height="480" key="FileChooserDialogImpl/0.28.1366.740@0.28.1366.740" timestamp="1605133105575" />
+    <state width="1118" height="202" key="GridCell.Tab.0.bottom" timestamp="1606668558543">
+      <screen x="0" y="30" width="1366" height="738" />
+    </state>
+    <state width="1118" height="126" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1606353570085" />
+    <state width="1118" height="202" key="GridCell.Tab.0.bottom/0.30.1366.738@0.30.1366.738" timestamp="1606668558543" />
+    <state width="1118" height="202" key="GridCell.Tab.0.center" timestamp="1606668558541">
+      <screen x="0" y="30" width="1366" height="738" />
+    </state>
+    <state width="1118" height="126" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1606353570084" />
+    <state width="1118" height="202" key="GridCell.Tab.0.center/0.30.1366.738@0.30.1366.738" timestamp="1606668558541" />
+    <state width="1118" height="202" key="GridCell.Tab.0.left" timestamp="1606668558541">
+      <screen x="0" y="30" width="1366" height="738" />
+    </state>
+    <state width="1118" height="126" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1606353570084" />
+    <state width="1118" height="202" key="GridCell.Tab.0.left/0.30.1366.738@0.30.1366.738" timestamp="1606668558541" />
+    <state width="1118" height="202" key="GridCell.Tab.0.right" timestamp="1606668558542">
+      <screen x="0" y="30" width="1366" height="738" />
+    </state>
+    <state width="1118" height="126" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1606353570085" />
+    <state width="1118" height="202" key="GridCell.Tab.0.right/0.30.1366.738@0.30.1366.738" timestamp="1606668558542" />
+    <state x="193" y="31" width="962" height="737" key="SettingsEditor" timestamp="1606425359024">
+      <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1600134300157" />
+    <state x="338" y="27" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1606352934947" />
     <state x="228" y="28" key="SettingsEditor/0.28.1366.740@0.28.1366.740" timestamp="1604852113106" />
+    <state x="193" y="31" width="962" height="737" key="SettingsEditor/0.30.1366.738@0.30.1366.738" timestamp="1606425359024" />
     <state x="409" y="202" width="369" height="323" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1604867832876">
       <screen x="0" y="28" width="1366" height="740" />
     </state>
     <state x="409" y="202" width="369" height="323" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.28.1366.740@0.28.1366.740" timestamp="1604867832876" />
-    <state x="152" y="43" width="864" height="679" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1604855092650">
-      <screen x="0" y="28" width="1366" height="740" />
+    <state x="585" y="310" width="186" height="117" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1606668220667">
+      <screen x="0" y="30" width="1366" height="738" />
     </state>
+    <state x="585" y="310" width="186" height="117" key="com.intellij.database.run.ParametersPanel.Standalone/0.30.1366.738@0.30.1366.738" timestamp="1606668220667" />
+    <state x="152" y="42" width="864" height="679" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1606352274497">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="152" y="42" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.1366.741@0.27.1366.741" timestamp="1606352274497" />
     <state x="152" y="43" width="864" height="679" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.28.1366.740@0.28.1366.740" timestamp="1604855092650" />
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1597679343305">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="347" y="177" width="672" height="677" key="run.anything.popup" timestamp="1606352492004">
+      <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1597679343305" />
+    <state x="347" y="177" width="672" height="677" key="run.anything.popup/0.27.1366.741@0.27.1366.741" timestamp="1606352492004" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

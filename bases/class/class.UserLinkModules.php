@@ -7,7 +7,8 @@
             $user_href = ""; //NavBar
             $user_select_box = ""; //Módulos da tela de cadastro de usuários
 
-            if ($user_type != 'master') {
+            if ($user_type != 'master')
+            {
 
                 $sqlManager = new \Simplon\Db\SqlManager($dbInstance);
                 $sqlQuery = (new \Simplon\Db\SqlQueryBuilder())
@@ -31,7 +32,7 @@
                 foreach ($results as $key) {
 
                     $sqlQuerySubModule = (new \Simplon\Db\SqlQueryBuilder())
-                        ->setQuery('SELECT name_sub_app, name_sub_link from tab_modules_sub where id_module = :id_module')
+                        ->setQuery('SELECT name_sub_app, name_sub_link from tab_modules_sub where id_module = :id_module order by name_sub_link')
                         ->setConditions(['id_module' => "$key[id]"]);
                     $resultsSubModule = $sqlManager->fetchAll($sqlQuerySubModule);
 
@@ -94,7 +95,7 @@
 
                 foreach ($results as $key) {
                     $sqlQuerySubModule = (new \Simplon\Db\SqlQueryBuilder())
-                        ->setQuery('SELECT name_sub_app, name_sub_link from tab_modules_sub where id_module = :id_module')
+                        ->setQuery('SELECT name_sub_app, name_sub_link from tab_modules_sub where id_module = :id_module order by name_sub_link')
                         ->setConditions(['id_module' => "$key[id]"]);
                     $resultsSubModule = $sqlManager->fetchAll($sqlQuerySubModule);
 

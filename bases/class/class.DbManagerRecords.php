@@ -774,12 +774,18 @@ class DbManagerRecords
             $optionList = null;
 
             $sqlManager = new SqlManager($dbInstance);
-            $shSelectClientID = (new SqlQueryBuilder())
-                ->setQuery('SELECT id, corporate_name from tab_clients order by corporate_name');
-            $shResultsClientID = $sqlManager->fetchAll($shSelectClientID);
+            $shSelectPropertie = (new SqlQueryBuilder())
+                ->setQuery('SELECT
+								    id, property_type, property_address, property_county, property_city, property_cep
+								from
+								    tab_properties
+								group by
+								    property_type, property_address, property_county, property_city, property_cep');
+            $shResultsPropertieID = $sqlManager->fetchAll($shSelectPropertie);
 
-            foreach ($shResultsClientID as $clientsAll) {
-                $option = "<option value=\"manager.clients.php?editID=$clientsAll[id]\">$clientsAll[id] | $clientsAll[corporate_name]</option>";
+            foreach ($shResultsPropertieID as $propertieAll)
+            {
+                $option = "<option value=\"manager.clients.php?listClientPropertieID=$propertieAll[id]\">  $propertieAll[property_type] | $propertieAll[property_address] | $propertieAll[property_county] | $propertieAll[property_city]</option>";
                 $optionList .= $option;
             }
 
@@ -1048,7 +1054,7 @@ class DbManagerRecords
             $sqlManager = new SqlManager($dbInstance);
             $shSelectPropertyAll = (new SqlQueryBuilder())
                 ->setQuery('SELECT c.*,
-                            (SELECT b.name FROM  tab_clients_property as a, tab_clients as b WHERE b.id = a.id_client AND a.id_property = c.id) as client
+                            (SELECT b.name FROM  tab_clients_property as a, tab_clients as b WHERE b.id = a.id_client AND a.id_property = c.id limit 1) as client
                             from
                             tab_properties as c
                             WHERE

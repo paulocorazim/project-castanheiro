@@ -68,7 +68,7 @@
     /*Lista de Usuários*/
     if ($_GET['user_report'] != null) {
         $contentNow = $screenUsers->screenListUser($typeModule->listModulesPermission($dbInstance, $_SESSION['user_type']));
-        echo $screenManager->pageWrapper($typeModules, "Report de Usuários", $contentNow, $alert_type);
+        echo $screenManager->pageWrapper($typeModules, "Report de Usuários", $contentNow);
         $footer = new shFooter();
         echo $footer->sh_footer();
         exit();
@@ -81,14 +81,14 @@
 
         $contentNow = null;
         $contentNow = $screenUsers->screenFormUserEdit($activeRecordsEdit, $typeModules);
-        echo $screenManager->pageWrapper($typeModules, "Cadastro de Usuários - Editar", $contentNow, $alert_type);
+        echo $screenManager->pageWrapper($typeModules, "Cadastro de Usuários - Editar", $contentNow);
         $footer = new shFooter();
         echo $footer->sh_footer();
         exit();
     }
 
-    /*Redenrização da pagina*/
-    echo $screenManager->pageWrapper($typeModules, "Cadastro de Usuários", $contentNow, $alert_type);
+    /*Rederização da pagina*/
+    echo $screenManager->pageWrapper($typeModules, "Cadastro de Usuários", $contentNow);
     $footer = new shFooter();
     echo $footer->sh_footer();
     exit();

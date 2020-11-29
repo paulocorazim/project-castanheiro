@@ -51,7 +51,7 @@ $screenClient = new ScreenClients();
 $contentNow = $screenClient->screenFormClient($findClients, null, null, null, null, null, null);
 
 /*Lista de Clientes*/
-if ($_GET['report'] == true) {
+if($_GET['report'] == true) {
     $reportClients = $activeRecords->report_client($dbInstance);
     $contentNow = $screenClient->screenListClients($reportClients);
     echo $screenManager->pageWrapper($typeModules, "Relatório de Clientes", $contentNow, null);
@@ -60,6 +60,14 @@ if ($_GET['report'] == true) {
     exit();
 }
 
+/*Tele de filtro de Pesquisas*/
+if(isset($_GET['filters'])){
+	$contentNow =$screenClient->screenFilterClientAndProperty($findClients);
+	echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Filtro de Pesquisas", $contentNow);
+	$footer = new shFooter();
+	echo $footer->sh_footer();
+	exit();
+}
 /*Trazendo dados do cliente para edição*/
 if (isset($_GET['editID'])) {
 
@@ -94,8 +102,19 @@ if (isset($_GET['editID'])) {
     exit();
 }
 
+/*Listando Clientes x Locações*/
+if(isset($_GET['listClientPropertieID']))
+{
+	$contentNow = $screenClient->screenListClientStreets();
+	echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Lista de Endereços x Clientes", $contentNow);
+	$footer = new shFooter();
+	echo $footer->sh_footer();
+	exit();
+
+}
+
 /*Recebendo dados para inclusão do cliente*/
-if (isset($_POST['btn_insert_update_client'])) {
+if(isset($_POST['btn_insert_update_client'])) {
 
     // Não importa se é CPF ou CNPJ e se já vem formatado
     $checkCPFCNPJ = new Documento("$_POST[cpfcnpj]");
@@ -202,7 +221,7 @@ if (isset($_POST['btn_insert_update_client'])) {
 }
 
 /*Inserindo Docs ao Cliente*/
-if (isset($_POST['j_btn_doc'])) {
+if(isset($_POST['j_btn_doc'])) {
     $typeDoc = 'Documents';
     $resp_process = $appFunctions->upload_files($_POST['clientIDdoc'], $_FILES['file'], $typeDoc);
     $resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
@@ -307,10 +326,7 @@ if(isset($_POST['j_btn_salve_survey'])){
 				$resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
 				echo $resp_process;
 			}
-
-
 		}
-
 		exit();
 	}
 
