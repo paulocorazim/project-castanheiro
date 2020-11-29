@@ -88,6 +88,9 @@ class ScreenClients
                                 <a class="nav-link $desactive_tab_contract" data-toggle="tab" href="#vistorias" role="tab" aria-controls="contact" aria-selected="false">Vistorias</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#contrato" role="tab" aria-controls="contact" aria-selected="false">Contrato</a>
+                            </li>
+                            <li class="nav-item">
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#observacoes" role="tab" aria-controls="contact" aria-selected="false">Observações</a>
                             </li>                            
                           </ul>
@@ -368,6 +371,49 @@ class ScreenClients
                             </div>
 
                             </div>
+                            
+                            <div class="tab-pane" id="contrato" role="tabpanel" aria-labelledby="contact-tab">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <form method="post">
+                                        
+                                          <table  class="table table-bordered">
+                                          <thead>
+                                          <tr>
+                                              <th>Data Inicial</th>
+                                              <th>Valor Atual</th>
+                                              <th>Valor Aproximado Reajuste</th>
+                                              <th></th>
+                                          </tr>
+                                          </thead>
+                                          <tbody>                                          
+                                          <tr>
+                                              <td><input type="date" required name="" id="" class="form-control"></td>
+                                              <td><input type="text" required name="" id="" class="form-control" data-mask="R$ #.##0,00" placeholder="R$ 0.000,00"></td>
+                                              <td><input type="text" required name="" id="" class="form-control" data-mask="R$ #.##0,00" placeholder="R$ 0.000,00"></td>
+                                              <td><button name="" id="" value="" class="btn btn-sm btn-danger">Remover</button></td>
+                                            </tr> 
+                                          <tr>
+                                            <td><input type="date" required name="" id="" class="form-control"></td>
+                                            <td><input type="text" required name="" id="" class="form-control" data-mask="R$ #.##0,00" placeholder="R$ 0.000,00"></td>
+                                            <td><input type="text" required name="" id="" class="form-control" data-mask="R$ #.##0,00" placeholder="R$ 0.000,00"></td>
+                                            <td><button name="" id="" value="" class="btn btn-sm btn-danger">Remover</button></td>
+                                          </tr>
+                                          <tr>
+                                            <td><input type="date" required name="" id="" class="form-control"></td>
+                                            <td><input type="text" required name="" id="" class="form-control" data-mask="R$ #.##0,00" placeholder="R$ 0.000,00"></td>
+                                            <td><input type="text" required name="" id="" class="form-control" data-mask="R$ #.##0,00" placeholder="R$ 0.000,00"></td>
+                                            <td><button name="" id="" value="" class="btn btn-sm btn-success">Incluir</button>
+                                          </tr>
+                                          </tbody>
+                                          </table>
+    
+                                     </form>
+                                    </div>
+                                  </div>
+                                
+                            </div>    
+
                                 <div class="tab-pane" id="observacoes" role="tabpanel" aria-labelledby="contact-tab">
                                     <textarea name="client_obs" id="client_obs" cols="70" rows="10">
                                     $clientValues[obs]
