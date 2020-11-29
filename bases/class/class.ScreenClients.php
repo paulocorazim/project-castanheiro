@@ -574,7 +574,7 @@ EOT;
 
     }
 
-    public function screenFilterClientAndProperty($findClients){
+    public function screenFilterClientAndProperty($findClients, $typeProperty){
     	return <<< EOT
 			<div class="card shadow mb-4">
               <!-- Card Header - Dropdown -->
@@ -594,11 +594,12 @@ EOT;
 	                <div class="card mb-3 py-2 border-left-primary">
 		              <div class="card-body">
 			                Acesso Rápido. <hr>
-			                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
-		                      name="select_find_client_id" id="select_find_client_id" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">
+			                <select class="form-control-sm form-control"  name="select_find_client_id" id="select_find_client_id" >
 		                        <option value="manager.clients.php?filters=true">Listar Locatários por Endereços de Imóveis</option>
 		                        $findClients
 		                    </select>
+		                    <hr>
+		                    $typeProperty
 		              </div>
 		            </div>	                
 	                 

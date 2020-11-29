@@ -13,6 +13,7 @@ include "../class/class.Functions.php";
 include "../class/class.DbConnection.php";
 include '../class/class.UserLinkModules.php';
 include "../class/class.DbManagerRecords.php";
+include "../class/class.ScreenPropertie.php";
 
 /* Carregando a classe de funcções*/
 $appFunctions = new appFunctions();
@@ -43,6 +44,7 @@ echo $head->sh_head("Castanheiro App v1 >> Clientes");
 
 /* Carregando a classe de tela princial*/
 $screenManager = new ScreenManager();
+$screenProperty = new ScreenProperties();
 
 /* Carregando a tela de cliente*/
 $screenClient = new ScreenClients();
@@ -62,7 +64,8 @@ if($_GET['report'] == true) {
 
 /*Tele de filtro de Pesquisas*/
 if(isset($_GET['filters'])){
-	$contentNow =$screenClient->screenFilterClientAndProperty($findClients);
+	$typeProperty = $screenProperty->screenTypeProperty(null, 'find');
+	$contentNow =$screenClient->screenFilterClientAndProperty($findClients, $typeProperty);
 	echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Filtro de Pesquisas", $contentNow);
 	$footer = new shFooter();
 	echo $footer->sh_footer();

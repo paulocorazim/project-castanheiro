@@ -21,11 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.UserLinkModules.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenPropertie.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenPropertie.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.users.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.properties.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.properties.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +246,7 @@
       <workItem from="1605133051890" duration="128000" />
       <workItem from="1606351754000" duration="4497000" />
       <workItem from="1606425240218" duration="140000" />
-      <workItem from="1606569706444" duration="7043000" />
+      <workItem from="1606569706444" duration="9952000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>
@@ -316,6 +315,10 @@
     </state>
     <state x="290" y="96" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.741@0.27.1366.741" timestamp="1606353008859" />
     <state x="290" y="97" width="800" height="671" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.28.1366.740@0.28.1366.740" timestamp="1604853472740" />
+    <state x="100" y="63" width="1166" height="605" key="DiffContextDialog" timestamp="1606672577506">
+      <screen x="0" y="30" width="2732" height="738" />
+    </state>
+    <state x="100" y="63" width="1166" height="605" key="DiffContextDialog/0.30.2732.738@0.30.2732.738" timestamp="1606672577506" />
     <state x="466" y="129" width="424" height="480" key="FileChooserDialogImpl" timestamp="1605133105575">
       <screen x="0" y="28" width="1366" height="740" />
     </state>

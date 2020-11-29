@@ -45,7 +45,8 @@ $screenManager = new ScreenManager();
 
 /* Conteudo*/
 $screenProperty = new ScreenProperties(); // aqui estanciamos a tela
-$contentNow = $screenProperty->screenProperty($findProperty, null); // aqui atribuimos o contenNow com o form desejado
+$typeProperty = $screenProperty->screenTypeProperty(null, null);
+$contentNow = $screenProperty->screenProperty($findProperty, null, $typeProperty); // aqui atribuimos o contenNow com o form desejado
 //$contentNow = $appFunctions->alert_system('4', "Ops! Módulo Imóveis em Manutenção <hr>");
 
 /* Trazendo dados do Imóvel para Edição*/
@@ -53,9 +54,12 @@ if (isset($_GET['editID'])) {
 
     $propertyID = $_GET['editID'];
     $propertyData = $activeRecords->find_property_data($dbInstance, $propertyID);
+	$typeProperty = $screenProperty->screenTypeProperty($propertyData, null);
 
-    $contentNow = $screenProperty->screenProperty($findProperty, $propertyData); // aqui atribuimos o contenNow com o form desejado
+    $contentNow = $screenProperty->screenProperty($findProperty, $propertyData, $typeProperty); // aqui atribuimos o contenNow com o form desejado
+
     echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Imóveis", $contentNow);
+
     $footer = new shFooter();
     echo $footer->sh_footer();
     exit();

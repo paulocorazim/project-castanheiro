@@ -2,7 +2,7 @@
 
 class ScreenProperties
 {
-    public function screenProperty($findProperty, $propertyData)
+    public function screenProperty($findProperty, $propertyData, $typeProperty)
     {
 
         $property_value = number_format($propertyData[property_value], 2, ",", ".");
@@ -83,15 +83,7 @@ class ScreenProperties
                         </div>
                         <div class="col-sm-4">
                             <span class="small">Tipo de Imóvel</span>
-                            <select name="property_type" id="property_type" class="form-control-sm form-control" onchange="active_number_apto()"  >
-                                <option value="$propertyData[property_type]">$propertyData[property_type]</option>
-                                <option value="Apartamento">Apartamento</option>
-                                <option value="Casa">Casa</option>
-                                <option value="Fazenda">Fazenda</option>
-                                <option value="Loja">Loja</option>
-                                <option value="Sala">Sala</option>
-                                <option value="Terreno">Terreno</option>
-                            </select>
+                            $typeProperty
                         </div>
                         <div class="col-sm-4">
                             <span class="small">Finalidade</span>
@@ -356,5 +348,29 @@ class ScreenProperties
             </div>
         </div>
 EOT;
+    }
+
+    public function screenTypeProperty($propertyData, $origem){
+
+    	if($origem == 'find'){
+		    $option ="<option value=''>Tipo de Imóveis</option>";
+	    }
+    	else{
+    		$option ="<option value='$propertyData[property_type]'>$propertyData[property_type]</option>";
+	    }
+
+    	$typeProperty = <<< EOT
+		<select name="property_type" id="property_type" class="form-control-sm form-control" onchange="active_number_apto()"  >
+            $option
+            <option value="Apartamento">Apartamento</option>
+            <option value="Casa">Casa</option>
+            <option value="Fazenda">Fazenda</option>
+            <option value="Loja">Loja</option>
+            <option value="Sala">Sala</option>
+            <option value="Terreno">Terreno</option>
+        </select>
+EOT;
+
+    	return $typeProperty;
     }
 }
