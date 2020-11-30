@@ -71,6 +71,22 @@ if(isset($_GET['filters'])){
 	echo $footer->sh_footer();
 	exit();
 }
+
+/*Resultados da tela de pesquisa */
+if(isset($_POST['btn_find_StreetOrType'])){
+
+	var_dump($_POST);
+	exit();
+}
+
+/*Resultados da tela de pesquisa */
+if(isset($_POST['btn_find_NameOrStreet'])){
+
+	var_dump($_POST);
+	exit();
+}
+
+
 /*Trazendo dados do cliente para edição*/
 if (isset($_GET['editID'])) {
 

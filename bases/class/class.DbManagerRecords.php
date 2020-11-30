@@ -645,7 +645,6 @@ class DbManagerRecords
 
         return $listClientSavingsRegists;
     }
-    
 
     /*Incluido/Removendo Imóvel para Cliente*/
     public function manager_client_property($dbInstance, $regists_client_property)
@@ -785,7 +784,7 @@ class DbManagerRecords
 
             foreach ($shResultsPropertieID as $propertieAll)
             {
-                $option = "<option value=\"manager.clients.php?listClientPropertieID=$propertieAll[id]\">  $propertieAll[property_type] | $propertieAll[property_address] | $propertieAll[property_county] | $propertieAll[property_city]</option>";
+                $option = "<option value=\"$propertieAll[id]\">  $propertieAll[property_type] | $propertieAll[property_address] | $propertieAll[property_county] | $propertieAll[property_city]</option>";
                 $optionList .= $option;
             }
 
@@ -796,6 +795,37 @@ class DbManagerRecords
 
         return $optionList;
     }
+
+    /*Encontrar Clientes por Endereços*/
+	public function find_client_for_addres($dbInstance)
+	{
+		try {
+
+			$optionList = null;
+
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectPropertie = (new SqlQueryBuilder())
+				->setQuery('SELECT
+								    id, property_type, property_address, property_county, property_city, property_cep
+								from
+								    tab_properties
+								group by
+								    property_type, property_address, property_county, property_city, property_cep');
+			$shResultsPropertieID = $sqlManager->fetchAll($shSelectPropertie);
+
+			foreach ($shResultsPropertieID as $propertieAll)
+			{
+				$option = "<option value=\"$propertieAll[id]\">  $propertieAll[property_type] | $propertieAll[property_address] | $propertieAll[property_county] | $propertieAll[property_city]</option>";
+				$optionList .= $option;
+			}
+
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de clientes" . $error;
+		}
+
+		return $optionList;
+	}
 
     /*Pegando os dados dos clientes para carregar e tela de Cliente*/
     public function find_client_data($dbInstance, $clientID)

@@ -576,6 +576,7 @@ EOT;
 
     public function screenFilterClientAndProperty($findClients, $typeProperty){
     	return <<< EOT
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 			<div class="card shadow mb-4">
               <!-- Card Header - Dropdown -->
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -585,24 +586,33 @@ EOT;
               </div>
               <!-- Card Body -->
               <div class="card-body">
-	              <div class="col-sm-5 mb-3 mb-sm-0">
-	                <input type="text"  name="client_name" id="client_name" class="form-control"  placeholder="Nome do Locatário ?" value="">
-	                <hr>
-	                <input type="text"  name="property_streel" id="property_streel" class="form-control"  placeholder="Endereço do Imóvel ?" value="">
-	                <hr>
-	                
+                  <div class="col-sm-5 mb-3 mb-sm-0">
+                  
 	                <div class="card mb-3 py-2 border-left-primary">
 		              <div class="card-body">
-			                Acesso Rápido. <hr>
+                            Acesso Rápido. <hr>
 			                <select class="form-control-sm form-control"  name="select_find_client_id" id="select_find_client_id" >
-		                        <option value="manager.clients.php?filters=true">Listar Locatários por Endereços de Imóveis</option>
+		                        <option value="">Listar Locatários por Endereços de Imóveis</option>
 		                        $findClients
 		                    </select>
 		                    <hr>
-		                    $typeProperty
+                            $typeProperty
+                            <hr>
+                            <button name="btn_find_StreetOrType" id="btn_find_StreetOrType" value="find" class="btn btn-sm btn-success">Pesquisar</button>
+                      </div>
+                    </div>
+	
+                    <div class="card mb-3 py-2 border-left-primary">
+                      <div class="card-body">
+                        Locatários / Imóveis. <hr>
+                        <input type="text"  name="client_name" id="client_name" class="form-control"  placeholder="Nome do Locatário ?" value="">
+                        <hr>
+                        <input type="text"  name="property_streel" id="property_streel" class="form-control"  placeholder="Endereço do Imóvel ?" value="">
+                        <hr>
+                        <button name="btn_find_NameOrStreet" id="btn_find_NameOrStreet" value="find" class="btn btn-sm btn-success">Pesquisar</button>
 		              </div>
-		            </div>	                
-	                 
+		            </div>
+                 
 	              </div>
               </div>
             </div>

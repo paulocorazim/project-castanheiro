@@ -22,6 +22,9 @@ class shFooter
             <script src="../js/insert_contract_clients.js" type="text/javascript"></script>
             <script src="../js/insert_savings_attached_clients.js" type="text/javascript"></script>
             <script src="../js/insert_survey_clients.js" type="text/javascript"></script>
+            <script src="../js/find_client_streetOrType.js" type="text/javascript"></script>
+            <script src="../js/find_client_NameOrStreet.js" type="text/javascript"></script>
+
 
             <!-- Bootstrap core JavaScript-->
             <script src="../vendor/jquery/jquery.min.js"></script>
