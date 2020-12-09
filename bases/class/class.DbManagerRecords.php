@@ -748,8 +748,8 @@ class DbManagerRecords
 
             foreach ($shResultsClients as $reportClients) {
                 $tr = "<tr>
-                      <td>$reportClients[name]</td>
-                      <td>$reportClients[address], $reportClients[number] - $reportClients[neighbordhood] | $reportClients[city]</td>
+                      <td><a href='manager.clients.php?editID=$reportClients[id]'>$reportClients[name]</a></td>
+                      <td>$reportClients[address], $reportClients[number] | $reportClients[neighbordhood] | $reportClients[city]</td>
                       <td>$reportClients[email1]</td>
                       <td>$reportClients[phone1]</td>
                       <td></td>
@@ -797,34 +797,84 @@ class DbManagerRecords
     }
 
     /*Encontrar Clientes por Endereços*/
-	public function find_client_for_addres($dbInstance)
+	public function find_client_for_addres($dbInstance, $propertieID)
 	{
+		$trResults = null;
+
 		try {
+				$optionList = null;
+				$id = $propertieID['select_find_streets_id'];
 
-			$optionList = null;
+				$sqlManager = new SqlManager($dbInstance);
 
-			$sqlManager = new SqlManager($dbInstance);
-			$shSelectPropertie = (new SqlQueryBuilder())
-				->setQuery('SELECT
-								    id, property_type, property_address, property_county, property_city, property_cep
-								from
-								    tab_properties
-								group by
-								    property_type, property_address, property_county, property_city, property_cep');
-			$shResultsPropertieID = $sqlManager->fetchAll($shSelectPropertie);
+				$shSelectPropertie = (new SqlQueryBuilder())
+					->setQuery('SELECT id, property_type, property_address,  property_county, property_city from tab_properties where id = :id')
+					->setConditions(['id' => "$id"]);
+				$shResultsPropertieID = $sqlManager->fetchAll($shSelectPropertie);
 
-			foreach ($shResultsPropertieID as $propertieAll)
-			{
-				$option = "<option value=\"$propertieAll[id]\">  $propertieAll[property_type] | $propertieAll[property_address] | $propertieAll[property_county] | $propertieAll[property_city]</option>";
-				$optionList .= $option;
+				foreach ($shResultsPropertieID as $datas)
+				{
+					$property_address =$datas['property_address'];
+					$property_county = $datas['property_county'];
+					$property_city = $datas['property_city'];
+				}
+
+				$shSelectPropertieStreet = (new SqlQueryBuilder())
+					->setQuery('SELECT id, property_type, property_address, property_number, property_number_apto, property_county, 
+	                                          property_city, property_cep 
+										from tab_properties
+										where
+										    property_address = :property_address
+										and property_county  = :property_county
+										and property_city    = :property_city
+						     ')
+					->setConditions(['property_address' => "$property_address",
+						             'property_county' =>"$property_county",
+						             'property_city' => "$property_city"
+									]);
+				$shResultsSelectPropertieStreet = $sqlManager->fetchAll($shSelectPropertieStreet);
+
+				foreach ($shResultsSelectPropertieStreet as $propertieAll)
+				{
+					$shSelectTenant = (new SqlQueryBuilder())
+						->setQuery('select a.id, a.name, a.corporate_name, a.email1, a.phone1
+											from
+											tab_clients as a,
+											tab_clients_property as b
+											where b.id_client =  a.id and b.id_property =:id_property
+																	     ')
+						->setConditions(['id_property' => "$propertieAll[id]"]);
+					$shResultsSelectTenant = $sqlManager->fetchAll($shSelectTenant);
+
+					foreach ($shResultsSelectTenant as $tenantDatas) {
+						$id =$tenantDatas['id'];
+						$name = $tenantDatas['name'];
+						$corporate_name = $tenantDatas['corporate_name'];
+						$email1 = $tenantDatas['email1'];
+						$phone1 = $tenantDatas['phone1'];
+					}
+
+					$tr = "<tr>
+	                      <td><a href='manager.clients.php?editID=$id'>$name</a></td>
+	                      <td><a href='manager.properties.php?editID=$propertieAll[id]'>$propertieAll[property_type]<a/></td>
+	                      <td>$propertieAll[property_address]</td>
+	                      <td>$propertieAll[property_number]</td>
+	                      <td>$propertieAll[property_number_apto]</td>
+	                      <td>$propertieAll[property_county]</td>
+	                      <td>$propertieAll[property_city]</td>
+	                      <td>$propertieAll[property_cep]</td>
+	                      <td></td>
+	                    </tr>";
+
+					$trResults .= $tr;
 			}
 
-		} catch (Exception $e) {
-			$error = $e->getMessage();
-			echo "Erro ao receber lista de clientes" . $error;
-		}
+			} catch (Exception $e) {
+				$error = $e->getMessage();
+				echo "Erro ao receber lista de clientes" . $error;
+			}
 
-		return $optionList;
+		return $trResults;
 	}
 
     /*Pegando os dados dos clientes para carregar e tela de Cliente*/

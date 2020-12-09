@@ -470,13 +470,14 @@ EOT;
                     <table cellspacing="0" class="table small table-hover table-bordered">
                       <thead>
                       <tr>
-                        <th>Data Associação</th>
+                        <th>Locatário</th>
                         <th>Tipo</th>
                         <th>Endereço</th>
                         <th>Numero</td>
                         <th>Apto</td>
                         <th>Cidade</td>
                         <th>UF</td>
+                        <th>CEP</td>
                         <th>Ações</td>
                       </tr>
                       </thead>
@@ -591,7 +592,7 @@ EOT;
 	                <div class="card mb-3 py-2 border-left-primary">
 		              <div class="card-body">
                             Acesso Rápido. <hr>
-			                <select class="form-control-sm form-control"  name="select_find_client_id" id="select_find_client_id" >
+			                <select class="form-control-sm form-control"  name="select_find_streets_id" id="select_find_streets_id" >
 		                        <option value="">Listar Locatários por Endereços de Imóveis</option>
 		                        $findClients
 		                    </select>

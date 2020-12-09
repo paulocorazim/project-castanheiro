@@ -56,17 +56,20 @@ $contentNow = $screenClient->screenFormClient($findClients, null, null, null, nu
 if($_GET['report'] == true) {
     $reportClients = $activeRecords->report_client($dbInstance);
     $contentNow = $screenClient->screenListClients($reportClients);
-    echo $screenManager->pageWrapper($typeModules, "Relatório de Clientes", $contentNow, null);
+    print $screenManager->pageWrapper($typeModules, "$icone_fas_fa Relatório de Clientes", $contentNow);
     $footer = new shFooter();
-    echo $footer->sh_footer();
+    print $footer->sh_footer();
     exit();
 }
 
 /*Tele de filtro de Pesquisas*/
-if(isset($_GET['filters'])){
+if(isset($_GET['filters']))
+{
 	$typeProperty = $screenProperty->screenTypeProperty(null, 'find');
 	$contentNow =$screenClient->screenFilterClientAndProperty($findClients, $typeProperty);
+
 	echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Filtro de Pesquisas", $contentNow);
+
 	$footer = new shFooter();
 	echo $footer->sh_footer();
 	exit();
@@ -75,7 +78,12 @@ if(isset($_GET['filters'])){
 /*Resultados da tela de pesquisa */
 if(isset($_POST['btn_find_StreetOrType'])){
 
-	var_dump($_POST);
+	$data = $_POST;
+	$reportResultFindPropertyesClient = $activeRecords->find_client_for_addres($dbInstance, $data);
+	print $screenClient->screenListClientProperty($reportResultFindPropertyesClient);
+
+	$footer = new shFooter();
+	print $footer->sh_footer();
 	exit();
 }
 
