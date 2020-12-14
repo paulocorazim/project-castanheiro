@@ -20,7 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11022737-c82a-4c67-9fa4-dd7988b27931" name="Default Changelist" comment="Refactory GRUD Usuários">
+      <change afterPath="$PROJECT_DIR$/bases/js/remove_propertie.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenPropertie.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenPropertie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.properties.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.properties.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +104,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../boxconnection" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bases/js" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -112,6 +117,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bases/js" />
       <recent name="C:\www\htdocs\castanheiro\bases" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -251,7 +257,8 @@
       <workItem from="1607446619217" duration="1396000" />
       <workItem from="1607474953149" duration="189000" />
       <workItem from="1607603624731" duration="1571000" />
-      <workItem from="1607790004072" duration="302000" />
+      <workItem from="1607790004072" duration="796000" />
+      <workItem from="1607952489381" duration="5103000" />
     </task>
     <task id="LOCAL-00001" summary="Implantação do Session Destroy">
       <created>1578744893413</created>

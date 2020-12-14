@@ -343,6 +343,11 @@ class ScreenProperties
                         <div class="mx-4 bd-highlight">
                             <button name="j_btn_salve_property" id="j_btn_salve_property" value="insert_update_property" class="btn btn-success" type="submit">SALVAR <i class="fas fa-save"></i></button></div>
                     </div>
+                    
+                    <div class="d-flex align-items-end flex-column bd-highlight mt-3">
+                        <div class="mx-4 bd-highlight">
+                            <button name="j_btn_remove_property" id="j_btn_remove_property" value="remove_property" class="btn btn-danger" type="submit">REMOVER IMÓVEL</button></div>
+                    </div>
 
                 </div>
             </div>

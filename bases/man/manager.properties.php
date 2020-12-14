@@ -72,6 +72,22 @@ if (isset($_POST['j_btn_salve_property'])) {
     exit();
 }
 
+if (isset($_POST['j_btn_remove_property'])) {
+
+	//var_dump($_POST);
+
+	if($_POST['property_client'] != '')
+	{
+		echo $appFunctions->alert_system('3', "Este imóvel não pode ser removido, existe Locátário associado para ele!");
+		exit();
+	}
+	else{
+		$resp = $activeRecords->remove_property($dbInstance, $_POST['property_id']);
+		echo $appFunctions->alert_system('1', "Imóvel removido com sucesso!");
+		exit();
+	}
+}
+
 /*Tela Principal*/
 echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Imóveis", $contentNow);
 

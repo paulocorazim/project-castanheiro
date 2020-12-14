@@ -1059,6 +1059,30 @@ class DbManagerRecords
         }
     }
 
+    public function remove_property($dbInstance, $regist_property_id)
+    {
+	    try {
+
+		    $sqlManager = new SqlManager($dbInstance);
+		    $sqlQuery = (new SqlQueryBuilder())
+			    ->setTableName('tab_properties')
+			    ->setConditions(['id' => "$regist_property_id"]);
+		    $sqlManager->remove($sqlQuery);
+
+		    $resp = '1';
+		    $msg = "[$regist_property_id] : Imóvel Removido com sucesso!";
+
+	    } catch (Exception $e) {
+
+		    $error = $e->getMessage();
+		    $resp = '0';
+		    $msg = "Erro ao remver Imóvel -> $error";
+	    }
+
+	    return array($resp, $msg);
+
+    }
+
     /*Listando os id do Imóvel no Find das telas*/
     public function find_property_id($dbInstance)
     {
