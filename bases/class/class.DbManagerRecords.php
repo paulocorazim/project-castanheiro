@@ -679,25 +679,50 @@ class DbManagerRecords
 
             } catch (Exception $e) {
                 $error = $e->getMessage();
-                $resp = $error;
+	            $resp = $error;
             }
 
         } else {
-            $resp = 2;
+	        $resp = 2;
         }
 
-        return $resp;
+	    return $resp;
     }
 
-    /*Listando os imoveis do locatário*/
-    public function list_client_property($dbInstance, $idClient)
-    {
-        try {
+	/*Removendo Cliente*/
+	public function remove_client($dbInstance, $regist_client_id)
+	{
+		try {
 
-            $tr = null;
-            $listClientPropertyRegists = null;
+			$sqlManager = new SqlManager($dbInstance);
+			$sqlQuery = (new SqlQueryBuilder())
+				->setTableName('tab_clients')
+				->setConditions(['id' => "$regist_client_id"]);
+			$sqlManager->remove($sqlQuery);
 
-            $sqlManager = new SqlManager($dbInstance);
+			$resp = '1';
+			$msg = "[$regist_client_id] : Cliente Removido com sucesso!";
+
+		} catch (Exception $e) {
+
+			$error = $e->getMessage();
+			$resp = '0';
+			$msg = "Erro ao remver Imóvel -> $error";
+		}
+
+		return array($resp, $msg);
+
+	}
+
+	/*Listando os imoveis do locatário*/
+	public function list_client_property($dbInstance, $idClient)
+	{
+		try {
+
+			$tr = null;
+			$listClientPropertyRegists = null;
+
+			$sqlManager = new SqlManager($dbInstance);
             $shSelectClientProperty = (new SqlQueryBuilder())
                 ->setQuery("SELECT a.id,
                         DATE_FORMAT (a.date_add,'%d-%m-%Y') as date_add,
@@ -734,6 +759,7 @@ class DbManagerRecords
         return $listClientPropertyRegists;
     }
 
+	/*Listando os clientes cadastrados*/
     public function report_client($dbInstance)
     {
         try {
@@ -758,23 +784,23 @@ class DbManagerRecords
             }
 
         } catch (Exception $e) {
-            $error = $e->getMessage();
-            echo "Erro ao receber lista de poupanças" . $error;
+	        $error = $e->getMessage();
+	        echo "Erro ao receber lista de poupanças" . $error;
         }
 
-        return $trResults;
+	    return $trResults;
     }
 
-    /*Listando os id do CLiente no Find das telas*/
-    public function find_client_id($dbInstance)
-    {
-        try {
+	/*Listando os Imóveis x Clientes*/
+	public function list_properties_clients($dbInstance)
+	{
+		try {
 
-            $optionList = null;
+			$optionList = null;
 
-            $sqlManager = new SqlManager($dbInstance);
-            $shSelectPropertie = (new SqlQueryBuilder())
-                ->setQuery('SELECT
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectPropertie = (new SqlQueryBuilder())
+				->setQuery('SELECT
 								    id, property_type, property_address, property_county, property_city, property_cep
 								from
 								    tab_properties

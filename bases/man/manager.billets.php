@@ -22,7 +22,7 @@ $conn = new DBconnect();
 $dbInstance = $conn->connection();
 
 $activeRecords = new DbManagerRecords();
-$findClients = $activeRecords->find_client_id($dbInstance);
+$findClients = $activeRecords->list_properties_clients($dbInstance);
 
 $typeModule = new LinkModule();
 $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);

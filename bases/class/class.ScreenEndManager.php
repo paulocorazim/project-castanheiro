@@ -19,6 +19,7 @@ class shFooter
             <script src="../js/insert_update_clients.js" type="text/javascript"></script>
             <script src="../js/insert_propertie_clients.js" type="text/javascript"></script>
             <script src="../js/remove_propertie.js" type="text/javascript"></script>
+            <script src="../js/remove_clients.js" type="text/javascript"></script>
             <script src="../js/insert_docs_clients.js" type="text/javascript"></script>
             <script src="../js/insert_contract_clients.js" type="text/javascript"></script>
             <script src="../js/insert_savings_attached_clients.js" type="text/javascript"></script>

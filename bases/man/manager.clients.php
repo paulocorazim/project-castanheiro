@@ -30,7 +30,7 @@ $icone_fas_fa = $appFunctions->icone_fas_fan(2);
 
 /* Carregando a classe de tela princial*/
 $activeRecords = new DbManagerRecords();
-$findClients = $activeRecords->find_client_id($dbInstance);
+$findClients = $activeRecords->list_properties_clients($dbInstance);
 
 /* Carregando_Atruibuindo os módulos do usuátio e suas permissões*/
 $typeModule = new LinkModule();
@@ -76,8 +76,9 @@ if(isset($_GET['filters']))
 }
 
 /*Resultados da tela de pesquisa */
-if(isset($_POST['btn_find_StreetOrType'])){
+if(isset($_POST['btn_find_StreetOrType'])) {
 
+	//var_dump($_POST);
 	$data = $_POST;
 	$reportResultFindPropertyesClient = $activeRecords->find_client_for_addres($dbInstance, $data);
 	print $screenClient->screenListClientProperty($reportResultFindPropertyesClient);
@@ -237,23 +238,36 @@ if(isset($_POST['btn_insert_update_client'])) {
         exit();
 
     } elseif ($resp === 2) {
-        echo $appFunctions->alert_system('2',
-            "Cliente $_POST[client_name] foi ALTERADDO com sucesso! <strong> Deseja continuar alterações? </strong> <a href='?editID=$_POST[client_id]' class=\"alert-link\" > [SIM] </a> | <a href='?insert=true' class=\"alert-link\" > [NÃO] </a>");
-        exit();
+	    echo $appFunctions->alert_system('2',
+		    "Cliente $_POST[client_name] foi ALTERADDO com sucesso! <strong> Deseja continuar alterações? </strong> <a href='?editID=$_POST[client_id]' class=\"alert-link\" > [SIM] </a> | <a href='?insert=true' class=\"alert-link\" > [NÃO] </a>");
+	    exit();
 
     } else {
-        echo $appFunctions->alert_system('0', "Ops! Erro ao cadastrar Cliente! -> [ $resp ]");
-        exit();
+	    echo $appFunctions->alert_system('0', "Ops! Erro ao cadastrar Cliente! -> [ $resp ]");
+	    exit();
     }
 }
 
+/*Removendo o cliente*/
+if (isset($_POST[ 'btn_action_delete_client_id' ])) {
+	var_dump($_POST);
+
+	if ($_POST[ 'delete_id_client' ] == null) {
+		echo $appFunctions->alert_system('3', "Não foi informado o Cliente!");
+		exit();
+	} else {
+		$resp = $activeRecords->remove_client($dbInstance, $_POST[ 'delete_id_client' ]);
+		echo $appFunctions->alert_system('1', "Cliente removido com sucesso!");
+		exit();
+	}
+}
 /*Inserindo Docs ao Cliente*/
-if(isset($_POST['j_btn_doc'])) {
-    $typeDoc = 'Documents';
-    $resp_process = $appFunctions->upload_files($_POST['clientIDdoc'], $_FILES['file'], $typeDoc);
-    $resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
-    echo $resp_process;
-    exit();
+if (isset($_POST[ 'j_btn_doc' ])) {
+	$typeDoc = 'Documents';
+	$resp_process = $appFunctions->upload_files($_POST[ 'clientIDdoc' ], $_FILES[ 'file' ], $typeDoc);
+	$resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
+	echo $resp_process;
+	exit();
 }
 
 /*Inserindo Contrato ao Cliente*/

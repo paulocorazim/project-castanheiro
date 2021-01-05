@@ -65,11 +65,18 @@ function disable_billet_dues() {
     }
 }
 
+
+function delete_id_clint() {
+    document.getElementById('delete_name_client').value = document.getElementById('client_name').value;
+    document.getElementById('delete_id_client').value = document.getElementById('client_id').value;
+}
+
 function find_clitn() {
     const find_client_name = document.getElementById('find_client');
     document.getElementById('client_name').value = find_client_name.options[find_client_name.selectedIndex].text;
     //alert(find_client_name.options[find_client_name.selectedIndex].value);
 }
+
 
 // function active_number_apto() {
 //     const number_type = document.getElementById('property_type');

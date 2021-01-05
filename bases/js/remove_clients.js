@@ -1,17 +1,16 @@
 $(document).ready(function () {
-    $("#j_btn_remove_property").on("click", function () {
-        if ($("#property_id").val() === "") {
+    $("#btn_action_delete_client_id").on("click", function () {
+        if ($("#delete_id_client").val() === "") {
             alert("Por favor, o campo ID Imóvel");
-            $("#j_btn_remove_property").focus();
+            $("#btn_action_delete_client_id").focus();
 
         } else {
             $.ajax({
-                url: "manager.properties.php",
+                url: "manager.clients.php",
                 type: "POST",
                 data: {
-                    j_btn_remove_property: $("#j_btn_remove_property").val(),
-                    property_id: $("#property_id").val(),
-                    property_client: $("#property_client").val(),
+                    btn_action_delete_client_id: $("#btn_action_delete_client_id").val(),
+                    delete_id_client: $("#delete_id_client").val(),
                 },
                 beforeSend: function () {
                     $("#alert_msg").html("Carregando ...");

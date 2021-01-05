@@ -50,8 +50,8 @@ class ScreenClients
                             <div class="input-group mb-3">
                                 <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
                                   name="select_find_client_id" id="select_find_client_id" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">
-                                    <option value="--">Localizar Clientes / Endreços</option>
-                                    $findClients
+                                    <option value="--">Localizar Clientes</option>
+                                    $listClients
                                 </select>
                                   <div class="input-group-append">
                                     <button id="j_btn_findclientID" name="j_btn_findclientID" class="btn btn-sm btn-primary" type="button">
@@ -424,7 +424,10 @@ class ScreenClients
                             </div>
                                 <div class="d-flex align-items-end flex-column bd-highlight mt-3">
                                     <div class="p-2 bd-highlight">
-                                        <button name="btn_insert_update_client" id="btn_insert_update_client" value="InsertUpdate" class="btn btn-success">$btn_txt</button>
+                                    <a class="btn btn-danger" data-target="#deleteModal" data-toggle="modal" href="#" OnClick="delete_id_clint()">
+                                      REMOVER CADASTRO
+                                    </a>
+                                    <button name="btn_insert_update_client" id="btn_insert_update_client" value="InsertUpdate" class="btn btn-success">$btn_txt</button>
                                     </div>
                                 </div>
                             </div>
@@ -603,16 +606,16 @@ EOT;
                       </div>
                     </div>
 	
-                    <div class="card mb-3 py-2 border-left-primary">
-                      <div class="card-body">
-                        Locatários / Imóveis. <hr>
-                        <input type="text"  name="client_name" id="client_name" class="form-control"  placeholder="Nome do Locatário ?" value="">
-                        <hr>
-                        <input type="text"  name="property_streel" id="property_streel" class="form-control"  placeholder="Endereço do Imóvel ?" value="">
-                        <hr>
-                        <button name="btn_find_NameOrStreet" id="btn_find_NameOrStreet" value="find" class="btn btn-sm btn-success">Pesquisar</button>
-		              </div>
-		            </div>
+<!--                    <div class="card mb-3 py-2 border-left-primary">-->
+<!--                      <div class="card-body">-->
+<!--                        Locatários / Imóveis. <hr>-->
+<!--                        <input type="text"  name="client_name" id="client_name" class="form-control"  placeholder="Nome do Locatário ?" value="">-->
+<!--                        <hr>-->
+<!--                        <input type="text"  name="property_streel" id="property_streel" class="form-control"  placeholder="Endereço do Imóvel ?" value="">-->
+<!--                        <hr>-->
+<!--                        <button name="btn_find_NameOrStreet" id="btn_find_NameOrStreet" value="find" class="btn btn-sm btn-success">Pesquisar</button>-->
+<!--		              </div>-->
+<!--		            </div>-->
                  
 	              </div>
               </div>
