@@ -250,7 +250,7 @@ if(isset($_POST['btn_insert_update_client'])) {
 
 /*Removendo o cliente*/
 if (isset($_POST[ 'btn_action_delete_client_id' ])) {
-	var_dump($_POST);
+	//var_dump($_POST);
 
 	if ($_POST[ 'delete_id_client' ] == null) {
 		echo $appFunctions->alert_system('3', "Não foi informado o Cliente!");
@@ -258,6 +258,8 @@ if (isset($_POST[ 'btn_action_delete_client_id' ])) {
 	} else {
 		$resp = $activeRecords->remove_client($dbInstance, $_POST[ 'delete_id_client' ]);
 		echo $appFunctions->alert_system('1', "Cliente removido com sucesso!");
+		sleep(3);
+		http_redirect('manager.clients.php');
 		exit();
 	}
 }
