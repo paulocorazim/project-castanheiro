@@ -51,7 +51,7 @@ class ScreenClients
                                 <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
                                   name="select_find_client_id" id="select_find_client_id" type="text" aria-describedby="basic-addon2" aria-label="Search" class="form-control-sm form-control bg-light border-0 small">
                                     <option value="--">Localizar Clientes</option>
-                                    $listClients
+                                    $findClients
                                 </select>
                                   <div class="input-group-append">
                                     <button id="j_btn_findclientID" name="j_btn_findclientID" class="btn btn-sm btn-primary" type="button">

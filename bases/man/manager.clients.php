@@ -30,11 +30,13 @@ $icone_fas_fa = $appFunctions->icone_fas_fan(2);
 
 /* Carregando a classe de tela princial*/
 $activeRecords = new DbManagerRecords();
-$findClients = $activeRecords->list_properties_clients($dbInstance);
+
+/*ListBox com os Endereços de imóveis e se existe cliente alocado*/
+$ListBoxPropertsClients = $activeRecords->list_properties_clients($dbInstance);
 
 /* Carregando_Atruibuindo os módulos do usuátio e suas permissões*/
 $typeModule = new LinkModule();
-$typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
+$typeModules = $typeModule->LinkModules($dbInstance, $_SESSION[ 'id' ], $_SESSION[ 'user_type' ]);
 
 /* Carregando a classe de tela inicial de HTML*/
 $head = new shHead();
@@ -50,7 +52,7 @@ $screenProperty = new ScreenProperties();
 $screenClient = new ScreenClients();
 
 /* Atribuindo a content o valor da tela pra apresentar a pagina*/
-$contentNow = $screenClient->screenFormClient($findClients, null, null, null, null, null, null);
+$contentNow = $screenClient->screenFormClient($ListBoxPropertsClients, null, null, null, null, null, null);
 
 /*Lista de Clientes*/
 if($_GET['report'] == true) {
@@ -63,10 +65,9 @@ if($_GET['report'] == true) {
 }
 
 /*Tele de filtro de Pesquisas*/
-if(isset($_GET['filters']))
-{
+if(isset($_GET['filters'])) {
 	$typeProperty = $screenProperty->screenTypeProperty(null, 'find');
-	$contentNow =$screenClient->screenFilterClientAndProperty($findClients, $typeProperty);
+	$contentNow = $screenClient->screenFilterClientAndProperty($ListBoxPropertsClients, $typeProperty);
 
 	echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Filtro de Pesquisas", $contentNow);
 
@@ -122,7 +123,7 @@ if (isset($_GET['editID'])) {
     $clientListPropertys = $activeRecords->list_client_property($dbInstance, $clientID);
     $clientTablePropertys = $screenClient->screenListClientProperty($clientListPropertys);
 
-    $contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs, $clientContracts, $clientTableSavings, $findPropertyToCliente, $clientTablePropertys);
+	$contentNow = $screenClient->screenFormClient($ListBoxPropertsClients, $clientData, $clientDocs, $clientContracts, $clientTableSavings, $findPropertyToCliente, $clientTablePropertys);
 
     echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow);
     $footer = new shFooter();
@@ -263,6 +264,7 @@ if (isset($_POST[ 'btn_action_delete_client_id' ])) {
 		exit();
 	}
 }
+
 /*Inserindo Docs ao Cliente*/
 if (isset($_POST[ 'j_btn_doc' ])) {
 	$typeDoc = 'Documents';

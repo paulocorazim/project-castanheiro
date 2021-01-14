@@ -5,15 +5,16 @@ use Simplon\Db\SqlQueryBuilder;
 
 class DbManagerRecords
 {
+	//Users
 
-    /*Inclusão/Alteração de usuários*/
-    public function manager_user($dbInstance, $regists_user, $regists_module, $regists_permission, $appFunctions)
-    {
-        if ($regists_user['id'] == null) {
-            try {
+	/*Inclusão/Alteração de usuários*/
+	public function manager_user($dbInstance, $regists_user, $regists_module, $regists_permission, $appFunctions)
+	{
+		if ($regists_user[ 'id' ] == null) {
+			try {
 
-                /*Verifica tipo de usuário */
-                if ($regists_user['permission_master'] != 'master') { //verifica tipo de usuário
+				/*Verifica tipo de usuário */
+				if ($regists_user[ 'permission_master' ] != 'master') { //verifica tipo de usuário
 
                     $type = 'basic';
                 } else {
@@ -242,32 +243,63 @@ class DbManagerRecords
                 }
             }
 
-            $n_alert = base64_encode(1); //sucess
-            $n_msg = base64_encode("Usuário Alterado com sucesso!");
-            $appFunctions->redirect_page(0,
-                "../man/manager.users.php?select_id=$regists_user[id]&n_alert=$n_alert& n_msg=$n_msg");
-            exit();
-        }
-    }
+			$n_alert = base64_encode(1); //sucess
+			$n_msg = base64_encode("Usuário Alterado com sucesso!");
+			$appFunctions->redirect_page(0,
+				"../man/manager.users.php?select_id=$regists_user[id]&n_alert=$n_alert& n_msg=$n_msg");
+			exit();
+		}
+	}
 
-    /*Lendo usuário especifico by user_id para pegar os modulos e permissoes*/
-    public function select_user($dbInstance, $user_id, $appFunctions)
-    {
-        try {
+	/*Aletrando dados do Perfil*/
+	public function manager_perfil($dbInstance, $regists_user)
+	{
+		try {
 
-            $sqlManager = new SqlManager($dbInstance);
-            $shSelectUser = (new SqlQueryBuilder())
-                ->setQuery('SELECT * from tab_users WHERE id = :id')
-                ->setConditions(['id' => "$user_id"]);
-            $shResultsUser = $sqlManager->fetchAll($shSelectUser);
+			$conds = ['id' => "$regists_user[user_id]"];
 
-            try {
+			$data = [
+				'name' => "$regists_user[user_name]",
+				'cpf' => "$regists_user[cpfcnpj]",
+				'email' => "$regists_user[user_mail]",
+				'confirm_passwd' => md5("$regists_user[user_newpasswd]"),
+				'dt_update' => date('Y-m-d H:m:s'),
+			];
 
-                foreach ($shResultsUser as $shResultsUserId) {
+			$sqlManager = new SqlManager($dbInstance);
+			$sqlQuery = (new SqlQueryBuilder())
+				->setTableName('tab_users')
+				->setConditions($conds)
+				->setData($data);
+			$sqlManager->update($sqlQuery);
+			$resp = 1;
 
-                    /*Módulos do usuário*/
-                    $shSelectModules = (new SqlQueryBuilder())
-                        ->setQuery('SELECT
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			$resp = $error;
+		}
+
+		return $resp;
+	}
+
+	/*Lendo usuário especifico by user_id para pegar os modulos e permissoes*/
+	public function select_user($dbInstance, $user_id, $appFunctions): array
+	{
+		try {
+
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectUser = (new SqlQueryBuilder())
+				->setQuery('SELECT * from tab_users WHERE id = :id')
+				->setConditions(['id' => "$user_id"]);
+			$shResultsUser = $sqlManager->fetchAll($shSelectUser);
+
+			try {
+
+				foreach ($shResultsUser as $shResultsUserId) {
+
+					/*Módulos do usuário*/
+					$shSelectModules = (new SqlQueryBuilder())
+						->setQuery('SELECT
                                         distinct
                                         a.id_module,
                                         b.name_link
@@ -277,15 +309,15 @@ class DbManagerRecords
                                     where
                                           a.id_user = :id
                                       and b.id = a.id_module')
-                        ->setConditions(['id' => "$shResultsUserId[id]"]);
-                    $shResultsModulesUser = $sqlManager->fetchAll($shSelectModules);
+						->setConditions(['id' => "$shResultsUserId[id]"]);
+					$shResultsModulesUser = $sqlManager->fetchAll($shSelectModules);
 
-                    try {
-                        foreach ($shResultsModulesUser as $type_permission) {
+					try {
+						foreach ($shResultsModulesUser as $type_permission) {
 
-                            /*Permissões dos módulos*/
-                            $shSelectPermission = (new SqlQueryBuilder())
-                                ->setQuery('SELECT
+							/*Permissões dos módulos*/
+							$shSelectPermission = (new SqlQueryBuilder())
+								->setQuery('SELECT
                                                     a.type
                                                 from
                                                     tab_permissions  as a,
@@ -294,127 +326,99 @@ class DbManagerRecords
                                                       a.id_user = :id
                                                   and b.id = a.id_module
                                                 and a.id_module = :id_module')
-                                ->setConditions([
-                                    'id' => "$shResultsUserId[id]",
-                                    'id_module' => "$type_permission[id_module]",
-                                ]);
-                            $shResultsPermission = $sqlManager->fetchAll($shSelectPermission);
-                        }
+								->setConditions([
+									'id' => "$shResultsUserId[id]",
+									'id_module' => "$type_permission[id_module]",
+								]);
+							$shResultsPermission = $sqlManager->fetchAll($shSelectPermission);
+						}
 
-                    } catch (Exception $e) {
-                        $error = $e->getMessage();
-                        $appFunctions->alert_system(0, "Erro ao selecionar Permissões ->" . $error);
-                    }
-                }
+					} catch (Exception $e) {
+						$error = $e->getMessage();
+						$appFunctions->alert_system(0, "Erro ao selecionar Permissões ->" . $error);
+					}
+				}
 
-            } catch (Exception $e) {
-                $error = $e->getMessage();
-                $appFunctions->alert_system(0, "Erro ao selecionar Módulos ->" . $error);
-            }
+			} catch (Exception $e) {
+				$error = $e->getMessage();
+				$appFunctions->alert_system(0, "Erro ao selecionar Módulos ->" . $error);
+			}
 
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            $appFunctions->alert_system(0, "Erro ao selecionar Usuário ->" . $error);
-        }
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			$appFunctions->alert_system(0, "Erro ao selecionar Usuário ->" . $error);
+		}
 
-        /*Setando como 'selected' os módulos que o usuário tem acesso no BOX de Módulos na tela de Edição*/
-        $sqlManager = new SqlManager($dbInstance);
-        $shSelectModulesAll = (new SqlQueryBuilder())
-            ->setQuery('SELECT * from tab_modules');
-        $shResultsModulesAll = $sqlManager->fetchAll($shSelectModulesAll);
+		/*Setando como 'selected' os módulos que o usuário tem acesso no BOX de Módulos na tela de Edição*/
+		$sqlManager = new SqlManager($dbInstance);
+		$shSelectModulesAll = (new SqlQueryBuilder())
+			->setQuery('SELECT * from tab_modules');
+		$shResultsModulesAll = $sqlManager->fetchAll($shSelectModulesAll);
 
-        return array($shResultsUser, $shResultsModulesUser, $shResultsPermission, $shResultsModulesAll);
-    }
+		return array($shResultsUser, $shResultsModulesUser, $shResultsPermission, $shResultsModulesAll);
+	}
 
-    /*Lendo usuário especifico para pegar dados de perfil*/
-    public function select_user_perfil($dbInstance, $user_id)
-    {
-        $sqlManager = new SqlManager($dbInstance);
-        $shSelectUser = (new SqlQueryBuilder())
-            ->setQuery('SELECT * from tab_users WHERE id = :id')
-            ->setConditions(['id' => "$user_id"]);
-        $shResultsPerfilUser = $sqlManager->fetchAll($shSelectUser);
+	/*Lendo usuário especifico para pegar dados de perfil*/
+	public function select_user_perfil($dbInstance, $user_id): array
+	{
+		$sqlManager = new SqlManager($dbInstance);
+		$shSelectUser = (new SqlQueryBuilder())
+			->setQuery('SELECT * from tab_users WHERE id = :id')
+			->setConditions(['id' => "$user_id"]);
+		$shResultsPerfilUser = $sqlManager->fetchAll($shSelectUser);
 
-        foreach ($shResultsPerfilUser as $perfilUser) {
+		foreach ($shResultsPerfilUser as $perfilUser) {
 
-            $pUser = [
-                'user_name' => $perfilUser['name'],
-                'user_cpf' => $perfilUser['cpf'],
-                'user_email' => $perfilUser['email'],
-                'user_id' => $perfilUser['id'],
-            ];
-        }
+			$pUser = [
+				'user_name' => $perfilUser[ 'name' ],
+				'user_cpf' => $perfilUser[ 'cpf' ],
+				'user_email' => $perfilUser[ 'email' ],
+				'user_id' => $perfilUser[ 'id' ],
+			];
+		}
 
-        return $pUser;
-    }
+		return $pUser;
+	}
 
-    /*Aletrando dados do Perfil*/
-    public function manager_perfil($dbInstance, $regists_user)
-    {
-        try {
 
-            $conds = ['id' => "$regists_user[user_id]"];
+	//Clients
 
-            $data = [
-                'name' => "$regists_user[user_name]",
-                'cpf' => "$regists_user[cpfcnpj]",
-                'email' => "$regists_user[user_mail]",
-                'confirm_passwd' => md5("$regists_user[user_newpasswd]"),
-                'dt_update' => date('Y-m-d H:m:s'),
-            ];
-
-            $sqlManager = new SqlManager($dbInstance);
-            $sqlQuery = (new SqlQueryBuilder())
-                ->setTableName('tab_users')
-                ->setConditions($conds)
-                ->setData($data);
-            $sqlManager->update($sqlQuery);
-            $resp = 1;
-
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            $resp = $error;
-        }
-
-        return $resp;
-    }
-
-    /*Inclusão/Alteração de Clientes*/
-    public function manager_client($dbInstance, $regists_client)
-    {
-        $data = [
-            'id' => "$regists_client[id]",
-            'name' => "$regists_client[name]",
-            'corporate_name' => "$regists_client[corporate_name]",
-            'dt_created' => "$regists_client[dt_created]",
-            'dt_update' => "$regists_client[dt_update]",
-            'zip_code' => "$regists_client[zip_code]",
-            'address' => "$regists_client[address]",
-            'number' => "$regists_client[number]",
-            'county' => "$regists_client[county]",
-            'city' => "$regists_client[city]",
-            'neighbordhood' => "$regists_client[neighbordhood]",
-            'state' => "$regists_client[state]",
-            'phone1' => "$regists_client[phone1]",
-            'phone2' => "$regists_client[phone2]",
-            'phone3' => "$regists_client[phone3]",
-            'cpf' => "$regists_client[cpf]",
-            'cnpj' => "$regists_client[cnpj]",
-            'rg' => "$regists_client[rg]",
-            'type_cli' => "$regists_client[type_cli]",
-            'type_for' => "$regists_client[type_for]",
-            'type_col' => "$regists_client[type_col]",
-            'type_loc' => "$regists_client[type_loc]",
-            'state_registration' => "$regists_client[state_registration]",
-            'municipal_registration' => "$regists_client[municipal_registration]",
-            'email1' => "$regists_client[email1]",
-            'email2' => "$regists_client[email2]",
-            'site' => "$regists_client[site]",
-            'obs' => "$regists_client[obs]",
-            'active' => 1,
-            'responsible' => "$regists_client[responsible]",
-            'complement' => "$regists_client[complement]",
-        ];
+	/*Inclusão/Alteração de Clientes*/
+	public function manager_client($dbInstance, $regists_client)
+	{
+		$data = [
+			'id' => "$regists_client[id]",
+			'name' => "" . strtoupper($regists_client[ 'name' ]) . "",
+			'corporate_name' => "" . strtoupper($regists_client[ 'corporate_name' ]) . "",
+			'dt_created' => "" . strtoupper($regists_client[ 'dt_created' ]) . "",
+			'dt_update' => "" . strtoupper($regists_client[ 'dt_update' ]) . "",
+			'zip_code' => "" . strtoupper($regists_client[ 'zip_code' ]) . "",
+			'address' => "" . strtoupper($regists_client[ 'address' ]) . "",
+			'number' => "" . strtoupper($regists_client[ 'number' ]) . "",
+			'county' => "" . strtoupper($regists_client[ 'county' ]) . "",
+			'city' => "" . strtoupper($regists_client[ 'city' ]) . "",
+			'neighbordhood' => "" . strtoupper($regists_client[ 'neighbordhood' ]) . "",
+			'state' => "" . strtoupper($regists_client[ 'state' ]) . "",
+			'phone1' => "" . strtoupper($regists_client[ 'phone1' ]) . "",
+			'phone2' => "" . strtoupper($regists_client[ 'phone2' ]) . "",
+			'phone3' => "" . strtoupper($regists_client[ 'phone3' ]) . "",
+			'cpf' => "" . strtoupper($regists_client[ 'cpf' ]) . "",
+			'cnpj' => "" . strtoupper($regists_client[ 'cnpj' ]) . "",
+			'rg' => "" . strtoupper($regists_client[ 'rg' ]) . "",
+			'type_cli' => "" . strtoupper($regists_client[ 'type_cli' ]) . "",
+			'type_for' => "" . strtoupper($regists_client[ 'type_for' ]) . "",
+			'type_col' => "" . strtoupper($regists_client[ 'type_col' ]) . "",
+			'type_loc' => "" . strtoupper($regists_client[ 'type_loc' ]) . "",
+			'state_registration' => "" . strtoupper($regists_client[ 'state_registration' ]) . "",
+			'municipal_registration' => "" . strtoupper($regists_client[ 'municipal_registration' ]) . "",
+			'email1' => "" . strtoupper($regists_client[ 'email1' ]) . "",
+			'email2' => "" . strtoupper($regists_client[ 'email2' ]) . "",
+			'site' => "" . strtoupper($regists_client[ 'site' ]) . "",
+			'obs' => "" . strtoupper($regists_client[ 'obs' ]) . "",
+			'active' => 1,
+			'responsible' => "" . strtoupper($regists_client[ 'responsible' ]) . "",
+			'complement' => "" . strtoupper($regists_client[ 'complement' ]) . "",
+		];
 
         if ($regists_client['id'] == null) { //inclusão
 
@@ -578,119 +582,196 @@ class DbManagerRecords
 		return $resp;
 	}
 
-    /*Listando os registros de depósito poupanças*/
-    public function list_client_saving($dbInstance, $idClient)
-    {
-        try {
+	/*Incluido/Removendo Imóvel para Cliente*/
+	public function manager_client_property($dbInstance, $regists_client_property)
+	{
 
-            $tr = null;
-            $listClientSavingsRegists = null;
+		$conds = ['id_client' => "$regists_client_property[clientAddProperty]",
+			'id_property' => "$regists_client_property[SelectAddProperty]",
+		];
 
-            $sqlManager = new SqlManager($dbInstance);
-            $shSelectClientSavings = (new SqlQueryBuilder())
-                ->setQuery("SELECT DATE_FORMAT (saving_date,'%d-%m-%Y') as saving_date, saving_bank, saving_value, saving_filename, saving_number
+		$sqlManager = new SqlManager($dbInstance);
+		$shSelectClientProperty = (new SqlQueryBuilder())
+			->setQuery("SELECT  * FROM tab_clients_property WHERE id_client = :id_client AND id_property = :id_property")
+			->setConditions($conds);
+		$shResultsClientProperty = $sqlManager->fetchAll($shSelectClientProperty);
+
+		if (!$shResultsClientProperty) {
+
+			try {
+
+				$data = [
+					'id_client' => "$regists_client_property[clientAddProperty]",
+					'id_property' => "$regists_client_property[SelectAddProperty]",
+					'date_add' => date('Y-m-d h:m:s'),
+				];
+
+				$sqlManager = new SqlManager($dbInstance);
+				$sqlQuery = (new SqlQueryBuilder())
+					->setTableName('tab_clients_property')
+					->setData($data);
+				$sqlManager->insert($sqlQuery);
+				$resp = 1;
+
+			} catch (Exception $e) {
+				$error = $e->getMessage();
+				$resp = $error;
+			}
+
+		} else {
+			$resp = 2;
+		}
+
+		return $resp;
+	}
+
+	/*Listando os registros de depósito poupanças*/
+	public function list_client_saving($dbInstance, $idClient): string
+	{
+		try {
+
+			$tr = null;
+			$listClientSavingsRegists = null;
+
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectClientSavings = (new SqlQueryBuilder())
+				->setQuery("SELECT DATE_FORMAT (saving_date,'%d-%m-%Y') as saving_date, saving_bank, saving_value, saving_filename, saving_number
 									FROM tab_clients_savings WHERE saving_id_client = :saving_id_client")
-                ->setConditions(['saving_id_client' => "$idClient"]);
-            $shResultsClientSavings = $sqlManager->fetchAll($shSelectClientSavings);
+				->setConditions(['saving_id_client' => "$idClient"]);
+			$shResultsClientSavings = $sqlManager->fetchAll($shSelectClientSavings);
 
-            foreach ($shResultsClientSavings as $reportClients) {
-                $tr = "<tr>
-                      <td>R$" . number_format($reportClients['saving_value'], 2, ',', '.') . "</td>
+			foreach ($shResultsClientSavings as $reportClients) {
+				$tr = "<tr>
+                      <td>R$" . number_format($reportClients[ 'saving_value' ], 2, ',', '.') . "</td>
                       <td>$reportClients[saving_date]</td>
-                      <td>" . strtoupper($reportClients['saving_bank']) . "</td>
+                      <td>" . strtoupper($reportClients[ 'saving_bank' ]) . "</td>
                       <td>$reportClients[saving_number]</td>
                       <td><a href='../docs/clients/" . "$idClient/savings/$reportClients[saving_filename]' target='_blank'>Comprovante</a> </td>
                     </tr>";
-                $listClientSavingsRegists .= $tr;
-            }
+				$listClientSavingsRegists .= $tr;
+			}
 
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            echo "Erro ao receber lista de poupanças" . $error;
-        }
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de poupanças" . $error;
+		}
 
-        return $listClientSavingsRegists;
-    }
+		return $listClientSavingsRegists;
+	}
 
-    /*Listando os registros de depósito poupanças*/
-    public function load_survey($dbInstance, $idClient)
-    {
-        try {
+	/*Listando os imoveis do locatário*/
+	public function list_client_property($dbInstance, $idClient): string
+	{
+		try {
 
-            $tr = null;
-            $listClientSavingsRegists = null;
+			$tr = null;
+			$listClientPropertyRegists = null;
 
-            $sqlManager = new SqlManager($dbInstance);
-            $shSelectClientSavings = (new SqlQueryBuilder())
-                ->setQuery("SELECT DATE_FORMAT (saving_date,'%d-%m-%Y') as saving_date, saving_bank, saving_value, saving_filename, saving_number
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectClientProperty = (new SqlQueryBuilder())
+				->setQuery("SELECT a.id,
+                        DATE_FORMAT (a.date_add,'%d-%m-%Y') as date_add,
+                        a.id_client,  a.id_property, b.property_type, b.property_address, b.property_number,
+                        b.property_number_apto, b.property_city, b.property_state
+                        FROM
+                        tab_clients_property as a,
+                        tab_properties as b
+                        WHERE
+                        b.id = a.id_property and a.id_client = :id_client"
+				)
+				->setConditions(['id_client' => "$idClient"]);
+			$shResultsClientProperty = $sqlManager->fetchAll($shSelectClientProperty);
+
+			foreach ($shResultsClientProperty as $reportClientProperty) {
+				$tr = "<tr>
+                        <td>$reportClientProperty[date_add]</td>
+                        <td>$reportClientProperty[property_type]</td>
+                        <td>$reportClientProperty[property_address]</td>
+                        <td>$reportClientProperty[property_number]</td>
+                        <td>$reportClientProperty[property_number_apto]</td>
+                        <td>$reportClientProperty[property_city]</td>
+                        <td>$reportClientProperty[property_state]</td>
+                        <td><a class='btn btn-sm btn-secondary' href='#'>Remover</a></td>
+                      </tr>";
+				$listClientPropertyRegists .= $tr;
+			}
+
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de imoveis" . $error;
+		}
+
+		return $listClientPropertyRegists;
+	}
+
+	/*ListBox com todos os Clinete na tela de Cadastro*/
+	public function list_box_client($dbInstance): string
+	{
+		try {
+
+			$tr = null;
+			$listBoxClient = null;
+
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectClients = (new SqlQueryBuilder())
+				->setQuery("SELECT *	FROM tab_clients");
+			$shResultsClients = $sqlManager->fetchAll($shSelectClients);
+
+			foreach ($shResultsClients as $dataClient) {
+				$tr = "<tr>
+                      <td>A</td>
+                      <td>A</td>
+                      <td>A</td>
+                      <td>A</td>
+                      <td>A</td>
+                    </tr>";
+				$listBoxClient .= $tr;
+			}
+
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de Clientes" . $error;
+		}
+
+		return $listBoxClient;
+	}
+
+	/*Listando os registros de depósito poupanças*/
+	public function load_survey($dbInstance, $idClient): string
+	{
+		try {
+
+			$tr = null;
+			$listClientSavingsRegists = null;
+
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectClientSavings = (new SqlQueryBuilder())
+				->setQuery("SELECT DATE_FORMAT (saving_date,'%d-%m-%Y') as saving_date, saving_bank, saving_value, saving_filename, saving_number
                                     FROM tab_clients_savings WHERE saving_id_client = :saving_id_client")
-                ->setConditions(['saving_id_client' => "$idClient"]);
-            $shResultsClientSavings = $sqlManager->fetchAll($shSelectClientSavings);
+				->setConditions(['saving_id_client' => "$idClient"]);
+			$shResultsClientSavings = $sqlManager->fetchAll($shSelectClientSavings);
 
-            foreach ($shResultsClientSavings as $reportClients) {
-                $tr = "<tr>
-                    <td>R$" . number_format($reportClients['saving_value'], 2, ',', '.') . "</td>
+			foreach ($shResultsClientSavings as $reportClients) {
+				$tr = "<tr>
+                    <td>R$" . number_format($reportClients[ 'saving_value' ], 2, ',', '.') . "</td>
                     <td>$reportClients[saving_date]</td>
-                    <td>" . strtoupper($reportClients['saving_bank']) . "</td>
+                    <td>" . strtoupper($reportClients[ 'saving_bank' ]) . "</td>
                     <td>$reportClients[saving_number]</td>
                     <td><a href='../docs/clients/" . "$idClient/savings/$reportClients[saving_filename]' target='_blank'>Comprovante</a> </td>
                     </tr>";
-                $listClientSavingsRegists .= $tr;
-            }
+				$listClientSavingsRegists .= $tr;
+			}
 
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            echo "Erro ao receber lista de poupanças" . $error;
-        }
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de poupanças" . $error;
+		}
 
-        return $listClientSavingsRegists;
-    }
-
-    /*Incluido/Removendo Imóvel para Cliente*/
-    public function manager_client_property($dbInstance, $regists_client_property)
-    {
-
-        $conds = ['id_client' => "$regists_client_property[clientAddProperty]",
-            'id_property' => "$regists_client_property[SelectAddProperty]",
-        ];
-
-        $sqlManager = new SqlManager($dbInstance);
-        $shSelectClientProperty = (new SqlQueryBuilder())
-            ->setQuery("SELECT  * FROM tab_clients_property WHERE id_client = :id_client AND id_property = :id_property")
-            ->setConditions($conds);
-        $shResultsClientProperty = $sqlManager->fetchAll($shSelectClientProperty);
-
-        if (!$shResultsClientProperty) {
-
-            try {
-
-                $data = [
-                    'id_client' => "$regists_client_property[clientAddProperty]",
-                    'id_property' => "$regists_client_property[SelectAddProperty]",
-                    'date_add' => date('Y-m-d h:m:s'),
-                ];
-
-                $sqlManager = new SqlManager($dbInstance);
-                $sqlQuery = (new SqlQueryBuilder())
-                    ->setTableName('tab_clients_property')
-                    ->setData($data);
-                $sqlManager->insert($sqlQuery);
-                $resp = 1;
-
-            } catch (Exception $e) {
-                $error = $e->getMessage();
-	            $resp = $error;
-            }
-
-        } else {
-	        $resp = 2;
-        }
-
-	    return $resp;
-    }
+		return $listClientSavingsRegists;
+	}
 
 	/*Removendo Cliente*/
-	public function remove_client($dbInstance, $regist_client_id)
+	public function remove_client($dbInstance, $regist_client_id): array
 	{
 		try {
 
@@ -714,63 +795,18 @@ class DbManagerRecords
 
 	}
 
-	/*Listando os imoveis do locatário*/
-	public function list_client_property($dbInstance, $idClient)
+	/*Listando os clientes cadastrados*/
+	public function report_client($dbInstance): string
 	{
 		try {
 
 			$tr = null;
-			$listClientPropertyRegists = null;
+			$trResults = null;
 
 			$sqlManager = new SqlManager($dbInstance);
-            $shSelectClientProperty = (new SqlQueryBuilder())
-                ->setQuery("SELECT a.id,
-                        DATE_FORMAT (a.date_add,'%d-%m-%Y') as date_add,
-                        a.id_client,  a.id_property, b.property_type, b.property_address, b.property_number,
-                        b.property_number_apto, b.property_city, b.property_state
-                        FROM
-                        tab_clients_property as a,
-                        tab_properties as b
-                        WHERE
-                        b.id = a.id_property and a.id_client = :id_client"
-                )
-                ->setConditions(['id_client' => "$idClient"]);
-            $shResultsClientProperty = $sqlManager->fetchAll($shSelectClientProperty);
-
-            foreach ($shResultsClientProperty as $reportClientProperty) {
-                $tr = "<tr>
-                        <td>$reportClientProperty[date_add]</td>
-                        <td>$reportClientProperty[property_type]</td>
-                        <td>$reportClientProperty[property_address]</td>
-                        <td>$reportClientProperty[property_number]</td>
-                        <td>$reportClientProperty[property_number_apto]</td>
-                        <td>$reportClientProperty[property_city]</td>
-                        <td>$reportClientProperty[property_state]</td>
-                        <td><a class='btn btn-sm btn-secondary' href='#'>Remover</a></td>
-                      </tr>";
-                $listClientPropertyRegists .= $tr;
-            }
-
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            echo "Erro ao receber lista de imoveis" . $error;
-        }
-
-        return $listClientPropertyRegists;
-    }
-
-	/*Listando os clientes cadastrados*/
-    public function report_client($dbInstance)
-    {
-        try {
-
-            $tr = null;
-            $trResults = null;
-
-            $sqlManager = new SqlManager($dbInstance);
-            $shSelectClients = (new SqlQueryBuilder())
-                ->setQuery("SELECT * FROM tab_clients");
-            $shResultsClients = $sqlManager->fetchAll($shSelectClients);
+			$shSelectClients = (new SqlQueryBuilder())
+				->setQuery("SELECT * FROM tab_clients");
+			$shResultsClients = $sqlManager->fetchAll($shSelectClients);
 
             foreach ($shResultsClients as $reportClients) {
                 $tr = "<tr>
@@ -783,57 +819,26 @@ class DbManagerRecords
                 $trResults .= $tr;
             }
 
-        } catch (Exception $e) {
-	        $error = $e->getMessage();
-	        echo "Erro ao receber lista de poupanças" . $error;
-        }
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de poupanças" . $error;
+		}
 
-	    return $trResults;
-    }
+		return $trResults;
+	}
 
-	/*Listando os Imóveis x Clientes*/
-	public function list_properties_clients($dbInstance)
-	{
-		try {
-
-			$optionList = null;
-
-			$sqlManager = new SqlManager($dbInstance);
-			$shSelectPropertie = (new SqlQueryBuilder())
-				->setQuery('SELECT
-								    id, property_type, property_address, property_county, property_city, property_cep
-								from
-								    tab_properties
-								group by
-								    property_type, property_address, property_county, property_city, property_cep');
-            $shResultsPropertieID = $sqlManager->fetchAll($shSelectPropertie);
-
-            foreach ($shResultsPropertieID as $propertieAll)
-            {
-                $option = "<option value=\"$propertieAll[id]\">  $propertieAll[property_type] | $propertieAll[property_address] | $propertieAll[property_county] | $propertieAll[property_city]</option>";
-                $optionList .= $option;
-            }
-
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            echo "Erro ao receber lista de clientes" . $error;
-        }
-
-        return $optionList;
-    }
-
-    /*Encontrar Clientes por Endereços*/
-	public function find_client_for_addres($dbInstance, $propertieID)
+	/*Encontrar Clientes por Endereços*/
+	public function find_client_for_addres($dbInstance, $propertieID): string
 	{
 		$trResults = null;
 
 		try {
-				$optionList = null;
-				$id = $propertieID['select_find_streets_id'];
+			$optionList = null;
+			$id = $propertieID[ 'select_find_streets_id' ];
 
-				$sqlManager = new SqlManager($dbInstance);
+			$sqlManager = new SqlManager($dbInstance);
 
-				$shSelectPropertie = (new SqlQueryBuilder())
+			$shSelectPropertie = (new SqlQueryBuilder())
 					->setQuery('SELECT id, property_type, property_address,  property_county, property_city from tab_properties where id = :id')
 					->setConditions(['id' => "$id"]);
 				$shResultsPropertieID = $sqlManager->fetchAll($shSelectPropertie);
@@ -904,16 +909,16 @@ class DbManagerRecords
 	}
 
     /*Pegando os dados dos clientes para carregar e tela de Cliente*/
-    public function find_client_data($dbInstance, $clientID)
-    {
-        $clientData = null;
+	public function find_client_data($dbInstance, $clientID): array
+	{
+		$clientData = null;
 
-        try {
-            $sqlManager = new SqlManager($dbInstance);
-            $shSelectClientAll = (new SqlQueryBuilder())
-                ->setQuery('SELECT * from tab_clients WHERE id = :id')
-                ->setConditions(['id' => "$clientID"]);
-            $shResultsClientAll = $sqlManager->fetchAll($shSelectClientAll);
+		try {
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectClientAll = (new SqlQueryBuilder())
+				->setQuery('SELECT * from tab_clients WHERE id = :id')
+				->setConditions(['id' => "$clientID"]);
+			$shResultsClientAll = $sqlManager->fetchAll($shSelectClientAll);
 
             foreach ($shResultsClientAll as $clientValue) {
 
@@ -953,22 +958,25 @@ class DbManagerRecords
                 ];
             }
 
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            echo "Erro ao receber lista de clientes" . $error;
-        }
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de clientes" . $error;
+		}
 
-        return $clientData;
-    }
+		return $clientData;
+	}
 
-    /*Incluido Boleto a Avulso para Cliente*/
-    public function manager_billet_detached($dbInstance, $regists_billet_client)
-    {
-        try {
 
-            /* $conds = ['id' => "$regists_billet_client[find_client]"];*/
-            $billet_value = str_replace('.', '', $regists_billet_client['billet_value']); // remove o ponto
-            $billet_value = str_replace(',', '.', $billet_value); // troca a vírgula por ponto
+	//Boletos
+
+	/*Incluido Boleto a Avulso para Cliente*/
+	public function manager_billet_detached($dbInstance, $regists_billet_client)
+	{
+		try {
+
+			/* $conds = ['id' => "$regists_billet_client[find_client]"];*/
+			$billet_value = str_replace('.', '', $regists_billet_client[ 'billet_value' ]); // remove o ponto
+			$billet_value = str_replace(',', '.', $billet_value); // troca a vírgula por ponto
 
             $data = [
                 'id_client' => "$regists_billet_client[find_client]",
@@ -982,27 +990,30 @@ class DbManagerRecords
                 ->setTableName('tab_clients_billet_detached')
                 ->setData($data);
             $sqlManager->insert($sqlQuery);
-            $resp = 1;
+			$resp = 1;
 
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            $resp = $error;
-        }
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			$resp = $error;
+		}
 
-        return $resp;
-    }
+		return $resp;
+	}
 
-    /*Inclusão/Alteração de Imóveis*/
-    public function manager_property($dbInstance, $regist_property)
-    {
-        $property_value = str_replace('.', '', $regist_property['property_value']); // remove o ponto
-        $property_value = str_replace(',', '.', $property_value); // troca a vírgula por ponto
 
-        $property_value_location = str_replace('.', '', $regist_property['property_value_location']); // remove o ponto
-        $property_value_location = str_replace(',', '.', $property_value_location); // troca a vírgula por ponto
+	//Imóveis
 
-        $property_value_iptu = str_replace('.', '', $regist_property['property_value_iptu']); // remove o ponto
-        $property_value_iptu = str_replace(',', '.', $property_value_iptu); // troca a vírgula por ponto
+	/*Inclusão/Alteração de Imóveis*/
+	public function manager_property($dbInstance, $regist_property): array
+	{
+		$property_value = str_replace('.', '', $regist_property[ 'property_value' ]); // remove o ponto
+		$property_value = str_replace(',', '.', $property_value); // troca a vírgula por ponto
+
+		$property_value_location = str_replace('.', '', $regist_property[ 'property_value_location' ]); // remove o ponto
+		$property_value_location = str_replace(',', '.', $property_value_location); // troca a vírgula por ponto
+
+		$property_value_iptu = str_replace('.', '', $regist_property[ 'property_value_iptu' ]); // remove o ponto
+		$property_value_iptu = str_replace(',', '.', $property_value_iptu); // troca a vírgula por ponto
 
         $property_value_condo = str_replace('.', '', $regist_property['property_value_condo']); // remove o ponto
         $property_value_condo = str_replace(',', '.', $property_value_condo); // troca a vírgula por ponto
@@ -1085,17 +1096,17 @@ class DbManagerRecords
         }
     }
 
-    public function remove_property($dbInstance, $regist_property_id)
-    {
-	    try {
+	public function remove_property($dbInstance, $regist_property_id): array
+	{
+		try {
 
-		    $sqlManager = new SqlManager($dbInstance);
-		    $sqlQuery = (new SqlQueryBuilder())
-			    ->setTableName('tab_properties')
-			    ->setConditions(['id' => "$regist_property_id"]);
-		    $sqlManager->remove($sqlQuery);
+			$sqlManager = new SqlManager($dbInstance);
+			$sqlQuery = (new SqlQueryBuilder())
+				->setTableName('tab_properties')
+				->setConditions(['id' => "$regist_property_id"]);
+			$sqlManager->remove($sqlQuery);
 
-		    $resp = '1';
+			$resp = '1';
 		    $msg = "[$regist_property_id] : Imóvel Removido com sucesso!";
 
 	    } catch (Exception $e) {
@@ -1110,16 +1121,16 @@ class DbManagerRecords
     }
 
     /*Listando os id do Imóvel no Find das telas*/
-    public function find_property_id($dbInstance)
-    {
-        try {
+	public function find_property_id($dbInstance): string
+	{
+		try {
 
-            $optionList = null;
+			$optionList = null;
 
-            $sqlManager = new SqlManager($dbInstance);
-            $shSelectPropertyID = (new SqlQueryBuilder())
-                ->setQuery('SELECT * from tab_properties ORDER BY property_address , property_number, property_number_apto');
-            $shResultsPropertyID = $sqlManager->fetchAll($shSelectPropertyID);
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectPropertyID = (new SqlQueryBuilder())
+				->setQuery('SELECT * from tab_properties ORDER BY property_address , property_number, property_number_apto');
+			$shResultsPropertyID = $sqlManager->fetchAll($shSelectPropertyID);
 
             foreach ($shResultsPropertyID as $propertyALL) {
                 if ($propertyALL['property_type'] == 'Apartamento') {
@@ -1142,16 +1153,16 @@ class DbManagerRecords
     }
 
     /*Listando os id do Imóvel no Find no Cadastro de CLientes, para associar o imóvel*/
-    public function find_property_to_client($dbInstance)
-    {
-        try {
+	public function find_property_to_client($dbInstance): string
+	{
+		try {
 
-            $optionList = null;
+			$optionList = null;
 
-            $sqlManager = new SqlManager($dbInstance);
-            $shSelectPropertyID = (new SqlQueryBuilder())
-                ->setQuery('SELECT * from tab_properties ORDER BY property_address , property_number, property_number_apto');
-            $shResultsPropertyID = $sqlManager->fetchAll($shSelectPropertyID);
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectPropertyID = (new SqlQueryBuilder())
+				->setQuery('SELECT * from tab_properties ORDER BY property_address , property_number, property_number_apto');
+			$shResultsPropertyID = $sqlManager->fetchAll($shSelectPropertyID);
 
             foreach ($shResultsPropertyID as $propertyALL) {
                 if ($propertyALL['property_type'] == 'Apartamento') {
@@ -1175,15 +1186,15 @@ class DbManagerRecords
     }
 
     /*Listando os id do Imóvel no Find das telas*/
-    public function find_property_data($dbInstance, $propertyID)
-    {
-        $propertyData = null;
+	public function find_property_data($dbInstance, $propertyID): array
+	{
+		$propertyData = null;
 
-        try {
+		try {
 
-            $sqlManager = new SqlManager($dbInstance);
-            $shSelectPropertyAll = (new SqlQueryBuilder())
-                ->setQuery('SELECT c.*,
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectPropertyAll = (new SqlQueryBuilder())
+				->setQuery('SELECT c.*,
                             (SELECT b.name FROM  tab_clients_property as a, tab_clients as b WHERE b.id = a.id_client AND a.id_property = c.id limit 1) as client
                             from
                             tab_properties as c
@@ -1228,12 +1239,42 @@ class DbManagerRecords
                 ];
             }
 
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            echo "Erro ao receber dados Imóveis" . $error;
-        }
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber dados Imóveis" . $error;
+		}
 
-        return $propertyData;
-    }
+		return $propertyData;
+	}
+
+	/*Listando os Imóveis x Clientes*/
+	public function list_properties_clients($dbInstance): string
+	{
+		try {
+
+			$optionList = null;
+
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectPropertie = (new SqlQueryBuilder())
+				->setQuery('SELECT
+								    id, property_type, property_address, property_county, property_city, property_cep
+								from
+								    tab_properties
+								group by
+								    property_type, property_address, property_county, property_city, property_cep');
+			$shResultsPropertieID = $sqlManager->fetchAll($shSelectPropertie);
+
+			foreach ($shResultsPropertieID as $propertieAll) {
+				$option = "<option value=\"$propertieAll[id]\">  $propertieAll[property_type] | $propertieAll[property_address] | $propertieAll[property_county] | $propertieAll[property_city]</option>";
+				$optionList .= $option;
+			}
+
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de clientes" . $error;
+		}
+
+		return $optionList;
+	}
 
 }
