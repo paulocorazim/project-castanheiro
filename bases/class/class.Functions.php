@@ -39,30 +39,37 @@ Class appFunctions
 			$btn_type = "btn btn-danger";
 			$i = "fas fa-trash";
 		}
+		
 		if ($type === '1') {
 			$btn_type = "btn btn-success";
 			$i = "fas fa-check";
 		}
+		
 		if ($type === '2') {
 			$btn_type = "btn btn-info";
 			$i = "fas fa-info-circle";
 		}
+		
 		if ($type === '3') {
 			$btn_type = "btn btn-warning";
 			$i = "fas fa-exclamation-triangle";
 		}
+		
 		if ($type === '4') {
 			$btn_type = "btn btn-primary";
 			$i = "fas fa-flag";
 		}
+		
 		if ($type === '5') {
 			$btn_type = "btn btn-secondary";
 			$i = "fas fa-arrow-right";
 		}
+		
 		if ($type === '5') {
 			$btn_type = "btn btn-light";
 			$i = "fas fa-arrow-right";
 		}
+
 		return <<<EOT
             <div class="alert alert-light alert-dismissible fade show" role="alert">
                 <span class="icon text-white-50">
@@ -84,8 +91,8 @@ EOT;
 	public function redirect_page($time, $url)
 	{
 
-		echo $redirect_page = <<<EOT
-        <meta http-equiv='refresh' content='$time;url=$url' />
+		return <<<EOT
+    <meta http-equiv='refresh' content='$time;url=$url' />
 
 EOT;
 		return $redirect_page;
@@ -217,6 +224,15 @@ EOT;
 	public function load_files($clientID)
 	{
 		$clientPathFile = "../docs/clients/$clientID/";
+
+		if (file_exists($clientPathFile)) 
+		{
+			//echo "Arquivo ou diretórioexiste";
+		} else {
+			mkdir("..//docs/clients/$clientID", 0777, true);
+			chmod("..//docs/clients/$clientID", 0777);
+		}
+
 		$dirPath = dir($clientPathFile);
 		$files_name = null;
 
@@ -239,6 +255,15 @@ EOT;
 	public function load_contracts($clientID)
 	{
 		$clientPathFile = "../docs/clients/$clientID/contracts/";
+
+		if (file_exists($clientPathFile)) 
+		{
+			//echo "Arquivo ou diretórioexiste";
+		} else {
+			mkdir("..//docs/clients/$clientID/contracts", 0777, true);
+			chmod("..//docs/clients/$clientID/contracts", 0777);
+		}
+
 		$dirPath = dir($clientPathFile);
 		$files_name = null;
 

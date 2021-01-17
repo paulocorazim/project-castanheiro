@@ -626,7 +626,7 @@ class DbManagerRecords
 	}
 
 	/*Listando os registros de depósito poupanças*/
-	public function list_client_saving($dbInstance, $idClient): string
+	public function list_client_saving($dbInstance, $idClient)
 	{
 		try {
 
@@ -660,7 +660,7 @@ class DbManagerRecords
 	}
 
 	/*Listando os imoveis do locatário*/
-	public function list_client_property($dbInstance, $idClient): string
+	public function list_client_property($dbInstance, $idClient)
 	{
 		try {
 
@@ -682,19 +682,19 @@ class DbManagerRecords
 				->setConditions(['id_client' => "$idClient"]);
 			$shResultsClientProperty = $sqlManager->fetchAll($shSelectClientProperty);
 
-			foreach ($shResultsClientProperty as $reportClientProperty) {
+			foreach ($shResultsClientProperty as $reportClientProperty) 
+			{
 				$tr = "<tr>
-                        <td>$reportClientProperty[date_add]</td>
-                        <td>$reportClientProperty[property_type]</td>
-                        <td>$reportClientProperty[property_address]</td>
-                        <td>$reportClientProperty[property_number]</td>
-                        <td>$reportClientProperty[property_number_apto]</td>
-                        <td>$reportClientProperty[property_city]</td>
-						<td>$reportClientProperty[property_state]</td>
-						<td>$reportClientProperty[property_cep]</td>
-						
-                        ".'<td><button name="btn_remove_propertyClient" id="btn_remove_propertyClient" class="btn btn-sm btn-secondary" onclick="deleteRow(this.parentNode.parentNode.rowIndex)"> Remover</button>'."
-                      </tr>";
+								<td>$reportClientProperty[date_add]</td>
+								<td>$reportClientProperty[property_type]</td>
+								<td>$reportClientProperty[property_address]</td>
+								<td>$reportClientProperty[property_number]</td>
+								<td>$reportClientProperty[property_number_apto]</td>
+								<td>$reportClientProperty[property_city]</td>
+								<td>$reportClientProperty[property_state]</td>
+								<td>$reportClientProperty[property_cep]</td>
+								".'<td><button name="btn_remove_propertyClient" id="btn_remove_propertyClient" class="btn btn-sm btn-secondary" onclick="deleteRow(this.parentNode.parentNode.rowIndex)"> Remover</button>'."
+							</tr>";
 				$listClientPropertyRegists .= $tr;
 			}
 
@@ -707,7 +707,7 @@ class DbManagerRecords
 	}
 
 	/*ListBox com todos os Clinete na tela de Cadastro*/
-	public function list_box_client($dbInstance): string
+	public function list_box_client($dbInstance)
 	{
 		try {
 
@@ -734,7 +734,7 @@ class DbManagerRecords
 	}
 
 	/*Listando os registros de depósito poupanças*/
-	public function load_survey($dbInstance, $idClient): string
+	public function load_survey($dbInstance, $idClient)
 	{
 		try {
 
@@ -793,7 +793,7 @@ class DbManagerRecords
 	}
 
 	/*Listando os clientes cadastrados*/
-	public function report_client($dbInstance): string
+	public function report_client($dbInstance)
 	{
 		try {
 
@@ -825,7 +825,7 @@ class DbManagerRecords
 	}
 
 	/*Encontrar Clientes por Endereços*/
-	public function find_client_for_addres($dbInstance, $propertieID): string
+	public function find_client_for_addres($dbInstance, $propertieID)
 	{
 		$trResults = null;
 
@@ -1123,7 +1123,7 @@ class DbManagerRecords
     }
 
     /*Listando os id do Imóvel no Find das telas*/
-	public function find_property_id($dbInstance): string
+	public function find_property_id($dbInstance)
 	{
 		try {
 
@@ -1155,7 +1155,7 @@ class DbManagerRecords
     }
 
     /*Listando os id do Imóvel no Find no Cadastro de CLientes, para associar o imóvel*/
-	public function find_property_to_client($dbInstance): string
+	public function find_property_to_client($dbInstance)
 	{
 		try {
 
@@ -1250,7 +1250,7 @@ class DbManagerRecords
 	}
 
 	/*Listando os Imóveis x Clientes*/
-	public function list_properties_clients($dbInstance): string
+	public function list_properties_clients($dbInstance)
 	{
 		try {
 
