@@ -1,4 +1,5 @@
 <?php
+
 // ini_set('display_errors', 1);
 // ini_set('display_startup_erros', 1);
 // error_reporting(E_ALL);
@@ -34,9 +35,13 @@ $activeRecords = new DbManagerRecords();
 /*ListBox com os Endereços de imóveis e se existe cliente alocado*/
 $ListBoxPropertsClients = $activeRecords->list_properties_clients($dbInstance);
 
+/* ListBox Com os Clientes cadastrados*/
+$findClients = $activeRecords->list_box_client($dbInstance);
+
+
 /* Carregando_Atruibuindo os módulos do usuátio e suas permissões*/
 $typeModule = new LinkModule();
-$typeModules = $typeModule->LinkModules($dbInstance, $_SESSION[ 'id' ], $_SESSION[ 'user_type' ]);
+$typeModules = $typeModule->LinkModules($dbInstance, $_SESSION[ 'id' ], $_SESSION[ 'user_type']);
 
 /* Carregando a classe de tela inicial de HTML*/
 $head = new shHead();
@@ -52,7 +57,7 @@ $screenProperty = new ScreenProperties();
 $screenClient = new ScreenClients();
 
 /* Atribuindo a content o valor da tela pra apresentar a pagina*/
-$contentNow = $screenClient->screenFormClient($ListBoxPropertsClients, null, null, null, null, null, null);
+$contentNow = $screenClient->screenFormClient($findClients, null, null, null, null, null, null);
 
 /*Lista de Clientes*/
 if($_GET['report'] == true) {
@@ -65,7 +70,9 @@ if($_GET['report'] == true) {
 }
 
 /*Tele de filtro de Pesquisas*/
-if(isset($_GET['filters'])) {
+if(isset($_GET['filters'])) 
+{
+
 	$typeProperty = $screenProperty->screenTypeProperty(null, 'find');
 	$contentNow = $screenClient->screenFilterClientAndProperty($ListBoxPropertsClients, $typeProperty);
 
@@ -91,7 +98,6 @@ if(isset($_POST['btn_find_StreetOrType'])) {
 
 /*Resultados da tela de pesquisa */
 if(isset($_POST['btn_find_NameOrStreet'])){
-
 	var_dump($_POST);
 	exit();
 }
@@ -101,6 +107,7 @@ if(isset($_POST['btn_find_NameOrStreet'])){
 if (isset($_GET['editID'])) {
 
     $clientID = $_GET['editID'];
+
     /*Lendo ddados do cliente*/
     $clientData = $activeRecords->find_client_data($dbInstance, $clientID);
     $findPropertyToCliente = $activeRecords->find_property_to_client($dbInstance); // Lista dos imóveis
@@ -116,16 +123,16 @@ if (isset($_GET['editID'])) {
 
     /*Lendo poupanças do cliente*/
     $clientListSavings = $activeRecords->list_client_saving($dbInstance, $clientID);
-
     $clientTableSavings = $screenClient->screenListClientSavings($clientListSavings);
 
     /*Lendo imóveis do cliente*/
     $clientListPropertys = $activeRecords->list_client_property($dbInstance, $clientID);
     $clientTablePropertys = $screenClient->screenListClientProperty($clientListPropertys);
 
-	$contentNow = $screenClient->screenFormClient($ListBoxPropertsClients, $clientData, $clientDocs, $clientContracts, $clientTableSavings, $findPropertyToCliente, $clientTablePropertys);
+	$contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs, $clientContracts, $clientTableSavings, $findPropertyToCliente, $clientTablePropertys);
 
     echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow);
+   
     $footer = new shFooter();
     echo $footer->sh_footer();
     exit();
@@ -250,14 +257,14 @@ if(isset($_POST['btn_insert_update_client'])) {
 }
 
 /*Removendo o cliente*/
-if (isset($_POST[ 'btn_action_delete_client_id' ])) {
+if (isset($_POST['btn_action_delete_client_id'])) {
 	//var_dump($_POST);
 
-	if ($_POST[ 'delete_id_client' ] == null) {
+	if ($_POST['delete_id_client' ] == null) {
 		echo $appFunctions->alert_system('3', "Não foi informado o Cliente!");
 		exit();
 	} else {
-		$resp = $activeRecords->remove_client($dbInstance, $_POST[ 'delete_id_client' ]);
+		$resp = $activeRecords->remove_client($dbInstance, $_POST['delete_id_client']);
 		echo $appFunctions->alert_system('1', "Cliente removido com sucesso!");
 		sleep(3);
 		http_redirect('manager.clients.php');
@@ -266,9 +273,9 @@ if (isset($_POST[ 'btn_action_delete_client_id' ])) {
 }
 
 /*Inserindo Docs ao Cliente*/
-if (isset($_POST[ 'j_btn_doc' ])) {
+if (isset($_POST['j_btn_doc'])) {
 	$typeDoc = 'Documents';
-	$resp_process = $appFunctions->upload_files($_POST[ 'clientIDdoc' ], $_FILES[ 'file' ], $typeDoc);
+	$resp_process = $appFunctions->upload_files($_POST['clientIDdoc' ], $_FILES[ 'file' ], $typeDoc);
 	$resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
 	echo $resp_process;
 	exit();
@@ -345,13 +352,14 @@ if(isset($_POST['j_btn_salve_survey'])){
 		//print_r($_FILES);
 
 		$activeRecords->manager_client_survey_file($dbInstance, $regists_client_survey, $_FILES);
-		echo $appFunctions->alert_system('1', "Vistorias Incluida com sucesso");
+		echo $appFunctions->alert_system('1', "Vistorias Incluidas com sucesso!");
 
-		foreach ($_FILES as $fileSurvey => $fileData) {
-
+        foreach ($_FILES as $fileSurvey => $fileData) 
+        {
 			$clientPathFile = "../docs/clients/$_POST[clientAddSurvey]/survey";
 
-			if (file_exists($clientPathFile)) {
+            if (file_exists($clientPathFile)) 
+            {
 				//echo "Arquivo ou diretórioexiste";
 			} else {
 				mkdir("..//docs/clients/$_POST[clientAddSurvey]/survey", 0777, true);
@@ -361,17 +369,20 @@ if(isset($_POST['j_btn_salve_survey'])){
 			$typeDoc = 'Survey';
 			$resp_process = $appFunctions->upload_files($_POST['clientAddSurvey'], $fileData, $typeDoc);
 
-			if ($resp_process['0'] == '0') { //erro ao fazer upload
+            if ($resp_process['0'] == '0') //erro ao fazer upload
+            {
 				$resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
 				echo $resp_process;
 				exit();
 			}
 
-			if ($resp_process['0'] == '1') { //sucesso para salvar o arquivo
+            if ($resp_process['0'] == '1')  //sucesso para salvar o arquivo
+            {
 				$resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
 				echo $resp_process;
 			}
-		}
+        }
+        
 		exit();
 	}
 
@@ -380,6 +391,9 @@ if(isset($_POST['j_btn_salve_survey'])){
 
 /*Acessciando Cliente/Imóvel */
 if (isset($_POST['j_btn_salve_client_Property'])) {
+
+    var_dump($_POST);
+    exit;
 
     $regists_client_property = [
         'clientAddProperty' => $_POST['clientAddProperty'],

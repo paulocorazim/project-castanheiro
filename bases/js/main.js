@@ -77,6 +77,10 @@ function find_clitn() {
     //alert(find_client_name.options[find_client_name.selectedIndex].value);
 }
 
+function deleteRow(i){
+    alert('Seráá?');
+    document.getElementById('table_propertys').deleteRow(i)
+}
 
 // function active_number_apto() {
 //     const number_type = document.getElementById('property_type');

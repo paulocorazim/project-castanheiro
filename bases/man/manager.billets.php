@@ -22,7 +22,7 @@ $conn = new DBconnect();
 $dbInstance = $conn->connection();
 
 $activeRecords = new DbManagerRecords();
-$findClients = $activeRecords->list_properties_clients($dbInstance);
+$findClients = $activeRecords->list_box_client($dbInstance);
 
 $typeModule = new LinkModule();
 $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION['id'], $_SESSION['user_type']);
@@ -33,6 +33,7 @@ if (isset($_POST['btn_insert_billet'])) {
     $regists_billet_client = $_POST;
 
     $resp = $activeRecords->manager_billet_detached($dbInstance, $regists_billet_client);
+    
     if ($resp == 1)
     {
         echo $appFunctions->alert_system('1', "Ok! Boleto Inserido!");

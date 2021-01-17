@@ -2,7 +2,7 @@
 
     Class DBconnect
     {
-        public function connection()
+        public function connection(): \Simplon\Db\Library\Mysql
         {
             require __DIR__ . '/../vendor/autoload.php';
             $dbInstance = null;

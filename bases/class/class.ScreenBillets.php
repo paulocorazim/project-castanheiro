@@ -6,7 +6,7 @@
         {
             return <<< EOT
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	        <div class="container-fluid">         
+	          <div class="container-fluid">         
 	                <div class="card o-hidden border-0 shadow-lg my-4">
 	                    <div class="p-4">
                         <div class="d-flex align-items-end flex-column bd-highlight">
@@ -30,7 +30,7 @@
 
 	                    <div class="row">
 	                        <div class="col-sm-5">
-	                            <span>Código Cliente</span>
+	                            <span>Cliente</span>
 	                            <input type="text" name="client_name" id="client_name" class="form-control-sm form-control" value="" disabled>
 	                        </div>
 	                        <div class="col-sm-3">

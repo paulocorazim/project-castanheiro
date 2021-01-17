@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{bootstrap, e6868744bc, jquery-3.4.1.slim, jsuites, locastyle, popper, sweetalert}" />
-  </component>
-</project>

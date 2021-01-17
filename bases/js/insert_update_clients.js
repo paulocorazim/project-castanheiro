@@ -25,11 +25,7 @@ $(document).ready(function () {
                 alert("Por favor, o campo ( | Número | ) precisa ser preenchido! Verifique !");
                 $('#client_number').focus();
 
-            } /*else if ($('#client_phone1').val() === '') {
-                alert("Por favor, o campo ( | Telefone 1 | ) precisa ser preenchido! Verifique !");
-                $('#client_phone1').focus();
-
-            }*/
+            } 
             else {
 
                 $.ajax({

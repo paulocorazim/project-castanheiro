@@ -66,33 +66,43 @@ class ScreenClients
                             <li class="nav-item">
                               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#novocliente" role="tab" aria-controls="home" aria-selected="true">Cliente</a>
                             </li>
+                            
                             <li class="nav-item">
                               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#dadosadicionais1" role="tab" aria-controls="profile" aria-selected="false">Endereço</a>
                             </li>
+                            
                             <li class="nav-item">
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#dadosadicionais2" role="tab" aria-controls="contact" aria-selected="false">Tipo Cliente</a>
                             </li>
+                            
                             <li class="nav-item">
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="contact" aria-selected="false">Documentos</a>
                             </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#poupanca" role="tab" aria-controls="contact" aria-selected="false">Poupança / Depósito</a>
-                              </li>
-                            <li class="nav-item">
-                              <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#contratos" role="tab" aria-controls="contact" aria-selected="false">Contratos</a>
                             </li>
+                            
                             <li class="nav-item">
                               <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#imoveis" role="tab" aria-controls="contact" aria-selected="false">Imóveis</a>
                             </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link $desactive_tab_contract" data-toggle="tab" href="#vistorias" role="tab" aria-controls="contact" aria-selected="false">Vistorias</a>
                             </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#contrato" role="tab" aria-controls="contact" aria-selected="false">Contrato</a>
                             </li>
+                            
+                            <li class="nav-item">
+                             <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#contratos" role="tab" aria-controls="contact" aria-selected="false">Contratos</a>
+                            </li>
+                            
                             <li class="nav-item">
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#observacoes" role="tab" aria-controls="contact" aria-selected="false">Observações</a>
-                            </li>                            
+                            </li>
+                                                        
                           </ul>
                           
                           <div class="tab-content" id="myTabContent">
@@ -299,7 +309,6 @@ class ScreenClients
                             <div class="tab-pane fade" id="imoveis" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="custom-file">
 
-                                <form method="post" enctype="multipart/form-data" id="FormAddProperty">
                                 <input type="hidden" name="clientAddProperty" id="clientAddProperty" value="$clientValues[id]">
 
                                     <select  type="text" class="form-control-sm form-control bg-light border-0 small" name="SelectAddProperty"  id="SelectAddProperty" >
@@ -309,7 +318,7 @@ class ScreenClients
                                     <hr>
 
                                     <button name="j_btn_salve_client_Property" id="j_btn_salve_client_Property" value="Insert_client_Property" class="btn btn-sm btn-success" />Adicionar Imóvel</button>
-                                </form>
+                                
 
                                     <hr>
                                     $clientTablePropertys
@@ -467,10 +476,10 @@ EOT;
     public function screenListClientProperty($listClientPropertys)
     {
         return <<< EOT
-            <div id="table_propertys">
+            <div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table cellspacing="0" class="table small table-hover table-bordered">
+                    <table id="table_propertys cellspacing="0" class="table small table-hover table-bordered">
                       <thead>
                       <tr>
                         <th>Locatário</th>

@@ -131,13 +131,12 @@ EOT;
 		return $icone_fas_fan;
 	}
 
-	public function upload_files($clientID, $clientDOC, $typeDoc)
+	public function upload_files($clientID, $clientDOC, $typeDoc) : array
 	{
 		$type = null;
 		$resp = null;
 
 		$_FILES = $clientDOC;
-
 
 		// Pasta onde o arquivo vai ser salvo
 		if ($typeDoc == 'Documents') {

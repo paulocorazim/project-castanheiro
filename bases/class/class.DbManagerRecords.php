@@ -672,7 +672,7 @@ class DbManagerRecords
 				->setQuery("SELECT a.id,
                         DATE_FORMAT (a.date_add,'%d-%m-%Y') as date_add,
                         a.id_client,  a.id_property, b.property_type, b.property_address, b.property_number,
-                        b.property_number_apto, b.property_city, b.property_state
+                        b.property_number_apto, b.property_city, b.property_state, b.property_cep 
                         FROM
                         tab_clients_property as a,
                         tab_properties as b
@@ -690,8 +690,10 @@ class DbManagerRecords
                         <td>$reportClientProperty[property_number]</td>
                         <td>$reportClientProperty[property_number_apto]</td>
                         <td>$reportClientProperty[property_city]</td>
-                        <td>$reportClientProperty[property_state]</td>
-                        <td><a class='btn btn-sm btn-secondary' href='#'>Remover</a></td>
+						<td>$reportClientProperty[property_state]</td>
+						<td>$reportClientProperty[property_cep]</td>
+						
+                        ".'<td><button name="btn_remove_propertyClient" id="btn_remove_propertyClient" class="btn btn-sm btn-secondary" onclick="deleteRow(this.parentNode.parentNode.rowIndex)"> Remover</button>'."
                       </tr>";
 				$listClientPropertyRegists .= $tr;
 			}
@@ -709,23 +711,18 @@ class DbManagerRecords
 	{
 		try {
 
-			$tr = null;
+			$optionValue = null;
 			$listBoxClient = null;
 
 			$sqlManager = new SqlManager($dbInstance);
 			$shSelectClients = (new SqlQueryBuilder())
-				->setQuery("SELECT *	FROM tab_clients");
+				->setQuery("SELECT * FROM tab_clients order by name");
 			$shResultsClients = $sqlManager->fetchAll($shSelectClients);
 
-			foreach ($shResultsClients as $dataClient) {
-				$tr = "<tr>
-                      <td>A</td>
-                      <td>A</td>
-                      <td>A</td>
-                      <td>A</td>
-                      <td>A</td>
-                    </tr>";
-				$listBoxClient .= $tr;
+			foreach ($shResultsClients as $dataClient) 
+			{
+				$optionValue = "<option value='?editID=$dataClient[id]'>$dataClient[name] ( Código: $dataClient[id] )</option>";
+				$listBoxClient .= $optionValue;
 			}
 
 		} catch (Exception $e) {
@@ -977,13 +974,18 @@ class DbManagerRecords
 			/* $conds = ['id' => "$regists_billet_client[find_client]"];*/
 			$billet_value = str_replace('.', '', $regists_billet_client[ 'billet_value' ]); // remove o ponto
 			$billet_value = str_replace(',', '.', $billet_value); // troca a vírgula por ponto
+			
+			//?editID=128
+			
+			$id = substr($regists_billet_client['find_client'], -3);
 
             $data = [
-                'id_client' => "$regists_billet_client[find_client]",
+                'id_client' => "$id",
                 'billet_value' => "$billet_value",
                 'billet_due_date' => "$regists_billet_client[billet_due_date]",
                 'billet_send_mail_client' => "$regists_billet_client[billet_send_mail_client]",
-            ];
+			];
+
 
             $sqlManager = new SqlManager($dbInstance);
             $sqlQuery = (new SqlQueryBuilder())

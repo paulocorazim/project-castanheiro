@@ -40,8 +40,7 @@
         $alert_type = $appFunctions->alert_system($n_alert, "$n_msg");
     }
 
-    echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Vistorias de Imóveis : Clientes", $contentNow,
-        $alert_type);
+    echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Vistorias de Imóveis : Clientes", $contentNow, $alert_type);
 
 
     $footer = new shFooter();
