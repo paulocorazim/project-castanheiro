@@ -626,7 +626,7 @@ class DbManagerRecords
 	}
 
 	/*Listando os registros de depósito poupanças*/
-	public function list_client_saving($dbInstance, $idClient)
+	public function list_client_saving($dbInstance, $idClient): string
 	{
 		try {
 
@@ -660,7 +660,7 @@ class DbManagerRecords
 	}
 
 	/*Listando os imoveis do locatário*/
-	public function list_client_property($dbInstance, $idClient)
+	public function list_client_property($dbInstance, $idClient): string
 	{
 		try {
 
@@ -707,7 +707,7 @@ class DbManagerRecords
 	}
 
 	/*ListBox com todos os Clinete na tela de Cadastro*/
-	public function list_box_client($dbInstance)
+	public function list_box_client($dbInstance): string
 	{
 		try {
 
@@ -734,7 +734,7 @@ class DbManagerRecords
 	}
 
 	/*Listando os registros de depósito poupanças*/
-	public function load_survey($dbInstance, $idClient)
+	public function load_survey($dbInstance, $idClient): string
 	{
 		try {
 
@@ -793,7 +793,7 @@ class DbManagerRecords
 	}
 
 	/*Listando os clientes cadastrados*/
-	public function report_client($dbInstance)
+	public function report_client($dbInstance): string
 	{
 		try {
 
@@ -825,7 +825,7 @@ class DbManagerRecords
 	}
 
 	/*Encontrar Clientes por Endereços*/
-	public function find_client_for_addres($dbInstance, $propertieID)
+	public function find_client_for_addres($dbInstance, $propertieID): string
 	{
 		$trResults = null;
 
@@ -1123,7 +1123,7 @@ class DbManagerRecords
     }
 
     /*Listando os id do Imóvel no Find das telas*/
-	public function find_property_id($dbInstance)
+	public function find_property_id($dbInstance): string
 	{
 		try {
 
@@ -1155,7 +1155,7 @@ class DbManagerRecords
     }
 
     /*Listando os id do Imóvel no Find no Cadastro de CLientes, para associar o imóvel*/
-	public function find_property_to_client($dbInstance)
+	public function find_property_to_client($dbInstance): string
 	{
 		try {
 
@@ -1250,7 +1250,7 @@ class DbManagerRecords
 	}
 
 	/*Listando os Imóveis x Clientes*/
-	public function list_properties_clients($dbInstance)
+	public function list_properties_clients($dbInstance): string
 	{
 		try {
 
