@@ -260,7 +260,17 @@ EOT;
 
 	public function load_survey($clientID)
 	{
+		
 		$clientPathFile = "../docs/clients/$clientID/survey/";
+
+		if (file_exists($clientPathFile)) 
+		{
+			//echo "Arquivo ou diretórioexiste";
+		} else {
+			mkdir("..//docs/clients/$clientID[clientAddSurvey]/survey", 0777, true);
+			chmod("..//docs/clients/$clientID[clientAddSurvey]/survey", 0777);
+		}
+
 		$dirPath = dir($clientPathFile);
 		$files_name = null;
 
