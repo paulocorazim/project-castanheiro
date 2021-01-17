@@ -267,8 +267,8 @@ EOT;
 		{
 			//echo "Arquivo ou diretórioexiste";
 		} else {
-			mkdir("..//docs/clients/$clientID[clientAddSurvey]/survey", 0777, true);
-			chmod("..//docs/clients/$clientID[clientAddSurvey]/survey", 0777);
+			mkdir("..//docs/clients/$clientID/survey", 0777, true);
+			chmod("..//docs/clients/$clientID/survey", 0777);
 		}
 
 		$dirPath = dir($clientPathFile);
