@@ -72,7 +72,6 @@ if($_GET['report'] == true) {
 /*Tele de filtro de Pesquisas*/
 if(isset($_GET['filters'])) 
 {
-
 	$typeProperty = $screenProperty->screenTypeProperty(null, 'find');
 	$contentNow = $screenClient->screenFilterClientAndProperty($ListBoxPropertsClients, $typeProperty);
 
@@ -294,9 +293,9 @@ if (isset($_POST['j_btn_contract'])) {
 /*Inserindo Poupanças/Depósitos*/
 if (isset($_POST['j_btn_salve_savings'])) {
 
-    // var_dump($_POST);
-    // var_dump($_FILES);
-    // exit;
+    //  var_dump($_POST);
+    //  var_dump($_FILES);
+    // // exit;
 
     $typeDoc = null;
     $resp_process = $appFunctions->upload_files($_POST['client_savings_id'], $_FILES['fileSavings'], $typeDoc);
@@ -335,7 +334,7 @@ if (isset($_POST['j_btn_salve_savings'])) {
     }
 }
 
-/*inserindo Vistorias do Imóvel / Cliente*/
+/*Inserindo Vistorias do Imóvel / Cliente*/
 if(isset($_POST['j_btn_salve_survey'])){
 
 	$regists_client_survey = $_POST;
@@ -389,7 +388,7 @@ if(isset($_POST['j_btn_salve_survey'])){
 
 }
 
-/*Acessciando Cliente/Imóvel */
+/*Acossciando Cliente/Imóvel */
 if (isset($_POST['j_btn_salve_client_Property'])) {
 
     var_dump($_POST);

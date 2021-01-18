@@ -147,20 +147,67 @@ EOT;
 
 		// Pasta onde o arquivo vai ser salvo
 		if ($typeDoc == 'Documents') {
+
+			$clientPathFile = "../docs/clients/$clientID/";
+			
+			if (file_exists($clientPathFile)) 
+			{
+				//echo "Arquivo ou diretórioexiste";
+			} else {
+				mkdir("..//docs/clients/$clientID", 0777, true);
+				chmod("..//docs/clients/$clientID", 0777);
+			}
+
 			$_UP[ 'pasta' ] = "../docs/clients/$clientID/";
 			$_UP[ 'renomeia' ] = false;
 		
 		} elseif ($typeDoc == 'Contract') {
+			
+			$clientPathFile = "../docs/clients/$clientID/contracts";
+			
+			if (file_exists($clientPathFile)) 
+			{
+				//echo "Arquivo ou diretórioexiste";
+			} else {
+				mkdir("..//docs/clients/$clientID/contracts", 0777, true);
+				chmod("..//docs/clients/$clientID/contracts", 0777);
+			}
+
 			$_UP[ 'pasta' ] = "../docs/clients/$clientID/contracts/";
 			$_UP[ 'renomeia' ] = false;
 
 		} elseif ($typeDoc == 'Survey') {
+			
+			$clientPathFile = "../docs/clients/$clientID/survey";
+			
+			if (file_exists($clientPathFile)) 
+			{
+				//echo "Arquivo ou diretórioexiste";
+			} else {
+				mkdir("..//docs/clients/$clientID/survey", 0777, true);
+				chmod("..//docs/clients/$clientID/survey", 0777);
+			}
+
+			$_UP[ 'pasta' ] = "../docs/clients/$clientID/survey/";
+			$_UP[ 'renomeia' ] = false;
+
 			$_UP[ 'pasta' ] = "../docs/clients/$clientID/survey/";
 			$_UP[ 'renomeia' ] = false;
 
 		} else {
+
+			$clientPathFile = "../docs/clients/$clientID/savings";
+			
+			if (file_exists($clientPathFile)) 
+			{
+				//echo "Arquivo ou diretórioexiste";
+			} else {
+				mkdir("..//docs/clients/$clientID/savings", 0777, true);
+				chmod("..//docs/clients/$clientID/savings", 0777);
+			}
+
 			$_UP[ 'pasta' ] = "../docs/clients/$clientID/savings/";
-			$_UP[ 'renomeia' ] = true;
+			$_UP[ 'renomeia' ] = false;
 		}
 
 		// Tamanho máximo do arquivo (em Bytes)
@@ -177,7 +224,7 @@ EOT;
 		$_UP[ 'erros' ][ 4 ] = 'Não foi feito o upload do arquivo';
 
 		// Verifica se houve algum erro com o upload. Se sim, exibe a mensagem do erro
-		if ($_FILES[ 'error' ] != 0) {
+		if ($_FILES['error'] != 0) {
 			$type = '0';
 			$resp = "Não foi possível fazer o upload, erro:" . $_UP[ 'erros' ][ $_FILES[ 'error' ] ];
 			exit(); // Para a execução do script
