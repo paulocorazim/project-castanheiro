@@ -127,7 +127,6 @@ if (isset($_GET['editID'])) {
 
     /*Lendo imóveis do cliente*/
     $clientListPropertys = $activeRecords->list_client_property($dbInstance, $clientID);
-    
     $clientTablePropertys = $screenClient->screenListClientProperty($clientListPropertys);
 
 	$contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs, $clientContracts, $clientTableSavings, $findPropertyToCliente, $clientTablePropertys);
