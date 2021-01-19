@@ -969,37 +969,79 @@ class DbManagerRecords
 	/*Incluido Boleto a Avulso para Cliente*/
 	public function manager_billet_detached($dbInstance, $regists_billet_client)
 	{
-		try {
+		try 
+		{
+				/* $conds = ['id' => "$regists_billet_client[find_client]"];*/
+				$billet_value = str_replace('.', '', $regists_billet_client[ 'billet_value' ]); // remove o ponto
+				$billet_value = str_replace(',', '.', $billet_value); // troca a vírgula por ponto
+				
+				//?editID=128
+				
+				$id = substr($regists_billet_client['find_client'], -3);
 
-			/* $conds = ['id' => "$regists_billet_client[find_client]"];*/
-			$billet_value = str_replace('.', '', $regists_billet_client[ 'billet_value' ]); // remove o ponto
-			$billet_value = str_replace(',', '.', $billet_value); // troca a vírgula por ponto
-			
-			//?editID=128
-			
-			$id = substr($regists_billet_client['find_client'], -3);
-
-            $data = [
-                'id_client' => "$id",
-                'billet_value' => "$billet_value",
-                'billet_due_date' => "$regists_billet_client[billet_due_date]",
-                'billet_send_mail_client' => "$regists_billet_client[billet_send_mail_client]",
-			];
+				$data = [
+						'id_client' => "$id",
+						'billet_value' => "$billet_value",
+						'billet_due_date' => "$regists_billet_client[billet_due_date]",
+						'billet_send_mail_client' => "$regists_billet_client[billet_send_mail_client]",
+				];
 
 
-            $sqlManager = new SqlManager($dbInstance);
-            $sqlQuery = (new SqlQueryBuilder())
-                ->setTableName('tab_clients_billet_detached')
-                ->setData($data);
-            $sqlManager->insert($sqlQuery);
-			$resp = 1;
+				$sqlManager = new SqlManager($dbInstance);
+				$sqlQuery = (new SqlQueryBuilder())
+						->setTableName('tab_clients_billet')
+						->setData($data);
+				$sqlManager->insert($sqlQuery);
+				$resp = 1;
 
 		} catch (Exception $e) {
-			$error = $e->getMessage();
-			$resp = $error;
+				
+				$error = $e->getMessage();
+				$resp = $error;
+				
 		}
 
 		return $resp;
+	}
+
+	public function select_billet($dbInstance, $idBillet)
+	{
+		try {
+			
+				$sqlManager = new SqlManager($dbInstance);
+				$shSelectBillet = (new SqlQueryBuilder())
+					->setQuery("SELECT 
+											a.id,
+											a.id_client,
+											a.billet_value,
+											a.billet_value_old,
+											DATE_FORMAT (a.billet_due_date,'%d/%m/%Y') as vencimento_original,
+											DATE_FORMAT (a.billet_due_date_old,'%d/%m/%Y') as vencimento_prorrogado,
+											a.billet_send_mail_client,
+											a.billtet_expiration_days,
+											a.billet_rate,											
+											b.name, 
+											b.corporate_name,
+											b.address,
+											b.number,
+											b.city,
+											b.state,
+											b.zip_code
+											FROM 
+											tab_clients_billet as a, 
+											tab_clients as b
+											WHERE
+											b.id = a.id_client 
+											AND a.id = :id")
+					->setConditions(['id' => "$idBillet"]);
+				$shResultsBillet = $sqlManager->fetchAll($shSelectBillet);
+
+				return $shResultsBillet;
+
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber dados do boleto" . $error;
+		}
 	}
 
 

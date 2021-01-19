@@ -71,13 +71,13 @@
                                                type="password">
                                     </div>
                                     <div class="form-group">
-                                        <div class="custom-control custom-checkbox small">
+                                        <!-- <div class="custom-control custom-checkbox small">
                                             <input class="custom-control-input" id="customCheck" type="checkbox">
                                             <label class="custom-control-label" for="customCheck">Manter
                                                 conectado</label>
-                                        </div>
+                                        </div> -->
                                     </div>
-                                    <button class="btn btn-primary btn-user btn-block">Entrar</button>
+                                    <button class="btn btn-primary btn-user btn-block">ACESSAR PLATAFORMA</button>
                                     <hr>
                                 </form>
                                 <!--
