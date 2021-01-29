@@ -69,7 +69,7 @@ if($_GET['report'] == true) {
     exit();
 }
 
-/*Tele de filtro de Pesquisas*/
+/*Tela de filtro de Pesquisas*/
 if(isset($_GET['filters'])) 
 {
 	$typeProperty = $screenProperty->screenTypeProperty(null, 'find');

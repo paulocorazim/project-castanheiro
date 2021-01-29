@@ -80,7 +80,7 @@ foreach ($printBillet as $printBilletValue)
 
 
 $dias_de_prazo_para_pagamento       = 0;
-$taxa_boleto                        = 2.95;
+$taxa_boleto                        = 0;
 
 $data_emissao                       = date("d/m/Y"); // ou a data de emissao da sua tabela de boletos se houver
 
@@ -92,7 +92,7 @@ $valor_boleto=number_format($valor_cobrado+$taxa_boleto, 2, ',', '');
 
 $dadosboleto["nosso_numero"]        = $printBilletValue['id'];  // Nosso numero - REGRA: Máximo de 7 caracteres!
 
-$dadosboleto["numero_documento"]    = $printBilletValue['id'].date('dmY');
+$dadosboleto["numero_documento"]    = $dadosboleto["nosso_numero"]; //$printBilletValue['id'].date('dmY');
 
 $dadosboleto["data_vencimento"]     = $data_venc; // Data de Vencimento do Boleto - REGRA: Formato DD/MM/AAAA
 $dadosboleto["data_documento"]      = $data_emissao; // Data de emissão do Boleto
@@ -124,8 +124,8 @@ $dadosboleto["especie_doc"]         = "";
 
 // DADOS PERSONALIZADOS - Banespa
 $dadosboleto["codigo_cedente"]      = "61519666000"; // Código do cedente (Somente 11 digitos)
-$dadosboleto["ponto_venda"]         = "3986"; // Ponto de Venda = Agencia 
-$dadosboleto["carteira"]            = "102";  // COB - SEM Registro
+$dadosboleto["ponto_venda"]         = "3313";//"3986"; // Ponto de Venda = Agencia 
+$dadosboleto["carteira"]            = "101"; //"102";  // COB - SEM Registro
 $dadosboleto["nome_da_agencia"]     = "";  // Nome da agencia (Opcional)
 // SEUS DADOS
 $dadosboleto["identificacao"]       = "GRUPO CASTANHEIRO";

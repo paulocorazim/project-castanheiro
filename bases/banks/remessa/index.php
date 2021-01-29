@@ -16,17 +16,17 @@ require "funcoes-remessa-santander-240.php";
 # PODE ALTERAR
 ######################################################################################################################################################
 $pasta_destino               = "remessa/";                                 	// diretorio onde ficarao os arquivos de remessa .REM
-$carteira                    = "102";   																		// carteira
-$inscricao_beneficiario      = "61519666000145"; 														// cnpj                          
+$carteira                    = "101";   									// carteira
+$inscricao_beneficiario      = "61519666000145"; 							// cnpj                          
 $agencia                     = "3986";                                     	// agencia
 $dv_agencia                  = "0";                                        	// digito verificador da agencia
-$conta                       = "13000482";                                  // conta corrente
+$conta                       = "013000482";                                  // conta corrente
 $dv_conta                    = "2";                                        	// digito verificador da conta corrente
-$dv_ag_conta                 = "2";                                        	// digito agencia/conta, pode usar o mesmo da conta
-$empresa_beneficiario        = "CASTANHEIRO PATRIMONIAL EIRELI"; 						// nome da empresa beneficiario                      
-$codigo_transmissao          = "12345";                                    	// codigo da transmissao
-$conta_cobranca              = "13000482";                                	// CONTA COBRANCA -> geralmente é o mesmo número de conta corrente (consultar na sua agencia )
-$dv_conta_cobranca           = "2";                                       	// digito verificador da conta cobranca 
+$dv_ag_conta                 = "0";                                        	// digito agencia/conta, pode usar o mesmo da conta
+$empresa_beneficiario        = "CASTANHEIRO PATRIMONIAL EIRELI"; 			// nome da empresa beneficiario                      
+$codigo_transmissao          = "398600004079213";                           // codigo da transmissao
+$conta_cobranca              = "013000482";                                	// CONTA COBRANCA -> geralmente é o mesmo número de conta corrente (consultar na sua agencia )
+$dv_conta_cobranca           = "0";                                       	// digito verificador da conta cobranca 
 $tipo_documento              = "1";                                        	// 1=tradicional / 2=escritural ( consultar na sua agencia )
 $agencia_cobranca            = "0";                                        	// Normalmente é zero, mas é bom ( consultar na sua agencia ) quem eh a agencia encarregada da cobrança
 $versao_layout               = '030';										// versao do layout
@@ -83,136 +83,7 @@ foreach ($printBillet as $printBilletValue)
   $printBilletValue['zip_code'];
 }
 
-$nosso_num[0]                = $printBilletValue['id'];                                      
-$data_vencimento_boleto[0]   = $printBilletValue['vencimento_original'];                               
-$data_emissao_boleto[0]      = date("dmY");
 
-$valor_cobrado               = $printBilletValue['billet_value'];
-$valor_cobrado 							 = str_replace(",", ".",$valor_cobrado);
-$valor_boleto[0]             = number_format($valor_cobrado+$taxa_boleto, 2, ',', '');
-//$valor_boleto[0]             = "23600";                               
-
-// juros
-$tipo_juros[0]               = "3";
-$data_juros[0]               = "00000000";                               
-$valor_juros[0]              = "0000";                                   
-
-// multa
-$tipo_multa[0]               = "3";
-$valor_multa[0]              = "0000";
-$data_multa[0]               = "00000000";                                   
-
-// desconto
-$tipo_desconto[0]            = "0";
-$data_desconto[0]            = "00000000";                               
-$valor_desconto[0]           = "0000";                                   
-
-$valor_iof[0]                = "000";                                    
-$valor_abatimento[0]         = "000";  
-
-// protesto 
-$cod_protesto[0]             = '0';                                        
-$dias_protesto[0]            = '0';                                        
-
-// baixa
-$cod_baixa[0]                = '1';                                        
-$dias_baixa[0]               = '90';                                                                        
-
-$tipo_inscricao_pagador[0]   = "1";                                      
-$numero_inscricao_pagador[0] = "16682545819";                            
-$nome_pagador[0]             = "ANDRE CORAZIM";                         
-$endereco_pagador[0]         = "RUA ONZE DE JUNHO 15";              
-$bairro_pagador[0]           = "JARDIM CANHEMA";                         
-$cep_pagador[0]              = "09941";                                  
-$cep_pagador_sufixo[0]       = "630";                                    
-$cidade_pagador[0]           = "DIADEMA";                               
-$estado_pagador[0]           = "SP";                                     
-######################################################################################################################################################
-# PODE ALTERAR - dados do 2º boleto
-######################################################################################################################################################
-// $nosso_num[1]                = "0203799";                                
-// $data_vencimento_boleto[1]   = "10072018";                               
-// $data_emissao_boleto[1]      = date("dmY");                               
-// $valor_boleto[1]             = "23400"; 
-
-// // juros
-// $tipo_juros[1]               = "3";
-// $data_juros[1]               = "00000000";                               
-// $valor_juros[1]              = "0000";                                   
-
-// // multa
-// $tipo_multa[1]               = "0";
-// $valor_multa[1]              = "0000";
-// $data_multa[1]               = "00000000";                                   
-
-// // desconto
-// $tipo_desconto[1]            = "0";
-// $data_desconto[1]            = "00000000";                               
-// $valor_desconto[1]           = "0000";                                   
-
-// $valor_iof[1]                = "000";                                   
-// $valor_abatimento[1]         = "000"; 
-
-// // protesto
-// $cod_protesto[1]             = '0';                                        
-// $dias_protesto[1]            = '0';                                        
-
-// // baixa
-// $cod_baixa[1]                = '1';                                        
-// $dias_baixa[1]               = '90';                                                                   
-
-// $tipo_inscricao_pagador[1]   = "1";                                      
-// $numero_inscricao_pagador[1] = "40329543766";                           
-// $nome_pagador[1]             = "ANTONIO DA PA VIRADA";                   
-// $endereco_pagador[1]         = "RUA SOUSA LIMA 36";                      
-// $bairro_pagador[1]           = "PLANALTO DA PIPIRA";                     
-// $cep_pagador[1]              = "65073";                                 
-// $cep_pagador_sufixo[1]       = "300";                                   
-// $cidade_pagador[1]           = "SAO LUIS";                              
-// $estado_pagador[1]           = "MA";                                    
-// ######################################################################################################################################################
-// # PODE ALTERAR - dados do 3º boleto
-// ######################################################################################################################################################
-// $nosso_num[2]                = "020380";                                 
-// $data_vencimento_boleto[2]   = "15072018";                               
-// $data_emissao_boleto[2]      = date("dmY");                        
-// $valor_boleto[2]             = "23700";   
-
-// // juros
-// $tipo_juros[2]               = "3";
-// $data_juros[2]               = "00000000";                               
-// $valor_juros[2]              = "0000";                                   
-
-// // multa
-// $tipo_multa[2]               = "0";
-// $valor_multa[2]              = "0000";
-// $data_multa[2]               = "00000000";                                   
-
-// // desconto
-// $tipo_desconto[2]            = "0";
-// $data_desconto[2]            = "00000000";                               
-// $valor_desconto[2]           = "0000";                                                                  
-
-// $valor_iof[2]                = "000";                                   
-// $valor_abatimento[2]         = "000"; 
-
-// // protesto
-// $cod_protesto[2]             = '0';                                        
-// $dias_protesto[2]            = '0';                                        
-
-// // baixa
-// $cod_baixa[2]                = '1';                                        
-// $dias_baixa[2]               = '90';                                                                       
-
-// $tipo_inscricao_pagador[2]   = "1";                                      
-// $numero_inscricao_pagador[2] = "40329543766";                            
-// $nome_pagador[2]             = "ASTROGILDA NEVES DA COSTA REIS";         
-// $endereco_pagador[2]         = "RUA DAS MANGABEIRAS, 987";               
-// $bairro_pagador[2]           = "RECANTO DOS NOBRES";                     
-// $cep_pagador[2]              = "65073";                                  
-// $cep_pagador_sufixo[2]       = "300";                                    
-// $cidade_pagador[2]           = "SAO LUIS";                               
-// $estado_pagador[2]           = "MA";                                     
 ######################################################################################################################################################
 # NAO PODE ALTERAR
 ######################################################################################################################################################
@@ -220,7 +91,7 @@ $num_banco       = "033";
 $nome_banco      = "BANCO SANTANDER";                          
 $arq             = $inscricao_beneficiario."_".date("d").date("m")."AB";     
 $extensao        = "REM";                                      
-$arquivo         = $arq.".".$extensao;   
+$arquivo         = $arq . "-" . date("U") . "." . $extensao;   
 $filename        = $arquivo;             
 $conteudo        = '';
 $lote_sequencial = 1;
@@ -237,7 +108,7 @@ $conteudo_meio   = '';
 $qtd_titulos     = 0; 
 $total_valor     = 0; 
 $num_seg_linha_p_q_r_s = 1;
-$xnumero_seq     = 1;  
+$xnumero_seq     = 1;  //Incrementar a cada nova remessa (DB)
 $numero_sequencial_arquivo = $xnumero_seq;
 $header .= picture_9($num_banco,3);                     
 $header .= complementoRegistro(4,"zeros");              
@@ -257,6 +128,7 @@ $header .= picture_9($numero_sequencial_arquivo,6);
 $header .= picture_9($versao_layout_arquivo,3);         
 $header .= complementoRegistro(74,"brancos");           
 $header .= chr(13).chr(10);                             
+
 $header_lote .= picture_9($num_banco,3);                     
 $header_lote .= picture_9($lote_servico,4);                  
 $header_lote .= '1';                                          
@@ -278,14 +150,64 @@ $header_lote .= date("dmY");
 $header_lote .= complementoRegistro(41,"brancos");           
 $header_lote .= chr(13).chr(10); 
 
-$qtd_boletos = count( $nosso_num );      // quantidade de boletos a serem incluidos no arquivo de remessa 
+
+//select * from boleto where mes vencimento = 1 anddd ano vencimento = 2021 e remetido != "S"....
+
+$qtd_boletos = 1;  //count( $nosso_num );      // quantidade de boletos a serem incluidos no arquivo de remessa 
 
 for( $t = 0; $t < $qtd_boletos; $t++ )
 {
+	$nosso_num[$t]                = '5381';//$printBilletValue['id'];                                      
+	$data_vencimento_boleto[$t]   = '10102019'; //$printBilletValue['vencimento_original'];                               
+	$data_emissao_boleto[$t]      = date("dmY");
+	
+	$valor_cobrado               = '29000'; //$printBilletValue['billet_value'];
+	//$valor_cobrado 				 = str_replace(",", ".",$valor_cobrado);
+	//$valor_boleto[$t]             = number_format($valor_cobrado+$taxa_boleto, 2, ',', '');
+	//$valor_boleto[$t]             = "23600";                               
+	
+	// juros
+	$tipo_juros[$t]               = "3";
+	$data_juros[$t]               = "00000000";                               
+	$valor_juros[$t]              = "0000";                                   
+	
+	// multa
+	$tipo_multa[$t]               = "0";
+	$valor_multa[$t]              = "0000";
+	$data_multa[$t]               = "00000000";                                   
+	
+	// desconto
+	$tipo_desconto[$t]            = "0";
+	$data_desconto[$t]            = "00000000";                               
+	$valor_desconto[$t]           = "0000";                                   
+	
+	$valor_iof[$t]                = "000";                                    
+	$valor_abatimento[$t]         = "000";  
+	
+	// protesto 
+	$cod_protesto[$t]             = '0';                                        
+	$dias_protesto[$t]            = '0';                                        
+	
+	// baixa
+	$cod_baixa[$t]                = '1';                                        
+	$dias_baixa[$t]               = '90';                                                                        
+	
+	$tipo_inscricao_pagador[$t]   = "1";                                      
+	$numero_inscricao_pagador[$t] = "16682545819";                            
+	$nome_pagador[$t]             = substr(remover_acentos("ANDRE CORAZIM"),0,40);                         
+	$endereco_pagador[$t]         = substr(remover_acentos("RUA ONZE DE JUNHO 15"),0,40);              
+	$bairro_pagador[$t]           = substr(remover_acentos("JARDIM CANHEMA"),0,15);                         
+	$cep_pagador[$t]              = "09941";                                  
+	$cep_pagador_sufixo[$t]       = "630";                                    
+	$cidade_pagador[$t]           = remover_acentos("DIADEMA");                               
+	$estado_pagador[$t]           = "SP";                                     
 
-	$numero_documento  = $nosso_num[$t];                 
-  $Dv                = modulo_11( $nosso_num[$t] );    
-	$nosso_numero      = picture_9( $nosso_num[$t], 12 ).$Dv;             
+
+
+	$numero_documento[$t]  		= $nosso_num[$t];                 
+	  
+	$Dv                = modulo_11( $nosso_num[$t] );    
+	$nosso_numero      = picture_9( $nosso_num[$t], 12 ) . $Dv;             
 
 	$linha_p .= picture_9($num_banco,3);                  
 	$linha_p .= picture_9($lote_servico,4);               
@@ -307,7 +229,7 @@ for( $t = 0; $t < $qtd_boletos; $t++ )
 	$linha_p .= picture_9($tipo_documento,1);             
 	$linha_p .= complementoRegistro(1,"brancos");        
 	$linha_p .= complementoRegistro(1,"brancos");         
-	$linha_p .= picture_x($numero_documento,15);          
+	$linha_p .= picture_x($numero_documento[$t],15);          
 	$linha_p .= picture_9($data_vencimento_boleto[$t],8); 
 	$linha_p .= picture_9($valor_boleto[$t],15);          
 	$linha_p .= picture_9($agencia_cobranca,4);           
@@ -333,6 +255,8 @@ for( $t = 0; $t < $qtd_boletos; $t++ )
 	$linha_p .= '00';                                    
 	$linha_p .= complementoRegistro(11,"brancos");        
 	$linha_p .= chr(13).chr(10);   
+
+
 
 	$num_seg_linha_p_q_r_s++;
 	$qtd_titulos++;
@@ -404,8 +328,8 @@ for( $t = 0; $t < $qtd_boletos; $t++ )
 	$linha_s .= picture_x('MENSAGEM 01',40);             
 	$linha_s .=	picture_x('MENSAGEM 02',40);             
 	$linha_s .= picture_x('MENSAGEM 03',40);             
-	$linha_s .= picture_x('MENSAGEM 04',40);             
-	$linha_s .=	picture_x('MENSAGEM 05',40);             
+	$linha_s .= complementoRegistro(40,"brancos");             
+	$linha_s .=	complementoRegistro(40,"brancos");
 	$linha_s .= complementoRegistro(22,"brancos");       
 	$linha_s .= chr(13).chr(10);                         
 	
@@ -420,7 +344,7 @@ for( $t = 0; $t < $qtd_boletos; $t++ )
 	$linha_r = "";
 	$linha_s = "";
 
-} 
+}  // final do for
 
 $linha_5 .= picture_9($num_banco,3);                 
 $linha_5 .= picture_9($lote_servico,4);              
@@ -446,7 +370,7 @@ $conteudo = $header.$header_lote.$conteudo_meio.$linha_5.$linha_9;
 
 if (!$handle = fopen($filename, 'w+'))
 {
-	erro("<br>Não foi possível abrir o arquivo ($filename)");
+	echo "<br>Não foi possível abrir o arquivo ($filename)";
 }
 if (fwrite($handle, "$conteudo") === FALSE)
 {
@@ -454,7 +378,7 @@ if (fwrite($handle, "$conteudo") === FALSE)
 }
 fclose($handle);
 
-$xdestino = $pasta_destino.$filename;
+$xdestino = $pasta_destino . $filename;
 $xorigem = $filename;
 
 if( copy( $xorigem, $xdestino) )

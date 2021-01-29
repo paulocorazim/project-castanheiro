@@ -1011,28 +1011,34 @@ class DbManagerRecords
 				$sqlManager = new SqlManager($dbInstance);
 				$shSelectBillet = (new SqlQueryBuilder())
 					->setQuery("SELECT 
-											a.id,
-											a.id_client,
-											a.billet_value,
-											a.billet_value_old,
-											DATE_FORMAT (a.billet_due_date,'%d/%m/%Y') as vencimento_original,
-											DATE_FORMAT (a.billet_due_date_old,'%d/%m/%Y') as vencimento_prorrogado,
-											a.billet_send_mail_client,
-											a.billtet_expiration_days,
-											a.billet_rate,											
-											b.name, 
-											b.corporate_name,
-											b.address,
-											b.number,
-											b.city,
-											b.state,
-											b.zip_code
-											FROM 
-											tab_clients_billet as a, 
-											tab_clients as b
-											WHERE
-											b.id = a.id_client 
-											AND a.id = :id")
+									a.id,
+									a.id_client,
+									a.billet_value,
+									a.billet_value_old,
+									a.billet_due_date,
+									DATE_FORMAT (a.billet_due_date,'%d/%m/%Y') as vencimento_original,
+									a.billet_due_date_old,
+									DATE_FORMAT (a.billet_due_date_old,'%d/%m/%Y') as vencimento_prorrogado,
+									a.billet_send_mail_client,
+									a.billtet_expiration_days,
+									a.billet_rate,											
+									b.name, 
+									b.cpf,
+									b.cnpj,											
+									b.corporate_name,
+									b.address,
+									b.number,
+									b.city,
+									b.state,
+									b.neighbordhood,
+									b.state,
+									b.zip_code
+									FROM 
+									tab_clients_billet as a, 
+									tab_clients as b
+									WHERE
+									b.id = a.id_client 
+									AND a.id = :id")
 					->setConditions(['id' => "$idBillet"]);
 				$shResultsBillet = $sqlManager->fetchAll($shSelectBillet);
 
