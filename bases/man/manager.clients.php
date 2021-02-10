@@ -38,7 +38,6 @@ $ListBoxPropertsClients = $activeRecords->list_properties_clients($dbInstance);
 /* ListBox Com os Clientes cadastrados*/
 $findClients = $activeRecords->list_box_client($dbInstance);
 
-
 /* Carregando_Atruibuindo os módulos do usuátio e suas permissões*/
 $typeModule = new LinkModule();
 $typeModules = $typeModule->LinkModules($dbInstance, $_SESSION[ 'id' ], $_SESSION[ 'user_type']);
@@ -57,10 +56,11 @@ $screenProperty = new ScreenProperties();
 $screenClient = new ScreenClients();
 
 /* Atribuindo a content o valor da tela pra apresentar a pagina*/
-$contentNow = $screenClient->screenFormClient($findClients, null, null, null, null, null, null);
+$contentNow = $screenClient->screenFormClient($findClients, null, null, null, null, null, null, null);
 
 /*Lista de Clientes*/
-if($_GET['report'] == true) {
+if($_GET['report'] == true) 
+{
     $reportClients = $activeRecords->report_client($dbInstance);
     $contentNow = $screenClient->screenListClients($reportClients);
     print $screenManager->pageWrapper($typeModules, "$icone_fas_fa Relatório de Clientes", $contentNow);
@@ -83,9 +83,8 @@ if(isset($_GET['filters']))
 }
 
 /*Resultados da tela de pesquisa */
-if(isset($_POST['btn_find_StreetOrType'])) {
-
-	//var_dump($_POST);
+if(isset($_POST['btn_find_StreetOrType'])) 
+{
 	$data = $_POST;
 	$reportResultFindPropertyesClient = $activeRecords->find_client_for_addres($dbInstance, $data);
 	print $screenClient->screenListClientProperty($reportResultFindPropertyesClient);
@@ -96,18 +95,18 @@ if(isset($_POST['btn_find_StreetOrType'])) {
 }
 
 /*Resultados da tela de pesquisa */
-if(isset($_POST['btn_find_NameOrStreet'])){
+if(isset($_POST['btn_find_NameOrStreet']))
+{
 	var_dump($_POST);
 	exit();
 }
 
-
 /*Trazendo dados do cliente para edição*/
-if (isset($_GET['editID'])) {
-
+if (isset($_GET['editID'])) 
+{
     $clientID = $_GET['editID'];
 
-    /*Lendo ddados do cliente*/
+    /*Lendo dados do cliente*/
     $clientData = $activeRecords->find_client_data($dbInstance, $clientID);
     $findPropertyToCliente = $activeRecords->find_property_to_client($dbInstance); // Lista dos imóveis
 
@@ -125,10 +124,16 @@ if (isset($_GET['editID'])) {
     $clientTableSavings = $screenClient->screenListClientSavings($clientListSavings);
 
     /*Lendo imóveis do cliente*/
-    $clientListPropertys = $activeRecords->list_client_property($dbInstance, $clientID);
+    $clientListPropertys  = $activeRecords->list_client_property($dbInstance, $clientID);
     $clientTablePropertys = $screenClient->screenListClientProperty($clientListPropertys);
 
-	$contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs, $clientContracts, $clientTableSavings, $findPropertyToCliente, $clientTablePropertys);
+    /*Vistorias realizadas*/
+    $clientSurveyCarriedOut = $activeRecords->listSurveyCarriedOut($dbInstance, $clientID);
+    $tablesSurveyCarriedOut = $screenClient->screenListSurveyCarriedOut($clientSurveyCarriedOut);
+
+
+    /*Telas Carregadas*/
+	$contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs, $clientContracts, $clientTableSavings, $findPropertyToCliente, $clientTablePropertys, $tablesSurveyCarriedOut);
 
     echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow);
    
@@ -145,12 +150,11 @@ if(isset($_GET['listClientPropertieID']))
 	$footer = new shFooter();
 	echo $footer->sh_footer();
 	exit();
-
 }
 
 /*Recebendo dados para inclusão do cliente*/
-if(isset($_POST['btn_insert_update_client'])) {
-
+if(isset($_POST['btn_insert_update_client'])) 
+{
     // Não importa se é CPF ou CNPJ e se já vem formatado
     $checkCPFCNPJ = new Documento("$_POST[cpfcnpj]");
 
@@ -256,14 +260,16 @@ if(isset($_POST['btn_insert_update_client'])) {
 }
 
 /*Removendo o cliente*/
-if (isset($_POST['btn_action_delete_client_id'])) {
-	//var_dump($_POST);
-
-	if ($_POST['delete_id_client' ] == null) {
+if (isset($_POST['btn_action_delete_client_id'])) 
+{
+	if ($_POST['delete_id_client' ] == null) 
+    {
 		echo $appFunctions->alert_system('3', "Não foi informado o Cliente!");
 		exit();
+
 	} else {
-		$resp = $activeRecords->remove_client($dbInstance, $_POST['delete_id_client']);
+		
+        $resp = $activeRecords->remove_client($dbInstance, $_POST['delete_id_client']);
 		echo $appFunctions->alert_system('1', "Cliente removido com sucesso!");
 		sleep(3);
 		http_redirect('manager.clients.php');
@@ -272,7 +278,8 @@ if (isset($_POST['btn_action_delete_client_id'])) {
 }
 
 /*Inserindo Docs ao Cliente*/
-if (isset($_POST['j_btn_doc'])) {
+if (isset($_POST['j_btn_doc'])) 
+{
 	$typeDoc = 'Documents';
 	$resp_process = $appFunctions->upload_files($_POST['clientIDdoc' ], $_FILES[ 'file' ], $typeDoc);
 	$resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
@@ -281,8 +288,8 @@ if (isset($_POST['j_btn_doc'])) {
 }
 
 /*Inserindo Contrato ao Cliente*/
-if (isset($_POST['j_btn_contract'])) {
-
+if (isset($_POST['j_btn_contract'])) 
+{
     $typeDoc = 'Contract';
     $resp_process = $appFunctions->upload_files($_POST['clientIDcontract'], $_FILES['file'], $typeDoc);
     $resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
@@ -291,12 +298,8 @@ if (isset($_POST['j_btn_contract'])) {
 }
 
 /*Inserindo Poupanças/Depósitos*/
-if (isset($_POST['j_btn_salve_savings'])) {
-
-    //  var_dump($_POST);
-    //  var_dump($_FILES);
-    // // exit;
-
+if (isset($_POST['j_btn_salve_savings'])) 
+{
     $typeDoc = null;
     $resp_process = $appFunctions->upload_files($_POST['client_savings_id'], $_FILES['fileSavings'], $typeDoc);
 
@@ -335,21 +338,19 @@ if (isset($_POST['j_btn_salve_savings'])) {
 }
 
 /*Inserindo Vistorias do Imóvel / Cliente*/
-if(isset($_POST['j_btn_salve_survey'])){
-
+if (isset($_POST['j_btn_salve_survey']))
+{
 	$regists_client_survey = $_POST;
 	$resp = $activeRecords->manager_client_survey($dbInstance, $regists_client_survey);
 
-	if ($resp != '1') {
+	if ($resp != '1') 
+    {
 		echo $appFunctions->alert_system('0', "Erro ao processar Vistoria - $resp");
 		exit();
 	}
 
-	if ($resp == '1') {
-
-		//echo "<pre>";
-		//print_r($_FILES);
-
+	if ($resp == '1') 
+    {
 		$activeRecords->manager_client_survey_file($dbInstance, $regists_client_survey, $_FILES);
 		echo $appFunctions->alert_system('1', "Vistorias Incluidas com sucesso!");
 
@@ -388,12 +389,10 @@ if(isset($_POST['j_btn_salve_survey'])){
 
 }
 
+
 /*Acossciando Cliente/Imóvel */
-if (isset($_POST['j_btn_salve_client_Property'])) {
-
-    var_dump($_POST);
-    exit;
-
+if (isset($_POST['j_btn_salve_client_Property'])) 
+{
     $regists_client_property = [
         'clientAddProperty' => $_POST['clientAddProperty'],
         'SelectAddProperty' => $_POST['SelectAddProperty'],
@@ -401,13 +400,14 @@ if (isset($_POST['j_btn_salve_client_Property'])) {
 
     $resp = $activeRecords->manager_client_property($dbInstance, $regists_client_property);
 
-    if ($resp == 1) {
+    if ($resp == 1) 
+    {
         echo $appFunctions->alert_system('1', "Imóvel associado ao locatário com sucesso!");
         exit();
-
     }
 
-    if ($resp == 2) {
+    if ($resp == 2) 
+    {
         echo $appFunctions->alert_system('3', "ops!  Não é possivel associar imóvel, já está associado a esse locatário!");
         exit();
     }

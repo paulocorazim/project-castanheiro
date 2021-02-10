@@ -14,6 +14,10 @@ $(document).ready(function () {
         data.append('survey_wc_textarea', $("#survey_wc_textarea").val());
         data.append('survey_livingroom_textarea', $("#survey_livingroom_textarea").val());
         data.append('j_btn_salve_survey', $("#j_btn_salve_survey").val());
+        data.append('survey_bedroom_date', $("#survey_bedroom_date").val());
+        data.append('survey_wc_date', $("#survey_wc_date").val());
+        data.append('survey_livingroom_date', $("#survey_livingroom_date").val());
+
         // caso queira adicionar um campo extra ao FormData
         // data.append("customfield", "Este é um campo extra para teste");
         // desabilitar o botão de "submit" para evitar multiplos envios até receber uma resposta

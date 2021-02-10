@@ -2,17 +2,15 @@
 
 class ScreenClients
 {
-    public function screenFormClient($findClients, $clientValues, $clientDocs, $clientContracts, $clientTableSavings, $findProperty, $clientTablePropertys)
-    {
-        // var_dump($clientContracts);
-        // exit;
-
-        if (empty($clientValues)) {
-            $btn_txt = "C A D A S T R A R";
-            $btn_docs = 'disabled';
-            $btn_saving = 'disabled';
-            $btn_contract = 'disabled';
-	        $btn_survey = 'disabled';
+    public function screenFormClient($findClients, $clientValues, $clientDocs, $clientContracts, $clientTableSavings, $findProperty, $clientTablePropertys, $tablesSurveyCarriedOut)
+    {        
+        if (empty($clientValues)) 
+        {
+            $btn_txt        = "C A D A S T R A R";
+            $btn_docs       = 'disabled';
+            $btn_saving     = 'disabled';
+            $btn_contract   = 'disabled';
+	        $btn_survey     = 'disabled';
 
         } else {
             $btn_txt = "ALTERAR [ Cliente: $clientValues[name] ]";
@@ -34,8 +32,10 @@ class ScreenClients
             $type_current = "";
         }
 
-        if ($clientDocs == null) {
+        if ($clientDocs == null) 
+        {
             $desactive_tab_contract = 'disabled';
+
         } else {
             $desactive_tab_contract = null;
         }
@@ -331,12 +331,15 @@ class ScreenClients
                               <div class="table-responsive">
                               <form method="post" enctype="multipart/form-data" id="FormAddSurvey">
                                 <input type="hidden" name="clientAddSurvey" id="clientAddSurvey" value="$clientValues[id]">
-                                    <table  class="table table-bordered"  width="100%">
+                                                                    
+                                  $tablesSurveyCarriedOut
+                                <hr>
+
+                                <table  class="table table-bordered"  width="100%">
                                     <thead>
                                     <tr>
                                         <th>Comodos</th>
                                         <th>Imagens</th>
-                                        <th>Vstorias Relizadas</th>
                                     </tr>
                                     </thead>
                                     <tbody>                                          
@@ -344,35 +347,35 @@ class ScreenClients
                                         <td>Quarto(s)</td>
                                         <td>
                                             <input type="file" class="btn btn-sm btn-info" name="survey_bedroom_file" id="survey_bedroom_file">
+                                            <input type="date" required name="survey_bedroom_date" id="survey_bedroom_date"> Data da Vistoria
+                                          [ <input type="checkbox" class="btn btn-sm btn-info" name="dates_survey_all" id="dates_survey_all" OnClick="dates_surveyAll()"> Datas iguais pra todos! ]
                                             <hr>
                                             Detalhamento
-                                            <textarea class="form-control" name="survey_bedrooms_textarea" id="survey_bedrooms_textarea" rows="5"></textarea>
+                                            <textarea class="form-control" name="survey_bedrooms_textarea" id="survey_bedrooms_textarea" rows="1"></textarea>
                                         </td>
-                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>Banheiro(s)</td>
                                         <td>
                                             <input type="file" class="btn btn-sm btn-info" name="survey_wc_file" id="survey_wc_file">
-                                            <hr>
+                                            <input type="date" required name="survey_wc_date" id="survey_wc_date"> Data da Vistoria<hr>
                                             Detalhamento
-                                            <textarea class="form-control" name="survey_wc_textarea" id="survey_wc_textarea" rows="5"></textarea>
+                                            <textarea class="form-control" name="survey_wc_textarea" id="survey_wc_textarea" rows="1"></textarea>
                                         </td>
-                                        <td></td>
+                                        
                                     </tr>
                                     <tr>
                                         <td>Sala(s)</td>
                                         <td>
                                             <input type="file" class="btn btn-sm btn-info" name="survey_livingroom_file" id="survey_livingroom_file">
-                                            <hr>
+                                            <input type="date" required name="survey_livingroom_date" id="survey_livingroom_date"> Data da Vistoria<hr>
                                             Detalhamento
-                                            <textarea class="form-control" name="survey_livingroom_textarea" id="survey_livingroom_textarea" rows="5"></textarea>
-                                        </td>
-                                        <td>
+                                            <textarea class="form-control" name="survey_livingroom_textarea" id="survey_livingroom_textarea" rows="1"></textarea>
                                         </td>
                                     </tr>
                                     </tbody>
                                     </table>
+
                                     <button name="j_btn_salve_survey" id="j_btn_salve_survey" value="InsertSurvey" class="btn btn-sm btn-success" $btn_survey>Salvar Vistorias</button>
 
                                </form>
@@ -504,6 +507,38 @@ EOT;
 EOT;
     }
 
+
+    public function screenListSurveyCarriedOut($clientSurveyCarriedOut)
+    {
+        return <<< EOT
+            <div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table id="table_propertys cellspacing="0" class="table small table-hover table-bordered">
+                      <thead>
+                      <tr>
+                        <th>Data</th>
+                        <th>Apontamento 1</th>
+                        <th>Arquivos 1</th>
+                        <th>Data</th>
+                        <th>Apontamento 2</th>
+                        <th>Arquivos 2</th>
+                        <th>Data</th>
+                        <th>Apontamento 3</th>
+                        <th>Arquivos 3</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                         $clientSurveyCarriedOut
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+          
+EOT;
+    }
+    
     public function screenListClients($reportClients)
     {
         return <<< EOT

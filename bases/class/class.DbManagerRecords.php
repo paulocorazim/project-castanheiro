@@ -522,19 +522,17 @@ class DbManagerRecords
 	public function manager_client_survey($dbInstance, $regists_client_survey)
 	{
 		try {
-
 			/* $conds = ['id' => "$regists_billet_client[find_client]"];*/
-
 			$data = [
-				'survey_id_client' => "$regists_client_survey[clientAddSurvey]",
-				'survey_id_propertie' => "$regists_client_survey[clientAddSurvey]",
-				'survey_bedroom' => "$regists_client_survey[survey_bedrooms_textarea]",
-				'survey_wc' => "$regists_client_survey[survey_wc_textarea]",
-				'survey_livingroom' => "$regists_client_survey[survey_livingroom_textarea]"
+				'survey_id_client' 		 => "$regists_client_survey[clientAddSurvey]",
+				'survey_id_propertie' 	 => "$regists_client_survey[clientAddSurvey]",
+				'survey_bedroom' 		 => "$regists_client_survey[survey_bedrooms_textarea]",
+				'survey_bedroom_date'	 => "$regists_client_survey[survey_bedroom_date]",
+				'survey_wc' 			 => "$regists_client_survey[survey_wc_textarea]",
+				'survey_wc_date'		 => "$regists_client_survey[survey_wc_date]",
+				'survey_livingroom' 	 => "$regists_client_survey[survey_livingroom_textarea]",
+				'survey_livingroom_date' => "$regists_client_survey[survey_livingroom_date]",
 			];
-
-			// print_r($data);
-			// exit();
 
 			$sqlManager = new SqlManager($dbInstance);
 			$sqlQuery = (new SqlQueryBuilder())
@@ -585,7 +583,6 @@ class DbManagerRecords
 	/*Incluido/Removendo Imóvel para Cliente*/
 	public function manager_client_property($dbInstance, $regists_client_property)
 	{
-
 		$conds = ['id_client' => "$regists_client_property[clientAddProperty]",
 			'id_property' => "$regists_client_property[SelectAddProperty]",
 		];
@@ -685,16 +682,16 @@ class DbManagerRecords
 			foreach ($shResultsClientProperty as $reportClientProperty) 
 			{
 				$tr = "<tr>
-								<td>$reportClientProperty[date_add]</td>
-								<td>$reportClientProperty[property_type]</td>
-								<td>$reportClientProperty[property_address]</td>
-								<td>$reportClientProperty[property_number]</td>
-								<td>$reportClientProperty[property_number_apto]</td>
-								<td>$reportClientProperty[property_city]</td>
-								<td>$reportClientProperty[property_state]</td>
-								<td>$reportClientProperty[property_cep]</td>
-								".'<td><button name="btn_remove_propertyClient" id="btn_remove_propertyClient" class="btn btn-sm btn-secondary" onclick="deleteRow(this.parentNode.parentNode.rowIndex)"> Remover</button>'."
-							</tr>";
+							<td>$reportClientProperty[date_add]</td>
+							<td>$reportClientProperty[property_type]</td>
+							<td>$reportClientProperty[property_address]</td>
+							<td>$reportClientProperty[property_number]</td>
+							<td>$reportClientProperty[property_number_apto]</td>
+							<td>$reportClientProperty[property_city]</td>
+							<td>$reportClientProperty[property_state]</td>
+							<td>$reportClientProperty[property_cep]</td>
+							".'<td><button name="btn_remove_propertyClient" id="btn_remove_propertyClient" class="btn btn-sm btn-secondary" onclick="deleteRow(this.parentNode.parentNode.rowIndex)"> Remover</button>'."
+						</tr>";
 				$listClientPropertyRegists .= $tr;
 			}
 
@@ -706,7 +703,56 @@ class DbManagerRecords
 		return $listClientPropertyRegists;
 	}
 
-	/*ListBox com todos os Clinete na tela de Cadastro*/
+	/*Listando as Vistorias Relizadas*/
+	public function listSurveyCarriedOut($dbInstance, $idClient)
+	{
+		try {
+
+			$trsListSurveyCarriedOut = null;
+			
+			$sqlManager = new SqlManager($dbInstance);
+			$listSurveyCarriedOut = (new SqlQueryBuilder())
+					->setQuery("SELECT a.*,
+										DATE_FORMAT (survey_bedroom_date,'%d-%m-%Y') as survey_bedroom_date,
+										DATE_FORMAT (survey_livingroom_date,'%d-%m-%Y') as survey_livingroom_date,
+										DATE_FORMAT (survey_wc_date,'%d-%m-%Y') as survey_wc_date,
+										b.name, b.phone1, b.email1 
+					            FROM 
+								 tab_clients_survey as a, 
+								 tab_clients        as b 
+								WHERE 
+								    b.id = a.survey_id_client 
+								AND a.survey_id_client = :id_client
+						      ")
+				->setConditions(['id_client' => "$idClient"]);
+			$resuListSurveyCarriedOut = $sqlManager->fetchAll($listSurveyCarriedOut);
+
+			foreach ($resuListSurveyCarriedOut as $dataListSurveyCarriedOut) 
+			{
+					$tr = "<tr>
+								<td>$dataListSurveyCarriedOut[survey_bedroom_date]</td>
+								<td>$dataListSurveyCarriedOut[survey_bedroom]</td>
+								<td><a href='../docs/clients/$idClient/survey/$dataListSurveyCarriedOut[survey_bedroom_file]' target='parent'>Visulizar Arquivo</a></td>
+								<td>$dataListSurveyCarriedOut[survey_livingroom_date]</td>
+								<td>$dataListSurveyCarriedOut[survey_livingroom]</td>
+								<td><a href='../docs/clients/$idClient/survey/$dataListSurveyCarriedOut[survey_livingroom_file]' target='parent'>Visulizar Arquivo</a></td>
+								<td>$dataListSurveyCarriedOut[survey_wc_date]</td>
+								<td>$dataListSurveyCarriedOut[survey_wc]</td>
+								<td><a href='../docs/clients/$idClient/survey/$dataListSurveyCarriedOut[survey_wc_file]' target='parent'>Visulizar Arquivo</a></td>							
+							</tr>";
+					$trsListSurveyCarriedOut .= $tr;
+			}
+			
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de Vistorias" . $error;
+		}
+
+		return $trsListSurveyCarriedOut;
+
+	}
+
+	/*ListBox com todos os Clientes na tela de Cadastro*/
 	public function list_box_client($dbInstance)
 	{
 		try {

@@ -52,19 +52,36 @@ function disable_user_modules_permissions() {
     }
 }
 
-function disable_billet_dues() {
-    if (document.getElementById('billet_all').checked) {
+function disable_billet_dues() 
+{
+    if (document.getElementById('billet_all').checked) 
+    {
         document.getElementById('billet_vencidos').disabled = true;
         document.getElementById('billet_vencidos').checked = false;
         document.getElementById('billet_a_vencer').disabled = true;
         document.getElementById('billet_a_vencer').checked = false;
     }
+    
     if (document.getElementById('billet_all').checked === false) {
         document.getElementById('billet_vencidos').disabled = false;
         document.getElementById('billet_a_vencer').disabled = false;
     }
 }
 
+function dates_surveyAll()
+{
+    if (document.getElementById('dates_survey_all').checked)
+    {
+        document.getElementById('survey_wc_date').value = document.getElementById('survey_bedroom_date').value;
+        document.getElementById('survey_livingroom_date').value = document.getElementById('survey_bedroom_date').value;
+    }
+
+    if (document.getElementById('dates_survey_all').checked == false)
+    {
+        document.getElementById('survey_wc_date').value = false;
+        document.getElementById('survey_livingroom_date').value = false;
+    }
+}
 
 function delete_id_clint() {
     document.getElementById('delete_name_client').value = document.getElementById('client_name').value;
