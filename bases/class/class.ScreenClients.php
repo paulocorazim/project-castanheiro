@@ -2,7 +2,7 @@
 
 class ScreenClients
 {
-    public function screenFormClient($findClients, $clientValues, $clientDocs, $clientContracts, $clientTableSavings, $findProperty, $clientTablePropertys, $tablesSurveyCarriedOut)
+    public function screenFormClient($findClients, $clientValues, $clientDocs, $clientContracts, $clientTableSavings, $findProperty, $clientOptionsPropertys, $tablesSurveyCarriedOut)
     {        
         if (empty($clientValues)) 
         {
@@ -78,27 +78,26 @@ class ScreenClients
                             <li class="nav-item">
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="contact" aria-selected="false">Documentos</a>
                             </li>
-                            
+
+                            <!-- <li class="nav-item">
+                                <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#imoveis" role="tab" aria-controls="contact" aria-selected="false">Imóveis</a>
+                            </li>                             -->
+
+                            <li class="nav-item">
+                             <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#contratos" role="tab" aria-controls="contact" aria-selected="false">Contratos</a>
+                            </li>
+
+                          
+                            <li class="nav-item">
+                                <a class="nav-link $desactive_tab_contract" data-toggle="tab" href="#vistorias" role="tab" aria-controls="contact" aria-selected="false">Vistorias</a>
+                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#poupanca" role="tab" aria-controls="contact" aria-selected="false">Poupança / Depósito</a>
                             </li>
                             
-                            <li class="nav-item">
-                              <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#imoveis" role="tab" aria-controls="contact" aria-selected="false">Imóveis</a>
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link $desactive_tab_contract" data-toggle="tab" href="#vistorias" role="tab" aria-controls="contact" aria-selected="false">Vistorias</a>
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#contrato" role="tab" aria-controls="contact" aria-selected="false">Contrato</a>
-                            </li>
-                            
-                            <li class="nav-item">
-                             <a class="nav-link $desactive_tab_contract" id="contact-tab" data-toggle="tab" href="#contratos" role="tab" aria-controls="contact" aria-selected="false">Contratos</a>
-                            </li>
-                            
+                                                        
+                                                        
                             <li class="nav-item">
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#observacoes" role="tab" aria-controls="contact" aria-selected="false">Observações</a>
                             </li>
@@ -268,8 +267,8 @@ class ScreenClients
                                         <input type="hidden" name="client_savings_id" id="client_savings_id" value="$clientValues[id]">
                                         <span>Depósito :</span>
                                         <input type="text" required name="client_savings_value" id="client_savings_value" class="form-control" data-mask="#.##0,00" placeholder="R$ 0.000,00">
-                                        <span>Data do Depósito :</span>
-                                        <input type="date" required name="client_savings_date" id="client_savings_date" class="form-control">
+                                        <!-- <span>Data do Depósito :</span>
+                                        <input type="date" required name="client_savings_date" id="client_savings_date" class="form-control"> -->
                                         <span>Banco Depósito</span>
 
                                         <select class="custom-select"  name="client_savings_bank" id="client_savings_bank">
@@ -294,15 +293,48 @@ class ScreenClients
                             <div class="tab-pane fade" id="contratos" role="tabpanel" aria-labelledby="contact-tab">
                                 <form method="post" enctype="multipart/form-data" id="fileUploadFormContract">
                                     <input type="hidden" name="clientIDcontract" id="clientIDcontract" value="$clientValues[id]">
-                                    <input type="file" class="btn btn-sm btn-info" name="file" id="fileContract">
-                                    <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info" $btn_contract><strong>Anexar Contrato</strong></button>
-                                 </form>
-                                    <hr>
+
+                                    <table  class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Data Inicial</th>
+                                                <th>R$ Atual</th>
+                                                <th>Imóvel Disponível</th>
+                                                <th>PDF do Contrato</th>
+                                                <th>--</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>                                          
+                                            <tr>
+                                                <td><input type="date" required name="date_contract"  id="date_contract"  class="form-control"></td>
+                                                <td><input type="text" required name="value_contract" id="value_contract" class="form-control" data-mask="#.##0,00" placeholder="R$ 0.000,00"></td>
+                                                <td>
+                                                    <select  type="text" class="form-control-sm form-control bg-light border-0 small" name="clientIDProperty"  id="clientIDProperty" >
+                                                     <option value="">Adicionar Imóvel ... </option>
+                                                     $findProperty
+                                                    </select>
+                                                </td>
+                                                <td> 
+                                                    <input type="file" class="btn btn-sm btn-light" name="file" id="fileContract">
+                                                </td>
+
+                                                <td>
+                                                    <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info" $btn_contract><strong>Concluir</strong></button>
+                                                </td>
+                                            </tr> 
+                                        </tbody>
+                                    </table>
+                                                                  
                                 <hr>
+
+                                </form>
+
+                                <hr>
+                                
                                 Contratos atuais : <br>
-                                <div class="btn btn-sm btn-light">
-                                    <strong>$clientContracts</strong>
-                                </div>
+                                                            
+                                $clientContracts
+
                             </div>
 
 
@@ -321,7 +353,7 @@ class ScreenClients
                                 
 
                                     <hr>
-                                    $clientTablePropertys
+                                    $clientOptionsPropertys[0]
 
                                 </div>
                             </div>
@@ -382,57 +414,15 @@ class ScreenClients
                               </div>
                             </div>
 
-                            </div>
-                            
-                            <div class="tab-pane" id="contrato" role="tabpanel" aria-labelledby="contact-tab">
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <form method="post">
-                                        
-                                          <table  class="table table-bordered">
-                                          <thead>
-                                          <tr>
-                                              <th>Data Inicial</th>
-                                              <th>Valor Atual</th>
-                                              <th>Valor Aproximado Reajuste</th>
-                                              <th></th>
-                                          </tr>
-                                          </thead>
-                                          <tbody>                                          
-                                          <tr>
-                                              <td><input type="date" required name="" id="" class="form-control"></td>
-                                              <td><input type="text" required name="" id="" class="form-control" data-mask="R$ #.##0,00" placeholder="R$ 0.000,00"></td>
-                                              <td><input type="text" required name="" id="" class="form-control" data-mask="R$ #.##0,00" placeholder="R$ 0.000,00"></td>
-                                              <td><button name="" id="" value="" class="btn btn-sm btn-danger">Remover</button></td>
-                                            </tr> 
-                                          <tr>
-                                            <td><input type="date" required name="" id="" class="form-control"></td>
-                                            <td><input type="text" required name="" id="" class="form-control" data-mask="R$ #.##0,00" placeholder="R$ 0.000,00"></td>
-                                            <td><input type="text" required name="" id="" class="form-control" data-mask="R$ #.##0,00" placeholder="R$ 0.000,00"></td>
-                                            <td><button name="" id="" value="" class="btn btn-sm btn-danger">Remover</button></td>
-                                          </tr>
-                                          <tr>
-                                            <td><input type="date" required name="" id="" class="form-control"></td>
-                                            <td><input type="text" required name="" id="" class="form-control" data-mask="R$ #.##0,00" placeholder="R$ 0.000,00"></td>
-                                            <td><input type="text" required name="" id="" class="form-control" data-mask="R$ #.##0,00" placeholder="R$ 0.000,00"></td>
-                                            <td><button name="" id="" value="" class="btn btn-sm btn-success">Incluir</button>
-                                          </tr>
-                                          </tbody>
-                                          </table>
-    
-                                     </form>
-                                    </div>
-                                  </div>
-                                
                             </div>    
 
-                                <div class="tab-pane" id="observacoes" role="tabpanel" aria-labelledby="contact-tab">
-                                    <textarea name="client_obs" id="client_obs" cols="70" rows="10">
-                                    $clientValues[obs]
-                                    </textarea>
-                                    <hr>
-                                </div>                                    
-                                </div>
+                            <div class="tab-pane" id="observacoes" role="tabpanel" aria-labelledby="contact-tab">
+                                <textarea name="client_obs" id="client_obs" cols="70" rows="10">
+                                $clientValues[obs]
+                                </textarea>
+                                <hr>
+                            </div>                                    
+                            
                             </div>
                                 <div class="d-flex align-items-end flex-column bd-highlight mt-3">
                                     <div class="p-2 bd-highlight">
@@ -459,7 +449,7 @@ EOT;
                       <thead>
                       <tr>
                         <th>R$</th>
-                        <th>Data</th>
+                        <th>Data | Sistema</th>
                         <th>Banco</th>
                         <th>Poupança</th>
                         <th>Arquivo</th>
@@ -485,14 +475,14 @@ EOT;
                     <table id="table_propertys cellspacing="0" class="table small table-hover table-bordered">
                       <thead>
                       <tr>
-                        <th>Locatário</th>
+                        <th>Data Associação</th>
                         <th>Tipo</th>
                         <th>Endereço</th>
-                        <th>Numero</td>
+                        <th>Número</td>
                         <th>Apto</td>
                         <th>Cidade</td>
                         <th>UF</td>
-                        <th>CEP</td>
+                        <th>Cep</td>
                         <th>Ações</td>
                       </tr>
                       </thead>
@@ -507,6 +497,37 @@ EOT;
 EOT;
     }
 
+
+public function screenListClientContracts($clientListContracts)
+    {
+        return <<< EOT
+            <div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table id="table_propertys cellspacing="0" class="table small table-hover table-bordered">
+                      <thead>
+                      <tr>
+                        <th>N.Contrato</td>
+                        <th>Contrato Documento</th>
+                        <th>Data Inicial</th>
+                        <th>R$ Incial</th>
+                        <th>Data Reajuste</td>
+                        <th>R$ Reajuste </td>
+                        <th></td>
+                        <th></td>
+                        <th></td>        
+                      </tr>
+                      </thead>
+                      <tbody>
+                         $clientListContracts
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+          
+EOT;
+    }
 
     public function screenListSurveyCarriedOut($clientSurveyCarriedOut)
     {

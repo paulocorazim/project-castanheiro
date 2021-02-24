@@ -56,7 +56,8 @@ if (isset($_GET['editID'])) {
     $propertyData = $activeRecords->find_property_data($dbInstance, $propertyID);
 	$typeProperty = $screenProperty->screenTypeProperty($propertyData, null);
 
-    $contentNow = $screenProperty->screenProperty($findProperty, $propertyData, $typeProperty); // aqui atribuimos o contenNow com o form desejado
+	// aqui atribuimos o contenNow com o form desejado
+    $contentNow = $screenProperty->screenProperty($findProperty, $propertyData, $typeProperty); 
 
     echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Imóveis", $contentNow);
 
@@ -65,18 +66,20 @@ if (isset($_GET['editID'])) {
     exit();
 }
 
-if (isset($_POST['j_btn_salve_property'])) {
+/*Insert e Update*/
+if ( isset( $_POST['j_btn_salve_property'] ) ) 
+{
     $regist_property = $_POST;
     $resp = $activeRecords->manager_property($dbInstance, $regist_property);
     echo $appFunctions->alert_system($resp[0], $resp[1]);
     exit();
 }
 
-if (isset($_POST['j_btn_remove_property'])) {
-
+/*Removendo*/
+if ( isset ($_POST['j_btn_remove_property'] ) ) 
+{
 	//var_dump($_POST);
-
-	if($_POST['property_client'] != '')
+	if( $_POST['property_client'] != '' )
 	{
 		echo $appFunctions->alert_system('3', "Este imóvel não pode ser removido, existe Locátário associado para ele!");
 		exit();

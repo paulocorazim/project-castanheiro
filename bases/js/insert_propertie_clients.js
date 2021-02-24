@@ -20,7 +20,6 @@ $(document).ready(function () {
                     },
                     success: function (data) {
                         $('#alert_msg').html(data);
-
                     },
                     error: function () {
                         $('#alert_msg').html("Algo deu errado ...");

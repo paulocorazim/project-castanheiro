@@ -5,9 +5,9 @@ $(document).ready(function () {
             alert("Por favor, o campo ( | VALOR | ) precisa ser preenchido! Verifique !");
             $('#client_savings_value').focus();
 
-        } else if ($('#client_savings_date').val() === '') {
-            alert("Por favor, o campo ( | DATA | ) precisa ser preenchido! Verifique !");
-            $('#client_savings_date').focus();
+        // } else if ($('#client_savings_date').val() === '') {
+        //     alert("Por favor, o campo ( | DATA | ) precisa ser preenchido! Verifique !");
+        //     $('#client_savings_date').focus();
 
         } else if ($('#client_savings_bank').val() === '') {
             alert("Por favor, o campo ( | BANCO | ) precisa ser preenchido! Verifique !");

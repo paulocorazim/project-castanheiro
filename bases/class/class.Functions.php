@@ -138,7 +138,7 @@ EOT;
 		return $icone_fas_fan;
 	}
 
-	public function upload_files($clientID, $clientDOC, $typeDoc) : array
+	public function upload_files($clientID, $clientDOC, $typeDoc)
 	{
 		$type = null;
 		$resp = null;
@@ -150,7 +150,7 @@ EOT;
 
 			$clientPathFile = "../docs/clients/$clientID/";
 			
-			if (file_exists($clientPathFile)) 
+			if ( file_exists( $clientPathFile ) ) 
 			{
 				//echo "Arquivo ou diretórioexiste";
 			} else {
@@ -165,15 +165,17 @@ EOT;
 			
 			$clientPathFile = "../docs/clients/$clientID/contracts";
 			
-			if (file_exists($clientPathFile)) 
+			
+			if ( file_exists( $clientPathFile ) ) 
 			{
 				//echo "Arquivo ou diretórioexiste";
 			} else {
+				
 				mkdir("..//docs/clients/$clientID/contracts", 0777, true);
 				chmod("..//docs/clients/$clientID/contracts", 0777);
 			}
 
-			$_UP[ 'pasta' ] = "../docs/clients/$clientID/contracts/";
+			$_UP[ 'pasta' ]    = "../docs/clients/$clientID/contracts/";
 			$_UP[ 'renomeia' ] = false;
 
 		} elseif ($typeDoc == 'Survey') {
@@ -252,7 +254,6 @@ EOT;
 			} else {
 				$type = '0';
 				$resp = "Não foi possível enviar o arquivo, tente novamente";
-
 			}
 			
 			// if ($_UP[ 'tamanho' ] < $_FILES[ 'size' ]) {
@@ -299,7 +300,7 @@ EOT;
 		}
 	}
 
-	public function load_contracts($clientID)
+	public function load_contracts_file($clientID)
 	{
 		$clientPathFile = "../docs/clients/$clientID/contracts/";
 

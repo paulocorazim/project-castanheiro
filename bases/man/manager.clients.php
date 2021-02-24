@@ -49,7 +49,7 @@ $head = new shHead();
 echo $head->sh_head("Castanheiro App v1 >> Clientes");
 
 /* Carregando a classe de tela princial*/
-$screenManager = new ScreenManager();
+$screenManager  = new ScreenManager();
 $screenProperty = new ScreenProperties();
 
 /* Carregando a tela de cliente*/
@@ -73,7 +73,7 @@ if($_GET['report'] == true)
 if(isset($_GET['filters'])) 
 {
 	$typeProperty = $screenProperty->screenTypeProperty(null, 'find');
-	$contentNow = $screenClient->screenFilterClientAndProperty($ListBoxPropertsClients, $typeProperty);
+	$contentNow   = $screenClient->screenFilterClientAndProperty($ListBoxPropertsClients, $typeProperty);
 
 	echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Filtro de Pesquisas", $contentNow);
 
@@ -102,30 +102,38 @@ if(isset($_POST['btn_find_NameOrStreet']))
 }
 
 /*Trazendo dados do cliente para edição*/
-if (isset($_GET['editID'])) 
+if ( isset($_GET['editID'] ) ) 
 {
     $clientID = $_GET['editID'];
 
     /*Lendo dados do cliente*/
     $clientData = $activeRecords->find_client_data($dbInstance, $clientID);
-    $findPropertyToCliente = $activeRecords->find_property_to_client($dbInstance); // Lista dos imóveis
+
+    /*Lista dos imóveis disponiveis para alugar*/
+    $findPropertyToCliente = $activeRecords->find_property_to_client($dbInstance); 
 
     /*Lendo documentos anexados do cliente*/
     $clientDocs = $appFunctions->load_files($clientID);
 
     /*Lendo contratos anexados do cliente*/
-    $clientContracts = $appFunctions->load_contracts($clientID);
+    //$clientContracts = $appFunctions->load_contracts_file($clientID);
+    $clientListContracts = $activeRecords->load_contracts($dbInstance, $clientID);
+    $clientContracts     = $screenClient->screenListClientContracts($clientListContracts);
+    
 
     /*Lendo survey do cliente*/
     $clientSurvey = $appFunctions->load_survey($clientID);
 
     /*Lendo poupanças do cliente*/
-    $clientListSavings = $activeRecords->list_client_saving($dbInstance, $clientID);
+    $clientListSavings  = $activeRecords->list_client_saving($dbInstance, $clientID);
     $clientTableSavings = $screenClient->screenListClientSavings($clientListSavings);
 
-    /*Lendo imóveis do cliente*/
-    $clientListPropertys  = $activeRecords->list_client_property($dbInstance, $clientID);
-    $clientTablePropertys = $screenClient->screenListClientProperty($clientListPropertys);
+    /*Lendo imóveis do cliente (criando a tabela e o listbox para associar ao locatário*/
+    $clientListPropertys    = $activeRecords->list_client_property($dbInstance, $clientID);
+    $clientTablePropertys   = $screenClient->screenListClientProperty($clientListPropertys[0]); //tabela
+    $clientListBoxPropertys = $clientListPropertys[1]; //listbox
+    $clientOptionsPropertys = [ $clientTablePropertys, $clientListBoxPropertys ];
+
 
     /*Vistorias realizadas*/
     $clientSurveyCarriedOut = $activeRecords->listSurveyCarriedOut($dbInstance, $clientID);
@@ -133,7 +141,7 @@ if (isset($_GET['editID']))
 
 
     /*Telas Carregadas*/
-	$contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs, $clientContracts, $clientTableSavings, $findPropertyToCliente, $clientTablePropertys, $tablesSurveyCarriedOut);
+	$contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs, $clientContracts, $clientTableSavings, $findPropertyToCliente, $clientOptionsPropertys, $tablesSurveyCarriedOut);
 
     echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow);
    
@@ -288,17 +296,46 @@ if (isset($_POST['j_btn_doc']))
 }
 
 /*Inserindo Contrato ao Cliente*/
-if (isset($_POST['j_btn_contract'])) 
-{
-    $typeDoc = 'Contract';
-    $resp_process = $appFunctions->upload_files($_POST['clientIDcontract'], $_FILES['file'], $typeDoc);
-    $resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
-    echo $resp_process;
-    exit();
+if ( isset( $_POST['j_btn_contract'] ) ) 
+{   
+    $dataContract   = $_POST;
+    $filename       = $_FILES['file']['name'];
+
+    // var_dump($dataContract);
+    // exit();
+
+    $typeDoc        = 'Contract';
+    $resp_process   = $appFunctions->upload_files($_POST['clientIDcontract'], $_FILES['file'], $typeDoc);
+
+    if ( $resp_process[0] == 1 )
+    {
+        $resContract = $activeRecords->manager_contratc($dbInstance, $dataContract, $filename);
+        
+        if ( $resContract == 1)
+        {
+            // print $appFunctions->alert_system('1', ':) Sucesso ao salvar o contrato!');
+            // exit;
+            print $appFunctions->alert_system('2',
+		    "Cliente $_POST[client_name] foi ALTERADDO com sucesso! <strong> Deseja continuar alterações? </strong> 
+            <a href='?editID=$_POST[clientIDcontract]' class=\"alert-link\" > [SIM] </a> | 
+            <a href='?insert=true' class=\"alert-link\" > [NÃO] </a>");
+	        exit(); 
+        }
+        else{
+
+            print $appFunctions->alert_system('2', 'Ops! Algum problema ao salvar o contrato, verifique novamente!');
+            exit;
+        }
+    }
+    else{
+
+        echo $resp_process;
+        exit();
+    }    
 }
 
 /*Inserindo Poupanças/Depósitos*/
-if (isset($_POST['j_btn_salve_savings'])) 
+if ( isset( $_POST['j_btn_salve_savings'] ) ) 
 {
     $typeDoc = null;
     $resp_process = $appFunctions->upload_files($_POST['client_savings_id'], $_FILES['fileSavings'], $typeDoc);
@@ -388,7 +425,6 @@ if (isset($_POST['j_btn_salve_survey']))
 
 
 }
-
 
 /*Acossciando Cliente/Imóvel */
 if (isset($_POST['j_btn_salve_client_Property'])) 

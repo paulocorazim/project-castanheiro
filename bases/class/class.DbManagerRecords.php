@@ -490,11 +490,12 @@ class DbManagerRecords
             /* $conds = ['id' => "$regists_billet_client[find_client]"];*/
             $saving_value = str_replace('.', '', $regists_client_savings['client_savings_value']); // remove o ponto
             $saving_value = str_replace(',', '.', $saving_value); // troca a vírgula por ponto
+			$saving_date  = date('Y-m-d');
 
             $data = [
                 'saving_id_client' => "$regists_client_savings[client_savings_id]",
                 'saving_value' => "$saving_value",
-                'saving_date' => "$regists_client_savings[client_savings_date]",
+                'saving_date' => $saving_date,
                 'saving_number' => "$regists_client_savings[client_savings_number]",
                 'saving_bank' => "$regists_client_savings[client_savings_bank]",
                 'saving_filename' => "$filename",
@@ -664,18 +665,21 @@ class DbManagerRecords
 			$tr = null;
 			$listClientPropertyRegists = null;
 
+			$opt = null;
+			$listClientPropertyOpt = null;
+
 			$sqlManager = new SqlManager($dbInstance);
 			$shSelectClientProperty = (new SqlQueryBuilder())
 				->setQuery("SELECT a.id,
-                        DATE_FORMAT (a.date_add,'%d-%m-%Y') as date_add,
-                        a.id_client,  a.id_property, b.property_type, b.property_address, b.property_number,
-                        b.property_number_apto, b.property_city, b.property_state, b.property_cep 
-                        FROM
-                        tab_clients_property as a,
-                        tab_properties as b
-                        WHERE
-                        b.id = a.id_property and a.id_client = :id_client"
-				)
+							DATE_FORMAT (a.date_add,'%d-%m-%Y') as date_add,
+							a.id_client, a.id_property, b.property_type, b.property_address, b.property_number,
+							b.property_number_apto, b.property_city, b.property_state, b.property_cep 
+							FROM
+							tab_clients_property as a,
+							tab_properties as b
+							WHERE
+							b.id = a.id_property and a.id_client = :id_client"
+						)
 				->setConditions(['id_client' => "$idClient"]);
 			$shResultsClientProperty = $sqlManager->fetchAll($shSelectClientProperty);
 
@@ -693,6 +697,9 @@ class DbManagerRecords
 							".'<td><button name="btn_remove_propertyClient" id="btn_remove_propertyClient" class="btn btn-sm btn-secondary" onclick="deleteRow(this.parentNode.parentNode.rowIndex)"> Remover</button>'."
 						</tr>";
 				$listClientPropertyRegists .= $tr;
+
+				$opt ="<option value='$reportClientProperty[id_property]'>$reportClientProperty[property_address], N.$reportClientProperty[property_number], Apto.$reportClientProperty[property_number_apto], $reportClientProperty[property_city], $reportClientProperty[property_state], $reportClientProperty[property_cep]</option>";
+				$listClientPropertyOpt  .= $opt;
 			}
 
 		} catch (Exception $e) {
@@ -700,7 +707,7 @@ class DbManagerRecords
 			echo "Erro ao receber lista de imoveis" . $error;
 		}
 
-		return $listClientPropertyRegists;
+		return array($listClientPropertyRegists, $listClientPropertyOpt);
 	}
 
 	/*Listando as Vistorias Relizadas*/
@@ -713,9 +720,9 @@ class DbManagerRecords
 			$sqlManager = new SqlManager($dbInstance);
 			$listSurveyCarriedOut = (new SqlQueryBuilder())
 					->setQuery("SELECT a.*,
-										DATE_FORMAT (survey_bedroom_date,'%d-%m-%Y') as survey_bedroom_date,
+										DATE_FORMAT (survey_bedroom_date,'%d-%m-%Y')    as survey_bedroom_date,
 										DATE_FORMAT (survey_livingroom_date,'%d-%m-%Y') as survey_livingroom_date,
-										DATE_FORMAT (survey_wc_date,'%d-%m-%Y') as survey_wc_date,
+										DATE_FORMAT (survey_wc_date,'%d-%m-%Y')         as survey_wc_date,
 										b.name, b.phone1, b.email1 
 					            FROM 
 								 tab_clients_survey as a, 
@@ -1257,11 +1264,17 @@ class DbManagerRecords
 
 			$sqlManager = new SqlManager($dbInstance);
 			$shSelectPropertyID = (new SqlQueryBuilder())
-				->setQuery('SELECT * from tab_properties ORDER BY property_address , property_number, property_number_apto');
+				->setQuery('SELECT * from tab_properties
+							WHERE id not in (SELECT contract_id_property from tab_contract where contract_id_property = tab_properties.id) 
+							ORDER BY 
+							property_address, property_number, property_number_apto'
+				          );
 			$shResultsPropertyID = $sqlManager->fetchAll($shSelectPropertyID);
 
-            foreach ($shResultsPropertyID as $propertyALL) {
-                if ($propertyALL['property_type'] == 'Apartamento') {
+            foreach ($shResultsPropertyID as $propertyALL) 
+			{
+                if ( $propertyALL['property_type'] == 'Apartamento' ) 
+				{
                     $Apto = "- Apto: $propertyALL[property_number_apto]";
 
                 } else {
@@ -1373,4 +1386,108 @@ class DbManagerRecords
 		return $optionList;
 	}
 
+
+	//Contratos
+
+	/* Adicoanr / Update de contratos */
+	public function manager_contratc($dbInstance, $dataContract, $filename)
+	{
+		try 
+		{	
+			$contract_value_start = str_replace( '.', '',  $dataContract['value_contract']); // remove o ponto
+            $contract_value_start = str_replace( ',', '.', $contract_value_start); // troca a vírgula por ponto
+			
+			$data = [
+					'contract_id_client'     => $dataContract['clientIDcontract'],
+					'contract_id_property'   => $dataContract['clientIDProperty'],
+					'contract_date_start'    => $dataContract['date_contract'],
+					'contract_value_start'   => $contract_value_start,
+					'contract_value_current' => $contract_value_start,
+					'contract_file'			 => $filename		
+			];
+
+			$sqlManager= new SqlManager($dbInstance);
+			$sqlQuery  = (new SqlQueryBuilder())
+					   ->setTableName('tab_contract')
+					   ->setData($data);
+			$sqlManager->insert($sqlQuery);
+			$resp = 1;
+
+		} catch (Exception $e) {
+				
+			$error = $e->getMessage();
+			$resp = $error;
+				
+		}
+
+		return $resp;
+	}
+
+	/*Listando os contratos do clientes/imóveis*/
+	public function load_contracts($dbInstance, $clientID)
+	{
+		try {
+
+			$trResults = null;
+
+			$sqlManager = new SqlManager($dbInstance);
+			$selectContract = (new SqlQueryBuilder())
+				->setQuery('SELECT 
+								tab_contract.contract_id,
+								tab_contract.contract_file,
+								tab_contract.contract_date_start,
+								tab_contract.contract_value_start,
+								tab_contract.contract_date_renew,
+								tab_contract.contract_value_renew,
+								tab_properties.property_address,
+								tab_properties.property_number,
+								tab_properties.property_number_apto,
+								tab_properties.property_county,
+								tab_properties.property_city,
+								tab_properties.property_state,
+								tab_properties.property_neighbordhood,
+								tab_properties.property_complement,
+								tab_properties.property_cep
+							FROM 
+								tab_contract,
+								tab_clients,
+								tab_properties
+							WHERE 
+								tab_clients.id    = tab_contract.contract_id_client   AND
+								tab_properties.id = tab_contract.contract_id_property AND
+								tab_contract.contract_id_client = :contract_id_client')
+				->setConditions(['contract_id_client' => $clientID]);				
+			$resultContract = $sqlManager->fetchAll($selectContract);
+
+			foreach ($resultContract as $dataContract) 
+			{
+				$tr = "<tr>
+						<td><a href='#' title='Endereço: $dataContract[property_address] N.$dataContract[property_number], Apto: $dataContract[property_number_apto], 
+						                       UF: $dataContract[property_county], 
+											   Cidade: $dataContract[property_city] 
+											   Compl: $dataContract[property_neighbordhood] 
+											   Cep: $dataContract[property_cep]
+
+										    '>$dataContract[contract_id] </a></td>
+                      	<td> <a href='../docs/clients/$clientID/contracts/$dataContract[contract_file]' target='parent'  title='$dataContract[contract_file]'> Visualizar </a> </td>
+                      	<td>$dataContract[contract_date_start]</td>
+                      	<td>$dataContract[contract_value_start]</td>
+                      	<td></td>
+                      	<td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>                        
+                       </tr>";
+                $trResults .= $tr;
+			}
+
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber lista de Contratos" . $error;
+		}
+
+		return $trResults;
+	}
+	
+	
 }
