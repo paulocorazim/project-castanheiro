@@ -1,5 +1,4 @@
 <?php
-
 class ScreenClients
 {
     public function screenFormClient($findClients, $clientValues, $clientDocs, $clientContracts, $clientTableSavings, $findProperty, $clientOptionsPropertys, $tablesSurveyCarriedOut)
