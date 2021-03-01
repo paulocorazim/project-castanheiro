@@ -490,7 +490,7 @@ class DbManagerRecords
             /* $conds = ['id' => "$regists_billet_client[find_client]"];*/
             $saving_value = str_replace('.', '', $regists_client_savings['client_savings_value']); // remove o ponto
             $saving_value = str_replace(',', '.', $saving_value); // troca a vírgula por ponto
-			$saving_date  = date('Y-m-d');
+				$saving_date  = date('Y-m-d');
 
             $data = [
                 'saving_id_client' => "$regists_client_savings[client_savings_id]",
@@ -499,6 +499,7 @@ class DbManagerRecords
                 'saving_number' => "$regists_client_savings[client_savings_number]",
                 'saving_bank' => "$regists_client_savings[client_savings_bank]",
                 'saving_filename' => "$filename",
+					 'saving_id_contract' => "$regists_client_savings[client_savings_id_contract]",
             ];
 
             // print_r($data);
@@ -633,13 +634,17 @@ class DbManagerRecords
 
 			$sqlManager = new SqlManager($dbInstance);
 			$shSelectClientSavings = (new SqlQueryBuilder())
-				->setQuery("SELECT DATE_FORMAT (saving_date,'%d-%m-%Y') as saving_date, saving_bank, saving_value, saving_filename, saving_number
-									FROM tab_clients_savings WHERE saving_id_client = :saving_id_client")
+				->setQuery("SELECT 
+       								DATE_FORMAT (saving_date,'%d-%m-%Y') as saving_date, 
+       								saving_bank, saving_value, saving_filename, saving_number, 
+       								saving_id_contract
+										FROM tab_clients_savings WHERE saving_id_client = :saving_id_client")
 				->setConditions(['saving_id_client' => "$idClient"]);
 			$shResultsClientSavings = $sqlManager->fetchAll($shSelectClientSavings);
 
 			foreach ($shResultsClientSavings as $reportClients) {
 				$tr = "<tr>
+							 <td>$reportClients[saving_id_contract]</td>
                       <td>R$" . number_format($reportClients[ 'saving_value' ], 2, ',', '.') . "</td>
                       <td>$reportClients[saving_date]</td>
                       <td>" . strtoupper($reportClients[ 'saving_bank' ]) . "</td>
@@ -1395,7 +1400,7 @@ class DbManagerRecords
 		try 
 		{	
 			$contract_value_start = str_replace( '.', '',  $dataContract['value_contract']); // remove o ponto
-            $contract_value_start = str_replace( ',', '.', $contract_value_start); // troca a vírgula por ponto
+			$contract_value_start = str_replace( ',', '.', $contract_value_start); // troca a vírgula por ponto
 			
 			$data = [
 					'contract_id_client'     => $dataContract['clientIDcontract'],
@@ -1456,7 +1461,7 @@ class DbManagerRecords
 								tab_clients.id    = tab_contract.contract_id_client   AND
 								tab_properties.id = tab_contract.contract_id_property AND
 								tab_contract.contract_id_client = :contract_id_client')
-				->setConditions(['contract_id_client' => $clientID]);				
+				->setConditions(['contract_id_client' => $clientID]);
 			$resultContract = $sqlManager->fetchAll($selectContract);
 
 			foreach ($resultContract as $dataContract) 
@@ -1478,7 +1483,10 @@ class DbManagerRecords
                         <td></td>
                         <td></td>                        
                        </tr>";
-                $trResults .= $tr;
+				$trResults .= $tr;
+
+				$opt ="<option value='$dataContract[contract_id]'>Contr: $dataContract[contract_id]  |  R$: $dataContract[contract_value_start] </option>";
+				$optResults .= $opt;
 			}
 
 		} catch (Exception $e) {
@@ -1486,7 +1494,7 @@ class DbManagerRecords
 			echo "Erro ao receber lista de Contratos" . $error;
 		}
 
-		return $trResults;
+		return array( $trResults , $optResults );
 	}
 	
 	

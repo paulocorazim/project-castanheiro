@@ -117,9 +117,11 @@ if ( isset($_GET['editID'] ) )
 
     /*Lendo contratos anexados do cliente*/
     //$clientContracts = $appFunctions->load_contracts_file($clientID);
-    $clientListContracts = $activeRecords->load_contracts($dbInstance, $clientID);
-    $clientContracts     = $screenClient->screenListClientContracts($clientListContracts);
-    
+    $clientListContracts  = $activeRecords->load_contracts($dbInstance, $clientID);
+    $clientResp1Contracts = $screenClient->screenListClientContracts($clientListContracts[0]);
+	 $clientResp2Contracts = $clientListContracts[1]; //Table
+	 $clientReturContracts = [ $clientResp1Contracts, $clientResp2Contracts ]; //Opt
+	 $clientContracts      = $clientReturContracts;
 
     /*Lendo survey do cliente*/
     $clientSurvey = $appFunctions->load_survey($clientID);
@@ -128,20 +130,20 @@ if ( isset($_GET['editID'] ) )
     $clientListSavings  = $activeRecords->list_client_saving($dbInstance, $clientID);
     $clientTableSavings = $screenClient->screenListClientSavings($clientListSavings);
 
+    /*Lendo Contratos Associados para adcionar poupanças*/
+	 //$clientListContractSaving = $activeRecords->list_client_contractSavings($dbInstance, $clientID);
     /*Lendo imóveis do cliente (criando a tabela e o listbox para associar ao locatário*/
     $clientListPropertys    = $activeRecords->list_client_property($dbInstance, $clientID);
     $clientTablePropertys   = $screenClient->screenListClientProperty($clientListPropertys[0]); //tabela
     $clientListBoxPropertys = $clientListPropertys[1]; //listbox
     $clientOptionsPropertys = [ $clientTablePropertys, $clientListBoxPropertys ];
 
-
     /*Vistorias realizadas*/
     $clientSurveyCarriedOut = $activeRecords->listSurveyCarriedOut($dbInstance, $clientID);
     $tablesSurveyCarriedOut = $screenClient->screenListSurveyCarriedOut($clientSurveyCarriedOut);
 
-
     /*Telas Carregadas*/
-	$contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs, $clientContracts, $clientTableSavings, $findPropertyToCliente, $clientOptionsPropertys, $tablesSurveyCarriedOut);
+	 $contentNow = $screenClient->screenFormClient($findClients, $clientData, $clientDocs, $clientContracts, $clientTableSavings, $findPropertyToCliente, $clientOptionsPropertys, $tablesSurveyCarriedOut);
 
     echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Cadastro de Clientes", $contentNow);
    
@@ -337,17 +339,18 @@ if ( isset( $_POST['j_btn_contract'] ) )
 /*Inserindo Poupanças/Depósitos*/
 if ( isset( $_POST['j_btn_salve_savings'] ) ) 
 {
-    $typeDoc = null;
-    $resp_process = $appFunctions->upload_files($_POST['client_savings_id'], $_FILES['fileSavings'], $typeDoc);
+	$typeDoc      = null;
+   $resp_process = $appFunctions->upload_files( $_POST['client_savings_id'], $_FILES['fileSavings'], $typeDoc );
 
-    if ($resp_process['0'] == '0') { //erro ao fazer upload
+    if ($resp_process['0'] == '0') //erro ao fazer upload
+    {
         $resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
         echo $resp_process;
         exit();
     }
 
-    if ($resp_process['0'] == '1') { //sucesso para salvar o arquivo
-
+    if ($resp_process['0'] == '1') //sucesso para salvar o arquivo
+    {
         $filename = $resp_process[2];
 
         $resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
@@ -356,19 +359,21 @@ if ( isset( $_POST['j_btn_salve_savings'] ) )
         $regists_client_savings = $_POST;
         $resp = $activeRecords->manager_client_saving($dbInstance, $regists_client_savings, $filename);
 
-        if ($resp != '1') {
+        if ($resp != '1')
+        {
             echo $appFunctions->alert_system('0', "Erro ao processar depósito - $resp");
             exit();
         }
 
-        if ($resp == '1') {
+        if ($resp == '1')
+        {
             echo $appFunctions->alert_system('1', "Depósito Incliudo com sucesso");
             exit();
         }
-
     }
 
-    if ($resp_process['0'] == '3') { //erro ao fazer upload
+    if ($resp_process['0'] == '3') //erro ao fazer upload
+    {
         echo $resp_process = $appFunctions->alert_system("$resp_process[0]", "$resp_process[1]");
         exit();
     }
@@ -395,8 +400,8 @@ if (isset($_POST['j_btn_salve_survey']))
         {
 			$clientPathFile = "../docs/clients/$_POST[clientAddSurvey]/survey";
 
-            if (file_exists($clientPathFile)) 
-            {
+         if (file_exists($clientPathFile))
+         {
 				//echo "Arquivo ou diretórioexiste";
 			} else {
 				mkdir("..//docs/clients/$_POST[clientAddSurvey]/survey", 0777, true);

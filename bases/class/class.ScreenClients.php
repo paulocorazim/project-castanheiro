@@ -1,4 +1,5 @@
 <?php
+
 class ScreenClients
 {
     public function screenFormClient($findClients, $clientValues, $clientDocs, $clientContracts, $clientTableSavings, $findProperty, $clientOptionsPropertys, $tablesSurveyCarriedOut)
@@ -257,17 +258,25 @@ class ScreenClients
                                 <div class="btn btn-sm btn-light">
                                     <strong>$clientDocs</strong>
                                 </div>
-                            </div>
+                            </div>Depósito :
 
                             <div class="tab-pane fade" id="poupanca" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="row">
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <form method="post" enctype="multipart/form-data" id="fileUploadFormSaving">
                                         <input type="hidden" name="client_savings_id" id="client_savings_id" value="$clientValues[id]">
+                                        
+                                        <span>Contrato</span>
+                                        <select class="custom-select"  name="client_savings_id_contract" id="client_savings_id_contract">
+                                            $clientContracts[1]
+                                        </select>
+                                        
                                         <span>Depósito :</span>
                                         <input type="text" required name="client_savings_value" id="client_savings_value" class="form-control" data-mask="#.##0,00" placeholder="R$ 0.000,00">
+                                        
                                         <!-- <span>Data do Depósito :</span>
                                         <input type="date" required name="client_savings_date" id="client_savings_date" class="form-control"> -->
+                                        
                                         <span>Banco Depósito</span>
 
                                         <select class="custom-select"  name="client_savings_bank" id="client_savings_bank">
@@ -278,8 +287,7 @@ class ScreenClients
                                         <span>Conta Poupança ou Apólices </span>
                                         <input type="text" required name="client_savings_number" id="client_savings_number" class="form-control"><br>
 
-
-                                        <input type="file" class="btn btn-sm btn-info" name="fileSavings" id="fileSavings"><hr>
+                                        <input type="file" class="btn btn-sm btn-simple" name="fileSavings" id="fileSavings"><hr>
                                         <button name="j_btn_salve_savings" id="j_btn_salve_savings" value="InsertSavings" class="btn btn-sm btn-success" $btn_saving />Salvar Depósito</button>
                                     </form>
                                 </div>
@@ -332,7 +340,7 @@ class ScreenClients
                                 
                                 Contratos atuais : <br>
                                                             
-                                $clientContracts
+                                $clientContracts[0]
 
                             </div>
 
@@ -447,11 +455,12 @@ EOT;
                     <table cellspacing="0" class="table small table-hover table-bordered">
                       <thead>
                       <tr>
+                      	<th>Contratos</th>
                         <th>R$</th>
                         <th>Data | Sistema</th>
                         <th>Banco</th>
                         <th>Poupança</th>
-                        <th>Arquivo</th>
+                        <th>Comprovante</th>
                       </tr>
                       </thead>
                       <tbody>

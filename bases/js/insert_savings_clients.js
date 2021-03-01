@@ -26,6 +26,7 @@ $(document).ready(function () {
                     client_savings_date: $('#client_savings_date').val(),
                     client_savings_bank: $('#client_savings_bank').val(),
                     client_savings_number: $('#client_savings_number').val(),
+                    client_savings_id_contract : $('#client_savings_id_contract').val(),
                     client_id: $('#client_id').val(),
                     j_btn_salve_savings: $('#j_btn_salve_savings').val(),
                 },
