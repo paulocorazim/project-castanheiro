@@ -455,7 +455,7 @@ EOT;
                     <table cellspacing="0" class="table small table-hover table-bordered">
                       <thead>
                       <tr>
-                      	<th>Contratos</th>
+                      	<th>N.Contrato</th>
 								<th>R$</th>
                         <th>Data | Sistema</th>
                         <th>Banco</th>
