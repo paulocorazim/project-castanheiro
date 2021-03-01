@@ -455,7 +455,11 @@ EOT;
                     <table cellspacing="0" class="table small table-hover table-bordered">
                       <thead>
                       <tr>
+<<<<<<< HEAD
                       	<th>Contratos</th>
+=======
+                      	<th>Contrato</th>
+>>>>>>> origin/master
                         <th>R$</th>
                         <th>Data | Sistema</th>
                         <th>Banco</th>

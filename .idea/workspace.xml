@@ -2,8 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fefaa51-538b-4c25-99da-fba32fc0d70b" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f7987836-a698-425e-897d-e39a97a0a8d1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f7987836-a698-425e-897d-e39a97a0a8d1/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpintel/110a6d330f716c9075d774a22446f6cf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpintel/23ec14a910a87fe10226568ab6bdc219" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpintel/37beb0689e8733681014972b396c3b76" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpintel/4c3d86240e59c885ff0d97766a5705ce" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpintel/8bf6872f0c60d1f26f99b24d689f7aa2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpintel/99682001bdc64741ece2eb732123c2f4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpintel/afcb498e7303691b58e050cc234b3220" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpintel/b08ba98fe666ddc27d0acd2d36a1b952" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpintel/dc24d940935b969f5697cdf358c7e343" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpintel/e7fa1056cf6f5050b984021014c9392b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpintel/index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.validation.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/js/insert_savings_clients.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/insert_savings_clients.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" />
+>>>>>>> origin/master
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +82,10 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+<<<<<<< HEAD
     <property name="nodejs_package_manager_path" value="npm" />
+=======
+>>>>>>> origin/master
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -69,7 +100,11 @@
       <workItem from="1614436909552" duration="69000" />
       <workItem from="1614437149970" duration="4640000" />
       <workItem from="1614553241182" duration="9000" />
+<<<<<<< HEAD
       <workItem from="1614613621194" duration="3110000" />
+=======
+      <workItem from="1614613621194" duration="2783000" />
+>>>>>>> origin/master
     </task>
     <servers />
   </component>
