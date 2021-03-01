@@ -449,11 +449,25 @@ EOT;
     public function screenListClientSavings($listClientSavingsRegists)
     {
         return <<< EOT
-            <div id="table_savings" class="col-sm-8 mb-auto mb-sm-1">
-               
-                  
-                
-              </div>
+		  <div id="table_savings" class="col-sm-8 mb-auto mb-sm-1">               
+			<div class="table-responsive">
+			  <table cellspacing="0" class="table small table-hover table-bordered">
+				 <thead>
+				 <tr>
+					<th>N.Contrato</th>
+					<th>R$</th>
+					<th>Data | Sistema</th>
+					<th>Banco</th>
+					<th>Poupança</th>
+					<th>Comprovante</th>
+				 </tr>
+				 </thead>
+				 <tbody>
+					 $listClientSavingsRegists
+				 </tbody>
+			  </table>
+			</div>                
+		  </div>
             
 EOT;
     }
