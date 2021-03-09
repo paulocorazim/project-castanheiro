@@ -1,6 +1,9 @@
 {
     "require": {
       "uxweb/sweet-alert": "^2.0",
-      "ext-http": "*"
-    }
+      "ext-http": "*",
+      "ext-curl": "*"
+    },
+  "name": "",
+  "description": ""
 }
