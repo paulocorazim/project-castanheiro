@@ -10,7 +10,17 @@ $(document).ready(function () {
             alert("Por favor, o campo ( | R$ Atual | ) precisa ser preenchido! Verifique !");
             $('#value_contract').focus();
     
-        } 
+        }
+        else if ($('#clientIDProperty').val() === '') {
+            alert("Por favor, o campo ( | R$ Imóvel Disponível | ) precisa ser preenchido! Verifique !");
+            $('#clientIDProperty').focus();
+
+        }
+        else if ($('#fileContract').val() === '') {
+            alert("Por favor, o campo ( | R$ Imóvel Disponível | ) precisa ser preenchido! Verifique !");
+            $('#fileContract').focus();
+
+        }
         else {
         
             // parar o envio para que possamos faze-lo manualmente.

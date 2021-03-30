@@ -483,8 +483,8 @@ class DbManagerRecords
         return $resp;
     }
 
-    /*Incluido Poupança/Depósito para Cliente*/
-    public function manager_client_saving($dbInstance, $regists_client_savings, $filename)
+   /*Incluido Poupança/Depósito para Cliente*/
+   public function manager_client_saving($dbInstance, $regists_client_savings, $filename)
     {
         try {
             /* $conds = ['id' => "$regists_billet_client[find_client]"];*/
@@ -894,7 +894,8 @@ class DbManagerRecords
 			$sqlManager = new SqlManager($dbInstance);
 
 			$shSelectPropertie = (new SqlQueryBuilder())
-					->setQuery('SELECT id, property_type, property_address,  property_county, property_city from tab_properties where id = :id')
+					->setQuery('SELECT id, property_type, property_address,  property_county, property_city 
+                                  from tab_properties where id = :id')
 					->setConditions(['id' => "$id"]);
 				$shResultsPropertieID = $sqlManager->fetchAll($shSelectPropertie);
 
@@ -907,7 +908,7 @@ class DbManagerRecords
 
 				$shSelectPropertieStreet = (new SqlQueryBuilder())
 					->setQuery('SELECT id, property_type, property_address, property_number, property_number_apto, property_county, 
-	                                          property_city, property_cep 
+	                                          property_city, property_state, property_cep 
 										from tab_properties
 										where
 										    property_address = :property_address
@@ -932,12 +933,13 @@ class DbManagerRecords
 						->setConditions(['id_property' => "$propertieAll[id]"]);
 					$shResultsSelectTenant = $sqlManager->fetchAll($shSelectTenant);
 
-					foreach ($shResultsSelectTenant as $tenantDatas) {
-						$id =$tenantDatas['id'];
-						$name = $tenantDatas['name'];
+					foreach ($shResultsSelectTenant as $tenantDatas) 
+                    {
+						$id             = $tenantDatas['id'];
+						$name           = $tenantDatas['name'];
 						$corporate_name = $tenantDatas['corporate_name'];
-						$email1 = $tenantDatas['email1'];
-						$phone1 = $tenantDatas['phone1'];
+						$email1         = $tenantDatas['email1'];
+						$phone1         = $tenantDatas['phone1'];
 					}
 
 					$tr = "<tr>
@@ -947,7 +949,7 @@ class DbManagerRecords
 	                      <td>$propertieAll[property_number]</td>
 	                      <td>$propertieAll[property_number_apto]</td>
 	                      <td>$propertieAll[property_county]</td>
-	                      <td>$propertieAll[property_city]</td>
+	                      <td>$propertieAll[property_state]</td>
 	                      <td>$propertieAll[property_cep]</td>
 	                      <td></td>
 	                    </tr>";
@@ -1466,22 +1468,35 @@ class DbManagerRecords
 
 			foreach ($resultContract as $dataContract) 
 			{
-				$tr = "<tr>
-						<td><a href='#' title='Endereço: $dataContract[property_address] N.$dataContract[property_number], Apto: $dataContract[property_number_apto], 
-						                       UF: $dataContract[property_county], 
-											   Cidade: $dataContract[property_city] 
-											   Compl: $dataContract[property_neighbordhood] 
-											   Cep: $dataContract[property_cep]
+				$removeContractId = base64_encode($dataContract['contract_id']);
 
-										    '>$dataContract[contract_id] </a></td>
+				$tr = "<tr>
+						<td>
+								<nav class=navbar navbar-expand navbar-light bg-light mb-4>
+									<ul class=navbar-nav ml-auto>
+										<li class=nav-item dropdown>
+										<a aria-expanded=false aria-haspopup=true class=nav-link dropdown-toggle data-toggle=dropdown href=# id=navbarDropdown role=button>
+										$dataContract[contract_id]
+										</a>
+												<div aria-labelledby=navbarDropdown class=dropdown-menu dropdown-menu-right animated--grow-in>
+												<a class=dropdown-item href=#>
+													$dataContract[property_address], $dataContract[property_number] - Apto: $dataContract[property_number_apto] <br>
+													$dataContract[property_county] - $dataContract[property_city]<br>
+													$dataContract[property_neighbordhood]<br> 
+													$dataContract[property_cep]<br></a>											
+											</div>
+										</li>
+									</ul>
+								</nav>
+                       </td>
                       	<td> <a href='../docs/clients/$clientID/contracts/$dataContract[contract_file]' target='parent'  title='$dataContract[contract_file]'> Visualizar </a> </td>
                       	<td>$dataContract[contract_date_start]</td>
-                      	<td>$dataContract[contract_value_start]</td>
+                      	<td>R$ $dataContract[contract_value_start]</td>
                       	<td></td>
                       	<td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>                        
+                        <td>[ Editar ]</td>
+                        <td>[ Congelar ]</td>
+                        <td><a href='?removeContratId=$removeContractId&client_id=$clientID' class='btn-sm btn-danger' >remover</a></td>
                        </tr>";
 				$trResults .= $tr;
 
@@ -1495,6 +1510,29 @@ class DbManagerRecords
 		}
 
 		return array( $trResults , $optResults );
+	}
+
+	/*Removendo contrato do cliente associado*/
+	public function remove_contratc($dbInstance, $contractID, $clientID)
+	{
+		try {
+
+			$conds = ['contract_id' => $contractID,
+				       'contract_id_client' => $clientID
+				      ];
+
+			$sqlManager= new SqlManager($dbInstance);
+			$sqlDelete = (new SqlQueryBuilder())
+				->setTableName('tab_contract')
+				->setConditions($conds);
+			$sqlManager->remove($sqlDelete);
+			$resp = 1;
+
+		} catch (Exception $e) {
+
+			$error = $e->getMessage();
+			$resp = $error;
+		}
 	}
 	
 	

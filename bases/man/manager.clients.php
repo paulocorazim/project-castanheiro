@@ -70,7 +70,7 @@ if($_GET['report'] == true)
 }
 
 /*Tela de filtro de Pesquisas*/
-if(isset($_GET['filters'])) 
+if ( isset( $_GET['filters'] ) )
 {
 	$typeProperty = $screenProperty->screenTypeProperty(null, 'find');
 	$contentNow   = $screenClient->screenFilterClientAndProperty($ListBoxPropertsClients, $typeProperty);
@@ -83,7 +83,7 @@ if(isset($_GET['filters']))
 }
 
 /*Resultados da tela de pesquisa */
-if(isset($_POST['btn_find_StreetOrType'])) 
+if ( isset( $_POST['btn_find_StreetOrType'] ) )
 {
 	$data = $_POST;
 	$reportResultFindPropertyesClient = $activeRecords->find_client_for_addres($dbInstance, $data);
@@ -95,7 +95,7 @@ if(isset($_POST['btn_find_StreetOrType']))
 }
 
 /*Resultados da tela de pesquisa */
-if(isset($_POST['btn_find_NameOrStreet']))
+if ( isset( $_POST['btn_find_NameOrStreet'] ) )
 {
 	var_dump($_POST);
 	exit();
@@ -153,7 +153,7 @@ if ( isset($_GET['editID'] ) )
 }
 
 /*Listando Clientes x Locações*/
-if(isset($_GET['listClientPropertieID']))
+if ( isset( $_GET['listClientPropertieID'] ) )
 {
 	$contentNow = $screenClient->screenListClientStreets();
 	echo $screenManager->pageWrapper($typeModules, "$icone_fas_fa Lista de Endereços x Clientes", $contentNow);
@@ -163,7 +163,7 @@ if(isset($_GET['listClientPropertieID']))
 }
 
 /*Recebendo dados para inclusão do cliente*/
-if(isset($_POST['btn_insert_update_client'])) 
+if ( isset( $_POST['btn_insert_update_client'] ) )
 {
     // Não importa se é CPF ou CNPJ e se já vem formatado
     $checkCPFCNPJ = new Documento("$_POST[cpfcnpj]");
@@ -172,16 +172,22 @@ if(isset($_POST['btn_insert_update_client']))
     // Retorna se for um número inválido retorna false
     $type_cpfcnpj = $checkCPFCNPJ->getType();
 
-    if ($type_cpfcnpj == 'CPF') {
+    if ($type_cpfcnpj == 'CPF')
+    {
         $falsetrue = $checkCPFCNPJ->isValid();
-        if ($falsetrue == 1) {
+
+        if ($falsetrue == 1)
+        {
             $typeCPF = $checkCPFCNPJ->format();
         }
     }
 
-    if ($type_cpfcnpj == 'CNPJ') {
+    if ($type_cpfcnpj == 'CNPJ')
+    {
         $falsetrue = $checkCPFCNPJ->isValid();
-        if ($falsetrue == 1) {
+
+        if ($falsetrue == 1)
+        {
             $typeCNPJ = $checkCPFCNPJ->format();
         }
     }
@@ -270,7 +276,7 @@ if(isset($_POST['btn_insert_update_client']))
 }
 
 /*Removendo o cliente*/
-if (isset($_POST['btn_action_delete_client_id'])) 
+if ( isset( $_POST['btn_action_delete_client_id'] ) )
 {
 	if ($_POST['delete_id_client' ] == null) 
     {
@@ -279,7 +285,7 @@ if (isset($_POST['btn_action_delete_client_id']))
 
 	} else {
 		
-        $resp = $activeRecords->remove_client($dbInstance, $_POST['delete_id_client']);
+		$resp = $activeRecords->remove_client($dbInstance, $_POST['delete_id_client']);
 		echo $appFunctions->alert_system('1', "Cliente removido com sucesso!");
 		sleep(3);
 		http_redirect('manager.clients.php');
@@ -288,7 +294,7 @@ if (isset($_POST['btn_action_delete_client_id']))
 }
 
 /*Inserindo Docs ao Cliente*/
-if (isset($_POST['j_btn_doc'])) 
+if ( isset( $_POST['j_btn_doc'] ) )
 {
 	$typeDoc = 'Documents';
 	$resp_process = $appFunctions->upload_files($_POST['clientIDdoc' ], $_FILES[ 'file' ], $typeDoc);
@@ -318,7 +324,7 @@ if ( isset( $_POST['j_btn_contract'] ) )
             // print $appFunctions->alert_system('1', ':) Sucesso ao salvar o contrato!');
             // exit;
             print $appFunctions->alert_system('2',
-		    "Cliente $_POST[client_name] foi ALTERADDO com sucesso! <strong> Deseja continuar alterações? </strong> 
+		     "Cliente $_POST[client_name] foi ALTERADDO com sucesso! <strong> Deseja continuar alterações? </strong> 
             <a href='?editID=$_POST[clientIDcontract]' class=\"alert-link\" > [SIM] </a> | 
             <a href='?insert=true' class=\"alert-link\" > [NÃO] </a>");
 	        exit(); 
@@ -334,6 +340,16 @@ if ( isset( $_POST['j_btn_contract'] ) )
         echo $resp_process;
         exit();
     }    
+}
+
+/*Removendo contrato*/
+if ( isset( $_GET['removeContratId'] ) )
+{
+	$idContract = base64_decode($_GET['removeContratId']);
+	$resp = $activeRecords->remove_contratc($dbInstance, $idContract, $_GET['client_id']);
+	print $appFunctions->alert_system('1',':) Contrato Removido do Locátario com sucesso!');
+	print $appFunctions->alert_system('2',"Cliente $_POST[client_name] foi ALTERADDO com sucesso! <strong> Deseja continuar alterações? </strong> <a href='?editID=$_GET[client_id]' class=\"alert-link\" > [SIM] </a> | <a href='?insert=true' class=\"alert-link\" > [NÃO] </a>");
+	exit();
 }
 
 /*Inserindo Poupanças/Depósitos*/
@@ -380,7 +396,7 @@ if ( isset( $_POST['j_btn_salve_savings'] ) )
 }
 
 /*Inserindo Vistorias do Imóvel / Cliente*/
-if (isset($_POST['j_btn_salve_survey']))
+if ( isset( $_POST['j_btn_salve_survey'] ) )
 {
 	$regists_client_survey = $_POST;
 	$resp = $activeRecords->manager_client_survey($dbInstance, $regists_client_survey);
@@ -431,8 +447,8 @@ if (isset($_POST['j_btn_salve_survey']))
 
 }
 
-/*Acossciando Cliente/Imóvel */
-if (isset($_POST['j_btn_salve_client_Property'])) 
+/*Assossciando Cliente/Imóvel */
+if ( isset( $_POST['j_btn_salve_client_Property'] ) )
 {
     $regists_client_property = [
         'clientAddProperty' => $_POST['clientAddProperty'],

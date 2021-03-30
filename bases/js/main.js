@@ -34,10 +34,11 @@ function cpfCnpj(v) {
 
 function disable_client_state_registration_free() {
     if (document.getElementById('client_state_registration_free').checked) {
-        document.getElementById('client_state_registration').disabled = true;
+        document.getElementById('client_state_registration').value = 'ISENTO';
     }
     if (document.getElementById('client_state_registration_free').checked === false) {
-        document.getElementById('client_state_registration').disabled = false;
+        document.getElementById('client_state_registration').value = '';
+        $("#client_state_registration").focus();
     }
 }
 
@@ -76,7 +77,7 @@ function dates_surveyAll()
         document.getElementById('survey_livingroom_date').value = document.getElementById('survey_bedroom_date').value;
     }
 
-    if (document.getElementById('dates_survey_all').checked == false)
+    if (document.getElementById('dates_survey_all').checked === false)
     {
         document.getElementById('survey_wc_date').value = false;
         document.getElementById('survey_livingroom_date').value = false;
