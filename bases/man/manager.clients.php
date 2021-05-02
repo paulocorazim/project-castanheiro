@@ -29,7 +29,7 @@ $dbInstance = $conn->connection();
 /*Definindo o icone de tela correspondente*/
 $icone_fas_fa = $appFunctions->icone_fas_fan(2);
 
-/* Carregando a classe de tela princial*/
+/*Carregando a classe de tela princial*/
 $activeRecords = new DbManagerRecords();
 
 /*ListBox com os Endereços de imóveis e se existe cliente alocado*/
@@ -117,8 +117,8 @@ if ( isset($_GET['editID'] ) )
 
     /*Lendo contratos anexados do cliente*/
     //$clientContracts = $appFunctions->load_contracts_file($clientID);
-    $clientListContracts  = $activeRecords->load_contracts($dbInstance, $clientID);
-    $clientResp1Contracts = $screenClient->screenListClientContracts($clientListContracts[0]);
+     $clientListContracts  = $activeRecords->load_contracts($dbInstance, $clientID);
+     $clientResp1Contracts = $screenClient->screenListClientContracts($clientListContracts[0]);
 	 $clientResp2Contracts = $clientListContracts[1]; //Table
 	 $clientReturContracts = [ $clientResp1Contracts, $clientResp2Contracts ]; //Opt
 	 $clientContracts      = $clientReturContracts;
@@ -278,7 +278,7 @@ if ( isset( $_POST['btn_insert_update_client'] ) )
 /*Removendo o cliente*/
 if ( isset( $_POST['btn_action_delete_client_id'] ) )
 {
-	if ($_POST['delete_id_client' ] == null) 
+	if ( $_POST['delete_id_client' ] == null ) 
     {
 		echo $appFunctions->alert_system('3', "Não foi informado o Cliente!");
 		exit();
@@ -288,7 +288,7 @@ if ( isset( $_POST['btn_action_delete_client_id'] ) )
 		$resp = $activeRecords->remove_client($dbInstance, $_POST['delete_id_client']);
 		echo $appFunctions->alert_system('1', "Cliente removido com sucesso!");
 		sleep(3);
-		http_redirect('manager.clients.php');
+		$appFunctions->redirect_page('0','manager.clients.php');
 		exit();
 	}
 }
@@ -342,6 +342,14 @@ if ( isset( $_POST['j_btn_contract'] ) )
     }    
 }
 
+/*Editando o Contrato direto na Tabela*/
+if ( isset( $_POST['jbtn_salveContratLine'] ) )
+{
+    $resp = $activeRecords->edit_contract_linx($dbInstance, $_POST);
+    echo $appFunctions->alert_system('1', "Informações do contrato editado com sucesso!");
+    exit();
+}
+
 /*Removendo contrato*/
 if ( isset( $_GET['removeContratId'] ) )
 {
@@ -355,7 +363,7 @@ if ( isset( $_GET['removeContratId'] ) )
 /*Inserindo Poupanças/Depósitos*/
 if ( isset( $_POST['j_btn_salve_savings'] ) ) 
 {
-	$typeDoc      = null;
+   $typeDoc      = null;
    $resp_process = $appFunctions->upload_files( $_POST['client_savings_id'], $_FILES['fileSavings'], $typeDoc );
 
     if ($resp_process['0'] == '0') //erro ao fazer upload
@@ -443,8 +451,6 @@ if ( isset( $_POST['j_btn_salve_survey'] ) )
         
 		exit();
 	}
-
-
 }
 
 /*Assossciando Cliente/Imóvel */

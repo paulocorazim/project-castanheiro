@@ -22,6 +22,7 @@ class shFooter
             <script src="../js/remove_clients.js" type="text/javascript"></script>
             <script src="../js/insert_docs_clients.js" type="text/javascript"></script>
             <script src="../js/insert_contract_clients.js" type="text/javascript"></script>
+            <script src="../js/edit_contract_line.js" type="text/javascript"></script>
             <script src="../js/insert_savings_attached_clients.js" type="text/javascript"></script>
             <script src="../js/insert_survey_clients.js" type="text/javascript"></script>
             <script src="../js/find_client_streetOrType.js" type="text/javascript"></script>

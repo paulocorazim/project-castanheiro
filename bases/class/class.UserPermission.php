@@ -21,17 +21,17 @@ class UserPermission
                 ->setConditions(['email' => "$email", 'pass' => "$password"]);
             $results = $sqlManager->fetchAll($sqlQuery);
 
-            if (!$results) {
-
+            if ( !$results ) 
+            {
                 echo $appFunctions->alert_system(5, " <hr>|  --- Ops! Usuário não cadastrado!!  ---  |<hr>");
                 exit();
 
             } else {
 
-                foreach ($results as $key) {
-
-                    if ($key['active'] === '0') {
-
+                foreach ( $results as $key ) 
+                {
+                    if ( $key['active'] === '0' ) 
+                    {
                         $appFunctions->alert_system(5, "Usuário com status desabilitado, não será possivel continuar");
                         exit();
 
@@ -59,10 +59,10 @@ class UserPermission
                 }
             }
 
-        } catch (Exception $e) {
+        } 
+        catch (Exception $e) {
             $error = $e->getMessage();
             echo $appFunctions->alert_system(0, "Erro ao validar usuário!" . $error);
         }
-
     }
 }

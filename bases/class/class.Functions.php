@@ -95,7 +95,7 @@ EOT;
     <meta http-equiv='refresh' content='$time;url=$url' />
 
 EOT;
-		return $redirect_page;
+	
 	}
 
 	public function icone_fas_fan($param)

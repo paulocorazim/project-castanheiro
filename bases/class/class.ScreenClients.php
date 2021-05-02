@@ -258,7 +258,7 @@ class ScreenClients
                                 <div class="btn btn-sm btn-light">
                                     <strong>$clientDocs</strong>
                                 </div>
-                            </div>Depósito :
+                            </div>
 
                             <div class="tab-pane fade" id="poupanca" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="row">
@@ -331,19 +331,17 @@ class ScreenClients
                                             </tr> 
                                         </tbody>
                                     </table>
-                                                                  
-                                <hr>
+                                    
+                                    </form>
 
-                                </form>
-
-                                <hr>
+                                     <hr>                            
+                                     <hr>
                                 
                                 Contratos atuais : <br>
                                                             
                                 $clientContracts[0]
 
-                            </div>
-
+                                </div>
 
                             <div class="tab-pane fade" id="imoveis" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="custom-file">
@@ -513,11 +511,11 @@ public function screenListClientContracts($clientListContracts)
                     <table id="table_propertys cellspacing="0" class="table small table-hover table-bordered">
                       <thead>
                       <tr>
-                        <th>N.Contrato</td>
-                        <th>Contrato Documento</th>
-                        <th>Data Inicial</th>
+                        <th>Contrato</td>
+                        <th>Documento</th>
+                        <th>Inicial</th>
                         <th>R$ Incial</th>
-                        <th>Data Reajuste</td>
+                        <th>Reajuste</td>
                         <th>R$ Reajuste </td>
                         <th></td>
                         <th></td>

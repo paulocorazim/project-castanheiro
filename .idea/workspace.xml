@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fefaa51-538b-4c25-99da-fba32fc0d70b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.buildpath" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/blank.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/blank.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/buttons.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/buttons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/cards.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/cards.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/charts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/forgot-password.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/gulpfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/index_.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/index_.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/js/insert_contract_clients.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/insert_contract_clients.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/tables.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/tables.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/utilities-animation.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/utilities-animation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/utilities-border.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/utilities-border.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/utilities-color.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/utilities-color.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/utilities-other.html" beforeDir="false" afterPath="$PROJECT_DIR$/bases/pages/utilities-other.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +57,7 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.PHP Additions" />
     <property name="settings.editor.splitter.proportion" value="0.15677966" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -115,7 +88,9 @@
       <workItem from="1616941084486" duration="2172000" />
       <workItem from="1616943545184" duration="3087000" />
       <workItem from="1617014683207" duration="1964000" />
-      <workItem from="1617103221015" duration="4691000" />
+      <workItem from="1617103221015" duration="10207000" />
+      <workItem from="1617188318391" duration="1184000" />
+      <workItem from="1617629201740" duration="744000" />
     </task>
     <servers />
   </component>

@@ -95,11 +95,25 @@ function find_clitn() {
     //alert(find_client_name.options[find_client_name.selectedIndex].value);
 }
 
-function deleteRow(i){
-    alert('Seráá?');
-    document.getElementById('table_propertys').deleteRow(i)
-}
+function editContratLine() 
+{
+    if ( document.getElementById('jbtn_editContratLine').onclick) {
 
+            document.getElementById('edit_contract_date_start').disabled = false;
+            document.getElementById('edit_contract_value_start').disabled = false;
+            document.getElementById('edit_contract_date_reajust').disabled = false;
+            document.getElementById('edit_contract_value_reajust').disabled = false;  
+            document.getElementById('jbtn_salveContratLine').disabled = false;
+
+            document.getElementById('date_contract').disabled = true;
+            document.getElementById('value_contract').disabled = true;
+            document.getElementById('clientIDProperty').disabled = true;
+            document.getElementById('fileContract').disabled = true;
+            document.getElementById('j_btn_contract').disabled = true;
+            document.getElementById('removeContract').disabled = true;
+
+    }
+}
 // function active_number_apto() {
 //     const number_type = document.getElementById('property_type');
 //     const number_apto = number_type.options[number_type.selectedIndex].text;
