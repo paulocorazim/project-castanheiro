@@ -1259,12 +1259,12 @@ class DbManagerRecords
 			$trResults = null;
 			$sqlManager = new SqlManager($dbInstance);
 			$selectContract = (new SqlQueryBuilder())
-				->setQuery('SELECT 
+				->setQuery("SELECT 
 								tab_contract.contract_id,
 								tab_contract.contract_file,
-								tab_contract.contract_date_start,
+								DATE_FORMAT(tab_contract.contract_date_start,'%d-%m-%Y') as contract_date_start,
 								tab_contract.contract_value_start,
-								tab_contract.contract_date_renew,
+								DATE_FORMAT(tab_contract.contract_date_renew,'%d-%m-%Y') as contract_date_renew,
 								tab_contract.contract_value_renew,
 								tab_properties.property_address,
 								tab_properties.property_number,
@@ -1282,7 +1282,7 @@ class DbManagerRecords
 							WHERE 
 								tab_clients.id    = tab_contract.contract_id_client   AND
 								tab_properties.id = tab_contract.contract_id_property AND
-								tab_contract.contract_id_client = :contract_id_client')
+								tab_contract.contract_id_client = :contract_id_client")
 				->setConditions(['contract_id_client' => $clientID]);
 
 			$resultContract = $sqlManager->fetchAll($selectContract);
@@ -1302,9 +1302,12 @@ class DbManagerRecords
 						</a>
 						</td>
                       	<td> <a  class='form-control form-control-sm' href='../docs/clients/$clientID/contracts/$dataContract[contract_file]' target='parent'  title='$dataContract[contract_file]'> Ver </a> </td>
-                      	<td><input disabled type='date' class='form-control form-control-sm' name='edit_contract_date_start' id='edit_contract_date_start' value='$dataContract[contract_date_start]'> </td>
+                      	<td> <input disabled class='form-control form-control-sm' value='$dataContract[contract_date_start]'>
+						     <input disabled type='date' class='form-control form-control-sm' name='edit_contract_date_start' id='edit_contract_date_start' value='$dataContract[contract_date_start]'> </td>
                       	<td><input disabled type='text' class='form-control form-control-sm' data-mask='#.##0,00' placeholder='R$ 0.000,00' name='edit_contract_value_start' id='edit_contract_value_start' value='$dataContract[contract_value_start]'</td>
-                      	<td><input disabled type='date' class='form-control form-control-sm' name='edit_contract_date_reajust' id='edit_contract_date_reajust' value='$dataContract[contract_date_renew]'</td>
+                      	<td>
+						  <input disabled class='form-control form-control-sm' value='$dataContract[contract_date_renew]'>
+						  <input disabled type='date' class='form-control form-control-sm' name='edit_contract_date_reajust' id='edit_contract_date_reajust' value='$dataContract[contract_date_renew]'</td>
                       	<td><input disabled type='text' class='form-control form-control-sm' data-mask='#.##0,00' placeholder='R$ 0.000,00' name='edit_contract_value_reajust' id='edit_contract_value_reajust' value='$dataContract[contract_value_renew]'</td>				
                         <td><button name='jbtn_editContratLine' id='jbtn_editContratLine' value='EditContrat' class='btn btn-sm btn-secondary' onclick='editContratLine()' >Editar</button></td>
                         <td><button disabled name='jbtn_salveContratLine' id='jbtn_salveContratLine' value='salvetContrat' class='btn btn-sm btn-info' >Salvar</button></td>
@@ -1371,7 +1374,8 @@ class DbManagerRecords
 				'contract_value_renew'	=> $contract_value_renew,
 			];
 
-
+			var_dump($data);
+			
 			$sqlManager = new SqlManager($dbInstance);
 			$sqlUpdate  = (new SqlQueryBuilder())
 				->setTableName('tab_contract')

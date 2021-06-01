@@ -280,6 +280,7 @@
       }
       catch(\Exception $e)
       {
+        print $e.'<hr>';
         throw new ENoDatabaseConnection();
       }
     }
