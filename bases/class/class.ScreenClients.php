@@ -531,7 +531,7 @@ public function screenListClientContracts($clientListContracts)
                         <th>R$ Reajuste </td>
                         <th>Vencimento</td>
                         <th>R$</td>
-                        <th></td>        
+                        <th>--</td>        
                       </tr>
                       </thead>
                       <tbody>
