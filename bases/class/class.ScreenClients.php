@@ -310,7 +310,7 @@ class ScreenClients
                                                 <th>R$ Atual</th>
                                                 <th>Imóvel Disponível</th>
                                                 <th>PDF</th>
-                                                <th></th>
+                                                <th>--</th>
                                             </tr>
                                             </thead>
                                             <tbody>                                          
@@ -528,7 +528,7 @@ public function screenListClientContracts($clientListContracts)
                         <th>Inicial</th>
                         <th>R$ Incial</th>
                         <th>Reajuste</td>
-                        <th>R$ Reajuste </td>
+                        <th>R$</td>
                         <th>Vencimento</td>
                         <th>R$</td>
                         <th>--</td>        
@@ -686,19 +686,7 @@ EOT;
                             <hr>
                             <button name="btn_find_StreetOrType" id="btn_find_StreetOrType" value="find" class="btn btn-sm btn-success">Pesquisar</button>
                       </div>
-                    </div>
-	
-<!--                    <div class="card mb-3 py-2 border-left-primary">-->
-<!--                      <div class="card-body">-->
-<!--                        Locatários / Imóveis. <hr>-->
-<!--                        <input type="text"  name="client_name" id="client_name" class="form-control"  placeholder="Nome do Locatário ?" value="">-->
-<!--                        <hr>-->
-<!--                        <input type="text"  name="property_streel" id="property_streel" class="form-control"  placeholder="Endereço do Imóvel ?" value="">-->
-<!--                        <hr>-->
-<!--                        <button name="btn_find_NameOrStreet" id="btn_find_NameOrStreet" value="find" class="btn btn-sm btn-success">Pesquisar</button>-->
-<!--		              </div>-->
-<!--		            </div>-->
-                 
+                    </div>                 
 	              </div>
               </div>
             </div>

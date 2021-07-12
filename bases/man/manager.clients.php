@@ -348,8 +348,6 @@ if ( isset( $_POST['j_btn_contract'] ) )
 /*Editando o Contrato direto na Tabela*/
 if ( isset( $_POST['jbtn_salveContratLine'] ) )
 {
-    // print_r($_POST);
-    // exit;
     $resp = $activeRecords->edit_contract_linx($dbInstance, $_POST);
     echo $appFunctions->alert_system('1', "Informações do contrato editado com sucesso!");
     exit();
