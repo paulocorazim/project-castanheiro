@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     $('#jbtn_salveContratLine').on('click', function () {
 
         if ($('#edit_contract_date_start').val() === '') {

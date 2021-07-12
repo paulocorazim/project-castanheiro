@@ -1333,13 +1333,14 @@ class DbManagerRecords
                         
 						<td><input disabled type='text' class='form-control form-control-sm' data-mask='#.##0,00' placeholder='R$ 0.000,00' name='edit_contract_value_current' id='edit_contract_value_current' value='$dataContract[contract_value_current]'
 						</td>
-                        
+
 						<td>
 						   <button name='jbtn_editContratLine' id='jbtn_editContratLine' value='EditContrat' title='Editar Dados' class='btn btn-sm btn-secondary' onclick='editContratLine()' >E</button>
 						   <button disabled name='jbtn_salveContratLine' id='jbtn_salveContratLine' value='salvetContrat' title='Salvar Dados' class='btn btn-sm btn-info' >S</button>
 						   <a href='?removeContratId=$removeContractId&client_id=$clientID' class='btn btn-sm btn-danger' title='*!* Cuidado, Remover Dados' name='removeContract' id='removeContract'>R</a>
 						</td>
-                       </tr>";
+                       </tr>"
+				;
 				$trResults .= $tr;
 				$opt = "<option value='$dataContract[contract_id]'>Contr: $dataContract[contract_id]  |  R$: $dataContract[contract_value_start] </option>";
 				$optResults .= $opt;

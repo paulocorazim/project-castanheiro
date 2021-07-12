@@ -682,7 +682,9 @@ EOT;
 		                        $findClients
 		                    </select>
 		                    <hr>
+
                             $typeProperty
+                            
                             <hr>
                             <button name="btn_find_StreetOrType" id="btn_find_StreetOrType" value="find" class="btn btn-sm btn-success">Pesquisar</button>
                       </div>

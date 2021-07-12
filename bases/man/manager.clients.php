@@ -345,6 +345,7 @@ if ( isset( $_POST['j_btn_contract'] ) )
     }    
 }
 
+
 /*Editando o Contrato direto na Tabela*/
 if ( isset( $_POST['jbtn_salveContratLine'] ) )
 {
