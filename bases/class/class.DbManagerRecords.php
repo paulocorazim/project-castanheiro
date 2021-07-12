@@ -1227,16 +1227,27 @@ class DbManagerRecords
 	public function manager_contratc($dbInstance, $dataContract, $filename)
 	{
 		try {
+
 			$contract_value_start = str_replace('.', '', $dataContract['value_contract']); // remove o ponto
 			$contract_value_start = str_replace(',', '.', $contract_value_start); // troca a vírgula por ponto
+
+			$value_contract_vencimento = str_replace('.', '', $dataContract['value_contract_vencimento']); // remove o ponto
+			$value_contract_vencimento = str_replace('.', '', $value_contract_vencimento); // remove o ponto
+
+
 			$data = [
 				'contract_id_client' => $dataContract['clientIDcontract'],
 				'contract_id_property' => $dataContract['clientIDProperty'],
 				'contract_date_start' => $dataContract['date_contract'],
+				'contract_date_duedate' => $dataContract['date_contract_vencimento'],
 				'contract_value_start' => $contract_value_start,
-				'contract_value_current' => $contract_value_start,
+				'contract_value_current' => $value_contract_vencimento,
 				'contract_file' => $filename,
 			];
+
+			// var_dump($data);
+			// exit;
+
 			$sqlManager = new SqlManager($dbInstance);
 			$sqlQuery = (new SqlQueryBuilder())
 				->setTableName('tab_contract')
@@ -1266,6 +1277,8 @@ class DbManagerRecords
 								tab_contract.contract_value_start,
 								DATE_FORMAT(tab_contract.contract_date_renew,'%d-%m-%Y') as contract_date_renew,
 								tab_contract.contract_value_renew,
+								DATE_FORMAT(tab_contract.contract_date_duedate ,'%d-%m-%Y') as contract_date_duedate,
+								tab_contract.contract_value_current,
 								tab_properties.property_address,
 								tab_properties.property_number,
 								tab_properties.property_number_apto,
@@ -1298,20 +1311,34 @@ class DbManagerRecords
 						$dataContract[property_city]
 						$dataContract[property_neighbordhood] 
 						$dataContract[property_cep]'> 
-						<input disabled type='text' class='form-control form-control-sm' name='edit_contract_id' id='edit_contract_id' value='$dataContract[contract_id]' >
+						$dataContract[contract_id]
 						</a>
 						</td>
                       	<td> <a  class='form-control form-control-sm' href='../docs/clients/$clientID/contracts/$dataContract[contract_file]' target='parent'  title='$dataContract[contract_file]'> Ver </a> </td>
                       	<td> <input disabled class='form-control form-control-sm' value='$dataContract[contract_date_start]'>
 						     <input disabled type='date' class='form-control form-control-sm' name='edit_contract_date_start' id='edit_contract_date_start' value='$dataContract[contract_date_start]'> </td>
-                      	<td><input disabled type='text' class='form-control form-control-sm' data-mask='#.##0,00' placeholder='R$ 0.000,00' name='edit_contract_value_start' id='edit_contract_value_start' value='$dataContract[contract_value_start]'</td>
+                      	<td>
+						  <input disabled type='text' class='form-control form-control-sm' data-mask='#.##0,00' placeholder='R$ 0.000,00' name='edit_contract_value_start' id='edit_contract_value_start' value='$dataContract[contract_value_start]'
+						  </td>
                       	<td>
 						  <input disabled class='form-control form-control-sm' value='$dataContract[contract_date_renew]'>
-						  <input disabled type='date' class='form-control form-control-sm' name='edit_contract_date_reajust' id='edit_contract_date_reajust' value='$dataContract[contract_date_renew]'</td>
+						  <input disabled type='date' class='form-control form-control-sm' name='edit_contract_date_reajust' id='edit_contract_date_reajust' value='$dataContract[contract_date_renew]'
+						</td>
+
                       	<td><input disabled type='text' class='form-control form-control-sm' data-mask='#.##0,00' placeholder='R$ 0.000,00' name='edit_contract_value_reajust' id='edit_contract_value_reajust' value='$dataContract[contract_value_renew]'</td>				
-                        <td><button name='jbtn_editContratLine' id='jbtn_editContratLine' value='EditContrat' class='btn btn-sm btn-secondary' onclick='editContratLine()' >Editar</button></td>
-                        <td><button disabled name='jbtn_salveContratLine' id='jbtn_salveContratLine' value='salvetContrat' class='btn btn-sm btn-info' >Salvar</button></td>
-                        <td><a href='?removeContratId=$removeContractId&client_id=$clientID' class='btn btn-sm btn-danger' name='removeContract' id='removeContract'>Remover</a></td>
+                        
+						<td> <input disabled class='form-control form-control-sm' value='$dataContract[contract_date_duedate]'>
+						     <input disabled type='date' class='form-control form-control-sm' name='edit_contract_date_duedate' id='edit_contract_date_duedate' value='$dataContract[contract_date_duedate]'> </td>
+					    </td>
+                        
+						<td><input disabled type='text' class='form-control form-control-sm' data-mask='#.##0,00' placeholder='R$ 0.000,00' name='edit_contract_value_current' id='edit_contract_value_current' value='$dataContract[contract_value_current]'
+						</td>
+                        
+						<td>
+						   <button name='jbtn_editContratLine' id='jbtn_editContratLine' value='EditContrat' title='Editar Dados' class='btn btn-sm btn-secondary' onclick='editContratLine()' >E</button>
+						   <button disabled name='jbtn_salveContratLine' id='jbtn_salveContratLine' value='salvetContrat' title='Salvar Dados' class='btn btn-sm btn-info' >S</button>
+						   <a href='?removeContratId=$removeContractId&client_id=$clientID' class='btn btn-sm btn-danger' title='*!* Cuidado, Remover Dados' name='removeContract' id='removeContract'>R</a>
+						</td>
                        </tr>";
 				$trResults .= $tr;
 				$opt = "<option value='$dataContract[contract_id]'>Contr: $dataContract[contract_id]  |  R$: $dataContract[contract_value_start] </option>";
@@ -1350,14 +1377,6 @@ class DbManagerRecords
 	{
 		try {
 
-			/* 'clientIDcontract' => string '168' (length=3)
-			'jbtn_salveContratLine' => string 'salvetContrat' (length=13)
-			'edit_contract_date_start' => string '2021-04-05' (length=10)
-			'edit_contract_value_start' => string '1500.00' (length=7)
-			'edit_contract_date_reajust' => string '2021-04-20' (length=10)
-			'edit_contract_value_reajust' => string '2.000,00' (length=8)
-			'edit_contract_id' => string '20' (length=2)
- */
 			$conds = ['contract_id' => $values['edit_contract_id']];
 
 			$contract_value_start = str_replace('.', '', $values['edit_contract_value_start']); // remove o ponto
@@ -1366,16 +1385,18 @@ class DbManagerRecords
 			$contract_value_renew = str_replace('.', '', $values['edit_contract_value_reajust']); // remove o ponto
 			$contract_value_renew = str_replace(',', '.', $contract_value_renew); // troca a vírgula por ponto
 
+			$contract_value_current = str_replace('.', '', $values['edit_contract_value_current']); // remove o ponto
+			$contract_value_current = str_replace(',', '.', $contract_value_current); // troca a vírgula por ponto
 
 			$data  = [
-				'contract_date_start' 	=> $values['edit_contract_date_start'],
-				'contract_value_start'	=> $contract_value_start,
-				'contract_date_renew'	=> $values['edit_contract_date_reajust'],
-				'contract_value_renew'	=> $contract_value_renew,
+				'contract_date_start' => $values['edit_contract_date_start'],
+				'contract_value_start' => $contract_value_start,
+				'contract_date_renew' => $values['edit_contract_date_reajust'],
+				'contract_value_renew' => $contract_value_renew,
+				'contract_date_duedate' => $values['edit_contract_date_duedate'],
+				'contract_value_current' => $contract_value_current
 			];
 
-			var_dump($data);
-			
 			$sqlManager = new SqlManager($dbInstance);
 			$sqlUpdate  = (new SqlQueryBuilder())
 				->setTableName('tab_contract')

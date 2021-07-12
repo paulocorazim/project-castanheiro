@@ -102,7 +102,9 @@ function editContratLine()
             document.getElementById('edit_contract_date_start').disabled = false;
             document.getElementById('edit_contract_value_start').disabled = false;
             document.getElementById('edit_contract_date_reajust').disabled = false;
-            document.getElementById('edit_contract_value_reajust').disabled = false;  
+            document.getElementById('edit_contract_value_reajust').disabled = false;
+            document.getElementById('edit_contract_date_duedate').disabled = false;
+            document.getElementById('edit_contract_value_current').disabled = false;
             document.getElementById('jbtn_salveContratLine').disabled = false;
 
             document.getElementById('date_contract').disabled = true;

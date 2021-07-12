@@ -315,13 +315,16 @@ if ( isset( $_POST['j_btn_contract'] ) )
     $typeDoc        = 'Contract';
     $resp_process   = $appFunctions->upload_files($_POST['clientIDcontract'], $_FILES['file'], $typeDoc);
 
+    // print_r($resp_process);
+    // exit;
+
     if ( $resp_process[0] == 1 )
     {
         $resContract = $activeRecords->manager_contratc($dbInstance, $dataContract, $filename);
         
         if ( $resContract == 1)
         {
-            // print $appFunctions->alert_system('1', ':) Sucesso ao salvar o contrato!');
+            print $appFunctions->alert_system('1', ':) Sucesso ao salvar o contrato!');
             // exit;
             print $appFunctions->alert_system('2',
 		     "Cliente $_POST[client_name] foi ALTERADDO com sucesso! <strong> Deseja continuar alterações? </strong> 
@@ -345,6 +348,8 @@ if ( isset( $_POST['j_btn_contract'] ) )
 /*Editando o Contrato direto na Tabela*/
 if ( isset( $_POST['jbtn_salveContratLine'] ) )
 {
+    // print_r($_POST);
+    // exit;
     $resp = $activeRecords->edit_contract_linx($dbInstance, $_POST);
     echo $appFunctions->alert_system('1', "Informações do contrato editado com sucesso!");
     exit();

@@ -23,6 +23,8 @@ $(document).ready(function () {
                         edit_contract_value_start:   $('#edit_contract_value_start').val(),
                         edit_contract_date_reajust:  $('#edit_contract_date_reajust').val(),
                         edit_contract_value_reajust: $('#edit_contract_value_reajust').val(),
+                        edit_contract_date_duedate:  $('#edit_contract_date_duedate').val(),
+                        edit_contract_value_current: $('#edit_contract_value_current').val(),
                         edit_contract_id:            $('#edit_contract_id').val(),     
                     },
                     beforeSend: function () {
@@ -31,9 +33,11 @@ $(document).ready(function () {
                     success: function (data) {
                         $('#alert_msg').html(data);
                         document.getElementById('edit_contract_date_start').disabled = true;
-                        document.getElementById('edit_contract_value_start').disabled = true;
+                        document.getElementById('edit_contract_value_start').disabled = true;                     
                         document.getElementById('edit_contract_date_reajust').disabled = true;
-                        document.getElementById('edit_contract_value_reajust').disabled = true;  
+                        document.getElementById('edit_contract_value_reajust').disabled = true;
+                        document.getElementById('edit_contract_date_duedate').disabled = true;
+                        document.getElementById('edit_contract_value_current').disabled = true;
                         document.getElementById('jbtn_salveContratLine').disabled = true;
 
                         document.getElementById('date_contract').disabled = false;

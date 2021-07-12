@@ -12,7 +12,7 @@ class ScreenClients
             $btn_contract   = 'disabled';
 	        $btn_survey     = 'disabled';
 
-        } else {
+        } else {    
             $btn_txt = "ALTERAR [ Cliente: $clientValues[name] ]";
         }
 
@@ -304,31 +304,43 @@ class ScreenClients
                                     <table  class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Data Inicial</th>
+                                                <th>Contrato Data Inicial</th>
+                                                <th>Contrato R$ Inicial</th>
+                                                <th>Dt.Atual</th>
                                                 <th>R$ Atual</th>
                                                 <th>Imóvel Disponível</th>
-                                                <th>PDF do Contrato</th>
-                                                <th>--</th>
+                                                <th>PDF</th>
+                                                <th></th>
                                             </tr>
                                             </thead>
                                             <tbody>                                          
                                             <tr>
-                                                <td><input type="date" required name="date_contract"  id="date_contract"  class="form-control"></td>
-                                                <td><input type="text" required name="value_contract" id="value_contract" class="form-control" data-mask="#.##0,00" placeholder="R$ 0.000,00"></td>
                                                 <td>
-                                                    <select  type="text" class="form-control-sm form-control bg-light border-0 small" name="clientIDProperty"  id="clientIDProperty" >
-                                                     <option value="">Adicionar Imóvel ... </option>
-                                                     $findProperty
-                                                    </select>
+                                                   <input type="date" required name="date_contract"  id="date_contract"  class="form-control">
+                                                </td>
+                                                <td>
+                                                   <input type="text" required name="value_contract" id="value_contract" class="form-control" data-mask="#.##0,00" placeholder="R$ 0.000,00">
+                                                </td>
+                                                <td>
+                                                  <input type="date" required name="date_contract_vencimento"  id="date_contract_vencimento"  class="form-control">
                                                 </td>
                                                 <td> 
-                                                    <input type="file" class="btn btn-sm btn-light" name="file" id="fileContract">
+                                                  <input type="text" required name="value_contract_vencimento" id="value_contract_vencimento" class="form-control" data-mask="#.##0,00" placeholder="R$ 0.000,00">
                                                 </td>
-
+                                                <td>
+                                                    <select  type="text" class="form-control-sm form-control bg-light border-0 small" name="clientIDProperty"  id="clientIDProperty" >
+                                                    <option value="">Adicionar Imóvel ... </option>
+                                                    $findProperty
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                  <input type="file" class="btn btn-sm btn btn-info" name="file" id="fileContract">
+                                                </td>
                                                 <td>
                                                     <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info" $btn_contract><strong>Concluir</strong></button>
                                                 </td>
-                                            </tr> 
+                                            </tr>
+                                 
                                         </tbody>
                                     </table>
                                     
@@ -517,8 +529,8 @@ public function screenListClientContracts($clientListContracts)
                         <th>R$ Incial</th>
                         <th>Reajuste</td>
                         <th>R$ Reajuste </td>
-                        <th></td>
-                        <th></td>
+                        <th>Vencimento</td>
+                        <th>R$</td>
                         <th></td>        
                       </tr>
                       </thead>
@@ -647,7 +659,8 @@ EOT;
 
     }
 
-    public function screenFilterClientAndProperty($findClients, $typeProperty){
+    public function screenFilterClientAndProperty($findClients, $typeProperty)
+    {
     	return <<< EOT
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 			<div class="card shadow mb-4">
