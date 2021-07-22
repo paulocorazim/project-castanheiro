@@ -90,9 +90,8 @@ EOT;
 
 	public function redirect_page($time, $url)
 	{
-
-		return <<<EOT
-    <meta http-equiv='refresh' content='$time;url=$url' />
+	    return <<<EOT
+        <meta http-equiv='refresh' content='$time;url=$url' />
 
 EOT;
 	

@@ -27,6 +27,7 @@ class shFooter
             <script src="../js/insert_survey_clients.js" type="text/javascript"></script>
             <script src="../js/find_client_streetOrType.js" type="text/javascript"></script>
             <script src="../js/find_client_NameOrStreet.js" type="text/javascript"></script>
+            <script src="../js/create_bordero.js" type="text/javascript"></script>
 
 
             <!-- Bootstrap core JavaScript-->

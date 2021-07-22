@@ -224,8 +224,7 @@
               </div>
             </div>
             
-            <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="deleteModal" role="dialog"
-                 tabindex="-1">
+            <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="deleteModal" role="dialog" tabindex="-1">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -246,6 +245,27 @@
               </div>
             </div>
 
+            <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="editBilletModal" role="dialog"
+                 tabindex="-1">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja excluir o registro?</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                      <span aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input type="text"  name="delete_name_client" id="delete_name_client" class="form-control" value="">
+                    <input type="hidden" name="delete_id_client" id="delete_id_client" class="form-control" value="">
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal" type="button">CANCELAR</button>
+                    <button id="btn_action_delete_client_id" name="btn_action_delete_client_id"  class="btn btn-success" data-dismiss="modal" type="button" value="actionDeleteClient">CONFIRMAR EXCLUSÃO</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 EOT;
         }
     }

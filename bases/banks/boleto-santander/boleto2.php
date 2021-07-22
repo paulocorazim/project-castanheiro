@@ -41,7 +41,7 @@ foreach ($printBillet as $printBilletValue)
   $printBilletValue['billet_due_date_old'];
   $printBilletValue['billet_send_mail_client'];
   $printBilletValue['billtet_expiration_days'];
-  $printBilletValue['billet_rate'];
+  $printBilletValue['billet_discount'];
   $printBilletValue['name']; 
   $printBilletValue['corporate_name'];
   $printBilletValue['address'];

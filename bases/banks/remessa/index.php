@@ -73,7 +73,6 @@ foreach ($printBillet as $printBilletValue)
   $printBilletValue['vencimento_prorrogado'];
   $printBilletValue['billet_send_mail_client'];
   $printBilletValue['billtet_expiration_days'];
-  $printBilletValue['billet_rate'];											
   $printBilletValue['name']; 
   $printBilletValue['corporate_name'];
   $printBilletValue['address'];

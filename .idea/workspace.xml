@@ -3,7 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="6fefaa51-538b-4c25-99da-fba32fc0d70b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/banks/boleto-santander/boleto2.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/banks/boleto-santander/boleto2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/banks/remessa/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/banks/remessa/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/banks/retorno/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/banks/retorno/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.Functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenPropertie.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenPropertie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/js/insert_update_propertie.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/insert_update_propertie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.billets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.billets.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +66,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.PHP Additions" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="settings.editor.splitter.proportion" value="0.15677966" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -65,6 +81,11 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bases/pages" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value=" " />
+    </option>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -91,6 +112,9 @@
       <workItem from="1617103221015" duration="10207000" />
       <workItem from="1617188318391" duration="1184000" />
       <workItem from="1617629201740" duration="744000" />
+      <workItem from="1626805487964" duration="1031000" />
+      <workItem from="1626908933964" duration="70000" />
+      <workItem from="1626909099179" duration="6409000" />
     </task>
     <servers />
   </component>
@@ -108,16 +132,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/bases/man/manager.clients.php</url>
-          <line>356</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

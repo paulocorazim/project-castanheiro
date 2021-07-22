@@ -84,10 +84,16 @@ function dates_surveyAll()
     }
 }
 
-function delete_id_clint() {
+function delete_id_client() {
     document.getElementById('delete_name_client').value = document.getElementById('client_name').value;
     document.getElementById('delete_id_client').value = document.getElementById('client_id').value;
 }
+
+
+function edit_Billet(){
+    window.alert('Deu certo!')
+}
+
 
 function find_clitn() {
     const find_client_name = document.getElementById('find_client');

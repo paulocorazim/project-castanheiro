@@ -304,56 +304,77 @@ class ScreenClients
                                     <table  class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Contrato Data Inicial</th>
-                                                <th>Contrato R$ Inicial</th>
-                                                <th>Dt.Atual</th>
-                                                <th>R$ Atual</th>
-                                                <th>Imóvel Disponível</th>
+                                                <th>Inicio Contrato</th>
+                                                <th>Vencimento / R$</th>
+                                                <th>Associar Imóvel</th>
                                                 <th>PDF</th>
-                                                <th>--</th>
+                                                <th>Ações</th>
                                             </tr>
                                             </thead>
                                             <tbody>                                          
                                             <tr>
                                                 <td>
                                                    <input type="date" required name="date_contract"  id="date_contract"  class="form-control">
-                                                </td>
-                                                <td>
                                                    <input type="text" required name="value_contract" id="value_contract" class="form-control" data-mask="#.##0,00" placeholder="R$ 0.000,00">
                                                 </td>
+                                          
                                                 <td>
-                                                  <input type="date" required name="date_contract_vencimento"  id="date_contract_vencimento"  class="form-control">
+                                                    <select class="form-control form-control bg-light border-1 small  name="date_contract_vencimento" id="date_contract_vencimento">
+                                                     <option value="01">Dia1</option>
+                                                     <option value="02">Dia2</option>
+                                                     <option value="03">Dia3</option>
+                                                     <option value="04">Dia4</option>
+                                                     <option value="05">Dia5</option>
+                                                     <option value="06">Dia6</option>
+                                                     <option value="07">Dia7</option>
+                                                     <option value="08">Dia8</option>
+                                                     <option value="09">Dia9</option>
+                                                     <option value="10">Dia10</option>
+                                                     <option value="11">Dia11</option>
+                                                     <option value="12">Dia12</option>
+                                                     <option value="13">Dia13</option>
+                                                     <option value="14">Dia14</option>
+                                                     <option value="15">Dia15</option>
+                                                     <option value="16">Dia16</option>
+                                                     <option value="17">Dia17</option>
+                                                     <option value="18">Dia18</option>
+                                                     <option value="19">Dia19</option>
+                                                     <option value="20">Dia20</option>
+                                                     <option value="21">Dia21</option>
+                                                     <option value="22">Dia22</option>
+                                                     <option value="23">Dia23</option>
+                                                     <option value="24">Dia24</option>
+                                                     <option value="25">Dia25</option>
+                                                     <option value="26">Dia26</option>
+                                                     <option value="27">Dia27</option>
+                                                     <option value="28">Dia28</option>
+                                                     <option value="29">Dia29</option>
+                                                     <option value="30">Dia30</option>
+                                                    </select>
+                                                    <input type="text" required name="value_contract_vencimento" id="value_contract_vencimento" class="form-control" data-mask="#.##0,00" placeholder="R$ 0.000,00">
+
                                                 </td>
-                                                <td> 
-                                                  <input type="text" required name="value_contract_vencimento" id="value_contract_vencimento" class="form-control" data-mask="#.##0,00" placeholder="R$ 0.000,00">
-                                                </td>
+                                                
                                                 <td>
-                                                    <select  type="text" class="form-control-sm form-control bg-light border-0 small" name="clientIDProperty"  id="clientIDProperty" >
+                                                    <select class="form-control form-control bg-light border-1 small" name="clientIDProperty"  id="clientIDProperty" >
                                                     <option value="">Adicionar Imóvel ... </option>
                                                     $findProperty
                                                     </select>
                                                 </td>
                                                 <td>
-                                                  <input type="file" class="btn btn-sm btn btn-info" name="file" id="fileContract">
+                                                  <input class="form-control form-control bg-light border-2 small" type="file" class="" name="file" id="fileContract">
                                                 </td>
                                                 <td>
-                                                    <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info" $btn_contract><strong>Concluir</strong></button>
+                                                    <button name="j_btn_contract" id="j_btn_contract" value="insertDoc" class="btn btn-info" $btn_contract><strong><i class='fas fa-save fa-sm'></i></button>
                                                 </td>
                                             </tr>
-                                 
-                                        </tbody>
-                                    </table>
-                                    
-                                    </form>
-
-                                     <hr>                            
-                                     <hr>
                                 
-                                Contratos atuais : <br>
-                                                            
-                                $clientContracts[0]
-
-                                </div>
+                                        </tbody>
+                                    </table>        
+                                    </form>
+                                    $clientContracts[0]
+                            </div>
+                           
 
                             <div class="tab-pane fade" id="imoveis" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="custom-file">
@@ -443,7 +464,7 @@ class ScreenClients
                             </div>
                                 <div class="d-flex align-items-end flex-column bd-highlight mt-3">
                                     <div class="p-2 bd-highlight">
-                                    <a class="btn btn-danger" data-target="#deleteModal" data-toggle="modal" href="#" OnClick="delete_id_clint()">
+                                    <a class="btn btn-danger" data-target="#deleteModal" data-toggle="modal" href="#" OnClick="delete_id_client()">
                                       REMOVER CADASTRO
                                     </a>
                                     <button name="btn_insert_update_client" id="btn_insert_update_client" value="InsertUpdate" class="btn btn-success">$btn_txt</button>
@@ -518,20 +539,19 @@ public function screenListClientContracts($clientListContracts)
     {
         return <<< EOT
             <div>
-                <div class="card-body">
+                <div class="card-header">
                   <div class="table-responsive">
-                    <table id="table_propertys cellspacing="0" class="table small table-hover table-bordered">
+                    <table id="table_propertys" class="table table-active table-responsive-sm">
                       <thead>
                       <tr>
                         <th>Contrato</td>
-                        <th>Documento</th>
                         <th>Inicial</th>
                         <th>R$ Incial</th>
                         <th>Reajuste</td>
                         <th>R$</td>
-                        <th>Vencimento</td>
+                        <th>Venc.Dia</td>
                         <th>R$</td>
-                        <th>--</td>        
+                        <th>Ações</td>        
                       </tr>
                       </thead>
                       <tbody>
@@ -686,6 +706,7 @@ EOT;
                             $typeProperty
                             
                             <hr>
+                            
                             <button name="btn_find_StreetOrType" id="btn_find_StreetOrType" value="find" class="btn btn-sm btn-success">Pesquisar</button>
                       </div>
                     </div>                 

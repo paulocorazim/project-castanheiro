@@ -5,10 +5,14 @@ class ScreenProperties
     public function screenProperty($findProperty, $propertyData, $typeProperty)
     {
 
-        $property_value = number_format($propertyData[property_value], 2, ",", ".");
-        $property_value_location = number_format($propertyData[property_value_location], 2, ",", ".");
-        $property_value_iptu = number_format($propertyData[property_value_iptu], 2, ",", ".");
-        $property_value_condo = number_format($propertyData[property_value_condo], 2, ",", ".");
+        $property_value = number_format($propertyData['property_value'], 2, ",", ".");
+        $property_value_location = number_format($propertyData['property_value_location'], 2, ",", ".");
+        $property_value_iptu = number_format($propertyData['property_value_iptu'], 2, ",", ".");
+        $property_value_condo = number_format($propertyData['property_value_condo'], 2, ",", ".");
+        $property_value_comgas = number_format($propertyData['property_value_comgas'],2, ",", ".");
+		$property_value_rateio = number_format($propertyData['property_value_rateio'],2, ",", ".");
+		$property_value_sabesp = number_format($propertyData['property_value_sabesp'],2, ",", ".");
+		$property_value_seguro = number_format($propertyData['property_value_seguro'],2, ",", ".");
 
         if ($propertyData[property_destination] == 'Locacao') {
             $locacao = 'selected';
@@ -180,13 +184,13 @@ class ScreenProperties
                                     <h4>Valores</h4>
                                     <div class="form-group row">
                                         <div class="col-sm-3">
-                                            <span class="small">Valor</span>
+                                            <span class="small">Valor do Imóvel</span>
                                             <input name="property_value" id="property_value" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$property_value" />
                                         </div>
-                                        <div class="col-sm-3">
+                                        <!-- <div class="col-sm-3">
                                             <span class="small">Locação</span>
                                             <input name="property_value_location" id="property_value_location" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$property_value_location" />
-                                        </div>
+                                        </div> -->
 
                                         <div class="col-sm-3">
                                             <span class="small">Iptu</span>
@@ -195,6 +199,22 @@ class ScreenProperties
                                         <div class="col-sm-3">
                                             <span class="small">Condomínio</span>
                                             <input name="property_value_condo" id="property_value_condo" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$property_value_condo" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <span class="small">Comgás</span>
+                                            <input name="property_value_comgas" id="property_value_comgas" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$property_value_comgas" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <span class="small">Rateio</span>
+                                            <input name="property_value_rateio" id="property_value_rateio" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$property_value_rateio" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <span class="small">Sabesp</span>
+                                            <input name="property_value_sabesp" id="property_value_sabesp" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$property_value_sabesp" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <span class="small">Seguro</span>
+                                            <input name="property_value_seguro" id="property_value_seguro" type="text" placeholder="R$ 0,00" data-mask="#.##0,00" class="form-control-sm form-control" value="$property_value_seguro" />
                                         </div>
                                     </div>
                                 </div>

@@ -900,7 +900,7 @@ class DbManagerRecords
 	}
 
 
-	//Boletos
+	//Boletos e borderôs
 	/*Incluido Boleto a Avulso para Cliente*/
 	public function manager_billet_detached($dbInstance, $regists_billet_client)
 	{
@@ -908,20 +908,28 @@ class DbManagerRecords
 			/* $conds = ['id' => "$regists_billet_client[find_client]"];*/
 			$billet_value = str_replace('.', '', $regists_billet_client['billet_value']); // remove o ponto
 			$billet_value = str_replace(',', '.', $billet_value); // troca a vírgula por ponto
+
 			//?editID=128
 			$id = substr($regists_billet_client['find_client'], -3);
+			
 			$data = [
 				'id_client' => "$id",
 				'billet_value' => "$billet_value",
 				'billet_due_date' => "$regists_billet_client[billet_due_date]",
 				'billet_send_mail_client' => "$regists_billet_client[billet_send_mail_client]",
+				'lote'                    =>  date('dmYhis').'-REM',
+				'date_user_add' => date('Y-m-d H:i:s'),
+				'date_user_change' => date('Y-m-d H:i:s'),
+				'user' => $_SESSION['name']
 			];
+			
 			$sqlManager = new SqlManager($dbInstance);
 			$sqlQuery = (new SqlQueryBuilder())
 				->setTableName('tab_clients_billet')
 				->setData($data);
 			$sqlManager->insert($sqlQuery);
 			$resp = 1;
+
 		} catch (Exception $e) {
 
 			$error = $e->getMessage();
@@ -947,7 +955,6 @@ class DbManagerRecords
 									DATE_FORMAT (a.billet_due_date_old,'%d/%m/%Y') as vencimento_prorrogado,
 									a.billet_send_mail_client,
 									a.billtet_expiration_days,
-									a.billet_rate,											
 									b.name, 
 									b.cpf,
 									b.cnpj,											
@@ -974,6 +981,352 @@ class DbManagerRecords
 		}
 	}
 
+	public function create_data_for_bordero($dbInstance, $m, $y, $address, $lote)
+	{
+		$user = $_SESSION['name'];	
+		try {
+			
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectBordero = (new SqlQueryBuilder())
+				->setQuery("INSERT INTO tab_clients_billet (id_client, billet_value, billet_value_old, billet_due_date, 
+				  billet_due_date_old, billet_send_mail_client, billtet_expiration_days, billet_discount, lote, date_user_add, date_user_change, user)
+							SELECT 
+							tab_clients.id as id_client,								
+							(tab_contract.contract_value_current + tab_properties.property_value_condo + tab_properties.property_value_iptu + tab_properties.property_value_comgas +tab_properties.property_value_seguro + tab_properties.property_value_rateio + tab_properties.property_value_sabesp) as billet_value,
+							0 as 'billet_value_old',
+							CONCAT('20$y', '$m', tab_contract.contract_date_duedate) as billet_due_date,
+							Null as 'billet_due_date_old',
+							0 as 'billet_send_mail_client',
+							0 as 'billtet_expiration_days',
+							0 as 'billet_discount',
+							'$lote' as lote,
+							now() as date_user_add,
+							now() as date_user_change,
+							'$user' as user
+							FROM 
+								tab_contract,
+								tab_clients,
+								tab_properties
+							WHERE 
+								tab_clients.id    = tab_contract.contract_id_client  AND
+								tab_properties.id = tab_contract.contract_id_property AND
+								CONCAT(tab_properties.property_address, ' , ', tab_properties.property_number) LIKE '%$address%'");
+			$result = $sqlManager->fetchAll($shSelectBordero);
+
+			return $lote;
+
+		} catch (Exception $e) {
+
+			// $error = $e->getMessage();
+			// echo "Erro ao receber dados para gerar Bordero" . $error;
+		}
+	}
+
+	public function select_data_for_bordero_lote($dbInstance, $lote)
+	{
+		try {
+
+			$sqlManager = new SqlManager($dbInstance);
+			$shSelectBillet = (new SqlQueryBuilder())
+				->setQuery("SELECT 
+							a.id,
+							a.id_client,
+							a.billet_value,
+							a.billet_value_old,
+							a.billet_due_date,
+							DATE_FORMAT (a.billet_due_date,'%d/%m/%Y') as vencimento_original,
+							a.billet_due_date_old,
+							DATE_FORMAT (a.billet_due_date_old,'%d/%m/%Y') as vencimento_prorrogado,
+							a.billet_send_mail_client,
+							a.billtet_expiration_days,
+							a.lote,											
+							b.name, 
+							b.cpf,
+							b.cnpj,											
+							b.corporate_name,
+							b.address,
+							b.number,
+							b.city,
+							b.state,
+							b.neighbordhood,
+							b.state,
+							b.zip_code
+							FROM 
+							tab_clients_billet as a, 
+							tab_clients as b
+							WHERE
+							b.id = a.id_client 
+							AND a.lote = :lote")
+				->setConditions(['lote' => "$lote"]);
+			$shResultBillet = $sqlManager->fetchAll($shSelectBillet);
+			
+			return $shResultBillet;
+
+		} catch (Exception $e) {
+			
+			$error = $e->getMessage();
+			echo "Erro ao receber dados do bordero - Lote -> $lote" . $error;
+		}
+	}
+
+	public function select_bordero($dbInstance, $m, $y, $address)
+	{
+		if ( !empty( $m ) )
+		{
+			try {
+
+				$sqlManager = new SqlManager($dbInstance);
+				$shSelectBordero = (new SqlQueryBuilder())
+					->setQuery("SELECT 
+					tab_contract.contract_id                                    as nrContrato,
+					tab_clients.name											as Locatario,
+					CONCAT(tab_properties.property_address, ' , ', tab_properties.property_number, ' - Apto. ', tab_properties.property_number_apto) as 'Imovel',
+					DATE_FORMAT(tab_contract.contract_date_start,'%d-%m-%Y')    as 'DtContrato',
+					tab_contract.contract_value_start 						    as 'VlrContrato',
+					CONCAT(tab_contract.contract_date_duedate, '-$m-', '20$y')	as 'DtVencimentoAtual',
+					tab_contract.contract_value_current							as 'VlrVencimentoAtual',
+					tab_properties.property_value_condo                         as 'VlrCondominio',
+					tab_properties.property_value_iptu                          as 'VlrIPTU',
+					tab_properties.property_value_comgas                        as 'VlrComgas',
+					tab_properties.property_value_seguro                        as 'VlrSeguro',
+					tab_properties.property_value_rateio                        as 'VlrRateio',
+					tab_properties.property_value_sabesp                        as 'VlrSabesp',
+					(tab_contract.contract_value_current + tab_properties.property_value_condo + tab_properties.property_value_iptu + tab_properties.property_value_comgas +tab_properties.property_value_seguro + tab_properties.property_value_rateio + tab_properties.property_value_sabesp) as Total
+					FROM 
+						tab_contract,
+						tab_clients,
+						tab_properties
+					WHERE 
+						tab_clients.id    = tab_contract.contract_id_client   AND
+						tab_properties.id = tab_contract.contract_id_property AND
+						CONCAT(tab_properties.property_address, ' , ', tab_properties.property_number) LIKE '%$address%'");
+					//->setConditions(['id' => "$idBillet"]);
+				$shResultsBordero = $sqlManager->fetchAll($shSelectBordero);
+
+				$trsResult= null;
+
+				foreach ($shResultsBordero as $bordero)
+				{
+					$total_venciments 	= $total_venciments + $bordero['VlrVencimentoAtual'];
+					$total_condom 		= $total_condom + $bordero['VlrCondominio'];
+					$total_iptu   		= $total_iptu   + $bordero['VlrIPTU'];
+					$total_comgas 		= $total_comgas + $bordero['VlrComgas'];
+					$total_seguro       = $total_seguro + $bordero['VlrSeguro'];
+					$total_rateio 		= $total_rateio + $bordero['VlrRateio'];
+					$total_sabesp      	= $total_sabesp + $bordero['VlrSabesp'];
+					$total_geral		= $total_geral  + $bordero['Total'];
+
+					$bordero['VlrVencimentoAtual'] 	= number_format($bordero['VlrVencimentoAtual'],2,",",".");
+					$bordero['VlrCondominio'] 		= number_format($bordero['VlrCondominio'],2,",",".");
+					$bordero['VlrIPTU'] 			= number_format($bordero['VlrIPTU'],2,",",".");
+					$bordero['VlrComgas'] 			= number_format($bordero['VlrComgas'],2,",",".");
+					$bordero['VlrSeguro'] 			= number_format($bordero['VlrSeguro'],2,",",".");
+					$bordero['VlrRateio'] 			= number_format($bordero['VlrRateio'],2,",",".");
+					$bordero['VlrSabesp'] 			= number_format($bordero['VlrSabesp'],2,",",".");
+					$bordero['Total'] 				= number_format($bordero['Total'],2,",",".");
+					
+					$tr ="
+					<tr>
+					<td><p style = 'font-size:10px'>$bordero[Locatario]</p></td>
+					<td><p style = 'font-size:9px'>$bordero[Imovel]</p></td>
+					<td><p style = 'font-size:11px'>$bordero[DtVencimentoAtual]</p></td>
+					<td><p style = 'font-size:11px'>R$ $bordero[VlrVencimentoAtual]</p></td>
+					<td><p style = 'font-size:11px'>R$ $bordero[VlrCondominio]</p></td>
+					<td><p style = 'font-size:11px'>R$ $bordero[VlrIPTU]</p></td>
+					<td><p style = 'font-size:11px'>R$ $bordero[VlrComgas]</p></td>
+					<td><p style = 'font-size:11px'>R$ $bordero[VlrSeguro]</p></td>
+					<td><p style = 'font-size:11px'>R$ $bordero[VlrRateio]</p></td>
+					<td><p style = 'font-size:11px'>R$ $bordero[VlrSabesp]</p></td>
+					<td><p style = 'font-size:11px'>R$ $bordero[Total]</p></td>
+				</tr>";
+				$trsResult .=$tr;
+				}
+
+				$total_venciments 	= number_format($total_venciments,2,",",".");
+				$total_condom 		= number_format($total_condom,2,",",".");
+				$total_iptu   		= number_format($total_iptu,2,",",".");
+				$total_comgas 		= number_format($total_comgas,2,",",".");
+				$total_seguro       = number_format($total_seguro,2,",",".");
+				$total_rateio 		= number_format($total_rateio,2,",",".");
+				$total_sabesp      	= number_format($total_sabesp,2,",",".");
+				$total_geral		= number_format($total_geral,2,",",".");
+
+				$trTots = "
+				<tr>
+				<th><p style = 'font-size:12px'></p></th>
+				<th><p style = 'font-size:12px'></p></th>
+				<th><p style = 'font-size:12px'></p></th>
+				<th><p style = 'font-size:12px'>R$ $total_venciments</p></th>
+				<th><p style = 'font-size:12px'>R$ $total_condom</p></th>
+				<th><p style = 'font-size:12px'>R$ $total_iptu</p></th>
+				<th><p style = 'font-size:12px'>R$ $total_comgas</p></th>
+				<th><p style = 'font-size:12px'>R$ $total_seguro</p></th>
+				<th><p style = 'font-size:12px'>R$ $total_rateio</p></th>
+				<th><p style = 'font-size:12px'>R$ $total_sabesp</p></th>
+				<th><p style = 'font-size:12px'>R$ $total_geral</p></th>
+			</tr>";
+
+			$total_venciments = null;
+			$total_condom 	= null;
+			$total_iptu   	= null;
+			$total_comgas 	= null;
+			$total_seguro   = null;
+			$total_rateio 	= null;
+			$total_sabesp   = null;
+			$total_geral	= null;
+				
+			} catch ( Exception $e ) {
+				$error = $e->getMessage();
+				echo "Erro ao receber dados do boleto" . $error;
+			}
+
+		}
+
+		return array( $trsResult, $trTots );
+	}
+
+	public function select_address( $dbInstance, $m, $y )
+	{
+		try {
+			
+			$listOpt  = null;
+			$sqlManager   = new SqlManager( $dbInstance );
+			$shselect = (new SqlQueryBuilder())
+			->setQuery("SELECT 
+						DISTINCT(CONCAT(tab_properties.property_address, ' , ', tab_properties.property_number)) as 'Adress'
+						FROM 
+							tab_contract,
+							tab_clients,
+							tab_properties
+						WHERE 
+							tab_clients.id    = tab_contract.contract_id_client   AND
+							tab_properties.id = tab_contract.contract_id_property");
+			//->setConditions(['id' => "$idBillet"]);
+			$resultSelect = $sqlManager->fetchAll($shselect);
+			
+			foreach ($resultSelect as $addres) 
+			{
+				$opt ="<option value='?report=true&addres=$addres[Adress]&m=$m&y=$y'>$addres[Adress]</option>";
+				$listOpt .=$opt;
+			}
+			
+			return $listOpt;
+
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber dados do boleto" . $error;
+		}
+	}
+
+	public function find_boletobordero($dbInstance, $lote)
+	{
+		try {
+			
+			$listTr  	= null;
+			$listTrTots = null;
+
+			$sqlManager = new SqlManager( $dbInstance );
+			$shselect 	= (new SqlQueryBuilder())
+			->setQuery("SELECT 
+						a.id,
+						a.id_client,
+						a.billet_value,
+						a.billet_value_old,
+						a.billet_due_date,
+						DATE_FORMAT (a.billet_due_date,'%d/%m/%Y') as vencimento_original,
+						a.billet_due_date_old,
+						DATE_FORMAT (a.billet_due_date_old,'%d/%m/%Y') as vencimento_prorrogado,
+						a.billet_send_mail_client,
+						a.billtet_expiration_days,
+						a.lote,
+						b.name, 
+						b.cpf,
+						b.cnpj,											
+						b.corporate_name,
+						b.address,
+						b.number,
+						b.city,
+						b.state,
+						b.neighbordhood,
+						b.state,
+						b.zip_code
+						FROM 
+						tab_clients_billet as a, 
+						tab_clients as b
+						WHERE
+						b.id = a.id_client 
+						AND a.lote like '%$lote%'");
+			//->setConditions(['id' => "$idBillet"]);
+			$resultSelect = $sqlManager->fetchAll($shselect);
+			
+			foreach ($resultSelect as $borderoBoletos) 
+			{
+				$totais_vencimento = $totais_vencimento + $borderoBoletos['billet_value'];
+				$totais_prorrogado = $totais_prorrogado + $borderoBoletos['billet_value_old'];
+
+				$tr ="<tr>
+						<td><p style = 'font-size:10px'>$borderoBoletos[lote]</p></td>
+						<td>$borderoBoletos[name]</td>
+						<td>$borderoBoletos[vencimento_original]</td>
+						<td>R$ ".number_format($borderoBoletos['billet_value'],2,",",".")."</td>
+						<td>$borderoBoletos[vencimento_prorrogado]</td>
+						<td>R$ ".number_format($borderoBoletos['billet_value_old'],2,",",".")."</td>
+						<td>
+						 	<a class='btn btn-sm btn-info title='Editar Boleto | Borderô' data-target='#editBilletModal' data-toggle='modal' href='#' OnClick='edit_Billet()'><i class='fas fa-edit fa-sm'></i></a>
+							<a href='../banks/boleto-santander/boleto2.php?idBillet=$borderoBoletos[id]' title='Imprimir Boleto' target='_blank'><button class='btn btn-sm btn-secondary'><i class='fas fa-barcode fa-sm'></i></i></button></a>
+							<a href='?deletBillet=true&id=$borderoBoletos[id]' title='Romover esse Titulo'><button class='btn btn-sm btn-danger'><i class='fas fa-trash fa-sm'></i></i></button></a>
+						</td>
+					 </tr>";
+				$listTr .=$tr;
+			}
+
+			$totais_vencimento = "R$ ".number_format($totais_vencimento,2,",",".");
+			$totais_prorrogado = "R$ ".number_format($totais_prorrogado,2,",",".");
+
+			$trTots ="<tr>
+						<td></p></td>
+						<td></td>
+						<td></td>
+						<td>$totais_vencimento</td>
+						<td></td>
+						<td>$totais_prorrogado</td>
+						<td></td>
+					 </tr>";
+			$listTrTots .=$trTots;
+			
+			return array ($listTr, $listTrTots);
+
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber dados do boleto" . $error;
+		}
+	}
+
+	public function select_Lotes($dbInstance)
+	{
+		try {
+			
+			$listOpt  	= null;
+			$sqlManager = new SqlManager( $dbInstance );
+			$shselect 	= (new SqlQueryBuilder())
+			->setQuery("SELECT sum(billet_value) as tot, lote from tab_clients_billet where lote is not null group by lote");
+			//->setConditions(['id' => "$idBillet"]);
+			$resultSelect = $sqlManager->fetchAll($shselect);
+			
+			foreach ($resultSelect as $lotes) 
+			{
+				$opt ="<option value='?lote=$lotes[lote]'>$lotes[lote] R$ $lotes[tot]</option>";
+				$listOpt .=$opt;
+			}
+			
+			return $listOpt;
+
+		} catch (Exception $e) {
+			$error = $e->getMessage();
+			echo "Erro ao receber dados do boleto" . $error;
+		}
+	}
+
 
 	//Imóveis
 	/*Inclusão/Alteração de Imóveis*/
@@ -987,6 +1340,16 @@ class DbManagerRecords
 		$property_value_iptu = str_replace(',', '.', $property_value_iptu); // troca a vírgula por ponto
 		$property_value_condo = str_replace('.', '', $regist_property['property_value_condo']); // remove o ponto
 		$property_value_condo = str_replace(',', '.', $property_value_condo); // troca a vírgula por ponto
+		$property_value_rateio = str_replace('.', '', $regist_property['property_value_rateio']); // remove o ponto
+		$property_value_rateio = str_replace(',', '.', $property_value_rateio); // troca a vírgula por ponto
+		$property_value_sabesp = str_replace('.', '', $regist_property['property_value_sabesp']); // remove o ponto
+		$property_value_sabesp = str_replace(',', '.', $property_value_sabesp); // troca a vírgula por ponto
+		$property_value_seguro = str_replace('.', '', $regist_property['property_value_seguro']); // remove o ponto
+		$property_value_seguro = str_replace(',', '.', $property_value_seguro); // troca a vírgula por ponto
+		$property_value_comgas = str_replace('.', '', $regist_property['property_value_comgas']); // remove o ponto
+		$property_value_comgas = str_replace(',', '.', $property_value_comgas); // troca a vírgula por ponto
+
+
 		$data = [
 			'id' => "$regist_property[property_id]",
 			'property_client_id' => "$regist_property[property_client_id]",
@@ -999,6 +1362,10 @@ class DbManagerRecords
 			'property_value_location' => "$property_value_location",
 			'property_value_iptu' => "$property_value_iptu",
 			'property_value_condo' => "$property_value_condo",
+			'property_value_rateio' => "$property_value_rateio",
+			'property_value_sabesp' => "$property_value_sabesp",
+			'property_value_seguro' => "$property_value_seguro",
+			'property_value_comgas' => "$property_value_comgas",
 			'property_amount_dorm' => "$regist_property[property_amount_dorm]",
 			'property_amount_suite' => "$regist_property[property_amount_suite]",
 			'property_amount_room' => "$regist_property[property_amount_room]",
@@ -1019,6 +1386,7 @@ class DbManagerRecords
 			'property_neighbordhood' => "$regist_property[client_neighbordhood]",
 			'property_complement' => "$regist_property[property_complement]",
 		];
+		
 		if ($regist_property['property_id'] == null) // inclusão
 		{
 			try {
@@ -1037,6 +1405,7 @@ class DbManagerRecords
 				$msg = "Erro ao incluir Imóvel -> $error";
 			}
 			return array($resp, $msg);
+
 		} else { // ALteração
 			$conds = ['id' => "$regist_property[property_id]"];
 			try {
@@ -1167,6 +1536,10 @@ class DbManagerRecords
 					'property_value_iptu' => "$propertyAll[property_value_iptu]",
 					'property_value_location' => "$propertyAll[property_value_location]",
 					'property_value_condo' => "$propertyAll[property_value_condo]",
+					'property_value_comgas' => "$propertyAll[property_value_comgas]",
+					'property_value_rateio' => "$propertyAll[property_value_rateio]",
+					'property_value_sabesp' => "$propertyAll[property_value_sabesp]",
+					'property_value_seguro' => "$propertyAll[property_value_seguro]",
 					'property_amount_dorm' => "$propertyAll[property_amount_dorm]",
 					'property_amount_suite' => "$propertyAll[property_amount_suite]",
 					'property_amount_room' => "$propertyAll[property_amount_room]",
@@ -1277,7 +1650,7 @@ class DbManagerRecords
 								tab_contract.contract_value_start,
 								DATE_FORMAT(tab_contract.contract_date_renew,'%d-%m-%Y') as contract_date_renew,
 								tab_contract.contract_value_renew,
-								DATE_FORMAT(tab_contract.contract_date_duedate ,'%d-%m-%Y') as contract_date_duedate,
+								tab_contract.contract_date_duedate,
 								tab_contract.contract_value_current,
 								tab_properties.property_address,
 								tab_properties.property_number,
@@ -1300,21 +1673,23 @@ class DbManagerRecords
 
 			$resultContract = $sqlManager->fetchAll($selectContract);
 
-			foreach ($resultContract as $dataContract) {
+			foreach ($resultContract as $dataContract)
+			{
 				$removeContractId = base64_encode($dataContract['contract_id']);
 				$tr = "
 						<tr>
 						<td>
-						<a href='#' title='
-						$dataContract[property_address], $dataContract[property_number], Apto: $dataContract[property_number_apto]
-						$dataContract[property_county]
-						$dataContract[property_city]
-						$dataContract[property_neighbordhood] 
-						$dataContract[property_cep]'> 
-						$dataContract[contract_id]
-						</a>
+                            <a class='form-control form-control-sm' href='#' title='
+                            $dataContract[property_address], $dataContract[property_number], Apto: $dataContract[property_number_apto]
+                            $dataContract[property_county]
+                            $dataContract[property_city]
+                            $dataContract[property_neighbordhood] 
+                            $dataContract[property_cep]'> 
+                            $dataContract[contract_id]
+                            </a>
+                            <input type='hidden' id='edit_contract_id'  value='$dataContract[contract_id]'>
+                            <a  class='form-control' href='../docs/clients/$clientID/contracts/$dataContract[contract_file]' target='parent'  title=Visualizar ou Imprimir'> <i class='fas fa-search fa-sm'></i></a> 
 						</td>
-                      	<td> <a  class='form-control form-control-sm' href='../docs/clients/$clientID/contracts/$dataContract[contract_file]' target='parent'  title='$dataContract[contract_file]'> Ver </a> </td>
                       	<td> <input disabled class='form-control form-control-sm' value='$dataContract[contract_date_start]'>
 						     <input disabled type='date' class='form-control form-control-sm' name='edit_contract_date_start' id='edit_contract_date_start' value='$dataContract[contract_date_start]'> </td>
                       	<td>
@@ -1325,19 +1700,21 @@ class DbManagerRecords
 						  <input disabled type='date' class='form-control form-control-sm' name='edit_contract_date_reajust' id='edit_contract_date_reajust' value='$dataContract[contract_date_renew]'
 						</td>
 
-                      	<td><input disabled type='text' class='form-control form-control-sm' data-mask='#.##0,00' placeholder='R$ 0.000,00' name='edit_contract_value_reajust' id='edit_contract_value_reajust' value='$dataContract[contract_value_renew]'</td>				
+                      	<td>
+						  <input disabled type='text' class='form-control form-control-sm' data-mask='#.##0,00' placeholder='R$ 0.000,00' name='edit_contract_value_reajust' id='edit_contract_value_reajust' value='$dataContract[contract_value_renew]'
+						</td>				
                         
-						<td> <input disabled class='form-control form-control-sm' value='$dataContract[contract_date_duedate]'>
-						     <input disabled type='date' class='form-control form-control-sm' name='edit_contract_date_duedate' id='edit_contract_date_duedate' value='$dataContract[contract_date_duedate]'> </td>
+						<td> 
+						   <input disabled type='text' name='edit_contract_date_duedate' id='edit_contract_date_duedate' class='form-control form-control-sm' value='$dataContract[contract_date_duedate]'>
 					    </td>
                         
 						<td><input disabled type='text' class='form-control form-control-sm' data-mask='#.##0,00' placeholder='R$ 0.000,00' name='edit_contract_value_current' id='edit_contract_value_current' value='$dataContract[contract_value_current]'
 						</td>
 
 						<td>
-						   <button name='jbtn_editContratLine' id='jbtn_editContratLine' value='EditContrat' title='Editar Dados' class='btn btn-sm btn-secondary' onclick='editContratLine()' >E</button>
-						   <button disabled name='jbtn_salveContratLine' id='jbtn_salveContratLine' value='salvetContrat' title='Salvar Dados' class='btn btn-sm btn-info' >S</button>
-						   <a href='?removeContratId=$removeContractId&client_id=$clientID' class='btn btn-sm btn-danger' title='*!* Cuidado, Remover Dados' name='removeContract' id='removeContract'>R</a>
+						   <button name='jbtn_editContratLine' id='jbtn_editContratLine' value='EditContrat' title='Editar Dados' class='btn btn-sm btn-secondary' onclick='editContratLine()' ><i class='fas fa-edit fa-sm'></i></button>
+						   <button disabled name='jbtn_salveContratLine' id='jbtn_salveContratLine' value='salvetContrat' title='Salvar Dados' class='btn btn-sm btn-info' ><i class='fas fa-save fa-sm'></i></button>
+						   <a href='?removeContratId=$removeContractId&client_id=$clientID' class='btn btn-sm btn-danger' title='*!* Cuidado, Remover Dados' name='removeContract' id='removeContract'><i class='fas fa-trash fa-sm'></i></a>
 						</td>
                        </tr>"
 				;
@@ -1374,7 +1751,7 @@ class DbManagerRecords
 		}
 	}
 
-	public function edit_contract_linx($dbInstance, $values)
+	public function edit_contract_line($dbInstance, $values)
 	{
 		try {
 
