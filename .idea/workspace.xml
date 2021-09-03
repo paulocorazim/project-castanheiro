@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6fefaa51-538b-4c25-99da-fba32fc0d70b" name="Default Changelist" comment="">
+    <list default="true" id="6fefaa51-538b-4c25-99da-fba32fc0d70b" name="Default Changelist" comment="Alterações finais">
+      <change afterPath="$PROJECT_DIR$/bases/banks/remessa/61519666000145_2007AB-1626798203.REM" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bases/banks/remessa/remessa/61519666000145_2007AB-1626798203.REM" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bases/js/create_bordero.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/banks/boleto-santander/boleto2.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/banks/boleto-santander/boleto2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/banks/remessa/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/banks/remessa/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/banks/retorno/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/banks/retorno/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.DbManagerRecords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.Functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenBillets.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenClients.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenEndManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenPropertie.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenPropertie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/class/class.ScreenStartManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/js/insert_update_propertie.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/insert_update_propertie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/bases/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.billets.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.billets.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bases/man/manager.clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/bases/man/manager.clients.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +62,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.15677966" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -114,8 +103,17 @@
       <workItem from="1617629201740" duration="744000" />
       <workItem from="1626805487964" duration="1031000" />
       <workItem from="1626908933964" duration="70000" />
-      <workItem from="1626909099179" duration="6409000" />
+      <workItem from="1626909099179" duration="7082000" />
+      <workItem from="1627313640080" duration="241000" />
     </task>
+    <task id="LOCAL-00001" summary="Alterações finais">
+      <created>1626915668269</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1626915668269</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,5 +130,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Alterações finais" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alterações finais" />
   </component>
 </project>

@@ -63,26 +63,33 @@ $idBillet = $_GET['idBillet'];
 
 $printBillet = $activeRecords->select_billet($dbInstance, $idBillet);
 
+// var_dump($printBillet);
+// exit;
+
 foreach ($printBillet as $printBilletValue) 
 {  
-  $printBilletValue['id'];
-  $printBilletValue['id_client'];
-  $printBilletValue['billet_value'];
-  $printBilletValue['billet_value_old'];
-  $printBilletValue['vencimento_original'];
-  $printBilletValue['vencimento_prorrogado'];
-  $printBilletValue['billet_send_mail_client'];
-  $printBilletValue['billtet_expiration_days'];
-  $printBilletValue['name']; 
-  $printBilletValue['corporate_name'];
-  $printBilletValue['address'];
-  $printBilletValue['number'];
-  $printBilletValue['city'];
-  $printBilletValue['state'];
-  $printBilletValue['zip_code'];
+  $numeroBoleto	 = $printBilletValue['id'];
+  $numeroCliente = $printBilletValue['id_client'];
+  $valorTitulo   = $printBilletValue['billet_value'];
+  $venciTitulo	 = $printBilletValue['billet_value_old'];
+  $venciOriginal = $printBilletValue['vencimento_original'];
+  $venciProrrog  = $printBilletValue['vencimento_prorrogado'];
+  $enviaEmail	 = $printBilletValue['billet_send_mail_client'];
+  				   $printBilletValue['billtet_expiration_days'];
+
+  $nomeLocatario = $printBilletValue['name'];
+  $cpfLocatario  = $appFunctions->limpaCPF_CNPJ($printBilletValue['cpf']);
+
+  				    $printBilletValue['corporate_name'];
+  $imovelEndereco = $printBilletValue['address'];
+  $imovelNumero   = $printBilletValue['number'];
+  $imovelCidade   = $printBilletValue['city'];
+  $imovelUf		  = $printBilletValue['state'];
+  $imovelCep      =	$printBilletValue['zip_code'];
+  $imovelBairro   = $printBilletValue['neighbordhood'];
 }
 
-
+//09941-630
 ######################################################################################################################################################
 # NAO PODE ALTERAR
 ######################################################################################################################################################
@@ -152,15 +159,15 @@ $header_lote .= chr(13).chr(10);
 
 //select * from boleto where mes vencimento = 1 anddd ano vencimento = 2021 e remetido != "S"....
 
-$qtd_boletos = 1;  //count( $nosso_num );      // quantidade de boletos a serem incluidos no arquivo de remessa 
+$qtd_boletos = 3;  //count( $nosso_num );      // quantidade de boletos a serem incluidos no arquivo de remessa 
 
 for( $t = 0; $t < $qtd_boletos; $t++ )
 {
-	$nosso_num[$t]                = '5381';//$printBilletValue['id'];                                      
-	$data_vencimento_boleto[$t]   = '10102019'; //$printBilletValue['vencimento_original'];                               
+	$nosso_num[$t]                = $printBilletValue['id'];                                      
+	$data_vencimento_boleto[$t]   = $appFunctions->limpaCPF_CNPJ($printBilletValue['vencimento_original']);                               
 	$data_emissao_boleto[$t]      = date("dmY");
 	
-	$valor_cobrado               = '29000'; //$printBilletValue['billet_value'];
+	$valor_cobrado                = $printBilletValue['billet_value'];
 	//$valor_cobrado 				 = str_replace(",", ".",$valor_cobrado);
 	//$valor_boleto[$t]             = number_format($valor_cobrado+$taxa_boleto, 2, ',', '');
 	//$valor_boleto[$t]             = "23600";                               
@@ -192,14 +199,14 @@ for( $t = 0; $t < $qtd_boletos; $t++ )
 	$dias_baixa[$t]               = '90';                                                                        
 	
 	$tipo_inscricao_pagador[$t]   = "1";                                      
-	$numero_inscricao_pagador[$t] = "16682545819";                            
-	$nome_pagador[$t]             = substr(remover_acentos("ANDRE CORAZIM"),0,40);                         
-	$endereco_pagador[$t]         = substr(remover_acentos("RUA ONZE DE JUNHO 15"),0,40);              
-	$bairro_pagador[$t]           = substr(remover_acentos("JARDIM CANHEMA"),0,15);                         
-	$cep_pagador[$t]              = "09941";                                  
-	$cep_pagador_sufixo[$t]       = "630";                                    
-	$cidade_pagador[$t]           = remover_acentos("DIADEMA");                               
-	$estado_pagador[$t]           = "SP";                                     
+	$numero_inscricao_pagador[$t] = "$cpfLocatario";                            
+	$nome_pagador[$t]             = substr(remover_acentos("$nomeLocatario"),0,40);                         
+	$endereco_pagador[$t]         = substr(remover_acentos("$imovelEndereco"),0,40);              
+	$bairro_pagador[$t]           = substr(remover_acentos("$imovelBairro"),0,15);                         
+	$cep_pagador[$t]              = substr($imovelCep,0,4);                                  
+	$cep_pagador_sufixo[$t]       = substr($imovelCep, -3);                                    
+	$cidade_pagador[$t]           = remover_acentos("$imovelCidade");                               
+	$estado_pagador[$t]           = "$imovelUf";                                     
 
 
 

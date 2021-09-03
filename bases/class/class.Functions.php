@@ -361,4 +361,24 @@ EOT;
 			return $files_name;
 		}
 	}
+
+	public function removeAccentos($tp, $string)
+    {
+        // $tp = tipo da conversão: 1 para maiúsculas e 0 para minúsculas
+		if ($tp == "1") $palavra = strtr(strtoupper($string),"àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ","ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß");
+		elseif ($tp == "0") $palavra = strtr(strtolower($string),"ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß","àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ");
+		return $palavra;
+    }
+
+
+	public function limpaCPF_CNPJ($valor)
+	{
+		$valor = trim($valor);
+		$valor = str_replace(".", "", $valor);
+		$valor = str_replace(",", "", $valor);
+		$valor = str_replace("-", "", $valor);
+		$valor = str_replace("/", "", $valor);
+	
+		return $valor;
+	}
 }
