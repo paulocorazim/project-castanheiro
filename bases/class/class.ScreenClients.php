@@ -3,39 +3,31 @@
 class ScreenClients
 {
     public function screenFormClient($findClients, $clientValues, $clientDocs, $clientContracts, $clientTableSavings, $findProperty, $clientOptionsPropertys, $tablesSurveyCarriedOut)
-    {        
-        if (empty($clientValues)) 
-        {
+    {
+        if (empty($clientValues)) {
             $btn_txt        = "C A D A S T R A R";
             $btn_docs       = 'disabled';
             $btn_saving     = 'disabled';
             $btn_contract   = 'disabled';
-	        $btn_survey     = 'disabled';
-
-        } else {    
+            $btn_survey     = 'disabled';
+        } else {
             $btn_txt = "ALTERAR [ Cliente: $clientValues[name] ]";
         }
 
         if ($clientValues['type_cli'] == 'cli') {
             $type_current = "CLIENTE";
-
         } elseif ($clientValues['type_for'] == 'for') {
             $type_current = "FORNECEDOR";
-
         } elseif ($clientValues['type_loc'] == 'loc') {
             $type_current = "LOCATÁRIO";
-
         } elseif ($clientValues['type_col'] == 'col') {
             $type_current = "COLABORADOR";
-
         } else {
             $type_current = "";
         }
 
-        if ($clientDocs == null) 
-        {
+        if ($clientDocs == null) {
             $desactive_tab_contract = 'disabled';
-
         } else {
             $desactive_tab_contract = null;
         }
@@ -512,7 +504,7 @@ EOT;
                     <table id="table_propertys cellspacing="0" class="table small table-hover table-bordered">
                       <thead>
                       <tr>
-                        <th>Data Associação</th>
+                        <th>Locatário / Contrato</th>
                         <th>Tipo</th>
                         <th>Endereço</th>
                         <th>Número</td>
@@ -535,7 +527,7 @@ EOT;
     }
 
 
-public function screenListClientContracts($clientListContracts)
+    public function screenListClientContracts($clientListContracts)
     {
         return <<< EOT
             <div>
@@ -595,7 +587,7 @@ EOT;
           
 EOT;
     }
-    
+
     public function screenListClients($reportClients)
     {
         return <<< EOT
@@ -636,8 +628,9 @@ EOT;
 EOT;
     }
 
-    public function screenListClientStreets(){
-    	return <<< EOT
+    public function screenListClientStreets()
+    {
+        return <<< EOT
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary"></h6>
@@ -676,12 +669,11 @@ EOT;
             </div>
 
 EOT;
-
     }
 
     public function screenFilterClientAndProperty($findClients, $typeProperty)
     {
-    	return <<< EOT
+        return <<< EOT
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 			<div class="card shadow mb-4">
               <!-- Card Header - Dropdown -->
@@ -715,6 +707,5 @@ EOT;
             </div>
 
 EOT;
-
     }
 }

@@ -80,17 +80,12 @@ class DbManagerRecords
 							//Aviso do sucesso e redireciona a pagina
 							$n_alert = base64_encode(0); //sucess
 							$n_msg = base64_encode("Ops! Erro ao inserir Módulos / Permissões ->" . $error);
-							$appFunctions->redirect_page(
-								0,
-								"../man/manager.users.php?n_alert=$n_alert&n_msg=$n_msg"
-							);
+							$appFunctions->redirect_page(0, "../man/manager.users.php?n_alert=$n_alert&n_msg=$n_msg");
 							exit();
 						}
 					}
 					//Aviso do sucesso e redireciona a pagina
-					$n_alert = base64_encode(1); //sucess
-					$n_msg = base64_encode("Obá! Usuário $data[name] cadastrado com sucesso!");
-					$appFunctions->redirect_page(0, "../man/manager.users.php?n_alert=$n_alert&n_msg=$n_msg");
+					return $resp = 1;
 					exit();
 				} else {
 
@@ -784,15 +779,16 @@ class DbManagerRecords
 			$id = $propertieID['select_find_streets_id'];
 			$sqlManager = new SqlManager($dbInstance);
 			$shSelectPropertie = (new SqlQueryBuilder())
-				->setQuery('SELECT id, property_type, property_address,  property_county, property_city 
-                                  from tab_properties where id = :id')
+				->setQuery('SELECT id, property_type, property_address,  property_county, property_city from tab_properties where id = :id')
 				->setConditions(['id' => "$id"]);
 			$shResultsPropertieID = $sqlManager->fetchAll($shSelectPropertie);
+
 			foreach ($shResultsPropertieID as $datas) {
 				$property_address = $datas['property_address'];
 				$property_county = $datas['property_county'];
 				$property_city = $datas['property_city'];
 			}
+
 			$shSelectPropertieStreet = (new SqlQueryBuilder())
 				->setQuery('SELECT id, property_type, property_address, property_number, property_number_apto, property_county, 
 	                                          property_city, property_state, property_cep 
@@ -807,26 +803,32 @@ class DbManagerRecords
 					'property_county' => "$property_county",
 					'property_city' => "$property_city",
 				]);
+
 			$shResultsSelectPropertieStreet = $sqlManager->fetchAll($shSelectPropertieStreet);
+
 			foreach ($shResultsSelectPropertieStreet as $propertieAll) {
 				$shSelectTenant = (new SqlQueryBuilder())
-					->setQuery('select a.id, a.name, a.corporate_name, a.email1, a.phone1
+					->setQuery('select a.id, a.name, a.corporate_name, a.email1, a.phone1, b.contract_id
 											from
 											tab_clients as a,
-											tab_clients_property as b
-											where b.id_client =  a.id and b.id_property =:id_property
-																	     ')
+											tab_contract as b
+											where b.contract_id_client = a.id and b.contract_id_property =:id_property
+							')
 					->setConditions(['id_property' => "$propertieAll[id]"]);
 				$shResultsSelectTenant = $sqlManager->fetchAll($shSelectTenant);
+
+
 				foreach ($shResultsSelectTenant as $tenantDatas) {
+
 					$id = $tenantDatas['id'];
 					$name = $tenantDatas['name'];
 					$corporate_name = $tenantDatas['corporate_name'];
 					$email1 = $tenantDatas['email1'];
 					$phone1 = $tenantDatas['phone1'];
+					$idContract	= $tenantDatas['contract_id'];
 				}
 				$tr = "<tr>
-	                      <td><a href='manager.clients.php?editID=$id'>$name</a></td>
+	                      <td><a href='manager.clients.php?editID=$id'>$name</a> | Contrato: $idContract </td>
 	                      <td><a href='manager.properties.php?editID=$propertieAll[id]'>$propertieAll[property_type]<a/></td>
 	                      <td>$propertieAll[property_address]</td>
 	                      <td>$propertieAll[property_number]</td>
@@ -834,7 +836,7 @@ class DbManagerRecords
 	                      <td>$propertieAll[property_county]</td>
 	                      <td>$propertieAll[property_state]</td>
 	                      <td>$propertieAll[property_cep]</td>
-	                      <td></td>
+	                      <td>--</td>
 	                    </tr>";
 				$trResults .= $tr;
 			}
@@ -911,25 +913,24 @@ class DbManagerRecords
 
 			//?editID=128
 			$id = substr($regists_billet_client['find_client'], -3);
-			
+
 			$data = [
 				'id_client' => "$id",
 				'billet_value' => "$billet_value",
 				'billet_due_date' => "$regists_billet_client[billet_due_date]",
 				'billet_send_mail_client' => "$regists_billet_client[billet_send_mail_client]",
-				'lote'                    =>  date('dmYhis').'-REM',
+				'lote'                    =>  date('dmYhis') . '-REM',
 				'date_user_add' => date('Y-m-d H:i:s'),
 				'date_user_change' => date('Y-m-d H:i:s'),
 				'user' => $_SESSION['name']
 			];
-			
+
 			$sqlManager = new SqlManager($dbInstance);
 			$sqlQuery = (new SqlQueryBuilder())
 				->setTableName('tab_clients_billet')
 				->setData($data);
 			$sqlManager->insert($sqlQuery);
 			$resp = 1;
-
 		} catch (Exception $e) {
 
 			$error = $e->getMessage();
@@ -983,9 +984,9 @@ class DbManagerRecords
 
 	public function create_data_for_bordero($dbInstance, $m, $y, $address, $lote)
 	{
-		$user = $_SESSION['name'];	
+		$user = $_SESSION['name'];
 		try {
-			
+
 			$sqlManager = new SqlManager($dbInstance);
 			$shSelectBordero = (new SqlQueryBuilder())
 				->setQuery("INSERT INTO tab_clients_billet (id_client, billet_value, billet_value_old, billet_due_date, 
@@ -1014,7 +1015,6 @@ class DbManagerRecords
 			$result = $sqlManager->fetchAll($shSelectBordero);
 
 			return $lote;
-
 		} catch (Exception $e) {
 
 			// $error = $e->getMessage();
@@ -1059,11 +1059,10 @@ class DbManagerRecords
 							AND a.lote = :lote")
 				->setConditions(['lote' => "$lote"]);
 			$shResultBillet = $sqlManager->fetchAll($shSelectBillet);
-			
-			return $shResultBillet;
 
+			return $shResultBillet;
 		} catch (Exception $e) {
-			
+
 			$error = $e->getMessage();
 			echo "Erro ao receber dados do bordero - Lote -> $lote" . $error;
 		}
@@ -1071,8 +1070,7 @@ class DbManagerRecords
 
 	public function select_bordero($dbInstance, $m, $y, $address)
 	{
-		if ( !empty( $m ) )
-		{
+		if (!empty($m)) {
 			try {
 
 				$sqlManager = new SqlManager($dbInstance);
@@ -1100,13 +1098,12 @@ class DbManagerRecords
 						tab_clients.id    = tab_contract.contract_id_client   AND
 						tab_properties.id = tab_contract.contract_id_property AND
 						CONCAT(tab_properties.property_address, ' , ', tab_properties.property_number) LIKE '%$address%'");
-					//->setConditions(['id' => "$idBillet"]);
+				//->setConditions(['id' => "$idBillet"]);
 				$shResultsBordero = $sqlManager->fetchAll($shSelectBordero);
 
-				$trsResult= null;
+				$trsResult = null;
 
-				foreach ($shResultsBordero as $bordero)
-				{
+				foreach ($shResultsBordero as $bordero) {
 					$total_venciments 	= $total_venciments + $bordero['VlrVencimentoAtual'];
 					$total_condom 		= $total_condom + $bordero['VlrCondominio'];
 					$total_iptu   		= $total_iptu   + $bordero['VlrIPTU'];
@@ -1116,16 +1113,16 @@ class DbManagerRecords
 					$total_sabesp      	= $total_sabesp + $bordero['VlrSabesp'];
 					$total_geral		= $total_geral  + $bordero['Total'];
 
-					$bordero['VlrVencimentoAtual'] 	= number_format($bordero['VlrVencimentoAtual'],2,",",".");
-					$bordero['VlrCondominio'] 		= number_format($bordero['VlrCondominio'],2,",",".");
-					$bordero['VlrIPTU'] 			= number_format($bordero['VlrIPTU'],2,",",".");
-					$bordero['VlrComgas'] 			= number_format($bordero['VlrComgas'],2,",",".");
-					$bordero['VlrSeguro'] 			= number_format($bordero['VlrSeguro'],2,",",".");
-					$bordero['VlrRateio'] 			= number_format($bordero['VlrRateio'],2,",",".");
-					$bordero['VlrSabesp'] 			= number_format($bordero['VlrSabesp'],2,",",".");
-					$bordero['Total'] 				= number_format($bordero['Total'],2,",",".");
-					
-					$tr ="
+					$bordero['VlrVencimentoAtual'] 	= number_format($bordero['VlrVencimentoAtual'], 2, ",", ".");
+					$bordero['VlrCondominio'] 		= number_format($bordero['VlrCondominio'], 2, ",", ".");
+					$bordero['VlrIPTU'] 			= number_format($bordero['VlrIPTU'], 2, ",", ".");
+					$bordero['VlrComgas'] 			= number_format($bordero['VlrComgas'], 2, ",", ".");
+					$bordero['VlrSeguro'] 			= number_format($bordero['VlrSeguro'], 2, ",", ".");
+					$bordero['VlrRateio'] 			= number_format($bordero['VlrRateio'], 2, ",", ".");
+					$bordero['VlrSabesp'] 			= number_format($bordero['VlrSabesp'], 2, ",", ".");
+					$bordero['Total'] 				= number_format($bordero['Total'], 2, ",", ".");
+
+					$tr = "
 					<tr>
 					<td><p style = 'font-size:10px'>$bordero[Locatario]</p></td>
 					<td><p style = 'font-size:9px'>$bordero[Imovel]</p></td>
@@ -1139,17 +1136,17 @@ class DbManagerRecords
 					<td><p style = 'font-size:11px'>R$ $bordero[VlrSabesp]</p></td>
 					<td><p style = 'font-size:11px'>R$ $bordero[Total]</p></td>
 				</tr>";
-				$trsResult .=$tr;
+					$trsResult .= $tr;
 				}
 
-				$total_venciments 	= number_format($total_venciments,2,",",".");
-				$total_condom 		= number_format($total_condom,2,",",".");
-				$total_iptu   		= number_format($total_iptu,2,",",".");
-				$total_comgas 		= number_format($total_comgas,2,",",".");
-				$total_seguro       = number_format($total_seguro,2,",",".");
-				$total_rateio 		= number_format($total_rateio,2,",",".");
-				$total_sabesp      	= number_format($total_sabesp,2,",",".");
-				$total_geral		= number_format($total_geral,2,",",".");
+				$total_venciments 	= number_format($total_venciments, 2, ",", ".");
+				$total_condom 		= number_format($total_condom, 2, ",", ".");
+				$total_iptu   		= number_format($total_iptu, 2, ",", ".");
+				$total_comgas 		= number_format($total_comgas, 2, ",", ".");
+				$total_seguro       = number_format($total_seguro, 2, ",", ".");
+				$total_rateio 		= number_format($total_rateio, 2, ",", ".");
+				$total_sabesp      	= number_format($total_sabesp, 2, ",", ".");
+				$total_geral		= number_format($total_geral, 2, ",", ".");
 
 				$trTots = "
 				<tr>
@@ -1166,33 +1163,31 @@ class DbManagerRecords
 				<th><p style = 'font-size:12px'>R$ $total_geral</p></th>
 			</tr>";
 
-			$total_venciments = null;
-			$total_condom 	= null;
-			$total_iptu   	= null;
-			$total_comgas 	= null;
-			$total_seguro   = null;
-			$total_rateio 	= null;
-			$total_sabesp   = null;
-			$total_geral	= null;
-				
-			} catch ( Exception $e ) {
+				$total_venciments = null;
+				$total_condom 	= null;
+				$total_iptu   	= null;
+				$total_comgas 	= null;
+				$total_seguro   = null;
+				$total_rateio 	= null;
+				$total_sabesp   = null;
+				$total_geral	= null;
+			} catch (Exception $e) {
 				$error = $e->getMessage();
 				echo "Erro ao receber dados do boleto" . $error;
 			}
-
 		}
 
-		return array( $trsResult, $trTots );
+		return array($trsResult, $trTots);
 	}
 
-	public function select_address( $dbInstance, $m, $y )
+	public function select_address($dbInstance, $m, $y)
 	{
 		try {
-			
+
 			$listOpt  = null;
-			$sqlManager   = new SqlManager( $dbInstance );
+			$sqlManager   = new SqlManager($dbInstance);
 			$shselect = (new SqlQueryBuilder())
-			->setQuery("SELECT 
+				->setQuery("SELECT 
 						DISTINCT(CONCAT(tab_properties.property_address, ' , ', tab_properties.property_number)) as 'Adress'
 						FROM 
 							tab_contract,
@@ -1203,15 +1198,13 @@ class DbManagerRecords
 							tab_properties.id = tab_contract.contract_id_property");
 			//->setConditions(['id' => "$idBillet"]);
 			$resultSelect = $sqlManager->fetchAll($shselect);
-			
-			foreach ($resultSelect as $addres) 
-			{
-				$opt ="<option value='?report=true&addres=$addres[Adress]&m=$m&y=$y'>$addres[Adress]</option>";
-				$listOpt .=$opt;
-			}
-			
-			return $listOpt;
 
+			foreach ($resultSelect as $addres) {
+				$opt = "<option value='?report=true&addres=$addres[Adress]&m=$m&y=$y'>$addres[Adress]</option>";
+				$listOpt .= $opt;
+			}
+
+			return $listOpt;
 		} catch (Exception $e) {
 			$error = $e->getMessage();
 			echo "Erro ao receber dados do boleto" . $error;
@@ -1221,13 +1214,13 @@ class DbManagerRecords
 	public function find_boletobordero($dbInstance, $lote)
 	{
 		try {
-			
+
 			$listTr  	= null;
 			$listTrTots = null;
 
-			$sqlManager = new SqlManager( $dbInstance );
+			$sqlManager = new SqlManager($dbInstance);
 			$shselect 	= (new SqlQueryBuilder())
-			->setQuery("SELECT 
+				->setQuery("SELECT 
 						a.id,
 						a.id_client,
 						a.billet_value,
@@ -1258,32 +1251,31 @@ class DbManagerRecords
 						AND a.lote like '%$lote%'");
 			//->setConditions(['id' => "$idBillet"]);
 			$resultSelect = $sqlManager->fetchAll($shselect);
-			
-			foreach ($resultSelect as $borderoBoletos) 
-			{
+
+			foreach ($resultSelect as $borderoBoletos) {
 				$totais_vencimento = $totais_vencimento + $borderoBoletos['billet_value'];
 				$totais_prorrogado = $totais_prorrogado + $borderoBoletos['billet_value_old'];
 
-				$tr ="<tr>
+				$tr = "<tr>
 						<td><p style = 'font-size:10px'>$borderoBoletos[lote]</p></td>
 						<td>$borderoBoletos[name]</td>
 						<td>$borderoBoletos[vencimento_original]</td>
-						<td>R$ ".number_format($borderoBoletos['billet_value'],2,",",".")."</td>
+						<td>R$ " . number_format($borderoBoletos['billet_value'], 2, ",", ".") . "</td>
 						<td>$borderoBoletos[vencimento_prorrogado]</td>
-						<td>R$ ".number_format($borderoBoletos['billet_value_old'],2,",",".")."</td>
+						<td>R$ " . number_format($borderoBoletos['billet_value_old'], 2, ",", ".") . "</td>
 						<td>
 						 	<a class='btn btn-sm btn-info title='Editar Boleto | Borderô' data-target='#editBilletModal' data-toggle='modal' href='#' OnClick='edit_Billet()'><i class='fas fa-edit fa-sm'></i></a>
 							<a href='../banks/boleto-santander/boleto2.php?idBillet=$borderoBoletos[id]' title='Imprimir Boleto' target='_blank'><button class='btn btn-sm btn-secondary'><i class='fas fa-barcode fa-sm'></i></i></button></a>
 							<a href='?deletBillet=true&id=$borderoBoletos[id]' title='Romover esse Titulo'><button class='btn btn-sm btn-danger'><i class='fas fa-trash fa-sm'></i></i></button></a>
 						</td>
 					 </tr>";
-				$listTr .=$tr;
+				$listTr .= $tr;
 			}
 
-			$totais_vencimento = "R$ ".number_format($totais_vencimento,2,",",".");
-			$totais_prorrogado = "R$ ".number_format($totais_prorrogado,2,",",".");
+			$totais_vencimento = "R$ " . number_format($totais_vencimento, 2, ",", ".");
+			$totais_prorrogado = "R$ " . number_format($totais_prorrogado, 2, ",", ".");
 
-			$trTots ="<tr>
+			$trTots = "<tr>
 						<td></p></td>
 						<td></td>
 						<td></td>
@@ -1292,10 +1284,9 @@ class DbManagerRecords
 						<td>$totais_prorrogado</td>
 						<td></td>
 					 </tr>";
-			$listTrTots .=$trTots;
-			
-			return array ($listTr, $listTrTots);
+			$listTrTots .= $trTots;
 
+			return array($listTr, $listTrTots);
 		} catch (Exception $e) {
 			$error = $e->getMessage();
 			echo "Erro ao receber dados do boleto" . $error;
@@ -1305,22 +1296,20 @@ class DbManagerRecords
 	public function select_Lotes($dbInstance)
 	{
 		try {
-			
+
 			$listOpt  	= null;
-			$sqlManager = new SqlManager( $dbInstance );
+			$sqlManager = new SqlManager($dbInstance);
 			$shselect 	= (new SqlQueryBuilder())
-			->setQuery("SELECT sum(billet_value) as tot, lote from tab_clients_billet where lote is not null group by lote");
+				->setQuery("SELECT sum(billet_value) as tot, lote from tab_clients_billet where lote is not null group by lote");
 			//->setConditions(['id' => "$idBillet"]);
 			$resultSelect = $sqlManager->fetchAll($shselect);
-			
-			foreach ($resultSelect as $lotes) 
-			{
-				$opt ="<option value='?lote=$lotes[lote]'>$lotes[lote] R$ $lotes[tot]</option>";
-				$listOpt .=$opt;
-			}
-			
-			return $listOpt;
 
+			foreach ($resultSelect as $lotes) {
+				$opt = "<option value='?lote=$lotes[lote]'>$lotes[lote] R$ $lotes[tot]</option>";
+				$listOpt .= $opt;
+			}
+
+			return $listOpt;
 		} catch (Exception $e) {
 			$error = $e->getMessage();
 			echo "Erro ao receber dados do boleto" . $error;
@@ -1386,7 +1375,7 @@ class DbManagerRecords
 			'property_neighbordhood' => "$regist_property[client_neighbordhood]",
 			'property_complement' => "$regist_property[property_complement]",
 		];
-		
+
 		if ($regist_property['property_id'] == null) // inclusão
 		{
 			try {
@@ -1405,7 +1394,6 @@ class DbManagerRecords
 				$msg = "Erro ao incluir Imóvel -> $error";
 			}
 			return array($resp, $msg);
-
 		} else { // ALteração
 			$conds = ['id' => "$regist_property[property_id]"];
 			try {
@@ -1673,8 +1661,7 @@ class DbManagerRecords
 
 			$resultContract = $sqlManager->fetchAll($selectContract);
 
-			foreach ($resultContract as $dataContract)
-			{
+			foreach ($resultContract as $dataContract) {
 				$removeContractId = base64_encode($dataContract['contract_id']);
 				$tr = "
 						<tr>
@@ -1716,8 +1703,7 @@ class DbManagerRecords
 						   <button disabled name='jbtn_salveContratLine' id='jbtn_salveContratLine' value='salvetContrat' title='Salvar Dados' class='btn btn-sm btn-info' ><i class='fas fa-save fa-sm'></i></button>
 						   <a href='?removeContratId=$removeContractId&client_id=$clientID' class='btn btn-sm btn-danger' title='*!* Cuidado, Remover Dados' name='removeContract' id='removeContract'><i class='fas fa-trash fa-sm'></i></a>
 						</td>
-                       </tr>"
-				;
+                       </tr>";
 				$trResults .= $tr;
 				$opt = "<option value='$dataContract[contract_id]'>Contr: $dataContract[contract_id]  |  R$: $dataContract[contract_value_start] </option>";
 				$optResults .= $opt;
@@ -1759,7 +1745,7 @@ class DbManagerRecords
 
 			$contract_value_start = str_replace('.', '', $values['edit_contract_value_start']); // remove o ponto
 			$contract_value_start = str_replace(',', '.', $contract_value_start); // troca a vírgula por ponto
-			
+
 			$contract_value_renew = str_replace('.', '', $values['edit_contract_value_reajust']); // remove o ponto
 			$contract_value_renew = str_replace(',', '.', $contract_value_renew); // troca a vírgula por ponto
 
@@ -1783,7 +1769,6 @@ class DbManagerRecords
 			$sqlManager->update($sqlUpdate);
 
 			return $resp = 1;
-			
 		} catch (Exception $e) {
 
 			$error = $e->getMessage();
