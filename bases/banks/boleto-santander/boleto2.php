@@ -29,8 +29,7 @@ $idBillet = $_GET['idBillet'];
 
 $printBillet = $activeRecords->select_billet($dbInstance, $idBillet);
 
-foreach ($printBillet as $printBilletValue) 
-{  
+foreach ($printBillet as $printBilletValue) {
   $printBilletValue['id'];
   $printBilletValue['id_client'];
   $printBilletValue['cpf'];
@@ -42,7 +41,7 @@ foreach ($printBillet as $printBilletValue)
   $printBilletValue['billet_send_mail_client'];
   $printBilletValue['billtet_expiration_days'];
   $printBilletValue['billet_discount'];
-  $printBilletValue['name']; 
+  $printBilletValue['name'];
   $printBilletValue['corporate_name'];
   $printBilletValue['address'];
   $printBilletValue['number'];
@@ -50,27 +49,26 @@ foreach ($printBillet as $printBilletValue)
   $printBilletValue['state'];
   $printBilletValue['zip_code'];
   $printBilletValue['state'];
-  $printBilletValue['neighbordhood'];
-  ;
+  $printBilletValue['neighbordhood'];;
 }
 
 // #############################################################################################################################
 // RECEBE O NUMERO DO BOLETO
 // #############################################################################################################################
 
-$nbol        				= $printBilletValue['id'];
-$xvencimento 				= $printBilletValue['billet_due_date'];//data_usa( $_REQUEST['vencimento'] );
+$nbol                = $printBilletValue['id'];
+$xvencimento         = $printBilletValue['billet_due_date']; //data_usa( $_REQUEST['vencimento'] );
 
 
 // #############################################################################################################################
 // DADOS DO BOLETO
 // #############################################################################################################################
 
-$xnosso_numero           	= $nbol;
-$xdatamov                	= date('Y/m/d');
-$xdescricao              	= "Pagamento Referente a Locacao de Imovel.";
-$xid_cliente             	= '1';
-$xvalor_boleto           	= $printBilletValue['billet_value'];
+$xnosso_numero             = $nbol;
+$xdatamov                  = date('Y/m/d');
+$xdescricao                = "Pagamento Referente a Locacao de Imovel.";
+$xid_cliente               = '1';
+$xvalor_boleto             = $printBilletValue['billet_value'];
 
 // #############################################################################################################################
 // protesto
@@ -88,20 +86,15 @@ $xdiaspp                 = '0';
 // 2 percentual
 
 $xtipo_desconto        = '1';  // trazer do DB...
-$xvalor_desconto 	   = '10.00';
+$xvalor_desconto      = '10.00';
 $xvalor_desconto_final = 0;
 
-if( $xtipo_desconto == '0' )
-{    
-	$xvalor_desconto_final     = '0';
-}
-elseif( $xtipo_desconto == '1' )
-{
-	$xvalor_desconto_final     = '500';  // R$ 5,00 
-}
-elseif( $xtipo_desconto == '2' )
-{
-	$xvalor_desconto_final     = '600';  // 600 => 6,00%
+if ($xtipo_desconto == '0') {
+  $xvalor_desconto_final     = '0';
+} elseif ($xtipo_desconto == '1') {
+  $xvalor_desconto_final     = '500';  // R$ 5,00 
+} elseif ($xtipo_desconto == '2') {
+  $xvalor_desconto_final     = '600';  // 600 => 6,00%
 }
 
 // #############################################################################################################################
@@ -109,25 +102,21 @@ elseif( $xtipo_desconto == '2' )
 // #############################################################################################################################
 
 $xtipo_multa           = '2';
-$xvalor_multa    		= '2.00';   // 2,00% trazer do DB.... 
+$xvalor_multa        = '2.00';   // 2,00% trazer do DB.... 
 $xvalor_multa_final = 0;
 
-if( $xtipo_multa == '0' )
-{
-	$xvalor_multa_final        = '0';  // sem multa
-}
-elseif( $xtipo_multa == '1' )
-{
-	$xvalor_multa_final       = $xvalor_multa; // '2000'; // 2000 => R$ 20,00 (multa em reais)
+if ($xtipo_multa == '0') {
+  $xvalor_multa_final        = '0';  // sem multa
+} elseif ($xtipo_multa == '1') {
+  $xvalor_multa_final       = $xvalor_multa; // '2000'; // 2000 => R$ 20,00 (multa em reais)
 
-}elseif( $xtipo_multa == '2' )
-{
+} elseif ($xtipo_multa == '2') {
 
-	//$xvalor_multa_final       = round( ( ( $xvalor_boleto * $xvalor_multa ) / 100 ),2);
-	$xvalor_multa_final = '300';
+  //$xvalor_multa_final       = round( ( ( $xvalor_boleto * $xvalor_multa ) / 100 ),2);
+  $xvalor_multa_final = '300';
 }
 
-	$xvalor_multa       = $xvalor_multa_final;
+$xvalor_multa       = $xvalor_multa_final;
 
 // #############################################################################################################################
 // JUROS
@@ -138,20 +127,15 @@ elseif( $xtipo_multa == '1' )
 //3 sem juros
 
 $xtipo_juros           = '2';
-$xvalor_juros 		   = '1.00';  // juros ao mes
+$xvalor_juros        = '1.00';  // juros ao mes
 $xvalor_juros_final = 0;
 
-if( $xtipo_juros == '3' || $xtipo_juros == '0' )
-{
-	$xvalor_juros_final = '0';
-}
-elseif( $xtipo_juros == '1' )
-{
-	$xvalor_juros_final   = $xvalor_juros;
-}
-elseif( $xtipo_juros == '2' )
-{
-	$xvalor_juros_final = '033';  // round( ( ( $xvalor_boleto * ( $xvalor_juros / 30 ) ) / 100 ) ,2);
+if ($xtipo_juros == '3' || $xtipo_juros == '0') {
+  $xvalor_juros_final = '0';
+} elseif ($xtipo_juros == '1') {
+  $xvalor_juros_final   = $xvalor_juros;
+} elseif ($xtipo_juros == '2') {
+  $xvalor_juros_final = '033';  // round( ( ( $xvalor_boleto * ( $xvalor_juros / 30 ) ) / 100 ) ,2);
 }
 
 $xvalor_juros = $xvalor_juros_final;  // juros ao dia
@@ -160,23 +144,23 @@ $xvalor_juros = $xvalor_juros_final;  // juros ao dia
 // CONFIGURACAO
 // #############################################################################################################################
 
-$xidentificacao   		= 'CASTANHEIRO PATRIMONIAL EIRELI';
-$xendereco        		= 'Rua Bandeira Paulista, 716';
-$xcidade          		= 'SAO PAULO';
-$xuf              		= 'SP';
-$xcidade_uf       		= 'SAO PAULO/SP';
-$xcpf_cnpj        		= '61519666000145';
-$xsite            		= "www.grupocastanheiro.com.br";
-$xemail           		= "locacao@grupocastanheiro.com.br";
+$xidentificacao       = 'CASTANHEIRO PATRIMONIAL EIRELI';
+$xendereco            = 'Rua Bandeira Paulista, 716';
+$xcidade              = 'SAO PAULO';
+$xuf                  = 'SP';
+$xcidade_uf           = 'SAO PAULO/SP';
+$xcpf_cnpj            = '61519666000145';
+$xsite                = "www.grupocastanheiro.com.br";
+$xemail               = "locacao@grupocastanheiro.com.br";
 
-$xfone            		= "";
-$xfantasia        		= "CASTANHEIRO PATRIMONIAL";
+$xfone                = "";
+$xfantasia            = "CASTANHEIRO PATRIMONIAL";
 
-$xagencia         	= '3986';           //$_REQUEST['agencia'];
-$xconta           	= '013000482';      //$_REQUEST['conta'];
-$xconta_dv        	= '2';
-$xconta_cedente   	= '4079213';        //$_REQUEST['cedente'];
-$xcarteira       	 	= '101';            //$_REQUEST['carteira'];
+$xagencia           = '3986';           //$_REQUEST['agencia'];
+$xconta             = '013000482';      //$_REQUEST['conta'];
+$xconta_dv          = '2';
+$xconta_cedente     = '4079213';        //$_REQUEST['cedente'];
+$xcarteira            = '101';            //$_REQUEST['carteira'];
 
 
 // #############################################################################################################################
@@ -184,13 +168,13 @@ $xcarteira       	 	= '101';            //$_REQUEST['carteira'];
 // #############################################################################################################################
 
 $dias_de_prazo_para_pagamento = 0;
-$taxa_boleto = 0; 
+$taxa_boleto = 0;
 
 $data_venc = $xvencimento;
-$data_venc = substr($xvencimento,8,2)."/".substr($xvencimento,5,2)."/".substr($xvencimento,0,4);
+$data_venc = substr($xvencimento, 8, 2) . "/" . substr($xvencimento, 5, 2) . "/" . substr($xvencimento, 0, 4);
 
 $data_documento = $xdatamov;
-$data_documento = substr($xdatamov,8,2)."/".substr($xdatamov,5,2)."/".substr($xdatamov,0,4);
+$data_documento = substr($xdatamov, 8, 2) . "/" . substr($xdatamov, 5, 2) . "/" . substr($xdatamov, 0, 4);
 
 $data_processamento = $data_documento;
 
@@ -205,20 +189,20 @@ $xdescricao = $xdescricao;
 #$obj_cliente  = new Clientes( $xid_cliente );
 
 
-if(!$printBilletValue['cpf']){
-	
-	$xcodigo_do_contratante = $printBilletValue['cnpj'];
-}else{
-	$xcodigo_do_contratante = $printBilletValue['cpf'];
+if (!$printBilletValue['cpf']) {
+
+  $xcodigo_do_contratante = $printBilletValue['cnpj'];
+} else {
+  $xcodigo_do_contratante = $printBilletValue['cpf'];
 }
 
 
-$xsacado                	= $printBilletValue['name'];
-$xenderecocan           	= "$printBilletValue[address], $printBilletValue[number]";
-$xbairrocan             	= $printBilletValue['neighbordhood'];
-$xcidadecan             	= $printBilletValue['city'];
-$xufcan                 	= $printBilletValue['state'];
-$xcepcan                	= $printBilletValue['zip_code'];
+$xsacado                  = $printBilletValue['name'];
+$xenderecocan             = "$printBilletValue[address], $printBilletValue[number]";
+$xbairrocan               = $printBilletValue['neighbordhood'];
+$xcidadecan               = $printBilletValue['city'];
+$xufcan                   = $printBilletValue['state'];
+$xcepcan                  = $printBilletValue['zip_code'];
 
 // #############################################################################################################################
 // pesquisa para localizar quem � a empresa que est� oferecendo as vagas
@@ -231,30 +215,30 @@ $xnemp = 'VELAS SANTO ANTONIO S/A';
 // #############################################################################################################################
 
 $valor_cobrado = $xvalor_boleto;
-$valor_cobrado = str_replace(",", ".",$valor_cobrado);
-$valor_boleto  = number_format($valor_cobrado+$taxa_boleto, 2, ',', '');
+$valor_cobrado = str_replace(",", ".", $valor_cobrado);
+$valor_boleto  = number_format($valor_cobrado + $taxa_boleto, 2, ',', '');
 
 // #############################################################################################################################
 // Composi��o Nosso Numero - CEF SIGCB
 // #############################################################################################################################
 
-$dadosboleto["nosso_numero"]                    = $xnosso_numero;        // Nosso numero sem o DV - REGRA: M�ximo de 7 caracteres!
-$dadosboleto["numero_documento"]                = $xnosso_numero;        // Num do pedido ou nosso numero
-$dadosboleto["data_vencimento"]                 = data_br( $xvencimento ); // Data de Vencimento do Boleto - REGRA: Formato DD/MM/AAAA
+$dadosboleto["nosso_numero"]                    = $xagencia . $xnosso_numero;        // Nosso numero sem o DV - REGRA: M�ximo de 7 caracteres!
+$dadosboleto["numero_documento"]                = $xagencia . $xnosso_numero;        // Num do pedido ou nosso numero
+$dadosboleto["data_vencimento"]                 = data_br($xvencimento); // Data de Vencimento do Boleto - REGRA: Formato DD/MM/AAAA
 $dadosboleto["data_documento"]                  = $data_documento;       // Data de emiss�o do Boleto
 $dadosboleto["data_processamento"]              = $data_processamento;   // Data de processamento do boleto (opcional)
 $dadosboleto["valor_boleto"]                    = $valor_boleto;         // Valor do Boleto - REGRA: Com v�rgula e sempre com duas casas depois da virgula
 
-$xnossonumero = $xnosso_numero;
-$dadosboleto["nosso_numero"]                    = str_pad($xnossonumero,7,"0",STR_PAD_LEFT); //"000000019"; // tamanho 9
+$xnossonumero = $xagencia . $xnosso_numero;
+$dadosboleto["nosso_numero"]                    = str_pad($xnossonumero, 7, "0", STR_PAD_LEFT); //"000000019"; // tamanho 9
 
 // #############################################################################################################################
 // DADOS DO SEU CLIENTE
 // #############################################################################################################################
 
-$dadosboleto["sacado"]                           = $xsacado." - ".$xcodigo_do_contratante;
-$dadosboleto["endereco1"]                        = $xenderecocan." - ".$xbairrocan;
-$dadosboleto["endereco2"]                        = $xcidadecan." - ".$xufcan.", CEP: ".$xcepcan;
+$dadosboleto["sacado"]                           = $xsacado . " - " . $xcodigo_do_contratante;
+$dadosboleto["endereco1"]                        = $xenderecocan . " - " . $xbairrocan;
+$dadosboleto["endereco2"]                        = $xcidadecan . " - " . $xufcan . ", CEP: " . $xcepcan;
 
 // #############################################################################################################################
 // $dadosboleto["demonstrativo1"] = "Taxa de Matricula Online";
@@ -286,19 +270,19 @@ $dadosboleto["especie_doc"] = "";
 */
 
 $dadosboleto["quantidade"]      = "001";
-$dadosboleto["valor_unitario"] 	= $valor_boleto;
-$dadosboleto["aceite"]          = "";		
-$dadosboleto["especie"]        	= "Real";
-$dadosboleto["especie_doc"]    	= "DM";
+$dadosboleto["valor_unitario"]   = $valor_boleto;
+$dadosboleto["aceite"]          = "";
+$dadosboleto["especie"]          = "Real";
+$dadosboleto["especie_doc"]      = "DM";
 
 
 // #############################################################################################################################
 // ---------------------- DADOS FIXOS DE CONFIGURAÇÃO DO SEU BOLETO --------------- //
 // #############################################################################################################################
 
-$dadosboleto["codigo_cliente"]         	= $xconta_cedente;                // "0707077"; // Código do Cliente (PSK) (Somente 7 digitos)
-$dadosboleto["ponto_venda"]            	= $xagencia;                      // "1333";   // Ponto de Venda = Agencia
-$dadosboleto["carteira"]               	= $xcarteira;                    // "102";    // Cobrança Simples - SEM Registro
+$dadosboleto["codigo_cliente"]           = $xconta_cedente;                // "0707077"; // Código do Cliente (PSK) (Somente 7 digitos)
+$dadosboleto["ponto_venda"]              = $xagencia;                      // "1333";   // Ponto de Venda = Agencia
+$dadosboleto["carteira"]                 = $xcarteira;                    // "102";    // Cobrança Simples - SEM Registro
 $dadosboleto["carteira_descricao"]     = "ELETR C/REG";                  // "COBRANÇA SIMPLES - CSR";  // Descriçãoo da Carteira
 
 // #############################################################################################################################
@@ -314,7 +298,7 @@ $dadosboleto["conta_dv"] = "0"; 	// Digito do Num da conta
 $dadosboleto["identificacao"]          = $xidentificacao;
 $dadosboleto["cpf_cnpj"]               = $xcpf_cnpj;
 $dadosboleto["endereco"]               = $xendereco;
-$dadosboleto["cidade_uf"]              = $xcidade."/".$xuf;
+$dadosboleto["cidade_uf"]              = $xcidade . "/" . $xuf;
 $dadosboleto["cedente"]                = $xidentificacao;
 
 /*
@@ -338,6 +322,6 @@ $dadosboleto["fantasia"]      = $xfantasia;
 // NÃO ALTERAR!
 // #############################################################################################################################
 
-include("include/funcoes_santander_banespa.php"); 
+include("include/funcoes_santander_banespa.php");
 include("include/layout_santander_banespa.php");
 ?>

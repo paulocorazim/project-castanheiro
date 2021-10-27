@@ -67,319 +67,316 @@ $printBillet = $activeRecords->select_billet($dbInstance, $idBillet);
 // exit;
 
 foreach ($printBillet as $printBilletValue) 
-{  
-  $numeroBoleto	 = $printBilletValue['id'];
-  $numeroCliente = $printBilletValue['id_client'];
-  $valorTitulo   = $printBilletValue['billet_value'];
-  $venciTitulo	 = $printBilletValue['billet_value_old'];
-  $venciOriginal = $printBilletValue['vencimento_original'];
-  $venciProrrog  = $printBilletValue['vencimento_prorrogado'];
-  $enviaEmail	 = $printBilletValue['billet_send_mail_client'];
-  				   $printBilletValue['billtet_expiration_days'];
+{
+	$numeroBoleto  = $printBilletValue['id'];
+	$numeroCliente = $printBilletValue['id_client'];
+	$valorTitulo   = $printBilletValue['billet_value'];
+	$venciTitulo   = $printBilletValue['billet_value_old'];
+	$venciOriginal = $printBilletValue['vencimento_original'];
+	$venciProrrog  = $printBilletValue['vencimento_prorrogado'];
+	$enviaEmail    = $printBilletValue['billet_send_mail_client'];
+	$printBilletValue['billtet_expiration_days'];
 
-  $nomeLocatario = $printBilletValue['name'];
-  $cpfLocatario  = $appFunctions->limpaCPF_CNPJ($printBilletValue['cpf']);
+	$nomeLocatario = $printBilletValue['name'];
+	$cpfLocatario  = $appFunctions->limpaCPF_CNPJ($printBilletValue['cpf']);
 
-  				    $printBilletValue['corporate_name'];
-  $imovelEndereco = $printBilletValue['address'];
-  $imovelNumero   = $printBilletValue['number'];
-  $imovelCidade   = $printBilletValue['city'];
-  $imovelUf		  = $printBilletValue['state'];
-  $imovelCep      =	$printBilletValue['zip_code'];
-  $imovelBairro   = $printBilletValue['neighbordhood'];
+	$printBilletValue['corporate_name'];
+	$imovelEndereco = $printBilletValue['address'];
+	$imovelNumero   = $printBilletValue['number'];
+	$imovelCidade   = $printBilletValue['city'];
+	$imovelUf		= $printBilletValue['state'];
+	$imovelCep      = $printBilletValue['zip_code'];
+	$imovelBairro   = $printBilletValue['neighbordhood'];
 }
 
 //09941-630
 ######################################################################################################################################################
 # NAO PODE ALTERAR
 ######################################################################################################################################################
-$num_banco       = "033";                                      	
-$nome_banco      = "BANCO SANTANDER";                          
-$arq             = $inscricao_beneficiario."_".date("d").date("m")."AB";     
-$extensao        = "REM";                                      
-$arquivo         = $arq . "-" . date("U") . "." . $extensao;   
-$filename        = $arquivo;             
+$num_banco       = "033";
+$nome_banco      = "BANCO SANTANDER";
+$arq             = $inscricao_beneficiario . "_" . date("d") . date("m") . "AB";
+$extensao        = "REM";
+$arquivo         = $arq . "-" . date("U") . "." . $extensao;
+$filename        = $arquivo;
 $conteudo        = '';
 $lote_sequencial = 1;
-$lote_servico    = 1;      
+$lote_servico    = 1;
 $header          = '';
 $header_lote     = '';
 $linha_p         = '';
 $linha_q         = '';
 $linha_r         = '';
 $linha_s         = '';
-$linha_5         = '';     
+$linha_5         = '';
 $linha_9         = '';
 $conteudo_meio   = '';
-$qtd_titulos     = 0; 
-$total_valor     = 0; 
+$qtd_titulos     = 0;
+$total_valor     = 0;
 $num_seg_linha_p_q_r_s = 1;
 $xnumero_seq     = 1;  //Incrementar a cada nova remessa (DB)
 $numero_sequencial_arquivo = $xnumero_seq;
-$header .= picture_9($num_banco,3);                     
-$header .= complementoRegistro(4,"zeros");              
-$header .= complementoRegistro(1,"zeros");              
-$header .= complementoRegistro(8,"brancos");            
-$header .= '2';                                         
-$header .= picture_9($inscricao_beneficiario,15);                     
-$header .= picture_9($codigo_transmissao,15);           
-$header .= complementoRegistro(25,"brancos");           
-$header .= picture_x($empresa_beneficiario,30);         
-$header .= picture_x($nome_banco,30);                   
-$header .= complementoRegistro(10,"brancos");           
-$header .= '1';                                         
-$header .= date("dmY"); 
-$header .= complementoRegistro(6,"brancos");            
-$header .= picture_9($numero_sequencial_arquivo,6);     
-$header .= picture_9($versao_layout_arquivo,3);         
-$header .= complementoRegistro(74,"brancos");           
-$header .= chr(13).chr(10);                             
+$header .= picture_9($num_banco, 3);
+$header .= complementoRegistro(4, "zeros");
+$header .= complementoRegistro(1, "zeros");
+$header .= complementoRegistro(8, "brancos");
+$header .= '2';
+$header .= picture_9($inscricao_beneficiario, 15);
+$header .= picture_9($codigo_transmissao, 15);
+$header .= complementoRegistro(25, "brancos");
+$header .= picture_x($empresa_beneficiario, 30);
+$header .= picture_x($nome_banco, 30);
+$header .= complementoRegistro(10, "brancos");
+$header .= '1';
+$header .= date("dmY");
+$header .= complementoRegistro(6, "brancos");
+$header .= picture_9($numero_sequencial_arquivo, 6);
+$header .= picture_9($versao_layout_arquivo, 3);
+$header .= complementoRegistro(74, "brancos");
+$header .= chr(13) . chr(10);
 
-$header_lote .= picture_9($num_banco,3);                     
-$header_lote .= picture_9($lote_servico,4);                  
-$header_lote .= '1';                                          
-$header_lote .= 'R';                                          
-$header_lote .= '01';                                         
-$header_lote .= complementoRegistro(2,"brancos");            
-$header_lote .= picture_9($versao_layout,3);                                                       
-$header_lote .= complementoRegistro(1,"brancos");            
-$header_lote .= '2';                                        
-$header_lote .= picture_9($inscricao_beneficiario,15);       
-$header_lote .= complementoRegistro(20,"brancos");          
-$header_lote .= picture_9($codigo_transmissao,15);           
-$header_lote .= complementoRegistro(5,"brancos");            
-$header_lote .= picture_x($empresa_beneficiario,30);         
-$header_lote .= complementoRegistro(40,"brancos");           
-$header_lote .= complementoRegistro(40,"brancos");           
-$header_lote .= picture_9($numero_sequencial_arquivo,8);     
-$header_lote .= date("dmY"); 
-$header_lote .= complementoRegistro(41,"brancos");           
-$header_lote .= chr(13).chr(10); 
+$header_lote .= picture_9($num_banco, 3);
+$header_lote .= picture_9($lote_servico, 4);
+$header_lote .= '1';
+$header_lote .= 'R';
+$header_lote .= '01';
+$header_lote .= complementoRegistro(2, "brancos");
+$header_lote .= picture_9($versao_layout, 3);
+$header_lote .= complementoRegistro(1, "brancos");
+$header_lote .= '2';
+$header_lote .= picture_9($inscricao_beneficiario, 15);
+$header_lote .= complementoRegistro(20, "brancos");
+$header_lote .= picture_9($codigo_transmissao, 15);
+$header_lote .= complementoRegistro(5, "brancos");
+$header_lote .= picture_x($empresa_beneficiario, 30);
+$header_lote .= complementoRegistro(40, "brancos");
+$header_lote .= complementoRegistro(40, "brancos");
+$header_lote .= picture_9($numero_sequencial_arquivo, 8);
+$header_lote .= date("dmY");
+$header_lote .= complementoRegistro(41, "brancos");
+$header_lote .= chr(13) . chr(10);
 
 
 //select * from boleto where mes vencimento = 1 anddd ano vencimento = 2021 e remetido != "S"....
 
-$qtd_boletos = 3;  //count( $nosso_num );      // quantidade de boletos a serem incluidos no arquivo de remessa 
+$qtd_boletos = 1;  //count( $nosso_num );      // quantidade de boletos a serem incluidos no arquivo de remessa 
 
-for( $t = 0; $t < $qtd_boletos; $t++ )
-{
-	$nosso_num[$t]                = $printBilletValue['id'];                                      
-	$data_vencimento_boleto[$t]   = $appFunctions->limpaCPF_CNPJ($printBilletValue['vencimento_original']);                               
+for ($t = 0; $t < $qtd_boletos; $t++) {
+
+	$nosso_num[$t]                = $agencia . $printBilletValue['id'];
+	$data_vencimento_boleto[$t]   = $appFunctions->limpaCPF_CNPJ($printBilletValue['vencimento_original']);
 	$data_emissao_boleto[$t]      = date("dmY");
-	
-	$valor_cobrado                = $printBilletValue['billet_value'];
-	//$valor_cobrado 				 = str_replace(",", ".",$valor_cobrado);
-	//$valor_boleto[$t]             = number_format($valor_cobrado+$taxa_boleto, 2, ',', '');
+
+	$valor_cobrado                = $valorTitulo;
+	$valor_cobrado 				  = str_replace(".", "", $valor_cobrado);
+	$valor_boleto[$t]             = $valor_cobrado;
 	//$valor_boleto[$t]             = "23600";                               
-	
+
 	// juros
 	$tipo_juros[$t]               = "3";
-	$data_juros[$t]               = "00000000";                               
-	$valor_juros[$t]              = "0000";                                   
-	
+	$data_juros[$t]               = "00000000";
+	$valor_juros[$t]              = "0000";
+
 	// multa
 	$tipo_multa[$t]               = "0";
 	$valor_multa[$t]              = "0000";
-	$data_multa[$t]               = "00000000";                                   
-	
+	$data_multa[$t]               = "00000000";
+
 	// desconto
 	$tipo_desconto[$t]            = "0";
-	$data_desconto[$t]            = "00000000";                               
-	$valor_desconto[$t]           = "0000";                                   
-	
-	$valor_iof[$t]                = "000";                                    
-	$valor_abatimento[$t]         = "000";  
-	
+	$data_desconto[$t]            = "00000000";
+	$valor_desconto[$t]           = "0000";
+
+	$valor_iof[$t]                = "000";
+	$valor_abatimento[$t]         = "000";
+
 	// protesto 
-	$cod_protesto[$t]             = '0';                                        
-	$dias_protesto[$t]            = '0';                                        
-	
+	$cod_protesto[$t]             = '0';
+	$dias_protesto[$t]            = '0';
+
 	// baixa
-	$cod_baixa[$t]                = '1';                                        
-	$dias_baixa[$t]               = '90';                                                                        
-	
-	$tipo_inscricao_pagador[$t]   = "1";                                      
-	$numero_inscricao_pagador[$t] = "$cpfLocatario";                            
-	$nome_pagador[$t]             = substr(remover_acentos("$nomeLocatario"),0,40);                         
-	$endereco_pagador[$t]         = substr(remover_acentos("$imovelEndereco"),0,40);              
-	$bairro_pagador[$t]           = substr(remover_acentos("$imovelBairro"),0,15);                         
-	$cep_pagador[$t]              = substr($imovelCep,0,4);                                  
-	$cep_pagador_sufixo[$t]       = substr($imovelCep, -3);                                    
-	$cidade_pagador[$t]           = remover_acentos("$imovelCidade");                               
-	$estado_pagador[$t]           = "$imovelUf";                                     
+	$cod_baixa[$t]                = '1';
+	$dias_baixa[$t]               = '30';
+
+	$tipo_inscricao_pagador[$t]   = "1";
+	$numero_inscricao_pagador[$t] = "$cpfLocatario";
+	$nome_pagador[$t]             = substr(remover_acentos("$nomeLocatario"), 0, 40);
+	$endereco_pagador[$t]         = substr(remover_acentos("$imovelEndereco"), 0, 40);
+	$bairro_pagador[$t]           = substr(remover_acentos("$imovelBairro"), 0, 15);
+	$cep_pagador[$t]              = substr($imovelCep, 0, 4);
+	$cep_pagador_sufixo[$t]       = substr($imovelCep, -3);
+	$cidade_pagador[$t]           = remover_acentos("$imovelCidade");
+	$estado_pagador[$t]           = "$imovelUf";
 
 
 
-	$numero_documento[$t]  		= $nosso_num[$t];                 
-	  
-	$Dv                = modulo_11( $nosso_num[$t] );    
-	$nosso_numero      = picture_9( $nosso_num[$t], 12 ) . $Dv;             
+	$numero_documento[$t]  		= $nosso_num[$t];
 
-	$linha_p .= picture_9($num_banco,3);                  
-	$linha_p .= picture_9($lote_servico,4);               
-	$linha_p .= '3';                                      
-	$linha_p .= picture_9($num_seg_linha_p_q_r_s,5);      
-	$linha_p .= 'P';                                      
-	$linha_p .= complementoRegistro(1,"brancos");         
-	$linha_p .= picture_9('01',2);                        
-	$linha_p .= picture_9($agencia,4);                    
-	$linha_p .= picture_9($dv_agencia,1);                 
-	$linha_p .= picture_9($conta,9);                      
-	$linha_p .= picture_9($dv_conta,1);                   
-	$linha_p .= picture_9($conta_cobranca,9);             
-	$linha_p .= picture_9($dv_conta_cobranca,1);          
-	$linha_p .= complementoRegistro(2,"brancos");        
-	$linha_p .= picture_9($nosso_numero,13);             
-	$linha_p .= picture_9($tipo_cobranca,1);              
-	$linha_p .= picture_9($forma_cadastramento,1); 
-	$linha_p .= picture_9($tipo_documento,1);             
-	$linha_p .= complementoRegistro(1,"brancos");        
-	$linha_p .= complementoRegistro(1,"brancos");         
-	$linha_p .= picture_x($numero_documento[$t],15);          
-	$linha_p .= picture_9($data_vencimento_boleto[$t],8); 
-	$linha_p .= picture_9($valor_boleto[$t],15);          
-	$linha_p .= picture_9($agencia_cobranca,4);           
-	$linha_p .= picture_9($dv_agencia,1);                 
-	$linha_p .= complementoRegistro(1,"brancos");         
-	$linha_p .= '02';                                     
-	$linha_p .= 'N';                                      
-	$linha_p .= picture_9($data_emissao_boleto[$t],8);   
-	$linha_p .= picture_9($tipo_juros[$t],1);   
-	$linha_p .= picture_9($data_juros[$t],8);             
-	$linha_p .= picture_9($valor_juros[$t],15);          
-	$linha_p .= picture_9($tipo_desconto[$t],1);      
-	$linha_p .= picture_9($data_desconto[$t],8);      
-	$linha_p .= picture_9($valor_desconto[$t],15);    
-	$linha_p .= picture_9($valor_iof[$t],15);             
-	$linha_p .= picture_9($valor_abatimento[$t],15);      
-	$linha_p .= picture_x($numero_documento[$t],25);      
-	$linha_p .= picture_9($cod_protesto[$t],1);              
-	$linha_p .= picture_9($dias_protesto[$t],2);             
-	$linha_p .= picture_9($cod_baixa[$t],1);                  
-	$linha_p .= '0';                                      
-	$linha_p .= picture_9($dias_baixa[$t],2);                
-	$linha_p .= '00';                                    
-	$linha_p .= complementoRegistro(11,"brancos");        
-	$linha_p .= chr(13).chr(10);   
+	$Dv                = modulo_11($nosso_num[$t]);
+	$nosso_numero      = picture_9($nosso_num[$t], 12) . $Dv;
+
+	$linha_p .= picture_9($num_banco, 3);
+	$linha_p .= picture_9($lote_servico, 4);
+	$linha_p .= '3';
+	$linha_p .= picture_9($num_seg_linha_p_q_r_s, 5);
+	$linha_p .= 'P';
+	$linha_p .= complementoRegistro(1, "brancos");
+	$linha_p .= picture_9('01', 2);
+	$linha_p .= picture_9($agencia, 4);
+	$linha_p .= picture_9($dv_agencia, 1);
+	$linha_p .= picture_9($conta, 9);
+	$linha_p .= picture_9($dv_conta, 1);
+	$linha_p .= picture_9($conta_cobranca, 9);
+	$linha_p .= picture_9($dv_conta_cobranca, 1);
+	$linha_p .= complementoRegistro(2, "brancos");
+	$linha_p .= picture_9($nosso_numero, 13);
+	$linha_p .= picture_9($tipo_cobranca, 1);
+	$linha_p .= picture_9($forma_cadastramento, 1);
+	$linha_p .= picture_9($tipo_documento, 1);
+	$linha_p .= complementoRegistro(1, "brancos");
+	$linha_p .= complementoRegistro(1, "brancos");
+	$linha_p .= picture_x($numero_documento[$t], 15);
+	$linha_p .= picture_9($data_vencimento_boleto[$t], 8);
+	$linha_p .= picture_9($valor_boleto[$t], 15);
+	$linha_p .= picture_9($agencia_cobranca, 4);
+	$linha_p .= picture_9($dv_agencia, 1);
+	$linha_p .= complementoRegistro(1, "brancos");
+	$linha_p .= '02';
+	$linha_p .= 'N';
+	$linha_p .= picture_9($data_emissao_boleto[$t], 8);
+	$linha_p .= picture_9($tipo_juros[$t], 1);
+	$linha_p .= picture_9($data_juros[$t], 8);
+	$linha_p .= picture_9($valor_juros[$t], 15);
+	$linha_p .= picture_9($tipo_desconto[$t], 1);
+	$linha_p .= picture_9($data_desconto[$t], 8);
+	$linha_p .= picture_9($valor_desconto[$t], 15);
+	$linha_p .= picture_9($valor_iof[$t], 15);
+	$linha_p .= picture_9($valor_abatimento[$t], 15);
+	$linha_p .= picture_x($numero_documento[$t], 25);
+	$linha_p .= picture_9($cod_protesto[$t], 1);
+	$linha_p .= picture_9($dias_protesto[$t], 2);
+	$linha_p .= picture_9($cod_baixa[$t], 1);
+	$linha_p .= '0';
+	$linha_p .= picture_9($dias_baixa[$t], 2);
+	$linha_p .= '00';
+	$linha_p .= complementoRegistro(11, "brancos");
+	$linha_p .= chr(13) . chr(10);
 
 
 
 	$num_seg_linha_p_q_r_s++;
 	$qtd_titulos++;
-	$total_valor+=$valor_boleto[$t];
-	
-	$linha_q .= picture_9($num_banco,3);                     
-	$linha_q .= picture_9($lote_servico,4);                 
-	$linha_q .= '3';                                         
-	$linha_q .= picture_9($num_seg_linha_p_q_r_s,5);         
-	$linha_q .= 'Q';                                         
-	$linha_q .= complementoRegistro(1,"brancos");            
-	$linha_q .= picture_9('01',2);                           
-	$linha_q .= $tipo_inscricao_pagador[$t];                 
-	$linha_q .= picture_9($numero_inscricao_pagador[$t],15); 
-	$linha_q .= picture_x(remover_acentos($nome_pagador[$t]),40);             
-	$linha_q .= picture_x(remover_acentos($endereco_pagador[$t]),40);         
-	$linha_q .= picture_x(remover_acentos($bairro_pagador[$t]),15);           
-	$linha_q .= picture_9($cep_pagador[$t],5);               
-	$linha_q .= picture_9($cep_pagador_sufixo[$t],3);        
-	$linha_q .= picture_x(remover_acentos($cidade_pagador[$t]),15);           
-	$linha_q .= picture_x($estado_pagador[$t],2);            
-	$linha_q .= '0';                                         
-	$linha_q .= complementoRegistro(15,"zeros");             
-	$linha_q .= complementoRegistro(40,"brancos");           
-	$linha_q .= '000';                                       
-	$linha_q .= '000';                                       
-	$linha_q .= '000';                                       
-	$linha_q .= '000';                                       
-	$linha_q .= complementoRegistro(19,"brancos");           
-	
+	$total_valor += $valor_boleto[$t];
+
+	$linha_q .= picture_9($num_banco, 3);
+	$linha_q .= picture_9($lote_servico, 4);
+	$linha_q .= '3';
+	$linha_q .= picture_9($num_seg_linha_p_q_r_s, 5);
+	$linha_q .= 'Q';
+	$linha_q .= complementoRegistro(1, "brancos");
+	$linha_q .= picture_9('01', 2);
+	$linha_q .= $tipo_inscricao_pagador[$t];
+	$linha_q .= picture_9($numero_inscricao_pagador[$t], 15);
+	$linha_q .= picture_x(remover_acentos($nome_pagador[$t]), 40);
+	$linha_q .= picture_x(remover_acentos($endereco_pagador[$t]), 40);
+	$linha_q .= picture_x(remover_acentos($bairro_pagador[$t]), 15);
+	$linha_q .= picture_9($cep_pagador[$t], 5);
+	$linha_q .= picture_9($cep_pagador_sufixo[$t], 3);
+	$linha_q .= picture_x(remover_acentos($cidade_pagador[$t]), 15);
+	$linha_q .= picture_x($estado_pagador[$t], 2);
+	$linha_q .= '0';
+	$linha_q .= complementoRegistro(15, "zeros");
+	$linha_q .= complementoRegistro(40, "brancos");
+	$linha_q .= '000';
+	$linha_q .= '000';
+	$linha_q .= '000';
+	$linha_q .= '000';
+	$linha_q .= complementoRegistro(19, "brancos");
+
 	$tam_linha_q  = strlen($linha_q);
 	$zeros_rest_2 = 240 - $tam_linha_q;
-	$linha_q      = $linha_q.complementoRegistro($zeros_rest_2,"zeros");
-	$linha_q .= chr(13).chr(10);                        
-	
+	$linha_q      = $linha_q . complementoRegistro($zeros_rest_2, "zeros");
+	$linha_q .= chr(13) . chr(10);
+
 	$num_seg_linha_p_q_r_s++;
-	
-	$linha_r .= picture_9($num_banco,3);                 
-	$linha_r .= picture_9($lote_servico,4);              
-	$linha_r .= '3';                                     
-	$linha_r .= picture_9($num_seg_linha_p_q_r_s,5);     
-	$linha_r .= 'R';                                     
-	$linha_r .= complementoRegistro(1,"brancos");        
-	$linha_r .= picture_9('01',2);                       
-	$linha_r .= '0';                                     
-	$linha_r .= picture_9('0',8);                        
-	$linha_r .=	picture_9('0',15);                       
-	$linha_r .= complementoRegistro(24,"brancos");       
-	$linha_r .= picture_9($tipo_multa[$t],1);               
-	$linha_r .= picture_9($data_multa[$t],8);           
-	$linha_r .=	picture_9($valor_multa[$t],15);         
-	$linha_r .= complementoRegistro(10,"brancos");      
-	$linha_r .= complementoRegistro(40,"brancos");      
-	$linha_r .= complementoRegistro(40,"brancos");      
-	$linha_r .= complementoRegistro(61,"brancos");      
-	$linha_r .= chr(13).chr(10);                         
-	
+
+	$linha_r .= picture_9($num_banco, 3);
+	$linha_r .= picture_9($lote_servico, 4);
+	$linha_r .= '3';
+	$linha_r .= picture_9($num_seg_linha_p_q_r_s, 5);
+	$linha_r .= 'R';
+	$linha_r .= complementoRegistro(1, "brancos");
+	$linha_r .= picture_9('01', 2);
+	$linha_r .= '0';
+	$linha_r .= picture_9('0', 8);
+	$linha_r .=	picture_9('0', 15);
+	$linha_r .= complementoRegistro(24, "brancos");
+	$linha_r .= picture_9($tipo_multa[$t], 1);
+	$linha_r .= picture_9($data_multa[$t], 8);
+	$linha_r .=	picture_9($valor_multa[$t], 15);
+	$linha_r .= complementoRegistro(10, "brancos");
+	$linha_r .= complementoRegistro(40, "brancos");
+	$linha_r .= complementoRegistro(40, "brancos");
+	$linha_r .= complementoRegistro(61, "brancos");
+	$linha_r .= chr(13) . chr(10);
+
 	$lote_sequencial++;
 	$num_seg_linha_p_q_r_s++;
-	
-	$linha_s .= picture_9($num_banco,3);                 
-	$linha_s .= picture_9($lote_servico,4);             
-	$linha_s .= '3';                                     
-	$linha_s .= picture_9($num_seg_linha_p_q_r_s,5);     
-	$linha_s .= 'S';                                     
-	$linha_s .= complementoRegistro(1,"brancos");        
-	$linha_s .= picture_9('01',2);                       
-	$linha_s .= '2';                                     
-	$linha_s .= picture_x('MENSAGEM 01',40);             
-	$linha_s .=	picture_x('MENSAGEM 02',40);             
-	$linha_s .= picture_x('MENSAGEM 03',40);             
-	$linha_s .= complementoRegistro(40,"brancos");             
-	$linha_s .=	complementoRegistro(40,"brancos");
-	$linha_s .= complementoRegistro(22,"brancos");       
-	$linha_s .= chr(13).chr(10);                         
-	
+
+	$linha_s .= picture_9($num_banco, 3);
+	$linha_s .= picture_9($lote_servico, 4);
+	$linha_s .= '3';
+	$linha_s .= picture_9($num_seg_linha_p_q_r_s, 5);
+	$linha_s .= 'S';
+	$linha_s .= complementoRegistro(1, "brancos");
+	$linha_s .= picture_9('01', 2);
+	$linha_s .= '2';
+	$linha_s .= picture_x('MENSAGEM 01', 40);
+	$linha_s .=	picture_x('MENSAGEM 02', 40);
+	$linha_s .= picture_x('MENSAGEM 03', 40);
+	$linha_s .= complementoRegistro(40, "brancos");
+	$linha_s .=	complementoRegistro(40, "brancos");
+	$linha_s .= complementoRegistro(22, "brancos");
+	$linha_s .= chr(13) . chr(10);
+
 	$lote_sequencial++;
-	
+
 	$num_seg_linha_p_q_r_s++;
-	
-	$conteudo_meio .= $linha_p.$linha_q.$linha_r.$linha_s;
-	
+
+	$conteudo_meio .= $linha_p . $linha_q . $linha_r . $linha_s;
+
 	$linha_p = "";
 	$linha_q = "";
 	$linha_r = "";
 	$linha_s = "";
-
 }  // final do for
 
-$linha_5 .= picture_9($num_banco,3);                 
-$linha_5 .= picture_9($lote_servico,4);              
-$linha_5 .= '5';                                     
-$linha_5 .= complementoRegistro(9,"brancos");       
-$qtd_registros = ( $qtd_titulos *4 ) +2;
-$linha_5 .= picture_9( $qtd_registros, 6 );          
-$linha_5 .= complementoRegistro(217,"brancos");     
-$linha_5 .= chr(13).chr(10);                         
+$linha_5 .= picture_9($num_banco, 3);
+$linha_5 .= picture_9($lote_servico, 4);
+$linha_5 .= '5';
+$linha_5 .= complementoRegistro(9, "brancos");
+$qtd_registros = ($qtd_titulos * 4) + 2;
+$linha_5 .= picture_9($qtd_registros, 6);
+$linha_5 .= complementoRegistro(217, "brancos");
+$linha_5 .= chr(13) . chr(10);
 
-$linha_9 .= picture_9( $num_banco, 3 );                 
-$linha_9 .= '9999';                                     
-$linha_9 .= '9';                                       
-$linha_9 .= complementoRegistro( 9, "brancos" );        
+$linha_9 .= picture_9($num_banco, 3);
+$linha_9 .= '9999';
+$linha_9 .= '9';
+$linha_9 .= complementoRegistro(9, "brancos");
 $qtd_lotes_arquivo = $lote_servico;
-$linha_9 .= picture_9( $qtd_lotes_arquivo, 6 );         
-$qtd_reg_arq = ( $qtd_titulos * 4 ) + 4;                
-$linha_9 .= picture_9( $qtd_reg_arq, 6 );               
-$linha_9 .= complementoRegistro( 211, "brancos" );      
-$linha_9 .= chr(13).chr(10);                         
+$linha_9 .= picture_9($qtd_lotes_arquivo, 6);
+$qtd_reg_arq = ($qtd_titulos * 4) + 4;
+$linha_9 .= picture_9($qtd_reg_arq, 6);
+$linha_9 .= complementoRegistro(211, "brancos");
+$linha_9 .= chr(13) . chr(10);
 
-$conteudo = $header.$header_lote.$conteudo_meio.$linha_5.$linha_9;  
+$conteudo = $header . $header_lote . $conteudo_meio . $linha_5 . $linha_9;
 
-if (!$handle = fopen($filename, 'w+'))
-{
+if (!$handle = fopen($filename, 'w+')) {
 	echo "<br>Não foi possível abrir o arquivo ($filename)";
 }
-if (fwrite($handle, "$conteudo") === FALSE)
-{
+if (fwrite($handle, "$conteudo") === FALSE) {
 	echo "<br>Não foi possível escrever no arquivo ($filename)";
 }
 fclose($handle);
@@ -387,24 +384,24 @@ fclose($handle);
 $xdestino = $pasta_destino . $filename;
 $xorigem = $filename;
 
-if( copy( $xorigem, $xdestino) )
-{
+if (copy($xorigem, $xdestino)) {
 	$arquivo = $filename;
 ?>
-	<div align="center">
-		<p><img src="figuras/logo-big.png"></p>
-		<p><img src="figuras/ok2.png" width="16" height="16" border="0" align="absmiddle" />&nbsp;Arquivo de remessa gerado com sucesso!</p>
-		<p>Download do Arquivo de Remessa: <a href="remessa/<?php echo $arquivo;?>" target="_blank" download ><?php echo "remessa/".$arquivo;?></a></p>
-	</div>
+<div align="center">
+    <p><img src="figuras/logo-big.png"></p>
+    <p><img src="figuras/ok2.png" width="16" height="16" border="0" align="absmiddle" />&nbsp;Arquivo de remessa gerado
+        com sucesso!</p>
+    <p>Download do Arquivo de Remessa: <a href="remessa/<?php echo $arquivo; ?>" target="_blank"
+            download><?php echo "remessa/" . $arquivo; ?></a></p>
+</div>
 <?php
-}
-else
-{
+} else {
 ?>
-	<div align="center">
-		<p><img src="figuras/logo-big.png"></p>
-		<p><img src="figuras/erro1.png" width="16" height="16" border="0" align="absmiddle" />&nbsp;Erro! Houve uma falha na criação do arquivo de remessa.</p>
-	</div>
+<div align="center">
+    <p><img src="figuras/logo-big.png"></p>
+    <p><img src="figuras/erro1.png" width="16" height="16" border="0" align="absmiddle" />&nbsp;Erro! Houve uma falha na
+        criação do arquivo de remessa.</p>
+</div>
 <?php
 }
 ?>
